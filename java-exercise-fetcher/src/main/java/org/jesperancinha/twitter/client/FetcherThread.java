@@ -23,12 +23,15 @@ public class FetcherThread extends Thread {
     private final String consumerSecret;
     private final String token;
     private final String tokenSecret;
+    private final List<String> allMessages;
 
-    public FetcherThread(String consumerKey, String consumerSecret, String token, String tokenSecret) {
+
+    public FetcherThread(String consumerKey, String consumerSecret, String token, String tokenSecret, List<String> allMessages) {
         this.consumerKey = consumerKey;
         this.consumerSecret = consumerSecret;
         this.token = token;
         this.tokenSecret = tokenSecret;
+        this.allMessages = allMessages;
     }
 
     @SneakyThrows
@@ -38,7 +41,7 @@ public class FetcherThread extends Thread {
         final BlockingQueue<String> queue = new LinkedBlockingQueue<>(100);
         final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         final StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
-        final List<String> searchTerms = List.of("rogerfederer");
+        final List<String> searchTerms = List.of("ariana grande");
         hosebirdEndpoint.trackTerms(searchTerms);
         final BasicClient client = new ClientBuilder()
                 .hosts(hosebirdHosts)
@@ -52,11 +55,11 @@ public class FetcherThread extends Thread {
                 log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
                 break;
             }
-            String msg = null;
-            msg = queue.poll(5, TimeUnit.SECONDS);
+            String msg = queue.poll(5, TimeUnit.SECONDS);
             if (msg == null) {
                 log.warn("Did not receive a message in 5 seconds");
             } else {
+                allMessages.add(msg);
                 log.info(msg);
             }
         }
