@@ -1,5 +1,5 @@
 export interface Message {
   id: string;
-  createdAt: number;
+  created_at: number;
   text: string;
 }

@@ -54,7 +54,7 @@ public class TwitterClient {
     public PageDto startFetchProcess() throws InterruptedException {
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
         final List<String> allMessages = new ArrayList<>();
-        final FetcherThread threadFetcher = new FetcherThread(consumerKey, consumerSecret, token, tokenSecret, allMessages,executorService);
+        final FetcherThread threadFetcher = new FetcherThread(consumerKey, consumerSecret, token, tokenSecret, allMessages, executorService);
         final KillerThread killerThread = new KillerThread(executorService);
         executorService.submit(threadFetcher);
         executorService.submit(killerThread);
@@ -63,7 +63,7 @@ public class TwitterClient {
         executorService.awaitTermination(30, TimeUnit.SECONDS);
         final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         final List<AuthorDto> authorDtos = processAllMessages(allMessages);
-        final PageDto pageDto = PageDto.builder().authors(authorDtos).duration(timestampAfter - timestampBefore).build();
+        final PageDto pageDto = PageDto.builder().createdAt(timestampBefore).authors(authorDtos).duration(timestampAfter - timestampBefore).build();
         log.info(gson.toJson(pageDto));
         return pageDto;
     }

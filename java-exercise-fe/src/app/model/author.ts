@@ -2,9 +2,9 @@ import {Message} from "./message";
 
 export interface Author {
   id: string;
-  createdAt: number;
+  created_at: number;
   name: string;
   screenName: string;
-  messageDtos: Message[];
+  message_dtos: Message[];
 }
 
