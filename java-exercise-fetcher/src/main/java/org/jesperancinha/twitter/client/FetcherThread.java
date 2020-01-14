@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -24,14 +25,16 @@ public class FetcherThread extends Thread {
     private final String token;
     private final String tokenSecret;
     private final List<String> allMessages;
+    private ExecutorService executorService;
 
 
-    public FetcherThread(String consumerKey, String consumerSecret, String token, String tokenSecret, List<String> allMessages) {
+    public FetcherThread(String consumerKey, String consumerSecret, String token, String tokenSecret, List<String> allMessages, ExecutorService executorService) {
         this.consumerKey = consumerKey;
         this.consumerSecret = consumerSecret;
         this.token = token;
         this.tokenSecret = tokenSecret;
         this.allMessages = allMessages;
+        this.executorService = executorService;
     }
 
     @SneakyThrows
@@ -41,7 +44,7 @@ public class FetcherThread extends Thread {
         final BlockingQueue<String> queue = new LinkedBlockingQueue<>(100);
         final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         final StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
-        final List<String> searchTerms = List.of("ariana grande");
+        final List<String> searchTerms = List.of("trump");
         hosebirdEndpoint.trackTerms(searchTerms);
         final BasicClient client = new ClientBuilder()
                 .hosts(hosebirdHosts)
@@ -55,15 +58,17 @@ public class FetcherThread extends Thread {
                 log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
                 break;
             }
-            String msg = queue.poll(5, TimeUnit.SECONDS);
+            String msg = queue.poll(1, TimeUnit.SECONDS);
             if (msg == null) {
-                log.warn("Did not receive a message in 5 seconds");
+                log.warn("Did not receive a message in 1 seconds");
             } else {
                 allMessages.add(msg);
-                log.info(msg);
+                log.warn("Received 1 message!");
+                log.trace(msg);
             }
         }
         client.stop();
+        executorService.shutdownNow();
     }
 
 }

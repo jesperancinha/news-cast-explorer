@@ -2,11 +2,11 @@ package org.jesperancinha.twitter.data;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.Getter;
 
 @Builder
 @EqualsAndHashCode
-@ToString
+@Getter
 public class MessageDto {
     private String id;
 

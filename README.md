@@ -1,5 +1,13 @@
 # Java exercise jofisaes
 
+
+## Installation Notes
+
+```bash
+sudo pip install flask
+```
+
+## Description
 This development test is used as part of selection process for Development Engineers. You are requested to develop a simple application that covers all the requirements listed below. To have an indication of the criteria that will be used to judge your submission, all the following are considered as metrics of good development:
 
 - Correctness of the implementation

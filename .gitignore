@@ -17,3 +17,6 @@ dist
 
 # Front end
 node_modules
+
+# Logs
+*.log
