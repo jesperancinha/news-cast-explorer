@@ -11,6 +11,7 @@ import com.twitter.hbc.httpclient.auth.Authentication;
 import com.twitter.hbc.httpclient.auth.OAuth1;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
@@ -30,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Builder
 @AllArgsConstructor
+@Getter
 public class TwitterClient {
 
     private final String consumerKey;
@@ -58,7 +60,7 @@ public class TwitterClient {
         executorService.submit(killerThread);
         executorService.submit(threadFetcher);
         executorService.shutdown();
-        executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
+        executorService.awaitTermination(0, TimeUnit.SECONDS);
         final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return twitterMessageProcessor.processAllMessages(allMessages, timestampBefore, timestampAfter);
     }

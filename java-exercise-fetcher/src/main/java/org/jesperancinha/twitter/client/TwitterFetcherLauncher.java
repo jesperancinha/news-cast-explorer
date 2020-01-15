@@ -24,11 +24,11 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        startFetchingWithArguments(args);
+        twitterClient = startFetchingWithArguments(args);
     }
 
-    public void startFetchingWithArguments(String[] args) {
-        twitterClient = getTwitterClientBuild(args, TwitterMessageProcessor.getInstance());
+    TwitterClient startFetchingWithArguments(String[] args) {
+        return getTwitterClientBuild(args, TwitterMessageProcessor.getInstance());
     }
 
     private static TwitterClient getTwitterClientBuild(String[] args,
@@ -55,13 +55,13 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
         if (args.length > 5) {
             return Integer.parseInt(args[5]);
         }
-        return 30;
+        return 100;
     }
 
     private static int getTimeToWait(String[] args) {
         if (args.length > 6) {
             return Integer.parseInt(args[6]);
         }
-        return 100;
+        return 30;
     }
 }

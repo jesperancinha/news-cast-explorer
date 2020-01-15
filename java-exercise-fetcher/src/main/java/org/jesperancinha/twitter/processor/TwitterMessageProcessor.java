@@ -22,6 +22,11 @@ public class TwitterMessageProcessor {
 
     private static TwitterMessageProcessor twitterMessageProcessor;
 
+    private final static Gson gson = new GsonBuilder()
+            .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .create();
+
     static {
         twitterMessageProcessor = new TwitterMessageProcessor();
     }
@@ -33,12 +38,7 @@ public class TwitterMessageProcessor {
         return twitterMessageProcessor;
     }
 
-    private final static Gson gson = new GsonBuilder()
-            .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create();
-
-    public PageDto processAllMessages(List<String> allMessages, long timestampBefore, long timestampAfter) {
+    public PageDto processAllMessages(List<String> allMessages, Long timestampBefore, Long timestampAfter) {
         List<AuthorDto> authorDtos = allMessages.parallelStream()
                 .map(message -> gson.fromJson(message, Message.class))
                 .filter(message -> Objects.nonNull(message.getUser()))

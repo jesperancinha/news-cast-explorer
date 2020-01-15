@@ -2,7 +2,6 @@ package org.jesperancinha.twitter.client;
 
 import com.twitter.hbc.core.event.Event;
 import com.twitter.hbc.httpclient.BasicClient;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

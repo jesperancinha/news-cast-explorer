@@ -8,7 +8,7 @@ RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
 COPY java-exercise-fetcher/target/java-exercise-fetcher-1.0.0-SNAPSHOT.jar ${runningFolder}
 
-COPY java-exercise-fe/log-docker-server.py ${runningFolder}
+COPY java-exercise-log-service/log-docker-server.py ${runningFolder}
 
 COPY docker-entrypoint.sh ${runningFolder}
 

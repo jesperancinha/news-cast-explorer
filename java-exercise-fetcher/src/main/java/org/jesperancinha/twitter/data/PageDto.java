@@ -1,12 +1,12 @@
 package org.jesperancinha.twitter.data;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
 @Builder
-@Data
+@Getter
 public class PageDto {
 
     private Long duration;

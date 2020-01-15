@@ -3,7 +3,6 @@ package org.jesperancinha.twitter.client;
 import com.twitter.hbc.httpclient.BasicClient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -22,26 +21,30 @@ public class FetcherThread extends Thread {
     private final BasicClient client;
     private final BlockingQueue<String> stringLinkedBlockingQueue;
 
-    @SneakyThrows
     @Override
     public void run() {
-        client.connect();
-        for (int msgRead = 0; msgRead < capacity; msgRead++) {
-            if (client.isDone()) {
-                log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
-                break;
+        try {
+            client.connect();
+            for (int msgRead = 0; msgRead < capacity; msgRead++) {
+                if (client.isDone()) {
+                    log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
+                    break;
+                }
+                String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
+                if (msg == null) {
+                    log.warn("Did not receive a message in 1 seconds");
+                } else {
+                    allMessages.add(msg);
+                    log.warn("Received 1 message!");
+                    log.trace(msg);
+                }
             }
-            String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
-            if (msg == null) {
-                log.warn("Did not receive a message in 1 seconds");
-            } else {
-                allMessages.add(msg);
-                log.warn("Received 1 message!");
-                log.trace(msg);
-            }
+            client.stop();
+        } catch (InterruptedException e) {
+            log.error("An exception has ocurred!", e);
+        } finally {
+            executorService.shutdownNow();
         }
-        client.stop();
-        executorService.shutdownNow();
     }
 
 }

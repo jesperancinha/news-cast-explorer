@@ -7,7 +7,7 @@
 
 <perfect-scrollbar style="max-width: 100%; max-height: 300px;">
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" [value]="filterPage">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter page" [value]="filterPage">
   </mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -37,10 +37,12 @@
   </table>
 </perfect-scrollbar>
 
-<mat-form-field *ngIf="authorsSelected">
-  <input matInput (keyup)="applyFilterToAuthors($event.target.value)" placeholder="Filter" [value]="filterAuthor">
+<mat-form-field *ngIf="authorsSelected && authorsSelected.data.length>0">
+  <input matInput (keyup)="applyFilterToAuthors($event.target.value)" placeholder="Filter author"
+         [value]="filterAuthor">
 </mat-form-field>
-<perfect-scrollbar style="max-width: 100%; max-height: 200px;" *ngIf="authorsSelected">
+<perfect-scrollbar style="max-width: 100%; max-height: 200px;"
+                   *ngIf="authorsSelected && messagesSelected.data.length>0">
   <table mat-table [dataSource]="authorsSelected" class="mat-elevation-z8">
 
     <ng-container matColumnDef="createdAt">
@@ -68,10 +70,12 @@
   </table>
 </perfect-scrollbar>
 
-<mat-form-field *ngIf="messagesSelected">
-  <input matInput (keyup)="applyFilterToMessages($event.target.value)" placeholder="Filter" [value]="filterMessages">
+<mat-form-field *ngIf="messagesSelected && messagesSelected.data.length>0">
+  <input matInput (keyup)="applyFilterToMessages($event.target.value)" placeholder="Filter message"
+         [value]="filterMessages">
 </mat-form-field>
-<perfect-scrollbar style="max-width: 100%; max-height: 300px;" *ngIf="messagesSelected">
+<perfect-scrollbar style="max-width: 100%; max-height: 300px;"
+                   *ngIf="messagesSelected && messagesSelected.data.length>0">
   <table mat-table [dataSource]="messagesSelected" class="mat-elevation-z8">
 
     <ng-container matColumnDef="createdAt">
