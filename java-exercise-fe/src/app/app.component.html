@@ -24,11 +24,16 @@
           (click)="pageClicked(element)">{{element.duration}}</td>
     </ng-container>
 
-
     <ng-container matColumnDef="messasgesperscond">
       <th mat-header-cell *matHeaderCellDef>Messages per second</th>
       <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
           (click)="pageClicked(element)">{{calculateAverage(element)}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberofmessages">
+      <th mat-header-cell *matHeaderCellDef>Total fetched messages</th>
+      <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
+          (click)="pageClicked(element)">{{calculateNumberOfMessages(element.authors)}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -37,12 +42,12 @@
   </table>
 </perfect-scrollbar>
 
-<mat-form-field *ngIf="authorsSelected && authorsSelected.data.length>0">
+<mat-form-field *ngIf="validateCurrentAuthorSelection()">
   <input matInput (keyup)="applyFilterToAuthors($event.target.value)" placeholder="Filter author"
          [value]="filterAuthor">
 </mat-form-field>
 <perfect-scrollbar style="max-width: 100%; max-height: 200px;"
-                   *ngIf="authorsSelected && messagesSelected.data.length>0">
+                   *ngIf="validateCurrentAuthorSelection()">
   <table mat-table [dataSource]="authorsSelected" class="mat-elevation-z8">
 
     <ng-container matColumnDef="createdAt">
@@ -70,12 +75,12 @@
   </table>
 </perfect-scrollbar>
 
-<mat-form-field *ngIf="messagesSelected && messagesSelected.data.length>0">
+<mat-form-field *ngIf="validateCurrentMessageSelection()">
   <input matInput (keyup)="applyFilterToMessages($event.target.value)" placeholder="Filter message"
          [value]="filterMessages">
 </mat-form-field>
 <perfect-scrollbar style="max-width: 100%; max-height: 300px;"
-                   *ngIf="messagesSelected && messagesSelected.data.length>0">
+                   *ngIf="validateCurrentMessageSelection()">
   <table mat-table [dataSource]="messagesSelected" class="mat-elevation-z8">
 
     <ng-container matColumnDef="createdAt">

@@ -21,7 +21,7 @@ import {MatTableDataSource} from "@angular/material/table";
 export class AppComponent implements OnInit {
   title = 'java-exercise-fe';
   dataSource: MatTableDataSource<Page>;
-  displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond'];
+  displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
   displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName'];
   displayedMessagesColumns: string[] = ['createdAt', 'text'];
   messagesSelected: MatTableDataSource<Message>;
@@ -90,9 +90,31 @@ export class AppComponent implements OnInit {
     let duration: number = element.duration;
     let authors = element.authors;
     if (authors && authors.length > 0) {
-      let nMessages = authors.map(author => author.message_dtos.length).reduce((a, b) => a + b);
+      let nMessages = this.calculateNumberOfMessages(authors);
       return (nMessages / duration).toFixed(2);
     }
     return "N/A";
+  }
+
+  calculateNumberOfMessages(authors: Author[]) {
+    if (authors && authors.length > 0) {
+      return authors.map(author => {
+        if (author) {
+          if (author.message_dtos) {
+            return author.message_dtos.length;
+          }
+        }
+        return 0;
+      }).reduce((a, b) => a + b);
+    }
+    return 0;
+  }
+
+  validateCurrentAuthorSelection() {
+    return this.authorsSelected && this.authorsSelected.data && this.authorsSelected.data.length > 0;
+  }
+
+  validateCurrentMessageSelection() {
+    return this.messagesSelected && this.messagesSelected.data && this.messagesSelected.data.length > 0
   }
 }
