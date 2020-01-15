@@ -39,7 +39,6 @@ export class PageComponent implements OnInit {
     return this.pageService.getPages()
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
-        console.log(data[0]);
       });
   }
 
@@ -70,17 +69,13 @@ export class PageComponent implements OnInit {
     let duration: number = element.duration;
     let authors = element.authors;
     if (authors && authors.length > 0) {
-      let nMessages = PageComponent.calculateNumberOfMessages(authors);
+      let nMessages = this.calculateNumberOfMessages(authors);
       return (nMessages / duration).toFixed(2);
     }
     return "N/A";
   }
 
   calculateNumberOfMessages(authors: Author[]) {
-    return PageComponent.calculateNumberOfMessages(authors);
-  }
-
-  public static calculateNumberOfMessages(authors: Author[]) {
     if (authors && authors.length > 0) {
       return authors.map(author => {
         if (author) {

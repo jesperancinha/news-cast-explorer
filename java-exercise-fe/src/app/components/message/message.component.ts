@@ -19,7 +19,6 @@ import {PageService} from "../../service/page.service";
   ],
 })
 export class MessageComponent implements OnInit {
-  dataSource: MatTableDataSource<Page>;
   displayedMessagesColumns: string[] = ['createdAt', 'text'];
   filterMessages: string = '';
   @Input() messagesSelected: MatTableDataSource<Message>;

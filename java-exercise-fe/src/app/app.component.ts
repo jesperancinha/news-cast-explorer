@@ -37,12 +37,11 @@ export class AppComponent implements OnInit {
     return this.pageService.getPages()
       .subscribe(data => {
         this.dataSource = new MatTableDataSource(data);
-        console.log(data[0]);
       });
   }
 
   pageClicked(authors: MatTableDataSource<Author>) {
-    this.authorsSelected = authors
+    this.authorsSelected = authors;
     this.messagesSelected = null;
     this.filterAuthor = '';
   }

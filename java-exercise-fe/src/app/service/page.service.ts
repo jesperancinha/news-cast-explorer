@@ -1,5 +1,5 @@
 import {catchError, retry} from 'rxjs/internal/operators';
-import {Injectable} from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {Page} from "../model/page";
