@@ -1,5 +1,7 @@
-package org.jesperancinha.twitter.client;
+package org.jesperancinha.twitter;
 
+import org.jesperancinha.twitter.TwitterFetcherLauncher;
+import org.jesperancinha.twitter.client.TwitterClient;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.PageDto;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;

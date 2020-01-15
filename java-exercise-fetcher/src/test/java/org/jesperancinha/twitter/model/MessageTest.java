@@ -45,7 +45,7 @@ public class MessageTest {
     }
 
     @Test
-    void testHashCode_whenOther_NoSamek() {
+    void testHashCode_whenOther_NotSame() {
         final Message message1 = gson.fromJson(
                 "{\n" +
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +

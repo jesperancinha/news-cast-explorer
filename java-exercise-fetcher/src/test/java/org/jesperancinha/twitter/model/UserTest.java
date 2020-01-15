@@ -39,7 +39,7 @@ class UserTest {
     }
 
     @Test
-    void testHashCode_whenOther_NoSamek() {
+    void testHashCode_whenOther_NotSame() {
         final User user1 = gson.fromJson(
                 "{\n" +
                         "      \"id\": 988105075267637248,\n" +

@@ -1,6 +1,7 @@
-package org.jesperancinha.twitter.client;
+package org.jesperancinha.twitter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.twitter.client.TwitterClient;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
