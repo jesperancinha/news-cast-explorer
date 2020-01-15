@@ -14,7 +14,7 @@
     <ng-container matColumnDef="createdAt">
       <th mat-header-cell *matHeaderCellDef>Created At</th>
       <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-          (click)="pageClicked(element)"> {{toDate(element.created_at)}} </td>
+          (click)="pageClicked(element)"> {{toDate(element.created_at * 1000)}} </td>
     </ng-container>
 
 

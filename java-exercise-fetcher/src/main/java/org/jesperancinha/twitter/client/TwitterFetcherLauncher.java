@@ -1,6 +1,7 @@
 package org.jesperancinha.twitter.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,32 +18,50 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
     private TwitterClient twitterClient;
 
     public static void main(String[] args) throws InterruptedException {
-        TwitterFetcherLauncher.getTwitterClientBuild(args).startFetchProcess();
+        TwitterFetcherLauncher.getTwitterClientBuild(args, TwitterMessageProcessor.getInstance()).startFetchProcess();
         SpringApplication.run(TwitterFetcherLauncher.class, args);
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         startFetchingWithArguments(args);
     }
 
-    public void startFetchingWithArguments(String[] args) throws InterruptedException {
-        twitterClient = getTwitterClientBuild(args);
+    public void startFetchingWithArguments(String[] args) {
+        twitterClient = getTwitterClientBuild(args, TwitterMessageProcessor.getInstance());
     }
 
-    private static TwitterClient getTwitterClientBuild(String[] args) {
+    private static TwitterClient getTwitterClientBuild(String[] args,
+                                                       TwitterMessageProcessor twitterMessageProcessor) {
         return TwitterClient.builder()
                 .consumerKey(args[0])
                 .consumerSecret(args[1])
                 .token(args[2])
                 .tokenSecret(args[3])
-                .filterKey(args[4])
+                .searchTerm(args[4])
+                .capacity(getCapacity(args))
+                .timeToWaitSeconds(getTimeToWait(args))
+                .twitterMessageProcessor(twitterMessageProcessor)
                 .build();
     }
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "${org.jesperancinha.twitter.cron}")
     @Profile("scheduler")
     public void scheduled() throws InterruptedException {
         twitterClient.startFetchProcess();
+    }
+
+    private static int getCapacity(String[] args) {
+        if (args.length > 5) {
+            return Integer.parseInt(args[5]);
+        }
+        return 30;
+    }
+
+    private static int getTimeToWait(String[] args) {
+        if (args.length > 6) {
+            return Integer.parseInt(args[6]);
+        }
+        return 100;
     }
 }

@@ -88,9 +88,11 @@ export class AppComponent implements OnInit {
 
   calculateAverage(element: Page) {
     let duration: number = element.duration;
-    if(element.authors) {
-      let nMessages = element.authors.map(author => author.message_dtos.length).reduce((a, b) => a + b);
+    let authors = element.authors;
+    if (authors && authors.length > 0) {
+      let nMessages = authors.map(author => author.message_dtos.length).reduce((a, b) => a + b);
       return (nMessages / duration).toFixed(2);
-    } return "N/A";
+    }
+    return "N/A";
   }
 }

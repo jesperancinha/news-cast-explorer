@@ -8,6 +8,12 @@ npm run build
 
 cd ..
 
+docker-machine start dev
+
+docker-machine env dev
+
+eval $(docker-machine env dev)
+
 docker stop jef-nginx
 
 docker rm jef-nginx

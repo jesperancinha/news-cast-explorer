@@ -1,6 +1,17 @@
 # Java exercise jofisaes
 
+I created an image to help me with this exercise. I made it generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/java-exercise-docker).
+
+[![dockeri.co](https://dockeri.co/image/jesperancinha/java-exercise-docker)](https://hub.docker.com/r/jesperancinha/java-exercise-docker)
+
+
 ## Installation Notes
+
+### Java version
+
+```bash
+sdk use java 13.0.1.hs-adpt
+```
 
 ### Python
 
