@@ -1,7 +1,6 @@
 import {PageComponent} from "./page.component";
 import {Page} from "../../model/page";
 import {MatTableDataSource} from "@angular/material/table";
-import {Message} from "../../model/message";
 import {Author} from "../../model/author";
 
 describe('Page Component', () => {
