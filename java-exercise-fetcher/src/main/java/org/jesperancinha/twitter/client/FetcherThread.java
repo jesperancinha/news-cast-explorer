@@ -9,6 +9,8 @@ import com.twitter.hbc.core.processor.StringDelimitedProcessor;
 import com.twitter.hbc.httpclient.BasicClient;
 import com.twitter.hbc.httpclient.auth.Authentication;
 import com.twitter.hbc.httpclient.auth.OAuth1;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,23 +21,16 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@Builder
+@AllArgsConstructor
 public class FetcherThread extends Thread {
     private final String consumerKey;
     private final String consumerSecret;
     private final String token;
     private final String tokenSecret;
     private final List<String> allMessages;
-    private ExecutorService executorService;
-
-
-    public FetcherThread(String consumerKey, String consumerSecret, String token, String tokenSecret, List<String> allMessages, ExecutorService executorService) {
-        this.consumerKey = consumerKey;
-        this.consumerSecret = consumerSecret;
-        this.token = token;
-        this.tokenSecret = tokenSecret;
-        this.allMessages = allMessages;
-        this.executorService = executorService;
-    }
+    private final ExecutorService executorService;
+    private final String searchTerm;
 
     @SneakyThrows
     @Override
@@ -44,7 +39,7 @@ public class FetcherThread extends Thread {
         final BlockingQueue<String> queue = new LinkedBlockingQueue<>(100);
         final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         final StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
-        final List<String> searchTerms = List.of("trump");
+        final List<String> searchTerms = List.of(searchTerm);
         hosebirdEndpoint.trackTerms(searchTerms);
         final BasicClient client = new ClientBuilder()
                 .hosts(hosebirdHosts)

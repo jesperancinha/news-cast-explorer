@@ -3,12 +3,15 @@ package org.jesperancinha.twitter.client;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
 import org.jesperancinha.twitter.model.Message;
 import org.jesperancinha.twitter.model.User;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +27,8 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Builder
+@AllArgsConstructor
 public class TwitterClient {
 
     private final static Gson gson = new GsonBuilder()
@@ -34,27 +40,21 @@ public class TwitterClient {
     private final String consumerSecret;
     private final String token;
     private final String tokenSecret;
+    private final String filterKey;
 
-    public TwitterClient(String consumerKey, String consumerSecret, String token, String tokenSecret) {
-        this.consumerKey = consumerKey;
-        this.consumerSecret = consumerSecret;
-        this.token = token;
-        this.tokenSecret = tokenSecret;
-    }
-
-    public static void main(String[] args) throws InterruptedException {
-        final String consumerKey = args[0];
-        final String consumerSecret = args[1];
-        final String token = args[2];
-        final String tokenSecret = args[3];
-        final TwitterClient twitterClient = new TwitterClient(consumerKey, consumerSecret, token, tokenSecret);
-        twitterClient.startFetchProcess();
-    }
 
     public PageDto startFetchProcess() throws InterruptedException {
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
         final List<String> allMessages = new ArrayList<>();
-        final FetcherThread threadFetcher = new FetcherThread(consumerKey, consumerSecret, token, tokenSecret, allMessages, executorService);
+        final FetcherThread threadFetcher = FetcherThread.builder()
+                .consumerKey(consumerKey)
+                .consumerSecret(consumerSecret)
+                .token(token)
+                .tokenSecret(tokenSecret)
+                .allMessages(allMessages)
+                .executorService(executorService)
+                .searchTerm(filterKey)
+                .build();
         final KillerThread killerThread = new KillerThread(executorService);
         executorService.submit(threadFetcher);
         executorService.submit(killerThread);
@@ -71,6 +71,7 @@ public class TwitterClient {
     private List<AuthorDto> processAllMessages(List<String> allMessages) {
         return allMessages.parallelStream()
                 .map(message -> gson.fromJson(message, Message.class))
+                .filter(message -> Objects.nonNull(message.getUser()))
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
                 .map(TwitterClient::fillAuthor).sorted(Comparator.comparing(AuthorDto::getCreatedAt)).collect(Collectors.toList());
@@ -106,4 +107,6 @@ public class TwitterClient {
                 .screenName(user.getScreenName())
                 .build();
     }
+
+
 }

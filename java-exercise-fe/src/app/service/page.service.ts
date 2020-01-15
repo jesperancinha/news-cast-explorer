@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {Page} from "../model/page";
 
-const localUrl = 'http://localhost:4200/api';
+const localUrl = '/api/';
 
 @Injectable({
   providedIn: 'root'

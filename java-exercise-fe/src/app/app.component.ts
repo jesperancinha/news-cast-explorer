@@ -21,7 +21,7 @@ import {MatTableDataSource} from "@angular/material/table";
 export class AppComponent implements OnInit {
   title = 'java-exercise-fe';
   dataSource: MatTableDataSource<Page>;
-  displayedColumns: string[] = ['createdAt', 'duration'];
+  displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond'];
   displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName'];
   displayedMessagesColumns: string[] = ['createdAt', 'text'];
   messagesSelected: MatTableDataSource<Message>;
@@ -84,5 +84,13 @@ export class AppComponent implements OnInit {
       return 'green'
     }
     return 'white';
+  }
+
+  calculateAverage(element: Page) {
+    let duration: number = element.duration;
+    if(element.authors) {
+      let nMessages = element.authors.map(author => author.message_dtos.length).reduce((a, b) => a + b);
+      return (nMessages / duration).toFixed(2);
+    } return "N/A";
   }
 }

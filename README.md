@@ -1,11 +1,54 @@
 # Java exercise jofisaes
 
-
 ## Installation Notes
+
+### Python
 
 ```bash
 sudo pip install flask
 ```
+
+### Dockerfile
+
+```bash
+# If exists
+docker-machine rm dev 
+
+docker-machine create --driver virtualbox dev
+
+docker-machine env dev
+
+eval $(docker-machine env dev)
+
+# If not started
+docker-machine start dev
+
+docker build .
+
+docker-machine ssh dev
+
+docker ps -a
+
+#Container access
+docker exec -it <container ID> /bin/bash
+
+docker run -p 80:80 "<image ID>"
+
+docker run -d -v /webroot:/var/www/html -p 80:80 --name "<name of container>" "<image ID>"
+
+docker run -it ubuntu sh
+
+docker run ubuntu
+
+docker-machine ip dev
+
+docker build . -t "<image ID>"
+
+docker run "<container ID>" -d -p 8080:80 -p 5000:5000 "<image ID>"
+
+```
+
+
 
 ## Description
 This development test is used as part of selection process for Development Engineers. You are requested to develop a simple application that covers all the requirements listed below. To have an indication of the criteria that will be used to judge your submission, all the following are considered as metrics of good development:
