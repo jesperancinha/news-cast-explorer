@@ -19,7 +19,13 @@ sdk use java 13.0.1.hs-adpt
 sudo pip install flask
 ```
 
-### Dockerfile
+### SSH Docker Container
+
+```bash
+docker exec -it jef-nginx /bin/bash
+```
+
+### Dockerfile notes
 
 ```bash
 # If exists

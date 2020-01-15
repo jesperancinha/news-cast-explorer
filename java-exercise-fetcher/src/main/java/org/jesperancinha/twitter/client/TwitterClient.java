@@ -60,7 +60,7 @@ public class TwitterClient {
         executorService.submit(killerThread);
         executorService.submit(threadFetcher);
         executorService.shutdown();
-        executorService.awaitTermination(0, TimeUnit.SECONDS);
+        executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
         final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return twitterMessageProcessor.processAllMessages(allMessages, timestampBefore, timestampAfter);
     }

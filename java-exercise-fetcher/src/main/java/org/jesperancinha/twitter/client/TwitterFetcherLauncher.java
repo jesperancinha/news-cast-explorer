@@ -24,10 +24,10 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        twitterClient = startFetchingWithArguments(args);
+        twitterClient = createClientFromArgs(args);
     }
 
-    TwitterClient startFetchingWithArguments(String[] args) {
+    TwitterClient createClientFromArgs(String[] args) {
         return getTwitterClientBuild(args, TwitterMessageProcessor.getInstance());
     }
 

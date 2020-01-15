@@ -32,8 +32,7 @@ class TwitterFetcherLauncherTest {
         };
 
         final TwitterClient twitterClient
-                = twitterFetcherLauncher.startFetchingWithArguments(args);
-        final PageDto pageDto = twitterClient.startFetchProcess();
+                = twitterFetcherLauncher.createClientFromArgs(args);
 
         assertThat(twitterClient).isNotNull();
         assertThat(twitterClient.getConsumerKey()).isEqualTo("consumerKey");
@@ -45,23 +44,16 @@ class TwitterFetcherLauncherTest {
         assertThat(twitterClient.getTimeToWaitSeconds()).isEqualTo(30);
         assertThat(twitterClient.getTwitterMessageProcessor())
                 .isSameAs(TwitterMessageProcessor.getInstance());
-
-        assertThat(pageDto).isNotNull();
-        assertThat(pageDto.getDuration()).isZero();
-        assertThat(pageDto.getCreatedAt()).isGreaterThanOrEqualTo(0);
-        final List<AuthorDto> authors = pageDto.getAuthors();
-        assertThat(authors).isNotNull();
-        assertThat(authors).isEmpty();
     }
 
     @Test
     void testStartFetchingWithArguments_whenAllArguments_thenRunOk() throws InterruptedException {
         final String[] args = new String[]{
-                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "22", "33"
+                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "1", "2"
         };
 
         final TwitterClient twitterClient
-                = twitterFetcherLauncher.startFetchingWithArguments(args);
+                = twitterFetcherLauncher.createClientFromArgs(args);
         final PageDto pageDto = twitterClient.startFetchProcess();
 
         assertThat(twitterClient).isNotNull();
@@ -70,13 +62,13 @@ class TwitterFetcherLauncherTest {
         assertThat(twitterClient.getToken()).isEqualTo("token");
         assertThat(twitterClient.getTokenSecret()).isEqualTo("tokenSecret");
         assertThat(twitterClient.getSearchTerm()).isEqualTo("rogerfederer");
-        assertThat(twitterClient.getCapacity()).isEqualTo(22);
-        assertThat(twitterClient.getTimeToWaitSeconds()).isEqualTo(33);
+        assertThat(twitterClient.getCapacity()).isEqualTo(1);
+        assertThat(twitterClient.getTimeToWaitSeconds()).isEqualTo(2);
         assertThat(twitterClient.getTwitterMessageProcessor())
                 .isSameAs(TwitterMessageProcessor.getInstance());
 
         assertThat(pageDto).isNotNull();
-        assertThat(pageDto.getDuration()).isZero();
+        assertThat(pageDto.getDuration()).isGreaterThan(0);
         assertThat(pageDto.getCreatedAt()).isGreaterThanOrEqualTo(0);
         final List<AuthorDto> authors = pageDto.getAuthors();
         assertThat(authors).isNotNull();
@@ -86,7 +78,7 @@ class TwitterFetcherLauncherTest {
     @Test
     void testStartFetchingWithArguments_whenRunAllArguments_thenRunOk() throws InterruptedException {
         final String[] args = new String[]{
-                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "22", "33"
+                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "1", "2"
         };
 
         assertAll(() -> twitterFetcherLauncher.run(args));
@@ -95,7 +87,7 @@ class TwitterFetcherLauncherTest {
     @Test
     void testStartFetchingWithArguments_whenMainAllArguments_thenRunOk() throws InterruptedException {
         final String[] args = new String[]{
-                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "22", "33"
+                "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "1", "2"
         };
 
         assertAll(() -> TwitterFetcherLauncher.main(args));

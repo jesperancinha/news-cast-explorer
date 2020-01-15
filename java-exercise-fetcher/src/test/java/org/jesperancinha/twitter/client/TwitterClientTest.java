@@ -55,6 +55,6 @@ class TwitterClientTest {
         final Long startTimestamp = allValues.get(0);
         final Long endTimeStamp = allValues.get(1);
         final long timeStampDiff = endTimeStamp - startTimestamp;
-        assertThat(timeStampDiff).isZero();
+        assertThat(timeStampDiff).isGreaterThanOrEqualTo(5);
     }
 }

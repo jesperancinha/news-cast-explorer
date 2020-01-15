@@ -4,6 +4,8 @@ mvn clean install
 
 cd java-exercise-fe
 
+npm install
+
 npm run build
 
 cd ..
