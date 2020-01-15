@@ -2,9 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatTableDataSource} from "@angular/material/table";
 import {Message} from "../../model/message";
-import {Author} from "../../model/author";
-import {Page} from "../../model/page";
-import {PageService} from "../../service/page.service";
 
 @Component({
   selector: 'message-component',

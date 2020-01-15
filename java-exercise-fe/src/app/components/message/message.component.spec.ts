@@ -8,7 +8,7 @@ describe('Page Component', () => {
   });
 
   it('#number of messages should be zero even if the author doesnt have any', () => {
-    let actual:Date = messageComponent.toDate(1579114037056);
+    let actual: Date = messageComponent.toDate(1579114037056);
     expect(actual.getDate()).toBe(Number(15));
     expect(actual.getMonth()).toBe(0);
     expect(actual.getFullYear()).toBe(2020);

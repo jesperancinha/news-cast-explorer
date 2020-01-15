@@ -1,10 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatTableDataSource} from "@angular/material/table";
-import {Page} from "../../model/page";
 import {Message} from "../../model/message";
 import {Author} from "../../model/author";
-import {PageService} from "../../service/page.service";
 
 @Component({
   selector: 'author-component',
@@ -19,7 +17,6 @@ import {PageService} from "../../service/page.service";
   ],
 })
 export class AuthorComponent implements OnInit {
-  title = 'java-exercise-fe';
   displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName'];
   filterAuthor: string = '';
   filterMessages: string = '';

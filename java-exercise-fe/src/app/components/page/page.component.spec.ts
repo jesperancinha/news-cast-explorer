@@ -37,7 +37,7 @@ describe('Page Component', () => {
   it('#average of 4 messages in 30 seconds should be 0.13', () => {
     let page: Page = {
       created_at: 888888,
-      duration:30,
+      duration: 30,
       authors: getTestAuthors()
     };
     expect(pageComponent.calculateAverage(page))
