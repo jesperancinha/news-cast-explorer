@@ -12,7 +12,7 @@ COPY java-exercise-log-service/log-docker-server.py ${runningFolder}
 
 COPY docker-entrypoint.sh ${runningFolder}
 
-COPY docker-files/nodeapp.conf /etc/nginx/conf.d/default.conf
+COPY docker-files/default.conf /etc/nginx/conf.d/default.conf
 
 COPY docker-files/nginx.conf /etc/nginx/nginx.conf
 
