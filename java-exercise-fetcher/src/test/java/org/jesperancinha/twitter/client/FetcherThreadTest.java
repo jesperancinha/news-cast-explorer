@@ -2,6 +2,7 @@ package org.jesperancinha.twitter.client;
 
 import com.twitter.hbc.core.event.Event;
 import com.twitter.hbc.httpclient.BasicClient;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -62,6 +63,38 @@ public class FetcherThreadTest {
         verify(clientMock, times(1)).connect();
         verify(clientMock, times(1)).stop();
         verify(clientMock, times(1)).isDone();
+        verify(executorServiceMock, only()).shutdownNow();
+
+    }
+
+    @Test
+    public void testRunWithCapacity5_whenFetchOk_thenReturnMessage() throws InterruptedException {
+        MockitoAnnotations.initMocks(this);
+
+        final List<String> allmessages = new ArrayList<>();
+
+        when(queueMock.poll(1, TimeUnit.SECONDS)).thenReturn("I am a message!");
+
+        final FetcherThread fetcherThread = FetcherThread.builder()
+                .stringLinkedBlockingQueue(queueMock)
+                .capacity(5)
+                .allMessages(allmessages)
+                .executorService(executorServiceMock)
+                .client(clientMock)
+                .build();
+
+        fetcherThread.start();
+
+        fetcherThread.join();
+
+        assertThat(allmessages).isNotNull();
+        assertThat(allmessages).hasSize(5);
+        assertThat(allmessages).contains("I am a message!");
+
+        verify(queueMock, times(5)).poll(1, TimeUnit.SECONDS);
+        verify(clientMock, times(1)).connect();
+        verify(clientMock, times(1)).stop();
+        verify(clientMock, times(5)).isDone();
         verify(executorServiceMock, only()).shutdownNow();
 
     }
