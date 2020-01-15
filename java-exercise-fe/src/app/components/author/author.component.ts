@@ -27,9 +27,6 @@ export class AuthorComponent implements OnInit {
   @Input() authorsSelected: MatTableDataSource<Author>;
   @Output() messagesToEmit = new EventEmitter<MatTableDataSource<Message>>();
 
-  constructor(private pageService: PageService) {
-  }
-
   ngOnInit() {
   }
 

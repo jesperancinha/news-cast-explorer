@@ -19,96 +19,21 @@ import {PageService} from "../../service/page.service";
   ],
 })
 export class MessageComponent implements OnInit {
-  title = 'java-exercise-fe';
   dataSource: MatTableDataSource<Page>;
   displayedMessagesColumns: string[] = ['createdAt', 'text'];
-  authorsSelected: MatTableDataSource<Author>;
-  filterAuthor: string = '';
   filterMessages: string = '';
   @Input() messagesSelected: MatTableDataSource<Message>;
 
-  constructor(private pageService: PageService) {
-  }
-
   ngOnInit() {
-    this.getPages();
-  }
-
-  getPages() {
-    return this.pageService.getPages()
-      .subscribe(data => {
-        this.dataSource = new MatTableDataSource(data);
-        console.log(data[0]);
-      });
-  }
-
-  pageClicked(element: Page) {
-    this.authorsSelected = new MatTableDataSource(element.authors);
-    this.messagesSelected = null;
-    this.filterAuthor = '';
-  }
-
-  authorClicked(element: Author) {
-    this.messagesSelected = new MatTableDataSource(element.message_dtos);
-    this.filterMessages = '';
   }
 
   toDate(created_at: number) {
     return new Date(created_at);
   }
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyFilterToAuthors(filterValue: any) {
-    this.authorsSelected.filter = filterValue.trim().toLowerCase();
-  }
 
   applyFilterToMessages(filterValue: any) {
     this.messagesSelected.filter = filterValue.trim().toLowerCase();
-  }
-
-  calculateBackgroundPage(element: Page) {
-    if (this.authorsSelected && element.authors === this.authorsSelected.data) {
-      return 'green'
-    }
-    return 'white';
-  }
-
-  calculateBackgroundAuthors(element: Author) {
-    if (this.messagesSelected && element.message_dtos === this.messagesSelected.data) {
-      return 'green'
-    }
-    return 'white';
-  }
-
-  calculateAverage(element: Page) {
-    let duration: number = element.duration;
-    let authors = element.authors;
-    if (authors && authors.length > 0) {
-      let nMessages = this.calculateNumberOfMessages(authors);
-      return (nMessages / duration).toFixed(2);
-    }
-    return "N/A";
-  }
-
-  calculateNumberOfMessages(authors: Author[]) {
-    if (authors && authors.length > 0) {
-      return authors.map(author => {
-        if (author) {
-          if (author.message_dtos) {
-            return author.message_dtos.length;
-          }
-        }
-        return 0;
-      }).reduce((a, b) => a + b);
-    }
-    return 0;
-  }
-
-  validateCurrentAuthorSelection() {
-    return this.authorsSelected && this.authorsSelected.data && this.authorsSelected.data.length > 0;
   }
 
   validateCurrentMessageSelection() {

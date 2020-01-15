@@ -1,9 +1,45 @@
 # Java exercise jofisaes
 
-I created an image to help me with this exercise. I made it generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/java-exercise-docker).
+This is an exercise made with a combination of different languages.
+
+There are three modules:
+
+- java-exercise-fe - This is the front end of the application in Angular 8
+- java-exercise-fetcher - This is the java Spring Boot command line runner developed in Java 12
+- java-exercise-log-service - These are python scripts to serve the logs.
+
+Logs are placed in the workspace of the execution environment of the working jar
+
+These logs are read using two scripts
+
+- logserver.py - For local runs
+- log-docker-server.py - To be used in the docker image builds
+
+The front end runs with NPM
+
+I have provided a few utilities:
+
+- docker-files - Here live the files used to make the docker image
+- docker-files/pushed-image - This is the docker file for the image I've created in Docker up.
+- Dockerfile - This is another docker image which uses the image jesperancinha/java-exercise-docker:0.0.2, that I have created as a starting point
+- build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
+- docker-init.sh - Does almost the same thing, but only executes docker commands.
+
+The image I creaged it's generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/java-exercise-docker).
 
 [![dockeri.co](https://dockeri.co/image/jesperancinha/java-exercise-docker)](https://hub.docker.com/r/jesperancinha/java-exercise-docker)
 
+The reason for this is that I could not find any image suited for what I wanted.
+I needed:
+
+- NGINX
+- A fully compatible java distribution (12 or 13)
+- Cron tabs
+
+The command line runner has the option to choose the profile "scheduler".
+Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
+
+Finally, please note that some messages are returning with empty authors. They are not that many that do but it cause sometimes that the total fetched messages result is a little bit below 100.
 
 ## Installation Notes
 
@@ -64,8 +100,6 @@ docker build . -t "<image ID>"
 docker run "<container ID>" -d -p 8080:80 -p 5000:5000 "<image ID>"
 
 ```
-
-
 
 ## Description
 This development test is used as part of selection process for Development Engineers. You are requested to develop a simple application that covers all the requirements listed below. To have an indication of the criteria that will be used to judge your submission, all the following are considered as metrics of good development:

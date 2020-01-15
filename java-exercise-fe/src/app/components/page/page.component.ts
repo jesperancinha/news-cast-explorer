@@ -19,7 +19,6 @@ import {PageService} from "../../service/page.service";
   ],
 })
 export class PageComponent implements OnInit {
-  title = 'java-exercise-fe';
   dataSource: MatTableDataSource<Page>;
   displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
   messagesSelected: MatTableDataSource<Message>;
@@ -71,13 +70,17 @@ export class PageComponent implements OnInit {
     let duration: number = element.duration;
     let authors = element.authors;
     if (authors && authors.length > 0) {
-      let nMessages = this.calculateNumberOfMessages(authors);
+      let nMessages = PageComponent.calculateNumberOfMessages(authors);
       return (nMessages / duration).toFixed(2);
     }
     return "N/A";
   }
 
   calculateNumberOfMessages(authors: Author[]) {
+    return PageComponent.calculateNumberOfMessages(authors);
+  }
+
+  public static calculateNumberOfMessages(authors: Author[]) {
     if (authors && authors.length > 0) {
       return authors.map(author => {
         if (author) {
