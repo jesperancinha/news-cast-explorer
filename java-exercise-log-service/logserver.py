@@ -16,4 +16,4 @@ def stream():
 
   return app.response_class(generate(), mimetype='json')
 
-app.run(host='0.0.0.0')
+app.run()

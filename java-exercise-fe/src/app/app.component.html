@@ -5,98 +5,10 @@
   </h1>
 </div>
 
-<perfect-scrollbar style="max-width: 100%; max-height: 300px;">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter page" [value]="filterPage">
-  </mat-form-field>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<page-component (authorsToEmit)="pageClicked($event)"></page-component>
 
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created At</th>
-      <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-          (click)="pageClicked(element)"> {{toDate(element.created_at * 1000)}} </td>
-    </ng-container>
+<author-component [messagesSelected]="messagesSelected" [authorsSelected]="authorsSelected" (messagesToEmit)="authorClicked($event)"></author-component>
 
-
-    <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>Page fetch time(s)</th>
-      <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-          (click)="pageClicked(element)">{{element.duration}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="messasgesperscond">
-      <th mat-header-cell *matHeaderCellDef>Messages per second</th>
-      <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-          (click)="pageClicked(element)">{{calculateAverage(element)}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="numberofmessages">
-      <th mat-header-cell *matHeaderCellDef>Total fetched messages</th>
-      <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-          (click)="pageClicked(element)">{{calculateNumberOfMessages(element.authors)}}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  </table>
-</perfect-scrollbar>
-
-<mat-form-field *ngIf="validateCurrentAuthorSelection()">
-  <input matInput (keyup)="applyFilterToAuthors($event.target.value)" placeholder="Filter author"
-         [value]="filterAuthor">
-</mat-form-field>
-<perfect-scrollbar style="max-width: 100%; max-height: 200px;"
-                   *ngIf="validateCurrentAuthorSelection()">
-  <table mat-table [dataSource]="authorsSelected" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created At</th>
-      <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-          (click)="authorClicked(element)"> {{toDate(element.created_at)}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Authors</th>
-      <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-          (click)="authorClicked(element)"> {{element.name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="screenName">
-      <th mat-header-cell *matHeaderCellDef>Screen Name</th>
-      <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-          (click)="authorClicked(element)"> {{element.screen_name}} </td>
-    </ng-container>
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedAuthorsColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedAuthorsColumns;"></tr>
-
-  </table>
-</perfect-scrollbar>
-
-<mat-form-field *ngIf="validateCurrentMessageSelection()">
-  <input matInput (keyup)="applyFilterToMessages($event.target.value)" placeholder="Filter message"
-         [value]="filterMessages">
-</mat-form-field>
-<perfect-scrollbar style="max-width: 100%; max-height: 300px;"
-                   *ngIf="validateCurrentMessageSelection()">
-  <table mat-table [dataSource]="messagesSelected" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef>Created at</th>
-      <td mat-cell *matCellDef="let element"> {{toDate(element.created_at)}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="text">
-      <th mat-header-cell *matHeaderCellDef>Message</th>
-      <td mat-cell *matCellDef="let element"> {{element.text}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedMessagesColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedMessagesColumns;"></tr>
-
-  </table>
-</perfect-scrollbar>
+<message-component [messagesSelected]="messagesSelected"></message-component>
 
 <router-outlet></router-outlet>

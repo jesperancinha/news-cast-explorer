@@ -21,12 +21,8 @@ import {MatTableDataSource} from "@angular/material/table";
 export class AppComponent implements OnInit {
   title = 'java-exercise-fe';
   dataSource: MatTableDataSource<Page>;
-  displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
-  displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName'];
-  displayedMessagesColumns: string[] = ['createdAt', 'text'];
   messagesSelected: MatTableDataSource<Message>;
   authorsSelected: MatTableDataSource<Author>;
-  filterPage: string = '';
   filterAuthor: string = '';
   filterMessages: string = '';
 
@@ -45,76 +41,15 @@ export class AppComponent implements OnInit {
       });
   }
 
-  pageClicked(element: Page) {
-    this.authorsSelected = new MatTableDataSource(element.authors);
+  pageClicked(authors: MatTableDataSource<Author>) {
+    this.authorsSelected = authors
     this.messagesSelected = null;
     this.filterAuthor = '';
   }
 
-  authorClicked(element: Author) {
-    this.messagesSelected = new MatTableDataSource(element.message_dtos);
+  authorClicked(messages: MatTableDataSource<Message>) {
+    this.messagesSelected = messages;
     this.filterMessages = '';
   }
 
-  toDate(created_at: number) {
-    return new Date(created_at);
-  }
-
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyFilterToAuthors(filterValue: any) {
-    this.authorsSelected.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyFilterToMessages(filterValue: any) {
-    this.messagesSelected.filter = filterValue.trim().toLowerCase();
-  }
-
-  calculateBackgroundPage(element: Page) {
-    if (this.authorsSelected && element.authors === this.authorsSelected.data) {
-      return 'green'
-    }
-    return 'white';
-  }
-
-  calculateBackgroundAuthors(element: Author) {
-    if (this.messagesSelected && element.message_dtos === this.messagesSelected.data) {
-      return 'green'
-    }
-    return 'white';
-  }
-
-  calculateAverage(element: Page) {
-    let duration: number = element.duration;
-    let authors = element.authors;
-    if (authors && authors.length > 0) {
-      let nMessages = this.calculateNumberOfMessages(authors);
-      return (nMessages / duration).toFixed(2);
-    }
-    return "N/A";
-  }
-
-  calculateNumberOfMessages(authors: Author[]) {
-    if (authors && authors.length > 0) {
-      return authors.map(author => {
-        if (author) {
-          if (author.message_dtos) {
-            return author.message_dtos.length;
-          }
-        }
-        return 0;
-      }).reduce((a, b) => a + b);
-    }
-    return 0;
-  }
-
-  validateCurrentAuthorSelection() {
-    return this.authorsSelected && this.authorsSelected.data && this.authorsSelected.data.length > 0;
-  }
-
-  validateCurrentMessageSelection() {
-    return this.messagesSelected && this.messagesSelected.data && this.messagesSelected.data.length > 0
-  }
 }

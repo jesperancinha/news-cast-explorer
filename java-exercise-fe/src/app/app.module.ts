@@ -11,11 +11,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {PerfectScrollbarModule} from "ngx-perfect-scrollbar";
 import {MatInputModule} from "@angular/material/input";
+import {PageComponent} from "./components/page/page.component";
+import {AuthorComponent} from "./components/author/author.component";
+import {MessageComponent} from "./components/message/message.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageComponent,
+    AuthorComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
