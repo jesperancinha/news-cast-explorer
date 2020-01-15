@@ -100,6 +100,17 @@ docker build . -t "<image ID>"
 docker run "<container ID>" -d -p 8080:80 -p 5000:5000 "<image ID>"
 
 ```
+## Starting the application
+
+This application starts with 5 mandatory parameters and 2 extra ones. They all following a specific order:
+
+- consumerKey - Twitter consumer key
+- consumerSecret -  Twitter consumer secret
+- tokenKey - Twitter token key
+- tokenSecret - Twitter token secret
+- searchword - Searchword (i.e. rogerfederer)
+- capacity - Maximum number of messages to read (i.e. 100)
+- timeToWait - Maximum time to wait (i.e. 30 seconds)
 
 ## Description
 This development test is used as part of selection process for Development Engineers. You are requested to develop a simple application that covers all the requirements listed below. To have an indication of the criteria that will be used to judge your submission, all the following are considered as metrics of good development:
