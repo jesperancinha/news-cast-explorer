@@ -25,18 +25,20 @@ public class FetcherThread extends Thread {
     public void run() {
         try {
             client.connect();
-            for (int msgRead = 0; msgRead < capacity; msgRead++) {
+            int msgRead = 0;
+            while (msgRead < capacity) {
                 if (client.isDone()) {
                     log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
                     break;
                 }
-                String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
+                final String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
                 if (msg == null) {
                     log.warn("Did not receive a message in 1 seconds");
                 } else {
                     allMessages.add(msg);
                     log.warn("Received 1 message!");
                     log.trace(msg);
+                    msgRead++;
                 }
             }
             client.stop();

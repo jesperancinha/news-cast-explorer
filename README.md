@@ -39,8 +39,6 @@ I needed:
 The command line runner has the option to choose the profile "scheduler".
 Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
 
-Finally, please note that some messages are returning with empty authors. They are not that many that do but it cause sometimes that the total fetched messages result is a little bit below 100.
-
 ## Installation Notes
 
 ### Java version
