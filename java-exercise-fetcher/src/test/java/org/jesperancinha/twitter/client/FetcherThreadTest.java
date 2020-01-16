@@ -183,6 +183,49 @@ public class FetcherThreadTest {
         verify(executorServiceMock, only()).shutdownNow();
 
     }
+    @Test
+    public void testRun_whenFetchMostlyTrackTimesamptAndCapacity_thenReturnOneMessage() throws InterruptedException {
+        MockitoAnnotations.initMocks(this);
+
+        final List<String> allmessages = new ArrayList<>();
+        final String testMessage = "I am a message!";
+        final String testLimitTrack = "{\"limit\":{\"track\":26,\"timestamp_ms\":\"1579144966748\"}}";
+
+        final Stack<String> stringStack = new Stack<>();
+        stringStack.push(testLimitTrack);
+        stringStack.push(testLimitTrack);
+        stringStack.push(testLimitTrack);
+        stringStack.push(testLimitTrack);
+        stringStack.push(testMessage);
+        stringStack.push(testLimitTrack);
+        stringStack.push(testLimitTrack);
+        stringStack.push(testLimitTrack);
+
+        when(queueMock.poll(1, TimeUnit.SECONDS)).thenAnswer(invocationOnMock -> stringStack.pop());
+
+        final FetcherThread fetcherThread = FetcherThread.builder()
+                .stringLinkedBlockingQueue(queueMock)
+                .capacity(1)
+                .allMessages(allmessages)
+                .executorService(executorServiceMock)
+                .client(clientMock)
+                .build();
+
+        fetcherThread.start();
+
+        fetcherThread.join();
+
+        assertThat(allmessages).isNotNull();
+        assertThat(allmessages).hasSize(1);
+        assertThat(allmessages).contains("I am a message!");
+
+        verify(queueMock, atLeastOnce()).poll(1, TimeUnit.SECONDS);
+        verify(clientMock, times(1)).connect();
+        verify(clientMock, times(1)).stop();
+        verify(clientMock, atLeastOnce()).isDone();
+        verify(executorServiceMock, only()).shutdownNow();
+
+    }
 
     @Test
     public void testRun_whenClientIsDone_thenReturnNoMessage() throws InterruptedException {

@@ -15,6 +15,8 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class FetcherThread extends Thread {
 
+    private final String regex = "\\{\"limit\":\\{\"track\":[0-9]*,\"timestamp_ms\":\"[0-9]*\"}}";
+
     private final List<String> allMessages;
     private final ExecutorService executorService;
     private final int capacity;
@@ -32,14 +34,7 @@ public class FetcherThread extends Thread {
                     break;
                 }
                 final String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
-                if (msg == null) {
-                    log.warn("Did not receive a message in 1 seconds");
-                } else {
-                    allMessages.add(msg);
-                    log.warn("Received 1 message!");
-                    log.trace(msg);
-                    msgRead++;
-                }
+                msgRead = processMessage(msgRead, msg);
             }
             client.stop();
         } catch (InterruptedException e) {
@@ -47,6 +42,29 @@ public class FetcherThread extends Thread {
         } finally {
             executorService.shutdownNow();
         }
+    }
+
+    private int processMessage(int msgRead, String msg) {
+        if (msg == null) {
+            log.warn("Did not receive a message in 1 seconds");
+        } else {
+            msgRead = processIncomingTextMessage(msgRead, msg);
+        }
+        return msgRead;
+    }
+
+    private int processIncomingTextMessage(int msgRead, String msg) {
+        if (!msg.matches(regex)) {
+            allMessages.add(msg);
+            log.trace("Received 1 message!");
+            log.trace(msg);
+            msgRead++;
+        } else
+        {
+            log.warn("Received 1 limit track message!");
+            log.warn(msg);
+        }
+        return msgRead;
     }
 
 }
