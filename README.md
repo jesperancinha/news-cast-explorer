@@ -30,6 +30,10 @@ The image I creaged it's generic and it's available on [dockerhub](https://hub.d
 
 [![dockeri.co](https://dockeri.co/image/jesperancinha/java-exercise-docker)](https://hub.docker.com/r/jesperancinha/java-exercise-docker)
 
+The repo of this image has moved. All my docker images will now reside in a separate repo:
+
+[https://bitbucket.org/jesperancinha/docker-images/](https://bitbucket.org/jesperancinha/docker-images/)
+
 The reason for this is that I could not find any image suited for what I wanted.
 I needed:
 
