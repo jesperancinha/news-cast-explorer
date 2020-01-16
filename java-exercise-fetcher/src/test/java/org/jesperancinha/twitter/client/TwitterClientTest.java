@@ -25,8 +25,13 @@ class TwitterClientTest {
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
 
+    /**
+     * No exception is thrown while polling the buffer even though no connection has been made to twitter.
+     *
+     * @throws InterruptedException May occur while waiting for the executor to complete.
+     */
     @Test
-    void testStartFetchProcess_whenProgrammed1Second_endsGracefully0Seconds() throws InterruptedException {
+    public void testStartFetchProcess_whenProgrammed5Second_endsGracefully5Seconds() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
         final int capacity = 1;
