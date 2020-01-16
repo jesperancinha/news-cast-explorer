@@ -30,7 +30,7 @@ The image I creaged it's generic and it's available on [dockerhub](https://hub.d
 
 [![dockeri.co](https://dockeri.co/image/jesperancinha/java-exercise-docker)](https://hub.docker.com/r/jesperancinha/java-exercise-docker)
 
-The repo of this image has moved. All my docker images will now reside in a separate repo:
+The repo of the source code for this image has moved. All code for my docker images will now reside in a separate repo:
 
 [https://bitbucket.org/jesperancinha/docker-images/](https://bitbucket.org/jesperancinha/docker-images/)
 
