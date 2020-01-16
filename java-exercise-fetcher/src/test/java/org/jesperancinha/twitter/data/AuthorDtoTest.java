@@ -20,7 +20,7 @@ public class AuthorDtoTest {
         final AuthorDto authorDto2 = AuthorDto.builder().id("98whef9w8efh8f8e9wh")
                 .createdAt(1234324L)
                 .name("The Smiths")
-                .screenName("Jim Morrissey")
+                .screenName("Morrissey")
                 .messageDtos(new ArrayList<>())
                 .build();
 
