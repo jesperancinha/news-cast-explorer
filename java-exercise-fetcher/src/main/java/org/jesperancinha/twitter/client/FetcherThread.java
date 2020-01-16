@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class FetcherThread extends Thread {
 
-    private final String regex = ".*\\{\"limit\":\\{\"track\":[0-9]*,\"timestamp_ms\":\"[0-9]*\"}}[\r\n]*.*";
+    private final String invalidMessageStart = "{\"limit\":{\"track\"";
 
     private final List<String> allMessages;
     private final ExecutorService executorService;
@@ -54,7 +54,7 @@ public class FetcherThread extends Thread {
     }
 
     private int processIncomingTextMessage(int msgRead, String msg) {
-        if (!msg.matches(regex)) {
+        if (!msg.startsWith(invalidMessageStart)) {
             allMessages.add(msg);
             log.trace("Received 1 message!");
             log.trace(msg);
