@@ -183,6 +183,7 @@ public class FetcherThreadTest {
         verify(executorServiceMock, only()).shutdownNow();
 
     }
+
     @Test
     public void testRun_whenFetchMostlyTrackTimesamptAndCapacity_thenReturnOneMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @AllArgsConstructor
 public class FetcherThread extends Thread {
 
-    private final String regex = "\\{\"limit\":\\{\"track\":[0-9]*,\"timestamp_ms\":\"[0-9]*\"}}";
+    private final String regex = ".*\\{\"limit\":\\{\"track\":[0-9]*,\"timestamp_ms\":\"[0-9]*\"}}[\r\n]*.*";
 
     private final List<String> allMessages;
     private final ExecutorService executorService;
@@ -38,7 +38,7 @@ public class FetcherThread extends Thread {
             }
             client.stop();
         } catch (InterruptedException e) {
-            log.error("An exception has ocurred!", e);
+            log.error("An exception has occurred!", e);
         } finally {
             executorService.shutdownNow();
         }
@@ -59,8 +59,7 @@ public class FetcherThread extends Thread {
             log.trace("Received 1 message!");
             log.trace(msg);
             msgRead++;
-        } else
-        {
+        } else {
             log.warn("Received 1 limit track message!");
             log.warn(msg);
         }
