@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MessageDtoTest {
 
     @Test
-    public void testEquals() {
+    public void testEquals_whenEquals_Ok() {
         final MessageDto messageDto1 = MessageDto.builder().id("dsfsfndsivnka324")
                 .createdAt(111L)
                 .text("wowowow")
@@ -22,7 +22,7 @@ public class MessageDtoTest {
     }
 
     @Test
-    public void testHashCode() {
+    public void testHashCode_whenOther_NotSame() {
         final MessageDto messageDto1 = MessageDto.builder().id("dsfsfndsivnka324")
                 .createdAt(111L)
                 .text("wowowow")
@@ -34,5 +34,7 @@ public class MessageDtoTest {
                 .build();
 
         assertThat(messageDto1).isNotSameAs(messageDto2);
+        assertThat(messageDto1.hashCode()).isEqualTo(messageDto2.hashCode());
+
     }
 }

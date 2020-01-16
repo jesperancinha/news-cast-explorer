@@ -59,5 +59,6 @@ class UserTest {
                         "    }", User.class);
 
         assertThat(user1).isNotSameAs(user2);
+        assertThat(user1.hashCode()).isEqualTo(user2.hashCode());
     }
 }

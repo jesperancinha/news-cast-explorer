@@ -16,7 +16,7 @@ public class MessageTest {
 
 
     @Test
-    void testEquals_whenEquals_Ok() {
+    public void testEquals_whenEquals_Ok() {
         final Message message1 = gson.fromJson(
                 "{\n" +
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
@@ -45,7 +45,7 @@ public class MessageTest {
     }
 
     @Test
-    void testHashCode_whenOther_NotSame() {
+    public void testHashCode_whenOther_NotSame() {
         final Message message1 = gson.fromJson(
                 "{\n" +
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
@@ -71,5 +71,6 @@ public class MessageTest {
                         "  }}", Message.class);
 
         assertThat(message1).isNotSameAs(message2);
+        assertThat(message1.hashCode()).isEqualTo(message2.hashCode());
     }
 }
