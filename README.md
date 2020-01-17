@@ -106,15 +106,22 @@ docker run "<container ID>" -d -p 8080:80 -p 5000:5000 "<image ID>"
 ```
 ## Starting the application
 
-This application starts with 5 mandatory parameters and 2 extra ones. They all following a specific order:
+This is a Spring Boot application and you can customize paramters via the command line.
+This is an example:
 
-- consumerKey - Twitter consumer key
-- consumerSecret -  Twitter consumer secret
-- tokenKey - Twitter token key
-- tokenSecret - Twitter token secret
-- searchword - Searchword (i.e. rogerfederer)
-- capacity - Maximum number of messages to read (i.e. 100)
-- timeToWait - Maximum time to wait (i.e. 30 seconds)
+```text
+java -jar 
+-Dspring.profiles.active=scheduler 
+/usr/local/bin/java-exercise-fetcher-1.0.0-SNAPSHOT.jar 
+--org.jesperancinha.twitter.consumerKey=<consumerKey> 
+--org.jesperancinha.twitter.consumerSecret=<consumerSecret> 
+--org.jesperancinha.twitter.token=<token> 
+--org.jesperancinha.twitter.tokenSecret=<tokenSecret>
+--org.jesperancinha.twitter.searchTerm=<searchTerm>
+--org.jesperancinha.twitter.capacity=<capacity>
+--org.jesperancinha.twitter.timeToWaitSeconds=<timeToWaitSeconds>
+```
+
 
 ## Description
 This development test is used as part of selection process for Development Engineers. You are requested to develop a simple application that covers all the requirements listed below. To have an indication of the criteria that will be used to judge your submission, all the following are considered as metrics of good development:
