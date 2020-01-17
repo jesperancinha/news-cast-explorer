@@ -38,11 +38,11 @@ public class TwitterConfiguration {
     @Bean
     @Scope(value = "prototype")
     public BlockingQueue<String> blockingQueue() {
-       return new LinkedBlockingQueue<>(capacity);
+        return new LinkedBlockingQueue<>(capacity);
     }
 
     @Bean
-    public List<String> searchTerms(){
+    public List<String> searchTerms() {
         return List.of(searchTerm);
     }
 

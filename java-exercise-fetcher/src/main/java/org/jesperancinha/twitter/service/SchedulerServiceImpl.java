@@ -16,7 +16,7 @@ public class SchedulerServiceImpl implements RunningService {
     }
 
     @Scheduled(cron = "${org.jesperancinha.twitter.cron}")
-    public void scheduled() throws InterruptedException {
+    public void schedule() throws InterruptedException {
         startProcess();
     }
 
