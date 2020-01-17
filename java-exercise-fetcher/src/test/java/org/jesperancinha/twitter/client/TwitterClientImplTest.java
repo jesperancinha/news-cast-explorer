@@ -1,6 +1,7 @@
 package org.jesperancinha.twitter.client;
 
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -18,6 +19,7 @@ import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
+@Disabled
 class TwitterClientImplTest {
 
     @InjectMocks
