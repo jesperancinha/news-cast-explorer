@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter;
 
+import org.jesperancinha.twitter.client.TwitterClient;
 import org.jesperancinha.twitter.client.TwitterClientImpl;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.PageDto;
@@ -24,7 +25,7 @@ class TwitterFetcherLauncherTest {
     private TwitterFetcherLauncher twitterFetcherLauncher;
 
     @Mock
-    private TwitterClientImpl twitterClientImpl;
+    private TwitterClient twitterClient;
 
     @Test
     void testStartFetchingWithArguments_whenArguments_thenRunOkWithDefaults() throws InterruptedException {
@@ -98,6 +99,6 @@ class TwitterFetcherLauncherTest {
     void testScheduled_whenRun_thenCallsRightMethod() throws InterruptedException {
         twitterFetcherLauncher.scheduled();
 
-        verify(twitterClientImpl, only()).startFetchProcess();
+        verify(twitterClient, only()).startFetchProcess();
     }
 }
