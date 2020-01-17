@@ -8,7 +8,6 @@ import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint;
 import com.twitter.hbc.core.processor.StringDelimitedProcessor;
 import com.twitter.hbc.httpclient.BasicClient;
 import com.twitter.hbc.httpclient.auth.Authentication;
-import com.twitter.hbc.httpclient.auth.OAuth1;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
@@ -25,7 +24,6 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -33,31 +31,25 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class TwitterClientImpl implements TwitterClient {
 
-    @Value("${org.jesperancinha.twitter.consumerKey}")
-    private String consumerKey;
-
-    @Value("${org.jesperancinha.twitter.consumerSecret}")
-    private String consumerSecret;
-
-    @Value("${org.jesperancinha.twitter.token}")
-    private String token;
-
-    @Value("${org.jesperancinha.twitter.tokenSecret}")
-    private String tokenSecret;
-
-    @Value("${org.jesperancinha.twitter.searchTerm}")
-    private String searchTerm;
-
-    @Value("${org.jesperancinha.twitter.capacity}")
-    private int capacity;
-
     @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
     private int timeToWaitSeconds;
 
     private final TwitterMessageProcessor twitterMessageProcessor;
 
-    public TwitterClientImpl(TwitterMessageProcessor twitterMessageProcessor) {
+    private final Authentication authentication;
+
+    private final BlockingQueue<String> stringLinkedBlockingQueue;
+
+    private final List<String> searchTerms;
+
+    public TwitterClientImpl(TwitterMessageProcessor twitterMessageProcessor,
+                             Authentication authentication,
+                             BlockingQueue<String> stringLinkedBlockingQueue,
+                             List<String> searchTerms) {
         this.twitterMessageProcessor = twitterMessageProcessor;
+        this.authentication = authentication;
+        this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
+        this.searchTerms = searchTerms;
     }
 
     /**
@@ -97,24 +89,21 @@ public class TwitterClientImpl implements TwitterClient {
 
     private FetcherThread createFetcherThread(ExecutorService executorService, List<String> allMessages) {
 
-        final Authentication auth = new OAuth1(consumerKey, consumerSecret, token, tokenSecret);
-        final BlockingQueue<String> stringLinkedBlockingQueue = new LinkedBlockingQueue<>(capacity);
         final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         final StatusesFilterEndpoint statusesFilterEndpoint = new StatusesFilterEndpoint();
-        final List<String> searchTerms = List.of(searchTerm);
         statusesFilterEndpoint.trackTerms(searchTerms);
 
         final BasicClient client = new ClientBuilder()
                 .hosts(hosebirdHosts)
                 .endpoint(statusesFilterEndpoint)
-                .authentication(auth)
+                .authentication(authentication)
                 .processor(new StringDelimitedProcessor(stringLinkedBlockingQueue))
                 .build();
 
         return FetcherThread.builder()
                 .allMessages(allMessages)
                 .executorService(executorService)
-                .capacity(capacity)
+                .capacity(stringLinkedBlockingQueue.size())
                 .client(client)
                 .stringLinkedBlockingQueue(stringLinkedBlockingQueue)
                 .build();
