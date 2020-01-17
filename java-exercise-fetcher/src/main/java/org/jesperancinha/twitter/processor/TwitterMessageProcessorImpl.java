@@ -9,6 +9,7 @@ import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
 import org.jesperancinha.twitter.model.Message;
 import org.jesperancinha.twitter.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Slf4j
+@Component
 public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
 
     private static TwitterMessageProcessorImpl twitterMessageProcessorImpl;
@@ -41,7 +43,6 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
     public PageDto processAllMessages(List<String> allMessages, Long timestampBefore, Long timestampAfter) {
         List<AuthorDto> authorDtos = allMessages.parallelStream()
                 .map(message -> gson.fromJson(message, Message.class))
-                .filter(message -> Objects.nonNull(message.getUser()))
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
                 .map(TwitterMessageProcessorImpl::fillAuthor).sorted(Comparator.comparing(AuthorDto::getCreatedAt)).collect(Collectors.toList());

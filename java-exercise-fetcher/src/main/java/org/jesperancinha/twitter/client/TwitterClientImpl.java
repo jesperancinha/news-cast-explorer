@@ -9,14 +9,14 @@ import com.twitter.hbc.core.processor.StringDelimitedProcessor;
 import com.twitter.hbc.httpclient.BasicClient;
 import com.twitter.hbc.httpclient.auth.Authentication;
 import com.twitter.hbc.httpclient.auth.OAuth1;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -29,19 +29,36 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Builder
-@AllArgsConstructor
 @Getter
+@Component
 public class TwitterClientImpl implements TwitterClient {
 
-    private final String consumerKey;
-    private final String consumerSecret;
-    private final String token;
-    private final String tokenSecret;
-    private final String searchTerm;
-    private final int capacity;
-    private final int timeToWaitSeconds;
+    @Value("${org.jesperancinha.twitter.consumerKey}")
+    private  String consumerKey;
+
+    @Value("${org.jesperancinha.twitter.consumerSecret}")
+    private  String consumerSecret;
+
+    @Value("${org.jesperancinha.twitter.token}")
+    private  String token;
+
+    @Value("${org.jesperancinha.twitter.tokenSecret}")
+    private  String tokenSecret;
+
+    @Value("${org.jesperancinha.twitter.searchTerm}")
+    private  String searchTerm;
+
+    @Value("${org.jesperancinha.twitter.capacity}")
+    private  int capacity;
+
+    @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
+    private  int timeToWaitSeconds;
+
     private final TwitterMessageProcessor twitterMessageProcessor;
+
+    public TwitterClientImpl(TwitterMessageProcessor twitterMessageProcessor) {
+        this.twitterMessageProcessor = twitterMessageProcessor;
+    }
 
     /**
      * Returns a complete Dto fetch {@link PageDto} object, which contains all the data tweets for one run.

@@ -21,7 +21,7 @@ public class KillerThread extends Thread {
     @Override
     public void run() {
         try {
-            getSleepTime();
+            sleep();
         } catch (InterruptedException e) {
             log.error("An exception has ocurred!", e);
         } finally {
@@ -30,7 +30,7 @@ public class KillerThread extends Thread {
         }
     }
 
-    private void getSleepTime() throws InterruptedException {
+    private void sleep() throws InterruptedException {
         Thread.sleep(TimeUnit.SECONDS.toMillis(secondsDuration));
     }
 }
