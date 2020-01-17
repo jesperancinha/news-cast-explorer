@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 @Builder
 @AllArgsConstructor
 @Getter
-public class TwitterClientImpl implements TwitterClient{
+public class TwitterClientImpl implements TwitterClient {
 
     private final String consumerKey;
     private final String consumerSecret;
