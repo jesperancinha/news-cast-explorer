@@ -27,10 +27,26 @@
         <mockito-core.version>3.2.4</mockito-core.version>
         <junit-vintage-engine.version>5.5.2</junit-vintage-engine.version>
         <junit-platform-runner.version>1.5.2</junit-platform-runner.version>
+        <spring-test.version>5.2.2.RELEASE</spring-test.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring-test.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.google.oauth-client</groupId>
                 <artifactId>google-oauth-client</artifactId>
@@ -60,11 +76,6 @@
                 <groupId>janino</groupId>
                 <artifactId>janino</artifactId>
                 <version>${janino.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${spring-boot.version}</version>
             </dependency>
 
             <dependency>
