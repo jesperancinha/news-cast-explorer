@@ -1,5 +1,5 @@
 # Java exercise jofisaes
-![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/java-exercise-jofisaes/master)
+[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/java-exercise-jofisaes/master)](https://bitbucket.org/jesperancinha/java-exercise-jofisaes/addon/pipelines/home#!/)
 [![CircleCI](https://circleci.com/bb/jesperancinha/java-exercise-jofisaes.svg?style=svg)](https://circleci.com/bb/jesperancinha/java-exercise-jofisaes)
 
 This is an exercise made with a combination of different languages.
