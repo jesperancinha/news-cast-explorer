@@ -1,10 +1,12 @@
 package org.jesperancinha.twitter.service;
 
+import org.jesperancinha.twitter.TwitterFetcherLauncher;
 import org.jesperancinha.twitter.client.TwitterClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -14,11 +16,15 @@ import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
-@SpringBootTest
+@SpringBootTest(classes = TwitterFetcherLauncher.class)
+@ExtendWith(MockitoExtension.class)
 public class OneRunServiceImplTest {
 
-    @Autowired
-    private RunningService runningService;
+    private final RunningService runningService;
+
+    public OneRunServiceImplTest(RunningService runningService) {
+        this.runningService = runningService;
+    }
 
     @MockBean
     private TwitterClient twitterClient;
