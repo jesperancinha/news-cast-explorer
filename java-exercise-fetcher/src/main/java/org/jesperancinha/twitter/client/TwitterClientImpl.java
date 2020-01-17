@@ -103,7 +103,7 @@ public class TwitterClientImpl implements TwitterClient {
         return FetcherThread.builder()
                 .allMessages(allMessages)
                 .executorService(executorService)
-                .capacity(stringLinkedBlockingQueue.size())
+                .capacity(stringLinkedBlockingQueue.remainingCapacity())
                 .client(client)
                 .stringLinkedBlockingQueue(stringLinkedBlockingQueue)
                 .build();
