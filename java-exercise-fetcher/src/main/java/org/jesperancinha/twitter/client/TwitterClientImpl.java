@@ -34,25 +34,25 @@ import java.util.concurrent.TimeUnit;
 public class TwitterClientImpl implements TwitterClient {
 
     @Value("${org.jesperancinha.twitter.consumerKey}")
-    private  String consumerKey;
+    private String consumerKey;
 
     @Value("${org.jesperancinha.twitter.consumerSecret}")
-    private  String consumerSecret;
+    private String consumerSecret;
 
     @Value("${org.jesperancinha.twitter.token}")
-    private  String token;
+    private String token;
 
     @Value("${org.jesperancinha.twitter.tokenSecret}")
-    private  String tokenSecret;
+    private String tokenSecret;
 
     @Value("${org.jesperancinha.twitter.searchTerm}")
-    private  String searchTerm;
+    private String searchTerm;
 
     @Value("${org.jesperancinha.twitter.capacity}")
-    private  int capacity;
+    private int capacity;
 
     @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
-    private  int timeToWaitSeconds;
+    private int timeToWaitSeconds;
 
     private final TwitterMessageProcessor twitterMessageProcessor;
 
