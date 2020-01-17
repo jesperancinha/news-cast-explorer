@@ -2,7 +2,8 @@ package org.jesperancinha.twitter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.client.TwitterClient;
-import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.jesperancinha.twitter.client.TwitterClientImpl;
+import org.jesperancinha.twitter.processor.TwitterMessageProcessorImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +20,7 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
     private TwitterClient twitterClient;
 
     public static void main(String[] args) throws InterruptedException {
-        TwitterFetcherLauncher.getTwitterClientBuild(args, TwitterMessageProcessor.getInstance()).startFetchProcess();
+        TwitterFetcherLauncher.getTwitterClientBuild(args, TwitterMessageProcessorImpl.getInstance()).startFetchProcess();
         SpringApplication.run(TwitterFetcherLauncher.class, args);
     }
 
@@ -28,13 +29,13 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
         twitterClient = createClientFromArgs(args);
     }
 
-    TwitterClient createClientFromArgs(String[] args) {
-        return getTwitterClientBuild(args, TwitterMessageProcessor.getInstance());
+    TwitterClientImpl createClientFromArgs(String[] args) {
+        return getTwitterClientBuild(args, TwitterMessageProcessorImpl.getInstance());
     }
 
-    private static TwitterClient getTwitterClientBuild(String[] args,
-                                                       TwitterMessageProcessor twitterMessageProcessor) {
-        return TwitterClient.builder()
+    private static TwitterClientImpl getTwitterClientBuild(String[] args,
+                                                           TwitterMessageProcessorImpl twitterMessageProcessorImpl) {
+        return TwitterClientImpl.builder()
                 .consumerKey(args[0])
                 .consumerSecret(args[1])
                 .token(args[2])
@@ -42,7 +43,7 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
                 .searchTerm(args[4])
                 .capacity(getCapacity(args))
                 .timeToWaitSeconds(getTimeToWait(args))
-                .twitterMessageProcessor(twitterMessageProcessor)
+                .twitterMessageProcessor(twitterMessageProcessorImpl)
                 .build();
     }
 

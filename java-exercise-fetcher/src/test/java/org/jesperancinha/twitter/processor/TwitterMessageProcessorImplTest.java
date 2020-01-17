@@ -13,14 +13,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TwitterMessageProcessorTest {
+public class TwitterMessageProcessorImplTest {
 
     @Test
     void testProcessAllMessages_whenGoodMessage_OkParse() throws IOException {
         final String resultExample1 = getMessageResource("/example1.json");
         final List<String> allMessages = List.of(resultExample1);
 
-        final PageDto pageDto = TwitterMessageProcessor.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
+        final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 
         assertThat(pageDto).isNotNull();
         assertThat(pageDto.getDuration()).isEqualTo(2000L);
@@ -46,7 +46,7 @@ public class TwitterMessageProcessorTest {
         final String resultExample15 = getMessageResource("/example15.json");
         final List<String> allMessages = List.of(resultExample1, resultExample15);
 
-        final PageDto pageDto = TwitterMessageProcessor.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
+        final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 
         assertThat(pageDto).isNotNull();
         assertThat(pageDto.getDuration()).isEqualTo(2000L);
@@ -80,7 +80,7 @@ public class TwitterMessageProcessorTest {
         final String resultExampe15 = getMessageResource("/example15.json");
         final List<String> allMessages = List.of(resultExampe1, resultExampe15, resultExampe3, resultExampe2);
 
-        final PageDto pageDto = TwitterMessageProcessor.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
+        final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 
         assertThat(pageDto).isNotNull();
         assertThat(pageDto.getDuration()).isEqualTo(2000L);

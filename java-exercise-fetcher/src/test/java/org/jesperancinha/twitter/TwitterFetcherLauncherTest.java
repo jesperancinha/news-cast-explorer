@@ -1,9 +1,9 @@
 package org.jesperancinha.twitter;
 
-import org.jesperancinha.twitter.client.TwitterClient;
+import org.jesperancinha.twitter.client.TwitterClientImpl;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.PageDto;
-import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.jesperancinha.twitter.processor.TwitterMessageProcessorImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ class TwitterFetcherLauncherTest {
     private TwitterFetcherLauncher twitterFetcherLauncher;
 
     @Mock
-    private TwitterClient twitterClient;
+    private TwitterClientImpl twitterClientImpl;
 
     @Test
     void testStartFetchingWithArguments_whenArguments_thenRunOkWithDefaults() throws InterruptedException {
@@ -32,19 +32,19 @@ class TwitterFetcherLauncherTest {
                 "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer"
         };
 
-        final TwitterClient twitterClient
+        final TwitterClientImpl twitterClientImpl
                 = twitterFetcherLauncher.createClientFromArgs(args);
 
-        assertThat(twitterClient).isNotNull();
-        assertThat(twitterClient.getConsumerKey()).isEqualTo("consumerKey");
-        assertThat(twitterClient.getConsumerSecret()).isEqualTo("consumerSecret");
-        assertThat(twitterClient.getToken()).isEqualTo("token");
-        assertThat(twitterClient.getTokenSecret()).isEqualTo("tokenSecret");
-        assertThat(twitterClient.getSearchTerm()).isEqualTo("rogerfederer");
-        assertThat(twitterClient.getCapacity()).isEqualTo(100);
-        assertThat(twitterClient.getTimeToWaitSeconds()).isEqualTo(30);
-        assertThat(twitterClient.getTwitterMessageProcessor())
-                .isSameAs(TwitterMessageProcessor.getInstance());
+        assertThat(twitterClientImpl).isNotNull();
+        assertThat(twitterClientImpl.getConsumerKey()).isEqualTo("consumerKey");
+        assertThat(twitterClientImpl.getConsumerSecret()).isEqualTo("consumerSecret");
+        assertThat(twitterClientImpl.getToken()).isEqualTo("token");
+        assertThat(twitterClientImpl.getTokenSecret()).isEqualTo("tokenSecret");
+        assertThat(twitterClientImpl.getSearchTerm()).isEqualTo("rogerfederer");
+        assertThat(twitterClientImpl.getCapacity()).isEqualTo(100);
+        assertThat(twitterClientImpl.getTimeToWaitSeconds()).isEqualTo(30);
+        assertThat(twitterClientImpl.getTwitterMessageProcessor())
+                .isSameAs(TwitterMessageProcessorImpl.getInstance());
     }
 
     @Test
@@ -53,20 +53,20 @@ class TwitterFetcherLauncherTest {
                 "consumerKey", "consumerSecret", "token", "tokenSecret", "rogerfederer", "1", "2"
         };
 
-        final TwitterClient twitterClient
+        final TwitterClientImpl twitterClientImpl
                 = twitterFetcherLauncher.createClientFromArgs(args);
-        final PageDto pageDto = twitterClient.startFetchProcess();
+        final PageDto pageDto = twitterClientImpl.startFetchProcess();
 
-        assertThat(twitterClient).isNotNull();
-        assertThat(twitterClient.getConsumerKey()).isEqualTo("consumerKey");
-        assertThat(twitterClient.getConsumerSecret()).isEqualTo("consumerSecret");
-        assertThat(twitterClient.getToken()).isEqualTo("token");
-        assertThat(twitterClient.getTokenSecret()).isEqualTo("tokenSecret");
-        assertThat(twitterClient.getSearchTerm()).isEqualTo("rogerfederer");
-        assertThat(twitterClient.getCapacity()).isEqualTo(1);
-        assertThat(twitterClient.getTimeToWaitSeconds()).isEqualTo(2);
-        assertThat(twitterClient.getTwitterMessageProcessor())
-                .isSameAs(TwitterMessageProcessor.getInstance());
+        assertThat(twitterClientImpl).isNotNull();
+        assertThat(twitterClientImpl.getConsumerKey()).isEqualTo("consumerKey");
+        assertThat(twitterClientImpl.getConsumerSecret()).isEqualTo("consumerSecret");
+        assertThat(twitterClientImpl.getToken()).isEqualTo("token");
+        assertThat(twitterClientImpl.getTokenSecret()).isEqualTo("tokenSecret");
+        assertThat(twitterClientImpl.getSearchTerm()).isEqualTo("rogerfederer");
+        assertThat(twitterClientImpl.getCapacity()).isEqualTo(1);
+        assertThat(twitterClientImpl.getTimeToWaitSeconds()).isEqualTo(2);
+        assertThat(twitterClientImpl.getTwitterMessageProcessor())
+                .isSameAs(TwitterMessageProcessorImpl.getInstance());
 
         assertThat(pageDto).isNotNull();
         assertThat(pageDto.getDuration()).isGreaterThan(0);
@@ -98,6 +98,6 @@ class TwitterFetcherLauncherTest {
     void testScheduled_whenRun_thenCallsRightMethod() throws InterruptedException {
         twitterFetcherLauncher.scheduled();
 
-        verify(twitterClient, only()).startFetchProcess();
+        verify(twitterClientImpl, only()).startFetchProcess();
     }
 }

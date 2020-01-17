@@ -1,6 +1,6 @@
 package org.jesperancinha.twitter.client;
 
-import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.jesperancinha.twitter.processor.TwitterMessageProcessorImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -17,10 +17,10 @@ import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class TwitterClientTest {
+class TwitterClientImplTest {
 
     @Mock
-    private TwitterMessageProcessor processor;
+    private TwitterMessageProcessorImpl processor;
 
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
@@ -41,7 +41,7 @@ class TwitterClientTest {
         final String tokenSecret = "tokenSecret";
         final String searchTerm = "rogerfederer";
         final int timeToWait = 5;
-        final TwitterClient twitterClient = TwitterClient.builder()
+        final TwitterClientImpl twitterClientImpl = TwitterClientImpl.builder()
                 .twitterMessageProcessor(processor)
                 .capacity(capacity)
                 .consumerKey(consumerKey)
@@ -52,7 +52,7 @@ class TwitterClientTest {
                 .timeToWaitSeconds(timeToWait)
                 .build();
 
-        twitterClient.startFetchProcess();
+        twitterClientImpl.startFetchProcess();
 
         verify(processor, only()).processAllMessages(any(), longArgumentCaptor.capture(), longArgumentCaptor.capture());
         final List<Long> allValues = longArgumentCaptor.getAllValues();
