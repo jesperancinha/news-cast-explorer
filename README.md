@@ -52,7 +52,7 @@ Starting the application with this profile will cause it to never stop and it wi
 ### Java version
 
 ```bash
-sdk use java 13.0.1.hs-adpt
+sdk use java 14.0.0.hs-adpt
 ```
 
 ### Python
