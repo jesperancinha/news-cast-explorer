@@ -29,9 +29,9 @@ I have provided a few utilities:
 - build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
 - docker-init.sh - Does almost the same thing, but only executes docker commands.
 
-The image I creaged it's generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/twitter-docker).
+The image used is available on [dockerhub](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14).
 
-[![dockeri.co](https://dockeri.co/image/jesperancinha/twitter-docker)](https://hub.docker.com/r/jesperancinha/twitter-docker)
+[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-build-jdk-14)](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14)
 
 The repo of the source code for this image has moved. All code for my docker images will now reside in a separate repo:
 
