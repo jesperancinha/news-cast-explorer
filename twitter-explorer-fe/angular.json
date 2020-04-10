@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "twitter-fe"
+  "defaultProject": "twitter-fe",
+  "cli": {
+    "analytics": "3e459a80-eff3-4a2b-89ca-27f2969c893b"
+  }
 }

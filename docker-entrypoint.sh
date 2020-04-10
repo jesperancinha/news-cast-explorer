@@ -11,3 +11,4 @@ java -jar -Dspring.profiles.active=scheduler \
   --org.jesperancinha.twitter.token=1200086940604928005-8CVE1ZMl198Vqyxqcuol6qSsItQogZ \
   --org.jesperancinha.twitter.tokenSecret=KxEbWs4oqhc8RvoBm7HYJSTQXrBqbooXewgv9mSoJDNFQ \
   --org.jesperancinha.twitter.searchTerm=ritaora
+tail -f /dev/null

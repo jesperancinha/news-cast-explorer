@@ -5,6 +5,7 @@ import {Page} from "../../model/page";
 import {Message} from "../../model/message";
 import {Author} from "../../model/author";
 import {PageService} from "../../service/page.service";
+import {interval, Subscription} from "rxjs";
 
 @Component({
   selector: 'page-component',
@@ -19,6 +20,7 @@ import {PageService} from "../../service/page.service";
   ],
 })
 export class PageComponent implements OnInit {
+  private updateSubscription: Subscription;
   dataSource: MatTableDataSource<Page>;
   displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
   messagesSelected: MatTableDataSource<Message>;
@@ -33,6 +35,10 @@ export class PageComponent implements OnInit {
 
   ngOnInit() {
     this.getPages();
+    this.updateSubscription = interval(5000).subscribe(
+      (val) => {
+        this.getPages()
+      });
   }
 
   getPages() {
