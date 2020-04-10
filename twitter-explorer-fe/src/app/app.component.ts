@@ -19,7 +19,7 @@ import {MatTableDataSource} from "@angular/material/table";
   ],
 })
 export class AppComponent implements OnInit {
-  title = 'java-exercise-fe';
+  title = 'twitter-fe';
   dataSource: MatTableDataSource<Page>;
   messagesSelected: MatTableDataSource<Message>;
   authorsSelected: MatTableDataSource<Author>;

@@ -1,4 +1,4 @@
-# java-exercise-fetcher
+# twitter-fetcher
 
 ## About me 👨🏽‍💻🚀
 

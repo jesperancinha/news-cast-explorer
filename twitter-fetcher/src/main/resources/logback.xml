@@ -1,6 +1,6 @@
 <configuration>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>java-exercise-fetcher.log</file>
+        <file>twitter-fetcher.log</file>
         <filter class="org.jesperancinha.twitter.filters.TwitterFilter"/>
         <encoder>
             <pattern>%msg%n</pattern>

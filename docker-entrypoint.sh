@@ -4,7 +4,7 @@ cd /usr/local/bin
 cat /etc/nginx/nginx.conf
 python3 log-docker-server.py &
 java -jar -Dspring.profiles.active=scheduler \
-  /usr/local/bin/java-exercise-fetcher-1.0.0-SNAPSHOT.jar \
+  /usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar \
   --org.jesperancinha.twitter.searchTerm \
   --org.jesperancinha.twitter.consumerKey=Jyrj0HRFWwmE6mbxuJTSwjcJ7 \
   --org.jesperancinha.twitter.consumerSecret=jyYtPCauiNawrBNoK56nAMUVK6LHIlN2wiItnhgd5LdKZgK2fW \

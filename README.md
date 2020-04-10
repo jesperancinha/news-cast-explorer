@@ -6,9 +6,9 @@ This is an exercise made with a combination of different languages.
 
 There are three modules:
 
-- java-exercise-fe - This is the front end of the application in Angular 8
-- java-exercise-fetcher - This is the java Spring Boot command line runner developed in Java 12
-- java-exercise-log-service - These are python scripts to serve the logs.
+- twitter-fe - This is the front end of the application in Angular 8
+- twitter-fetcher - This is the java Spring Boot command line runner developed in Java 12
+- twitter-log-service - These are python scripts to serve the logs.
 
 Logs are placed in the workspace of the execution environment of the working jar
 
@@ -23,13 +23,13 @@ I have provided a few utilities:
 
 - docker-files - Here live the files used to make the docker image
 - docker-files/pushed-image - This is the docker file for the image I've created in Docker up.
-- Dockerfile - This is another docker image which uses the image jesperancinha/java-exercise-docker:0.0.2, that I have created as a starting point
+- Dockerfile - This is another docker image which uses the image jesperancinha/twitter-docker:0.0.2, that I have created as a starting point
 - build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
 - docker-init.sh - Does almost the same thing, but only executes docker commands.
 
-The image I creaged it's generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/java-exercise-docker).
+The image I creaged it's generic and it's available on [dockerhub](https://hub.docker.com/r/jesperancinha/twitter-docker).
 
-[![dockeri.co](https://dockeri.co/image/jesperancinha/java-exercise-docker)](https://hub.docker.com/r/jesperancinha/java-exercise-docker)
+[![dockeri.co](https://dockeri.co/image/jesperancinha/twitter-docker)](https://hub.docker.com/r/jesperancinha/twitter-docker)
 
 The repo of the source code for this image has moved. All code for my docker images will now reside in a separate repo:
 
@@ -65,6 +65,84 @@ sudo pip install flask
 docker exec -it jef-nginx /bin/bash
 ```
 
+## Hints & Tricks
+
+-   Remove Docker-machine
+
+NOTE: This process will remove old docker-machine installations.
+User [Docker-Desktop](https://www.docker.com/products/docker-desktop) instead.
+
+```bash
+brew uninstall docker-machine-driver-vmware
+brew uninstall --force docker-machine
+docker system prune -a
+```
+
+
+-   [SDKMAN!](https://sdkman.io/install)
+
+-   Install java versions with [SDKMan](https://sdkman.io/) for MAC-OS and Linux based systems
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+sdk install java 8.0.242.hs-adpt
+sdk install java 11.0.6.hs-adpt
+sdk install java 12.0.2.hs-adpt
+sdk install java 13.0.2.hs-adpt
+sdk install java 14.0.0.hs-adpt
+```
+
+-   Install java versions without [SDKMan](https://sdkman.io/) for [ubuntu prompt for windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
+
+```bash
+apt-get -y update
+apt-get -y upgrade
+apt -y install apt-transport-https ca-certificates wget dirmngr gnupg software-properties-common
+wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | apt-key add -
+add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+apt -y update
+sudo apt -y install openjdk-11-jdk
+sudo apt install openjdk-13-jdk
+sudo apt -y install adoptopenjdk-8-hotspot
+sudo apt -y autoremove
+```
+
+- .bashrc file to get Gradle, GitPrompt, [SDKMAN](https://sdkman.io/) and some handy aliases in a Windows environment with [MinGW](http://www.mingw.org/).
+
+```bash
+if [ -f "/root/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source /root/.bash-git-prompt/gitprompt.sh
+fi
+
+alias java8="sdk use java 8.0.242.hs-adpt"
+alias java11="sdk use java  11.0.6.hs-adpt"
+alias java12="sdk use java 12.0.2.hs-adpt"
+alias java13="sdk use java 13.0.2.hs-adpt"
+alias java14="sdk use java 14.0.0.hs-adpt"
+alias m2disable="rm ~/.m2/settings.xml"
+alias m2enable="cp /your_repo_folder/settings.xml ~/.m2/"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/root/.sdkman"
+[[ -s "/root/.sdkman/bin/sdkman-init.sh" ]] && source "/root/.sdkman/bin/sdkman-init.sh"
+```
+
+- .bashrc file to get Gradle, GitPrompt and some handy aliases in a Windows environment with [ubuntu prompt for windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
+
+```bash
+if [ -f "/root/.bash-git-prompt/gitprompt.sh" ]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    source /root/.bash-git-prompt/gitprompt.sh
+fi
+
+alias java8="export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64 && update-java-alternatives -s adoptopenjdk-8-hotspot-amd64"
+alias java11="export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64 && update-java-alternatives -s java-1.11.0-openjdk-amd64"
+alias java12="echo \"Java 12 is not available. Setting up 13\" && export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-alternatives -s java-13-oracle"
+alias java13="export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-alternatives -s java-13-oracle"
+```
+
 ## Starting the application
 
 This is a Spring Boot application and you can customize paramters via the command line.
@@ -73,7 +151,7 @@ This is an example:
 ```text
 java -jar 
 -Dspring.profiles.active=scheduler 
-/usr/local/bin/java-exercise-fetcher-1.0.0-SNAPSHOT.jar 
+/usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar 
 --org.jesperancinha.twitter.consumerKey=<consumerKey> 
 --org.jesperancinha.twitter.consumerSecret=<consumerSecret> 
 --org.jesperancinha.twitter.token=<token> 

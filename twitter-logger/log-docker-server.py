@@ -7,7 +7,7 @@ def stream():
   def generate():
     yield '['
     try:
-      with open('java-exercise-fetcher.log') as f:
+      with open('twitter-fetcher.log') as f:
         yield f.readline()
         for line in f:
           yield ',' + line

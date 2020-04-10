@@ -1,4 +1,4 @@
-# java-exercise-log-service
+# twitter-log-service
 
 ## About me 👨🏽‍💻🚀
 

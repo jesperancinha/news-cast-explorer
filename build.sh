@@ -2,7 +2,7 @@
 
 mvn clean install
 
-cd java-exercise-fe
+cd twitter-explorer-fe
 
 npm install
 
@@ -10,15 +10,11 @@ npm run build
 
 cd ..
 
-docker-machine start dev
-
-docker-machine env dev
-
-eval $(docker-machine env dev)
-
 docker stop jef-nginx
 
 docker rm jef-nginx
+
+docker rmi jef-nginx-image
 
 docker build . -t jef-nginx-image
 
