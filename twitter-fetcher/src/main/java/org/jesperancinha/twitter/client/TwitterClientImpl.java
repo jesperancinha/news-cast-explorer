@@ -19,8 +19,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -62,7 +63,7 @@ public class TwitterClientImpl implements TwitterClient {
      */
     public PageDto startFetchProcess() throws InterruptedException {
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
-        final List<String> allMessages = new ArrayList<>();
+        final Set<String> allMessages = new HashSet<>();
         final FetcherThread threadFetcher = createFetcherThread(executorService, allMessages);
         final KillerThread killerThread = createKillerThread(executorService);
         final long timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
@@ -87,7 +88,7 @@ public class TwitterClientImpl implements TwitterClient {
                 .build();
     }
 
-    private FetcherThread createFetcherThread(ExecutorService executorService, List<String> allMessages) {
+    private FetcherThread createFetcherThread(ExecutorService executorService, Set<String> allMessages) {
 
         final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
         final StatusesFilterEndpoint statusesFilterEndpoint = new StatusesFilterEndpoint();

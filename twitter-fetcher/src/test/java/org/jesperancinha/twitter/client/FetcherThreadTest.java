@@ -8,8 +8,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -40,7 +40,7 @@ public class FetcherThreadTest {
     public void testRun_whenFetchOk_thenReturnMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
 
         when(queueMock.poll(1, TimeUnit.SECONDS)).thenReturn("I am a message!");
 
@@ -72,7 +72,7 @@ public class FetcherThreadTest {
     public void testRunWithCapacity5_whenFetchOk_thenReturnMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
 
         when(queueMock.poll(1, TimeUnit.SECONDS)).thenReturn("I am a message!");
 
@@ -89,7 +89,7 @@ public class FetcherThreadTest {
         fetcherThread.join();
 
         assertThat(allmessages).isNotNull();
-        assertThat(allmessages).hasSize(5);
+        assertThat(allmessages).hasSize(1);
         assertThat(allmessages).contains("I am a message!");
 
         verify(queueMock, times(5)).poll(1, TimeUnit.SECONDS);
@@ -105,7 +105,7 @@ public class FetcherThreadTest {
     public void testRunWithCapacity5_whenFetchOkButOneNull_thenReturnStill5Messages() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
         final String testMessage = "I am a message!";
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
 
         final Stack<String> stringStack = new Stack<>();
         stringStack.push(testMessage);
@@ -129,7 +129,7 @@ public class FetcherThreadTest {
         fetcherThread.join();
 
         assertThat(allmessages).isNotNull();
-        assertThat(allmessages).hasSize(5);
+        assertThat(allmessages).hasSize(1);
         assertThat(allmessages).contains("I am a message!");
         assertThat(allmessages).containsOnly("I am a message!");
 
@@ -145,7 +145,7 @@ public class FetcherThreadTest {
     public void testRun_whenFetchMostlyEmptyAndCapacity_thenReturnOneMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
         final String testMessage = "I am a message!";
 
         final Stack<String> stringStack = new Stack<>();
@@ -188,7 +188,7 @@ public class FetcherThreadTest {
     public void testRun_whenFetchMostlyTrackTimesamptAndCapacity_thenReturnOneMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
         final String testMessage = "I am a message!";
         final String testLimitTrack = "{\"limit\":{\"track\":26,\"timestamp_ms\":\"1579144966748\"}}";
 
@@ -232,7 +232,7 @@ public class FetcherThreadTest {
     public void testRun_whenClientIsDone_thenReturnNoMessage() throws InterruptedException {
         MockitoAnnotations.initMocks(this);
 
-        final List<String> allmessages = new ArrayList<>();
+        final Set<String> allmessages = new HashSet<>();
         final Event event = mock(Event.class);
         when(clientMock.isDone()).thenReturn(true);
         when(clientMock.getExitEvent()).thenReturn(event);

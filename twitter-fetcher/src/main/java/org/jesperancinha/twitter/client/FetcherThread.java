@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +17,7 @@ public class FetcherThread extends Thread {
 
     private final String invalidMessageStart = "{\"limit\":{\"track\"";
 
-    private final List<String> allMessages;
+    private final Set<String> allMessages;
     private final ExecutorService executorService;
     private final int capacity;
     private final BasicClient client;

@@ -2,8 +2,8 @@ package org.jesperancinha.twitter.processor;
 
 import org.jesperancinha.twitter.data.PageDto;
 
-import java.util.List;
+import java.util.Set;
 
 public interface TwitterMessageProcessor {
-    PageDto processAllMessages(List<String> allMessages, Long timestampBefore, Long timestampAfter);
+    PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter);
 }

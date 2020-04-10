@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
         return twitterMessageProcessorImpl;
     }
 
-    public PageDto processAllMessages(List<String> allMessages, Long timestampBefore, Long timestampAfter) {
+    public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) {
         List<AuthorDto> authorDtos = allMessages.parallelStream()
                 .map(message -> gson.fromJson(message, Message.class))
                 .collect(twitterMessageCollector())

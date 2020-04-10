@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +19,7 @@ public class TwitterMessageProcessorImplTest {
     @Test
     void testProcessAllMessages_whenGoodMessage_OkParse() throws IOException {
         final String resultExample1 = getMessageResource("/example1.json");
-        final List<String> allMessages = List.of(resultExample1);
+        final Set<String> allMessages = Set.of(resultExample1);
 
         final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 
@@ -44,7 +45,7 @@ public class TwitterMessageProcessorImplTest {
     void testProcessAllMessages_when2Message1Author_OkParseOrdered() throws IOException {
         final String resultExample1 = getMessageResource("/example1.json");
         final String resultExample15 = getMessageResource("/example15.json");
-        final List<String> allMessages = List.of(resultExample1, resultExample15);
+       final Set<String> allMessages = Set.of(resultExample1, resultExample15);
 
         final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 
@@ -78,7 +79,7 @@ public class TwitterMessageProcessorImplTest {
         final String resultExampe2 = getMessageResource("/example2.json");
         final String resultExampe3 = getMessageResource("/example3.json");
         final String resultExampe15 = getMessageResource("/example15.json");
-        final List<String> allMessages = List.of(resultExampe1, resultExampe15, resultExampe3, resultExampe2);
+       final Set<String> allMessages = Set.of(resultExampe1, resultExampe15, resultExampe3, resultExampe2);
 
         final PageDto pageDto = TwitterMessageProcessorImpl.getInstance().processAllMessages(allMessages, 1579079712000L, 1579079714000L);
 

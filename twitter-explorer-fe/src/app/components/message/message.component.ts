@@ -4,35 +4,35 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Message} from "../../model/message";
 
 @Component({
-  selector: 'message-component',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+    selector: 'message-component',
+    templateUrl: './message.component.html',
+    styleUrls: ['./message.component.css'],
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({height: '0px', minHeight: '0'})),
+            state('expanded', style({height: '*'})),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
 export class MessageComponent implements OnInit {
-  displayedMessagesColumns: string[] = ['createdAt', 'text'];
-  filterMessages: string = '';
-  @Input() messagesSelected: MatTableDataSource<Message>;
+    displayedMessagesColumns: string[] = ['createdAt', 'text'];
+    filterMessages: string = '';
+    @Input() messagesSelected: MatTableDataSource<Message>;
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  toDate(created_at: number) {
-    return new Date(created_at);
-  }
+    toDate(created_at: number) {
+        return new Date(created_at);
+    }
 
 
-  applyFilterToMessages(filterValue: any) {
-    this.messagesSelected.filter = filterValue.trim().toLowerCase();
-  }
+    applyFilterToMessages(filterValue: any) {
+        this.messagesSelected.filter = filterValue.trim().toLowerCase();
+    }
 
-  validateCurrentMessageSelection() {
-    return this.messagesSelected && this.messagesSelected.data && this.messagesSelected.data.length > 0
-  }
+    validateCurrentMessageSelection() {
+        return this.messagesSelected && this.messagesSelected.data && this.messagesSelected.data.length > 0
+    }
 }
