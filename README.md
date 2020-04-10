@@ -81,6 +81,7 @@ java -jar
 --org.jesperancinha.twitter.searchTerm=<searchTerm>
 --org.jesperancinha.twitter.capacity=<capacity>
 --org.jesperancinha.twitter.timeToWaitSeconds=<timeToWaitSeconds>
+--org.jesperancinha.twitter.searchTerm=<searchWord>
 ```
 
 ## About me 👨🏽‍💻🚀
