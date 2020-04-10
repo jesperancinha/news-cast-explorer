@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: codeaches/openjdk:12-jdk
+      - image: codeaches/openjdk:14-jdk
 
     working_directory: ~/repo
 

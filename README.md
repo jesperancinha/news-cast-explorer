@@ -6,9 +6,9 @@ This is an exercise made with a combination of different languages.
 
 There are three modules:
 
-- twitter-fe - This is the front end of the application in Angular 8
+- twitter-explorer-fe - This is the front end of the application in Angular 8
 - twitter-fetcher - This is the java Spring Boot command line runner developed in Java 12
-- twitter-log-service - These are python scripts to serve the logs.
+- twitter-logger - These are python scripts to serve the logs.
 
 Logs are placed in the workspace of the execution environment of the working jar
 
