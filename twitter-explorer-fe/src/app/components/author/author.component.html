@@ -3,7 +3,7 @@
     <input matInput (keyup)="applyFilterToAuthors($event.target.value)" placeholder="Filter author"
            [value]="filterAuthor">
   </mat-form-field>
-  <perfect-scrollbar style="max-width: 100%; max-height: 200px;"
+  <perfectScrollbar style="max-width: 100%; max-height: 200px;"
                      *ngIf="validateCurrentAuthorSelection()">
     <table mat-table [dataSource]="authorsSelected" class="mat-elevation-z8">
 
@@ -30,5 +30,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedAuthorsColumns;"></tr>
 
     </table>
-  </perfect-scrollbar>
+  </perfectScrollbar>
 </div>

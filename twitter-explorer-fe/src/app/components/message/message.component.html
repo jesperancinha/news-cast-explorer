@@ -4,7 +4,7 @@
     <input matInput (keyup)="applyFilterToMessages($event.target.value)" placeholder="Filter message"
            [value]="filterMessages">
   </mat-form-field>
-  <perfect-scrollbar style="max-width: 100%; max-height: 300px;"
+  <perfectScrollbar style="max-width: 100%; max-height: 300px;"
                      *ngIf="validateCurrentMessageSelection()">
     <table mat-table [dataSource]="messagesSelected" class="mat-elevation-z8">
 
@@ -22,5 +22,5 @@
       <tr mat-row *matRowDef="let row; columns: displayedMessagesColumns;"></tr>
 
     </table>
-  </perfect-scrollbar>
+  </perfectScrollbar>
 </div>
