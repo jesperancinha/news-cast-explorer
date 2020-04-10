@@ -65,6 +65,25 @@ sudo pip install flask
 docker exec -it jef-nginx /bin/bash
 ```
 
+## Starting the application
+
+This is a Spring Boot application and you can customize paramters via the command line.
+This is an example:
+
+```text
+java -jar 
+-Dspring.profiles.active=scheduler 
+/usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar 
+--org.jesperancinha.twitter.consumerKey=<consumerKey> 
+--org.jesperancinha.twitter.consumerSecret=<consumerSecret> 
+--org.jesperancinha.twitter.token=<token> 
+--org.jesperancinha.twitter.tokenSecret=<tokenSecret>
+--org.jesperancinha.twitter.searchTerm=<searchTerm>
+--org.jesperancinha.twitter.capacity=<capacity>
+--org.jesperancinha.twitter.timeToWaitSeconds=<timeToWaitSeconds>
+--org.jesperancinha.twitter.searchTerm=<searchWord>
+```
+
 ## Hints & Tricks
 
 -   Remove Docker-machine
@@ -141,25 +160,6 @@ alias java8="export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64 && updat
 alias java11="export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64 && update-java-alternatives -s java-1.11.0-openjdk-amd64"
 alias java12="echo \"Java 12 is not available. Setting up 13\" && export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-alternatives -s java-13-oracle"
 alias java13="export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-alternatives -s java-13-oracle"
-```
-
-## Starting the application
-
-This is a Spring Boot application and you can customize paramters via the command line.
-This is an example:
-
-```text
-java -jar 
--Dspring.profiles.active=scheduler 
-/usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar 
---org.jesperancinha.twitter.consumerKey=<consumerKey> 
---org.jesperancinha.twitter.consumerSecret=<consumerSecret> 
---org.jesperancinha.twitter.token=<token> 
---org.jesperancinha.twitter.tokenSecret=<tokenSecret>
---org.jesperancinha.twitter.searchTerm=<searchTerm>
---org.jesperancinha.twitter.capacity=<capacity>
---org.jesperancinha.twitter.timeToWaitSeconds=<timeToWaitSeconds>
---org.jesperancinha.twitter.searchTerm=<searchWord>
 ```
 
 ## About me 👨🏽‍💻🚀
