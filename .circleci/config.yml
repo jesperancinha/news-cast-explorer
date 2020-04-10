@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: codeaches/openjdk:14-jdk
+      - image: circleci/openjdk:14-jdk-buster
 
     working_directory: ~/repo
 
