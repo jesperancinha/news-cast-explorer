@@ -4,7 +4,7 @@
 [![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/twitter-explorer/master)](https://bitbucket.org/jesperancinha/twitter-explorer/addon/pipelines/home#!/)
 [![CircleCI](https://circleci.com/bb/jesperancinha/twitter-explorer.svg?style=svg)](https://circleci.com/bb/jesperancinha/twitter-explorer)
 
-This is an exercise made with a combination of different languages.
+What we want to do is to get the last 100 tweets over something in the last 30 seconds or just all the tweets over that something that we could get in 30 seconds. In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one. For this reason, let’s try something that we know sticks on twitter for a long time. Let’s pick up one of the most successful artists of all time: Cher!. Also, let’s make this analysis more interesting. Let’s get all these tweets visible on a webpage. In order to do that let’s make a design in which we can consult each run. Per run, we want to see a list of all the authors who have written in this time. After this we finally want to read their messages. For this, we will go further into the author details and read every message they wrote in this short period. Sounds simple? The concept is very simple, but let’s break this down and develop this concept further.
 
 There are three modules:
 
