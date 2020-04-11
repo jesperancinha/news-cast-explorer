@@ -168,10 +168,12 @@ alias java13="export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-altern
 
 -   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
 -   [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
+-   [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
 
 ## About me 👨🏽‍💻🚀
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png)](http://joaofilipesabinoesperancinha.nl)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/sonatype-20.png)](https://search.maven.org/search?q=org.jesperancinha)
 [![Twitter Follow](https://img.shields.io/twitter/follow/joaofse?label=João%20Esperancinha&style=social)](https://twitter.com/joaofse)
 [![GitHub followers](https://img.shields.io/github/followers/jesperancinha.svg?label=jesperancinha&style=social)](https://github.com/jesperancinha)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=Articles&message=On%20Medium&color=purple)](https://medium.com/@jofisaes)

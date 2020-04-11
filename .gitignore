@@ -20,3 +20,7 @@ node_modules
 
 # Logs
 *.log
+
+# Generated files
+docker-entrypoint.sh
+docker-entrypoint-copy.sh
