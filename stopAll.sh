@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-docker stop jef-nginx
+docker stop twitter-explorer
 
-docker rm jef-nginx
+docker rm twitter-explorer
 
-docker rmi jef-nginx-image
+docker rmi twitter-explorer-image
