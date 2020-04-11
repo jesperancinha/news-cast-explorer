@@ -20,8 +20,6 @@ COPY twitter-explorer-fe/dist /usr/share/nginx/html
 
 RUN nginx -t
 
-EXPOSE 5000
-
-EXPOSE 4200
+EXPOSE 80
 
 ENTRYPOINT ["docker-entrypoint.sh"]

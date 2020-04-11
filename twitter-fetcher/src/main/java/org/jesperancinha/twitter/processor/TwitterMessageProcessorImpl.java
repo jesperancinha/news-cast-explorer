@@ -58,11 +58,12 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
     }
 
     private static AuthorDto fillAuthor(Map.Entry<AuthorDto, List<MessageDto>> authorDtoListEntry) {
-        AuthorDto key = authorDtoListEntry.getKey();
+        AuthorDto authorDto = authorDtoListEntry.getKey();
         List<MessageDto> listEntryValue = authorDtoListEntry.getValue();
         listEntryValue.sort(Comparator.comparing(MessageDto::getCreatedAt));
-        key.setMessageDtos(listEntryValue);
-        return key;
+        authorDto.setMessageDtos(listEntryValue);
+        authorDto.setNMessages((long) listEntryValue.size());
+        return authorDto;
     }
 
     private static MessageDto toMessageDto(Message message) {
@@ -79,6 +80,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
                 .name(user.getName())
                 .createdAt(user.getCreatedAt().getTime())
                 .screenName(user.getScreenName())
+                .nMessages(0L)
                 .build();
     }
 

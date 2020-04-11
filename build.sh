@@ -18,4 +18,4 @@ docker rmi twitter-explorer-image
 
 docker build . -t twitter-explorer-image
 
-docker run --name twitter-explorer -d -p 8080:80 twitter-explorer-image
+docker run --name twitter-explorer -d -p 80:8080 twitter-explorer-image

@@ -23,4 +23,7 @@ public class AuthorDto {
 
     @EqualsAndHashCode.Exclude
     private List<MessageDto> messageDtos;
+
+    @EqualsAndHashCode.Exclude
+    private Long nMessages;
 }
