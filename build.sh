@@ -10,12 +10,12 @@ npm run build
 
 cd ..
 
-docker stop jef-nginx
+docker stop twitter-explorer
 
-docker rm jef-nginx
+docker rm twitter-explorer
 
-docker rmi jef-nginx-image
+docker rmi twitter-explorer-image
 
-docker build . -t jef-nginx-image
+docker build . -t twitter-explorer-image
 
-docker run --name jef-nginx -d -p 8080:80 jef-nginx-image
+docker run --name twitter-explorer -d -p 8080:80 twitter-explorer-image
