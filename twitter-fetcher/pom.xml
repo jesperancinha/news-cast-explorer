@@ -36,10 +36,6 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-        <dependency>
-            <groupId>janino</groupId>
-            <artifactId>janino</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -79,6 +75,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
