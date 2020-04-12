@@ -75,7 +75,7 @@ This is an example:
 ```text
 java -jar 
 -Dspring.profiles.active=scheduler 
-/usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar 
+/usr/local/bin/twitter-fetcher.jar 
 --org.jesperancinha.twitter.consumerKey=<consumerKey> 
 --org.jesperancinha.twitter.consumerSecret=<consumerSecret> 
 --org.jesperancinha.twitter.token=<token> 

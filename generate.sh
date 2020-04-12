@@ -32,7 +32,7 @@ echo "cd /usr/local/bin" >> ${BUILD_FILE}
 echo "cat /etc/nginx/nginx.conf" >> ${BUILD_FILE}
 echo "python3 log-docker-server.py &" >> ${BUILD_FILE}
 echo "java -jar -Dspring.profiles.active=scheduler \\" >> ${BUILD_FILE}
-echo "/usr/local/bin/twitter-fetcher-1.0.0-SNAPSHOT.jar \\" >> ${BUILD_FILE}
+echo "/usr/local/bin/twitter-fetcher.jar \\" >> ${BUILD_FILE}
 echo "--org.jesperancinha.twitter.consumerKey=${applicationkey} \\" >> ${BUILD_FILE}
 echo "--org.jesperancinha.twitter.consumerSecret=${applicationSecret} \\" >> ${BUILD_FILE}
 echo "--org.jesperancinha.twitter.token=${tokenKey} \\" >> ${BUILD_FILE}

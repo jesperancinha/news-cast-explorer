@@ -6,7 +6,7 @@ WORKDIR ${runningFolder}
 
 RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
-COPY twitter-fetcher/target/twitter-fetcher-1.0.0-SNAPSHOT.jar ${runningFolder}
+COPY twitter-fetcher/target/twitter-fetcher*.jar ${runningFolder}/twitter-fetcher.jar
 
 COPY twitter-logger/log-docker-server.py ${runningFolder}
 
