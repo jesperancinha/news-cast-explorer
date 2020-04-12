@@ -17,10 +17,6 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.oauth-client</groupId>
-            <artifactId>google-oauth-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.twitter</groupId>
             <artifactId>hbc-core</artifactId> <!-- or hbc-twitter4j -->
         </dependency>
