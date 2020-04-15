@@ -47,6 +47,10 @@ I needed:
 The command line runner has the option to choose the profile "scheduler".
 Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
 
+This project is also the official support project of my article on medium:
+
+[What did they say? — Tweeting with Hosebird Client](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+
 ## Installation Notes
 
 ### Java version
