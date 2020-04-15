@@ -168,6 +168,15 @@ alias java12="echo \"Java 12 is not available. Setting up 13\" && export JAVA_HO
 alias java13="export JAVA_HOME=/usr/lib/jvm/java-13-oracle && update-java-alternatives -s java-13-oracle"
 ```
 
+### Git tagging
+```bash
+git tag new-tag old-tag
+git tag -d old-tag
+git push origin :refs/tags/old-tag
+git push --tags
+git pull --prune --tags
+```
+
 ## References
 
 -   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
