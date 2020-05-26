@@ -1,6 +1,5 @@
 package org.jesperancinha.twitter.service;
 
-import org.jesperancinha.twitter.TwitterFetcherLauncher;
 import org.jesperancinha.twitter.client.TwitterClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -7,11 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.GenerationType.AUTO;
 
 @Builder
 @EqualsAndHashCode
@@ -22,6 +25,7 @@ import static javax.persistence.CascadeType.ALL;
 public class Message {
 
     @Id
+    @GeneratedValue(strategy = AUTO)
     private Long id;
 
     private String twitterMessageId;
@@ -32,8 +36,7 @@ public class Message {
     @EqualsAndHashCode.Exclude
     private String text;
 
-    @ManyToOne(optional = false,
-            cascade = ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "author_id",
             nullable = false,
             updatable = false,

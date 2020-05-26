@@ -1,7 +1,23 @@
 package org.jesperancinha.twitter.contoller;
 
+import org.jesperancinha.twitter.data.MessageDto;
+import org.jesperancinha.twitter.service.MessageService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class MessageController {
+
+    private final MessageService messageService;
+
+    public MessageController(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
+    @GetMapping
+    public List<MessageDto> getMessages() {
+        return messageService.getMessages();
+    }
 }

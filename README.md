@@ -65,6 +65,18 @@ This project is also the official support project of my article on medium:
 
 [What did they say? — Tweeting with Hosebird Client](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
 
+## Run locally
+
+Run the TwitterFetcherLauncher with the following parameters:
+
+Please replace AAAAAAAAAAAAAAAAAAAAAAAAA accordingly:
+
+    --org.jesperancinha.twitter.consumerKey=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.consumerSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.token=AAAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.tokenSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.searchTerm=AAAAAAAAAAAAAAAAAAAAAAAAA
+
+```bash
+curl http://localhost:8080/api/twitter/explorer/
+```
+
 ## Installation Notes
 
 ### Java version
@@ -196,6 +208,7 @@ git pull --prune --tags
 -   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
 -   [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
 -   [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
+-   [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
 
 ## About me 👨🏽‍💻🚀
 
