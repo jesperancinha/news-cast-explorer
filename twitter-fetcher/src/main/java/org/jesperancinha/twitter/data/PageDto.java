@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 public class PageDto {
 
-    private Long duration;
+    private final Long duration;
 
-    private Long createdAt;
+    private final Long createdAt;
 
-    private List<AuthorDto> authors;
+    private final List<AuthorDto> authors;
 }

@@ -7,9 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication
-@EnableScheduling
 @Slf4j
+@EnableScheduling
+@SpringBootApplication
 public class TwitterFetcherLauncher implements CommandLineRunner {
 
     private final RunningService runningService;
@@ -27,3 +27,5 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
         runningService.startProcess();
     }
 }
+
+

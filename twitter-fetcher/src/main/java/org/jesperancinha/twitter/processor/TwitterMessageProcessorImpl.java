@@ -7,8 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
-import org.jesperancinha.twitter.model.Message;
-import org.jesperancinha.twitter.model.User;
+import org.jesperancinha.twitter.model.twitter.Message;
+import org.jesperancinha.twitter.model.twitter.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Component
 public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
 
-    private static TwitterMessageProcessorImpl twitterMessageProcessorImpl;
+    private static final TwitterMessageProcessorImpl twitterMessageProcessorImpl;
 
     private final static Gson gson = new GsonBuilder()
             .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
@@ -53,7 +53,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
 
     private static Collector<Message, ?, Map<AuthorDto, List<MessageDto>>> twitterMessageCollector() {
         return Collectors.groupingBy(
-                message -> toUserDto(message.getUser()),
+                message -> toUserDto(message.user()),
                 Collectors.mapping(TwitterMessageProcessorImpl::toMessageDto, Collectors.toList()));
     }
 
@@ -68,18 +68,18 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
 
     private static MessageDto toMessageDto(Message message) {
         return MessageDto.builder()
-                .id(message.getId())
-                .text(message.getText())
-                .createdAt(message.getCreatedAt().getTime())
+                .id(message.id())
+                .text(message.text())
+                .createdAt(message.createdAt().getTime())
                 .build();
     }
 
     private static AuthorDto toUserDto(User user) {
         return AuthorDto.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .createdAt(user.getCreatedAt().getTime())
-                .screenName(user.getScreenName())
+                .id(user.id())
+                .name(user.name())
+                .createdAt(user.createdAt().getTime())
+                .screenName(user.screenName())
                 .nMessages(0L)
                 .build();
     }

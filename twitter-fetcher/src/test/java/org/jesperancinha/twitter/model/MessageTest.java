@@ -3,6 +3,7 @@ package org.jesperancinha.twitter.model;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.jesperancinha.twitter.model.twitter.Message;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

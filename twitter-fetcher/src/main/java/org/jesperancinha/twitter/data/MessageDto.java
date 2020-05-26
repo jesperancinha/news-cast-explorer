@@ -8,11 +8,11 @@ import lombok.Getter;
 @EqualsAndHashCode
 @Getter
 public class MessageDto {
-    private String id;
+    private final String id;
 
     @EqualsAndHashCode.Exclude
-    private Long createdAt;
+    private final Long createdAt;
 
     @EqualsAndHashCode.Exclude
-    private String text;
+    private final String text;
 }
