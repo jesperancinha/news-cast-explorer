@@ -63,7 +63,11 @@ Starting the application with this profile will cause it to never stop and it wi
 
 This project is also the official support project of my article on medium:
 
-[What did they say? — Tweeting with Hosebird Client](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [What did they say? — Tweeting with Hosebird Client](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+
+And my blog post:
+
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "JEsperancinha.org")](http://joaofilipesabinoesperancinha.nl/blog/blog5-comparing-testing) [Why not change to Junit Jupiter 5 and AssertJ or Spock? Let's compare test frameworks!](http://joaofilipesabinoesperancinha.nl/blog/blog5-comparing-testing)
 
 ## Run locally
 

@@ -89,12 +89,12 @@ public class TwitterClientImpl implements TwitterClient {
 
     private FetcherThread createFetcherThread(ExecutorService executorService, Set<String> allMessages) {
 
-        final var hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
+        final var httpHosts = new HttpHosts(Constants.STREAM_HOST);
         final var statusesFilterEndpoint = new StatusesFilterEndpoint();
         statusesFilterEndpoint.trackTerms(searchTerms);
 
         final BasicClient client = new ClientBuilder()
-                .hosts(hosebirdHosts)
+                .hosts(httpHosts)
                 .endpoint(statusesFilterEndpoint)
                 .authentication(authentication)
                 .processor(new StringDelimitedProcessor(stringLinkedBlockingQueue))
