@@ -1,4 +1,4 @@
-package org.jesperancinha.twitter.model;
+package org.jesperancinha.twitter.model.twitter;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -23,10 +23,10 @@ public class MessageTest {
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
                         "  \"id_str\": \"1216770650121084933\",\n" +
-                        "  \"text\": \"RT @climalliancech: Congrats @RogerFederer for your declaration #RogerForClimate!\",\n" +
+                        "  \"text\": \"Message3\",\n" +
                         "  \"user\": {\n" +
                         "    \"id\": 3024323693,\n" +
-                        "    \"name\": \"Fossil Free Penn\"" +
+                        "    \"name\": \"Author2\"" +
                         "  }" +
                         "}", Message.class);
 
@@ -35,10 +35,10 @@ public class MessageTest {
                         "  \"created_at\": \"Mon Jan 13 17:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
                         "  \"id_str\": \"1216770650121084933\",\n" +
-                        "  \"text\": \"RT @Climaaaaaaaate: Congrats @RogerFederer for your declaration #RogerForClimate!\",\n" +
+                        "  \"text\": \"Message5\",\n" +
                         "  \"user\": {\n" +
                         "    \"id\": 3024323693,\n" +
-                        "    \"name\": \"Fossil Spree Penn\",\n" +
+                        "    \"name\": \"Author3\",\n" +
                         "    \"notifications\": null\n" +
                         "  }}", Message.class);
 
@@ -52,10 +52,10 @@ public class MessageTest {
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
                         "  \"id_str\": \"1216770650121084933\",\n" +
-                        "  \"text\": \"RT @climalliancech: Congrats @RogerFederer for your declaration #RogerForClimate!\",\n" +
+                        "  \"text\": \"Message3\",\n" +
                         "  \"user\": {\n" +
                         "    \"id\": 3024323693,\n" +
-                        "    \"name\": \"Fossil Free Penn\"" +
+                        "    \"name\": \"Author2\"" +
                         "  }" +
                         "}", Message.class);
 
@@ -64,10 +64,10 @@ public class MessageTest {
                         "  \"created_at\": \"Mon Jan 13 17:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
                         "  \"id_str\": \"1216770650121084933\",\n" +
-                        "  \"text\": \"RT @Climaaaaaaaate: Congrats @RogerFederer for your declaration #RogerForClimate!\",\n" +
+                        "  \"text\": \"Message5\",\n" +
                         "  \"user\": {\n" +
                         "    \"id\": 3024323693,\n" +
-                        "    \"name\": \"Fossil Spree Penn\",\n" +
+                        "    \"name\": \"Author3\",\n" +
                         "    \"notifications\": null\n" +
                         "  }}", Message.class);
 

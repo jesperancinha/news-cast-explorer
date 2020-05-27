@@ -10,8 +10,6 @@ import org.jesperancinha.twitter.converters.PageConverter;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
-import org.jesperancinha.twitter.model.db.Author;
-import org.jesperancinha.twitter.model.db.Page;
 import org.jesperancinha.twitter.model.twitter.Message;
 import org.jesperancinha.twitter.model.twitter.User;
 import org.jesperancinha.twitter.repository.AuthorRepository;
@@ -22,7 +20,6 @@ import org.springframework.stereotype.Component;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -50,33 +47,37 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
         this.pageRepository = pageRepository;
     }
 
-
     public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) {
-        List<AuthorDto> authorDtos = allMessages.parallelStream()
+        final var authorDtos = allMessages.parallelStream()
                 .map(message -> gson.fromJson(message, Message.class))
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
                 .map(TwitterMessageProcessorImpl::fillAuthor).sorted(Comparator.comparing(AuthorDto::getCreatedAt)).collect(Collectors.toList());
-        final PageDto pageDto = PageDto.builder().createdAt(timestampBefore).authors(authorDtos).duration(timestampAfter - timestampBefore).build();
-        log.info(gson.toJson(pageDto));
-
-        Page page = pageRepository.save(PageConverter.toData(pageDto));
-        if(Objects.nonNull(page)) {
-            pageDto.getAuthors().forEach(authorDto -> {
-                Author authorToSave = AuthorConverter.toData(authorDto, page);
-                page.getAuthors().add(authorToSave);
-                authorToSave.setPage(pageRepository.save(page));
-                Author author = authorRepository.save(authorToSave);
-                authorDto.getMessageDtos()
-                        .forEach(messageDto -> {
-                            org.jesperancinha.twitter.model.db.Message message = MessageConverter.toData(messageDto, author);
-                            org.jesperancinha.twitter.model.db.Message save = messageRepository.save(message);
-                            author.getMessages().add(save);
-                            authorRepository.save(author);
-                        });
-            });
-        }
+        final var pageDto = PageDto.builder().createdAt(timestampBefore).authors(authorDtos).duration(timestampAfter - timestampBefore).build();
+        savePageLog(pageDto);
+        savePageDb(pageDto);
         return pageDto;
+    }
+
+    private void savePageLog(PageDto pageDto) {
+        log.info(gson.toJson(pageDto));
+    }
+
+    private void savePageDb(PageDto pageDto) {
+        var page = pageRepository.save(PageConverter.toData(pageDto));
+        for (var authorDto : pageDto.getAuthors()) {
+            var authorToSave = AuthorConverter.toData(authorDto, page);
+            page.getAuthors().add(authorToSave);
+            authorToSave.setPage(pageRepository.save(page));
+            var author = authorRepository.save(authorToSave);
+            authorDto.getMessageDtos()
+                    .forEach(messageDto -> {
+                        var message = MessageConverter.toData(messageDto, author);
+                        var save = messageRepository.save(message);
+                        author.getMessages().add(save);
+                        authorRepository.save(author);
+                    });
+        }
     }
 
     private static Collector<Message, ?, Map<AuthorDto, List<MessageDto>>> twitterMessageCollector() {
@@ -86,8 +87,8 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
     }
 
     private static AuthorDto fillAuthor(Map.Entry<AuthorDto, List<MessageDto>> authorDtoListEntry) {
-        AuthorDto authorDto = authorDtoListEntry.getKey();
-        List<MessageDto> listEntryValue = authorDtoListEntry.getValue();
+        var authorDto = authorDtoListEntry.getKey();
+        var listEntryValue = authorDtoListEntry.getValue();
         listEntryValue.sort(Comparator.comparing(MessageDto::getCreatedAt));
         authorDto.setMessageDtos(listEntryValue);
         authorDto.setNMessages((long) listEntryValue.size());
@@ -111,6 +112,5 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
                 .nMessages(0L)
                 .build();
     }
-
 
 }

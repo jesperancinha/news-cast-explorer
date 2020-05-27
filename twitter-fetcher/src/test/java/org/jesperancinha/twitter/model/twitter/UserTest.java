@@ -1,4 +1,4 @@
-package org.jesperancinha.twitter.model;
+package org.jesperancinha.twitter.model.twitter;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;

@@ -33,6 +33,7 @@
         <junit-platform-runner.version>1.5.2</junit-platform-runner.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring-test.version>5.2.5.RELEASE</spring-test.version>
+        <hamcrest.version>2.2</hamcrest.version>
     </properties>
 
     <dependencyManagement>
@@ -120,6 +121,12 @@
                 <groupId>org.junit.vintage</groupId>
                 <artifactId>junit-vintage-engine</artifactId>
                 <version>${junit-vintage-engine.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
