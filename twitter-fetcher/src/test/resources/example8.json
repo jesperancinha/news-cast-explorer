@@ -1,8 +1,8 @@
 {
   "created_at": "Mon Jan 13 17:18:02 +0000 2020",
-  "id": 1216771398150115328,
-  "id_str": "1216771398150115328",
-  "text": "RT @SebastianRuthy: @rogerfederer nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a pow\u2026",
+  "id": 9999999999999999,
+  "id_str": "9999999999999999",
+  "text": "RT @SebastianRuthy: @searchword nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a pow\u2026",
   "source": "\u003ca href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\"\u003eTwitter for Android\u003c\/a\u003e",
   "truncated": false,
   "in_reply_to_status_id": null,
@@ -11,21 +11,21 @@
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 1214780619605135360,
-    "id_str": "1214780619605135360",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
     "name": "Bj\u00f6rn",
-    "screen_name": "Bjrn63173914",
+    "screen_name": "screenName",
     "location": null,
     "url": null,
     "description": null,
     "translator_type": "none",
     "protected": false,
     "verified": false,
-    "followers_count": 3,
-    "friends_count": 24,
-    "listed_count": 1,
-    "favourites_count": 553,
-    "statuses_count": 1159,
+    "followers_count": 9999999999999999,
+    "friends_count": 9999999999999999,
+    "listed_count": 9999999999999999,
+    "favourites_count": 9999999999999999,
+    "statuses_count": 9999999999999999,
     "created_at": "Wed Jan 08 05:28:30 +0000 2020",
     "utc_offset": null,
     "time_zone": null,
@@ -40,10 +40,10 @@
     "profile_link_color": "1DA1F2",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "333333",
+    "profile_text_color": "9999999999999999",
     "profile_use_background_image": true,
-    "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
-    "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+    "profile_image_url": "http://twitter.com/profile.png",
+    "profile_image_url_https": "https://twitter.com/profile.png",
     "default_profile": true,
     "default_profile_image": false,
     "following": null,
@@ -56,32 +56,32 @@
   "contributors": null,
   "retweeted_status": {
     "created_at": "Mon Jan 13 11:47:34 +0000 2020",
-    "id": 1216688231615467520,
-    "id_str": "1216688231615467520",
-    "text": "@rogerfederer nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a\u2026 https:\/\/t.co\/e00tbi0Mp4",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "text": "@searchword nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a\u2026 https://twitter.com/ref",
     "source": "\u003ca href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\"\u003eTwitter for Android\u003c\/a\u003e",
     "truncated": true,
     "in_reply_to_status_id": null,
     "in_reply_to_status_id_str": null,
-    "in_reply_to_user_id": 1337785291,
-    "in_reply_to_user_id_str": "1337785291",
-    "in_reply_to_screen_name": "rogerfederer",
+    "in_reply_to_user_id": 9999999999999999,
+    "in_reply_to_user_id_str": "9999999999999999",
+    "in_reply_to_screen_name": "searchword",
     "user": {
-      "id": 956410976848445440,
-      "id_str": "956410976848445440",
+      "id": 9999999999999999,
+      "id_str": "9999999999999999",
       "name": "Sebastian R\u00fcthy",
-      "screen_name": "SebastianRuthy",
+      "screen_name": "screenName",
       "location": null,
       "url": null,
       "description": "Linker, Anti-Homophober, Kapitalismus kritischer, feministischer Christ. Und ja, das geht!\n\n#Befreiungstheologie\n#queertheology",
       "translator_type": "none",
       "protected": false,
       "verified": false,
-      "followers_count": 56,
-      "friends_count": 211,
-      "listed_count": 0,
-      "favourites_count": 832,
-      "statuses_count": 378,
+      "followers_count": 9999999999999999,
+      "friends_count": 9999999999999999,
+      "listed_count": 9999999999999999,
+      "favourites_count": 9999999999999999,
+      "statuses_count": 9999999999999999,
       "created_at": "Thu Jan 25 06:18:40 +0000 2018",
       "utc_offset": null,
       "time_zone": null,
@@ -96,11 +96,11 @@
       "profile_link_color": "1DA1F2",
       "profile_sidebar_border_color": "C0DEED",
       "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "333333",
+      "profile_text_color": "9999999999999999",
       "profile_use_background_image": true,
-      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1157616479292051457\/8vSbSLmT_normal.jpg",
-      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1157616479292051457\/8vSbSLmT_normal.jpg",
-      "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/956410976848445440\/1541415194",
+      "profile_image_url": "http://twitter.com/profile.jpg",
+      "profile_image_url_https": "https://twitter.com/profile.jpg",
+      "profile_banner_url": "https://twitter.com/ref",
       "default_profile": true,
       "default_profile_image": false,
       "following": null,
@@ -113,7 +113,7 @@
     "contributors": null,
     "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "@rogerfederer nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a powerful one!\n#RogerForClimate\n #DisCreditSuisse",
+      "full_text": "@searchword nice words from you but please #actforclimate! Your actions will speak louder than words!  could be a powerful one!\n#RogerForClimate\n #DisCreditSuisse",
       "display_text_range": [
         0,
         164
@@ -145,10 +145,10 @@
         "urls": [],
         "user_mentions": [
           {
-            "screen_name": "rogerfederer",
-            "name": "Roger Federer",
-            "id": 1337785291,
-            "id_str": "1337785291",
+            "screen_name": "screenName",
+            "name": "Search That Word",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               0,
               13
@@ -158,10 +158,10 @@
         "symbols": []
       }
     },
-    "quote_count": 0,
-    "reply_count": 0,
-    "retweet_count": 4,
-    "favorite_count": 1,
+    "quote_count": 9999999999999999,
+    "reply_count": 9999999999999999,
+    "retweet_count": 9999999999999999,
+    "favorite_count": 9999999999999999,
     "entities": {
       "hashtags": [
         {
@@ -174,8 +174,8 @@
       ],
       "urls": [
         {
-          "url": "https:\/\/t.co\/e00tbi0Mp4",
-          "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1216688231615467520",
+          "url": "https://twitter.com/ref",
+          "expanded_url": "https://twitter.com/ref",
           "display_url": "twitter.com\/i\/web\/status\/1\u2026",
           "indices": [
             117,
@@ -185,10 +185,10 @@
       ],
       "user_mentions": [
         {
-          "screen_name": "rogerfederer",
-          "name": "Roger Federer",
-          "id": 1337785291,
-          "id_str": "1337785291",
+          "screen_name": "screenName",
+          "name": "Search That Word",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             0,
             13
@@ -203,10 +203,10 @@
     "lang": "en"
   },
   "is_quote_status": false,
-  "quote_count": 0,
-  "reply_count": 0,
-  "retweet_count": 0,
-  "favorite_count": 0,
+  "quote_count": 9999999999999999,
+  "reply_count": 9999999999999999,
+  "retweet_count": 9999999999999999,
+  "favorite_count": 9999999999999999,
   "entities": {
     "hashtags": [
       {
@@ -220,20 +220,20 @@
     "urls": [],
     "user_mentions": [
       {
-        "screen_name": "SebastianRuthy",
+        "screen_name": "screenName",
         "name": "Sebastian R\u00fcthy",
-        "id": 956410976848445440,
-        "id_str": "956410976848445440",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           3,
           18
         ]
       },
       {
-        "screen_name": "rogerfederer",
-        "name": "Roger Federer",
-        "id": 1337785291,
-        "id_str": "1337785291",
+        "screen_name": "screenName",
+        "name": "Search That Word",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           20,
           33
@@ -246,5 +246,5 @@
   "retweeted": false,
   "filter_level": "low",
   "lang": "en",
-  "timestamp_ms": "1578935882495"
+  "timestamp_ms": "9999999999999999"
 }

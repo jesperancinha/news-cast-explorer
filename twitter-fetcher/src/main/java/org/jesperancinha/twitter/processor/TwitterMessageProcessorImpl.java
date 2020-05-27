@@ -3,15 +3,16 @@ package org.jesperancinha.twitter.processor;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.converters.AuthorConverter;
 import org.jesperancinha.twitter.converters.MessageConverter;
 import org.jesperancinha.twitter.converters.PageConverter;
+import org.jesperancinha.twitter.converters.TwitterDtoConverter;
 import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.data.PageDto;
 import org.jesperancinha.twitter.model.twitter.Message;
-import org.jesperancinha.twitter.model.twitter.User;
 import org.jesperancinha.twitter.repository.AuthorRepository;
 import org.jesperancinha.twitter.repository.MessageRepository;
 import org.jesperancinha.twitter.repository.PageRepository;
@@ -24,10 +25,12 @@ import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import static org.jesperancinha.twitter.converters.TwitterDtoConverter.toUserDto;
+
 @Slf4j
 @Component
+@Builder
 public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
-
 
     private final MessageRepository messageRepository;
 
@@ -83,7 +86,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
     private static Collector<Message, ?, Map<AuthorDto, List<MessageDto>>> twitterMessageCollector() {
         return Collectors.groupingBy(
                 message -> toUserDto(message.user()),
-                Collectors.mapping(TwitterMessageProcessorImpl::toMessageDto, Collectors.toList()));
+                Collectors.mapping(TwitterDtoConverter::toMessageDto, Collectors.toList()));
     }
 
     private static AuthorDto fillAuthor(Map.Entry<AuthorDto, List<MessageDto>> authorDtoListEntry) {
@@ -93,24 +96,6 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
         authorDto.setMessageDtos(listEntryValue);
         authorDto.setNMessages((long) listEntryValue.size());
         return authorDto;
-    }
-
-    private static MessageDto toMessageDto(Message message) {
-        return MessageDto.builder()
-                .id(message.id())
-                .text(message.text())
-                .createdAt(message.createdAt().getTime())
-                .build();
-    }
-
-    private static AuthorDto toUserDto(User user) {
-        return AuthorDto.builder()
-                .id(user.id())
-                .name(user.name())
-                .createdAt(user.createdAt().getTime())
-                .screenName(user.screenName())
-                .nMessages(0L)
-                .build();
     }
 
 }

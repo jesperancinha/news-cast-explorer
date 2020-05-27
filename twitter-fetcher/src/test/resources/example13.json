@@ -1,8 +1,8 @@
 {
   "created_at": "Mon Jan 13 17:18:15 +0000 2020",
-  "id": 1216771454055915521,
-  "id_str": "1216771454055915521",
-  "text": "RT @Feenwald: @By2020WeRiseUp @BreakfreeCH @rogerfederer @CreditSuisse #RogerForClimate trending Place No.1 - done.",
+  "id": 9999999999999999,
+  "id_str": "9999999999999999",
+  "text": "RT @Feenwald: @By2020WeRiseUp @BreakfreeCH @searchword @CreditSuisse #RogerForClimate trending Place No.1 - done.",
   "source": "\u003ca href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\"\u003eTwitter for Android\u003c\/a\u003e",
   "truncated": false,
   "in_reply_to_status_id": null,
@@ -11,21 +11,21 @@
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 1214780619605135360,
-    "id_str": "1214780619605135360",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
     "name": "Bj\u00f6rn",
-    "screen_name": "Bjrn63173914",
+    "screen_name": "screenName",
     "location": null,
     "url": null,
     "description": null,
     "translator_type": "none",
     "protected": false,
     "verified": false,
-    "followers_count": 3,
-    "friends_count": 24,
-    "listed_count": 1,
-    "favourites_count": 553,
-    "statuses_count": 1165,
+    "followers_count": 9999999999999999,
+    "friends_count": 9999999999999999,
+    "listed_count": 9999999999999999,
+    "favourites_count": 9999999999999999,
+    "statuses_count": 9999999999999999,
     "created_at": "Wed Jan 08 05:28:30 +0000 2020",
     "utc_offset": null,
     "time_zone": null,
@@ -40,10 +40,10 @@
     "profile_link_color": "1DA1F2",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "333333",
+    "profile_text_color": "9999999999999999",
     "profile_use_background_image": true,
-    "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
-    "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+    "profile_image_url": "http://twitter.com/profile.png",
+    "profile_image_url_https": "https://twitter.com/profile.png",
     "default_profile": true,
     "default_profile_image": false,
     "following": null,
@@ -56,36 +56,36 @@
   "contributors": null,
   "retweeted_status": {
     "created_at": "Mon Jan 13 11:41:29 +0000 2020",
-    "id": 1216686703802572800,
-    "id_str": "1216686703802572800",
-    "text": "@By2020WeRiseUp @BreakfreeCH @rogerfederer @CreditSuisse #RogerForClimate trending Place No.1 - done.",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "text": "@By2020WeRiseUp @BreakfreeCH @searchword @CreditSuisse #RogerForClimate trending Place No.1 - done.",
     "display_text_range": [
       57,
       101
     ],
-    "source": "\u003ca href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
+    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
     "truncated": false,
-    "in_reply_to_status_id": 1216652704451309568,
-    "in_reply_to_status_id_str": "1216652704451309568",
-    "in_reply_to_user_id": 1065221481846751232,
-    "in_reply_to_user_id_str": "1065221481846751232",
+    "in_reply_to_status_id": 9999999999999999,
+    "in_reply_to_status_id_str": "9999999999999999",
+    "in_reply_to_user_id": 9999999999999999,
+    "in_reply_to_user_id_str": "9999999999999999",
     "in_reply_to_screen_name": "By2020WeRiseUp",
     "user": {
-      "id": 85090936,
-      "id_str": "85090936",
-      "name": "fairy",
-      "screen_name": "Feenwald",
+      "id": 9999999999999999,
+      "id_str": "9999999999999999",
+      "name": "username",
+      "screen_name": "screenName",
       "location": null,
       "url": null,
       "description": null,
       "translator_type": "none",
       "protected": false,
       "verified": false,
-      "followers_count": 201,
-      "friends_count": 0,
-      "listed_count": 54,
-      "favourites_count": 14362,
-      "statuses_count": 91821,
+      "followers_count": 9999999999999999,
+      "friends_count": 9999999999999999,
+      "listed_count": 9999999999999999,
+      "favourites_count": 9999999999999999,
+      "statuses_count": 9999999999999999,
       "created_at": "Sun Oct 25 14:30:14 +0000 2009",
       "utc_offset": null,
       "time_zone": null,
@@ -94,16 +94,16 @@
       "contributors_enabled": false,
       "is_translator": false,
       "profile_background_color": "C0DEED",
-      "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
-      "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+      "profile_background_image_url": "http://twitter.com/profile.png",
+      "profile_background_image_url_https": "https://twitter.com/profile.png",
       "profile_background_tile": false,
       "profile_link_color": "1DA1F2",
       "profile_sidebar_border_color": "C0DEED",
       "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "333333",
+      "profile_text_color": "9999999999999999",
       "profile_use_background_image": true,
-      "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
-      "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+      "profile_image_url": "http://twitter.com/profile.png",
+      "profile_image_url_https": "https://twitter.com/profile.png",
       "default_profile": true,
       "default_profile_image": false,
       "following": null,
@@ -115,10 +115,10 @@
     "place": null,
     "contributors": null,
     "is_quote_status": false,
-    "quote_count": 0,
-    "reply_count": 0,
-    "retweet_count": 4,
-    "favorite_count": 2,
+    "quote_count": 9999999999999999,
+    "reply_count": 9999999999999999,
+    "retweet_count": 9999999999999999,
+    "favorite_count": 9999999999999999,
     "entities": {
       "hashtags": [
         {
@@ -132,40 +132,40 @@
       "urls": [],
       "user_mentions": [
         {
-          "screen_name": "By2020WeRiseUp",
-          "name": "By2020WeRiseUp",
-          "id": 1065221481846751232,
-          "id_str": "1065221481846751232",
+          "screen_name": "screenName",
+          "name": "username",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             0,
             15
           ]
         },
         {
-          "screen_name": "BreakfreeCH",
+          "screen_name": "screenName",
           "name": "Collectif Breakfree Suisse",
-          "id": 978964486550900736,
-          "id_str": "978964486550900736",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             16,
             28
           ]
         },
         {
-          "screen_name": "rogerfederer",
-          "name": "Roger Federer",
-          "id": 1337785291,
-          "id_str": "1337785291",
+          "screen_name": "screenName",
+          "name": "Search That Word",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             29,
             42
           ]
         },
         {
-          "screen_name": "CreditSuisse",
+          "screen_name": "screenName",
           "name": "Credit Suisse",
-          "id": 84281104,
-          "id_str": "84281104",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             43,
             56
@@ -180,10 +180,10 @@
     "lang": "en"
   },
   "is_quote_status": false,
-  "quote_count": 0,
-  "reply_count": 0,
-  "retweet_count": 0,
-  "favorite_count": 0,
+  "quote_count": 9999999999999999,
+  "reply_count": 9999999999999999,
+  "retweet_count": 9999999999999999,
+  "favorite_count": 9999999999999999,
   "entities": {
     "hashtags": [
       {
@@ -197,50 +197,50 @@
     "urls": [],
     "user_mentions": [
       {
-        "screen_name": "Feenwald",
-        "name": "fairy",
-        "id": 85090936,
-        "id_str": "85090936",
+        "screen_name": "screenName",
+        "name": "username",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           3,
           12
         ]
       },
       {
-        "screen_name": "By2020WeRiseUp",
-        "name": "By2020WeRiseUp",
-        "id": 1065221481846751232,
-        "id_str": "1065221481846751232",
+        "screen_name": "screenName",
+        "name": "username",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           14,
           29
         ]
       },
       {
-        "screen_name": "BreakfreeCH",
+        "screen_name": "screenName",
         "name": "Collectif Breakfree Suisse",
-        "id": 978964486550900736,
-        "id_str": "978964486550900736",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           30,
           42
         ]
       },
       {
-        "screen_name": "rogerfederer",
-        "name": "Roger Federer",
-        "id": 1337785291,
-        "id_str": "1337785291",
+        "screen_name": "screenName",
+        "name": "Search That Word",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           43,
           56
         ]
       },
       {
-        "screen_name": "CreditSuisse",
+        "screen_name": "screenName",
         "name": "Credit Suisse",
-        "id": 84281104,
-        "id_str": "84281104",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           57,
           70
@@ -253,5 +253,5 @@
   "retweeted": false,
   "filter_level": "low",
   "lang": "en",
-  "timestamp_ms": "1578935895824"
+  "timestamp_ms": "9999999999999999"
 }

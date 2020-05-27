@@ -18,7 +18,7 @@ public class PageServiceImpl implements PageService {
     }
 
     @Override
-    public List<PageDto> getMessages() {
+    public List<PageDto> getAllPages() {
         return pageRepository
                 .findAll()
                 .stream()

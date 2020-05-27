@@ -1,8 +1,8 @@
 {
   "created_at": "Mon Jan 13 17:18:05 +0000 2020",
-  "id": 1216771412368773121,
-  "id_str": "1216771412368773121",
-  "text": "RT @Earth1stlinda2: @rogerfederer .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\", but\u2026",
+  "id": 9999999999999999,
+  "id_str": "9999999999999999",
+  "text": "RT @Earth1stlinda2: @searchword .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\", but\u2026",
   "source": "\u003ca href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\"\u003eTwitter for Android\u003c\/a\u003e",
   "truncated": false,
   "in_reply_to_status_id": null,
@@ -11,21 +11,21 @@
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 1214780619605135360,
-    "id_str": "1214780619605135360",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
     "name": "Bj\u00f6rn",
-    "screen_name": "Bjrn63173914",
+    "screen_name": "screenName",
     "location": null,
     "url": null,
     "description": null,
     "translator_type": "none",
     "protected": false,
     "verified": false,
-    "followers_count": 3,
-    "friends_count": 24,
-    "listed_count": 1,
-    "favourites_count": 553,
-    "statuses_count": 1160,
+    "followers_count": 9999999999999999,
+    "friends_count": 9999999999999999,
+    "listed_count": 9999999999999999,
+    "favourites_count": 9999999999999999,
+    "statuses_count": 9999999999999999,
     "created_at": "Wed Jan 08 05:28:30 +0000 2020",
     "utc_offset": null,
     "time_zone": null,
@@ -40,10 +40,10 @@
     "profile_link_color": "1DA1F2",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "333333",
+    "profile_text_color": "9999999999999999",
     "profile_use_background_image": true,
-    "profile_image_url": "http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
-    "profile_image_url_https": "https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png",
+    "profile_image_url": "http://twitter.com/profile.png",
+    "profile_image_url_https": "https://twitter.com/profile.png",
     "default_profile": true,
     "default_profile_image": false,
     "following": null,
@@ -56,36 +56,36 @@
   "contributors": null,
   "retweeted_status": {
     "created_at": "Mon Jan 13 11:45:43 +0000 2020",
-    "id": 1216687769717657601,
-    "id_str": "1216687769717657601",
-    "text": "@rogerfederer .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\",\u2026 https:\/\/t.co\/L9OcH3c75T",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "text": "@searchword .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\",\u2026 https://twitter.com/ref",
     "display_text_range": [
       14,
       140
     ],
-    "source": "\u003ca href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
+    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
     "truncated": true,
-    "in_reply_to_status_id": 957589116027375616,
-    "in_reply_to_status_id_str": "957589116027375616",
-    "in_reply_to_user_id": 1337785291,
-    "in_reply_to_user_id_str": "1337785291",
-    "in_reply_to_screen_name": "rogerfederer",
+    "in_reply_to_status_id": 9999999999999999,
+    "in_reply_to_status_id_str": "9999999999999999",
+    "in_reply_to_user_id": 9999999999999999,
+    "in_reply_to_user_id_str": "9999999999999999",
+    "in_reply_to_screen_name": "searchword",
     "user": {
-      "id": 1063672498003181568,
-      "id_str": "1063672498003181568",
+      "id": 9999999999999999,
+      "id_str": "9999999999999999",
       "name": "\ud83d\udca7Linda Gill \ud83d\udca7 \ud83d\udc99\ud83d\udc9a\ud83c\udf0f\ud83d\udc9a\ud83d\udc99\ud83d\udca7",
-      "screen_name": "Earth1stlinda2",
+      "screen_name": "screenName",
       "location": "NSW #Worimi country, Australia",
       "url": null,
       "description": "This is OUR #BlueGreenPlanet \nWe want it back from the 1% #FutureEaters & Governments who are killing it 4 $'s & power.\nThis is #Ecocide & it will Be a #Crime!",
       "translator_type": "none",
       "protected": false,
       "verified": false,
-      "followers_count": 387,
-      "friends_count": 713,
-      "listed_count": 0,
-      "favourites_count": 1036,
-      "statuses_count": 1038,
+      "followers_count": 9999999999999999,
+      "friends_count": 9999999999999999,
+      "listed_count": 9999999999999999,
+      "favourites_count": 9999999999999999,
+      "statuses_count": 9999999999999999,
       "created_at": "Sat Nov 17 05:57:40 +0000 2018",
       "utc_offset": null,
       "time_zone": null,
@@ -100,11 +100,11 @@
       "profile_link_color": "1DA1F2",
       "profile_sidebar_border_color": "C0DEED",
       "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "333333",
+      "profile_text_color": "9999999999999999",
       "profile_use_background_image": true,
       "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1216689395475992576\/NdhaBXQ-_normal.jpg",
-      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1216689395475992576\/NdhaBXQ-_normal.jpg",
-      "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1063672498003181568\/1542435356",
+      "profile_image_url_https": "https://twitter.com/ref-_normal.jpg",
+      "profile_banner_url": "https://twitter.com/ref",
       "default_profile": true,
       "default_profile_image": false,
       "following": null,
@@ -117,7 +117,7 @@
     "contributors": null,
     "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "@rogerfederer .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\", but in December fought to manage the initial public offering of the world's leading oil exporter, Saudi Aramco. #DisCreditSuisse #RogerForClimate",
+      "full_text": "@searchword .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\", but in December fought to manage the initial public offering of the world's leading oil exporter, Saudi Aramco. #DisCreditSuisse #RogerForClimate",
       "display_text_range": [
         14,
         260
@@ -142,20 +142,20 @@
         "urls": [],
         "user_mentions": [
           {
-            "screen_name": "rogerfederer",
-            "name": "Roger Federer",
-            "id": 1337785291,
-            "id_str": "1337785291",
+            "screen_name": "screenName",
+            "name": "Search That Word",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               0,
               13
             ]
           },
           {
-            "screen_name": "CreditSuisse",
+            "screen_name": "screenName",
             "name": "Credit Suisse",
-            "id": 84281104,
-            "id_str": "84281104",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               15,
               28
@@ -165,16 +165,16 @@
         "symbols": []
       }
     },
-    "quote_count": 0,
-    "reply_count": 1,
-    "retweet_count": 3,
-    "favorite_count": 2,
+    "quote_count": 9999999999999999,
+    "reply_count": 9999999999999999,
+    "retweet_count": 9999999999999999,
+    "favorite_count": 9999999999999999,
     "entities": {
       "hashtags": [],
       "urls": [
         {
-          "url": "https:\/\/t.co\/L9OcH3c75T",
-          "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1216687769717657601",
+          "url": "https://twitter.com/ref",
+          "expanded_url": "https://twitter.com/ref",
           "display_url": "twitter.com\/i\/web\/status\/1\u2026",
           "indices": [
             116,
@@ -184,10 +184,10 @@
       ],
       "user_mentions": [
         {
-          "screen_name": "rogerfederer",
-          "name": "Roger Federer",
-          "id": 1337785291,
-          "id_str": "1337785291",
+          "screen_name": "screenName",
+          "name": "Search That Word",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             0,
             13
@@ -196,8 +196,8 @@
         {
           "screen_name": "CreditSuisse",
           "name": "Credit Suisse",
-          "id": 84281104,
-          "id_str": "84281104",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             15,
             28
@@ -212,10 +212,10 @@
     "lang": "en"
   },
   "is_quote_status": false,
-  "quote_count": 0,
-  "reply_count": 0,
-  "retweet_count": 0,
-  "favorite_count": 0,
+  "quote_count": 9999999999999999,
+  "reply_count": 9999999999999999,
+  "retweet_count": 9999999999999999,
+  "favorite_count": 9999999999999999,
   "entities": {
     "hashtags": [],
     "urls": [],
@@ -223,18 +223,18 @@
       {
         "screen_name": "Earth1stlinda2",
         "name": "\ud83d\udca7Linda Gill \ud83d\udca7 \ud83d\udc99\ud83d\udc9a\ud83c\udf0f\ud83d\udc9a\ud83d\udc99\ud83d\udca7",
-        "id": 1063672498003181568,
-        "id_str": "1063672498003181568",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           3,
           18
         ]
       },
       {
-        "screen_name": "rogerfederer",
-        "name": "Roger Federer",
-        "id": 1337785291,
-        "id_str": "1337785291",
+        "screen_name": "searchword",
+        "name": "Search That Word",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           20,
           33
@@ -243,8 +243,8 @@
       {
         "screen_name": "CreditSuisse",
         "name": "Credit Suisse",
-        "id": 84281104,
-        "id_str": "84281104",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           35,
           48
@@ -257,5 +257,5 @@
   "retweeted": false,
   "filter_level": "low",
   "lang": "en",
-  "timestamp_ms": "1578935885885"
+  "timestamp_ms": "9999999999999999"
 }

@@ -1,7 +1,7 @@
 {
   "created_at": "Mon Jan 13 17:18:18 +0000 2020",
-  "id": 1216771464755666944,
-  "id_str": "1216771464755666944",
+  "id": 9999999999999999,
+  "id_str": "9999999999999999",
   "text": "Message2",
   "source": "\u003ca href=\"http:\/\/twitter.com\/download\/android\" rel=\"nofollow\"\u003eTwitter for Android\u003c\/a\u003e",
   "truncated": false,
@@ -11,21 +11,21 @@
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 1096517755875090433,
-    "id_str": "1096517755875090433",
-    "name": "Author1",
-    "screen_name": "Author1ScreenName",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "name": "username",
+    "screen_name": "screenName",
     "location": null,
     "url": null,
     "description": null,
     "translator_type": "none",
     "protected": false,
     "verified": false,
-    "followers_count": 55,
-    "friends_count": 55,
-    "listed_count": 1,
-    "favourites_count": 35,
-    "statuses_count": 14,
+    "followers_count": 9999999999999999,
+    "friends_count": 9999999999999999,
+    "listed_count": 9999999999999999,
+    "favourites_count": 9999999999999999,
+    "statuses_count": 9999999999999999,
     "created_at": "Fri Feb 15 21:13:00 +0000 2019",
     "utc_offset": null,
     "time_zone": null,
@@ -40,10 +40,10 @@
     "profile_link_color": "1DA1F2",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "333333",
+    "profile_text_color": "9999999999999999",
     "profile_use_background_image": true,
-    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1112281240785301504\/QdHS0SXG_normal.jpg",
-    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1112281240785301504\/QdHS0SXG_normal.jpg",
+    "profile_image_url": "http://twittermock.com/Image1.jpg",
+    "profile_image_url_https": "http://twittermock.com/Image1.jpg",
     "default_profile": true,
     "default_profile_image": false,
     "following": null,
@@ -56,9 +56,9 @@
   "contributors": null,
   "retweeted_status": {
     "created_at": "Mon Jan 13 11:41:15 +0000 2020",
-    "id": 1216686644545363970,
-    "id_str": "1216686644545363970",
-    "text": "Ce n'est pas un don qui fera que votre #sponsor @CreditSuisse d\u00e9sinvestisse des \u00e9nergies fossiles. Il y a urgence c\u2026 https:\/\/t.co\/a9P9eSg7RQ",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "text": "Ce n'est pas un don qui fera que votre #sponsor @CreditSuisse d\u00e9sinvestisse des \u00e9nergies fossiles. Il y a urgence c\u2026 https://twitter.com/ref",
     "source": "\u003ca href=\"http:\/\/twitter.com\" rel=\"nofollow\"\u003eTwitter Web Client\u003c\/a\u003e",
     "truncated": true,
     "in_reply_to_status_id": null,
@@ -67,21 +67,21 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-      "id": 3315514417,
-      "id_str": "3315514417",
+      "id": 9999999999999999,
+      "id_str": "9999999999999999",
       "name": "Anne-Sophie Blanc",
-      "screen_name": "anneso_blanc",
+      "screen_name": "screenName",
       "location": null,
-      "url": "https:\/\/youtu.be\/7XE8Xl8jRmE",
+      "url": "https://twitter.com/ref",
       "description": "Filmmaker & Environmental Visual Communicator. Former Conservation Biologist. http:\/\/vimeo.com\/annesophieblanc",
       "translator_type": "none",
       "protected": false,
       "verified": false,
-      "followers_count": 736,
-      "friends_count": 848,
-      "listed_count": 63,
-      "favourites_count": 1365,
-      "statuses_count": 1698,
+      "followers_count": 9999999999999999,
+      "friends_count": 9999999999999999,
+      "listed_count": 9999999999999999,
+      "favourites_count": 9999999999999999,
+      "statuses_count": 9999999999999999,
       "created_at": "Sat Aug 15 00:20:03 +0000 2015",
       "utc_offset": null,
       "time_zone": null,
@@ -89,18 +89,18 @@
       "lang": null,
       "contributors_enabled": false,
       "is_translator": false,
-      "profile_background_color": "000000",
-      "profile_background_image_url": "http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
-      "profile_background_image_url_https": "https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png",
+      "profile_background_color": "9999999999999999",
+      "profile_background_image_url": "http://twitter.com/profile.png",
+      "profile_background_image_url_https": "https://twitter.com/profile.png",
       "profile_background_tile": false,
       "profile_link_color": "3B94D9",
-      "profile_sidebar_border_color": "000000",
-      "profile_sidebar_fill_color": "000000",
-      "profile_text_color": "000000",
+      "profile_sidebar_border_color": "9999999999999999",
+      "profile_sidebar_fill_color": "9999999999999999",
+      "profile_text_color": "9999999999999999",
       "profile_use_background_image": false,
-      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/701725702136188928\/cOj8pM2t_normal.jpg",
-      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/701725702136188928\/cOj8pM2t_normal.jpg",
-      "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/3315514417\/1439663057",
+      "profile_image_url": "http://twitter.com/profile.jpg",
+      "profile_image_url_https": "https://twitter.com/profile.jpg",
+      "profile_banner_url": "https://twitter.com/ref",
       "default_profile": false,
       "default_profile_image": false,
       "following": null,
@@ -113,7 +113,7 @@
     "contributors": null,
     "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "Ce n'est pas un don qui fera que votre #sponsor @CreditSuisse d\u00e9sinvestisse des \u00e9nergies fossiles. Il y a urgence climatique, faites pression sur votre sponsor @rogerfederer,enez un champion climatique! #RogerForClimate #DisCreditSuisse   https:\/\/t.co\/j7fgQ5FGXh",
+      "full_text": "Ce n'est pas un don qui fera que votre #sponsor @CreditSuisse d\u00e9sinvestisse des \u00e9nergies fossiles. Il y a urgence climatique, faites pression sur votre sponsor @searchword,enez un champion climatique! #RogerForClimate #DisCreditSuisse   https://twitter.com/ref",
       "display_text_range": [
         0,
         266
@@ -144,7 +144,7 @@
         ],
         "urls": [
           {
-            "url": "https:\/\/t.co\/j7fgQ5FGXh",
+            "url": "https://twitter.com/ref",
             "expanded_url": "http:\/\/www.24heures.ch\/26407113",
             "display_url": "24heures.ch\/26407113",
             "indices": [
@@ -155,20 +155,20 @@
         ],
         "user_mentions": [
           {
-            "screen_name": "CreditSuisse",
+            "screen_name": "screenName",
             "name": "Credit Suisse",
-            "id": 84281104,
-            "id_str": "84281104",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               48,
               61
             ]
           },
           {
-            "screen_name": "rogerfederer",
-            "name": "Roger Federer",
-            "id": 1337785291,
-            "id_str": "1337785291",
+            "screen_name": "screenName",
+            "name": "Search That Word",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               160,
               173
@@ -178,10 +178,10 @@
         "symbols": []
       }
     },
-    "quote_count": 1,
-    "reply_count": 0,
-    "retweet_count": 9,
-    "favorite_count": 6,
+    "quote_count": 9999999999999999,
+    "reply_count": 9999999999999999,
+    "retweet_count": 9999999999999999,
+    "favorite_count": 9999999999999999,
     "entities": {
       "hashtags": [
         {
@@ -194,8 +194,8 @@
       ],
       "urls": [
         {
-          "url": "https:\/\/t.co\/a9P9eSg7RQ",
-          "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1216686644545363970",
+          "url": "https://twitter.com/ref",
+          "expanded_url": "https://twitter.com/ref",
           "display_url": "twitter.com\/i\/web\/status\/1\u2026",
           "indices": [
             117,
@@ -205,10 +205,10 @@
       ],
       "user_mentions": [
         {
-          "screen_name": "CreditSuisse",
+          "screen_name": "screenName",
           "name": "Credit Suisse",
-          "id": 84281104,
-          "id_str": "84281104",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             48,
             61
@@ -224,10 +224,10 @@
     "lang": "fr"
   },
   "is_quote_status": false,
-  "quote_count": 0,
-  "reply_count": 0,
-  "retweet_count": 0,
-  "favorite_count": 0,
+  "quote_count": 9999999999999999,
+  "reply_count": 9999999999999999,
+  "retweet_count": 9999999999999999,
+  "favorite_count": 9999999999999999,
   "entities": {
     "hashtags": [
       {
@@ -241,20 +241,20 @@
     "urls": [],
     "user_mentions": [
       {
-        "screen_name": "anneso_blanc",
+        "screen_name": "screenName",
         "name": "Anne-Sophie Blanc",
-        "id": 3315514417,
-        "id_str": "3315514417",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           3,
           16
         ]
       },
       {
-        "screen_name": "CreditSuisse",
+        "screen_name": "screenName",
         "name": "Credit Suisse",
-        "id": 84281104,
-        "id_str": "84281104",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           66,
           79
@@ -267,5 +267,5 @@
   "retweeted": false,
   "filter_level": "low",
   "lang": "fr",
-  "timestamp_ms": "1578935898375"
+  "timestamp_ms": "9999999999999999"
 }

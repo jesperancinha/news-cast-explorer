@@ -1,7 +1,7 @@
 {
   "created_at": "Mon Jan 13 17:16:07 +0000 2020",
-  "id": 1216770915192668160,
-  "id_str": "1216770915192668160",
+  "id": 9999999999999999,
+  "id_str": "9999999999999999",
   "text": "Message4",
   "source": "\u003ca href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter for iPhone\u003c\/a\u003e",
   "truncated": false,
@@ -11,21 +11,21 @@
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 731044859927244800,
-    "id_str": "731044859927244800",
-    "name": "AngryCatLady",
-    "screen_name": "_AngryCatLady_",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "name": "username",
+    "screen_name": "screenName",
     "location": null,
     "url": null,
     "description": null,
     "translator_type": "none",
     "protected": false,
     "verified": false,
-    "followers_count": 4,
-    "friends_count": 24,
-    "listed_count": 0,
-    "favourites_count": 334,
-    "statuses_count": 42,
+    "followers_count": 9999999999999999,
+    "friends_count": 9999999999999999,
+    "listed_count": 9999999999999999,
+    "favourites_count": 9999999999999999,
+    "statuses_count": 9999999999999999,
     "created_at": "Fri May 13 08:54:11 +0000 2016",
     "utc_offset": null,
     "time_zone": null,
@@ -40,11 +40,11 @@
     "profile_link_color": "1DA1F2",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "333333",
+    "profile_text_color": "9999999999999999",
     "profile_use_background_image": true,
-    "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/731048550038183936\/QLO1EncB_normal.jpg",
-    "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/731048550038183936\/QLO1EncB_normal.jpg",
-    "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/731044859927244800\/1463130776",
+    "profile_image_url": "http://twitter.com/profile.jpg",
+    "profile_image_url_https": "https://twitter.com/profile.jpg",
+    "profile_banner_url": "https://twitter.com/ref",
     "default_profile": true,
     "default_profile_image": false,
     "following": null,
@@ -57,14 +57,14 @@
   "contributors": null,
   "retweeted_status": {
     "created_at": "Mon Jan 13 09:10:00 +0000 2020",
-    "id": 1216648579466629120,
-    "id_str": "1216648579466629120",
-    "text": "Gratulation @rogerfederer f\u00fcr die Aufgabe deiner Werbevertr\u00e4ge mit Banken ( @CreditSuisse ), welche mit ihren Inves\u2026 https:\/\/t.co\/OSOdbxgUfZ",
+    "id": 9999999999999999,
+    "id_str": "9999999999999999",
+    "text": "Gratulation @searchword f\u00fcr die Aufgabe deiner Werbevertr\u00e4ge mit Banken ( @CreditSuisse ), welche mit ihren Inves\u2026 https://twitter.com/ref",
     "display_text_range": [
       0,
       140
     ],
-    "source": "\u003ca href=\"https:\/\/about.twitter.com\/products\/tweetdeck\" rel=\"nofollow\"\u003eTweetDeck\u003c\/a\u003e",
+    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTweetDeck\u003c\/a\u003e",
     "truncated": true,
     "in_reply_to_status_id": null,
     "in_reply_to_status_id_str": null,
@@ -72,21 +72,21 @@
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-      "id": 1133688679644520448,
-      "id_str": "1133688679644520448",
+      "id": 9999999999999999,
+      "id_str": "9999999999999999",
       "name": "Extinction Rebellion Z\u00fcrich",
-      "screen_name": "XRZurich",
+      "screen_name": "screenName",
       "location": "Zurich, Switzerland",
-      "url": "https:\/\/xr-zuerich.ch\/",
+      "url": "https://twitter.com/ref-zuerich.ch\/",
       "description": "Rebellion f\u00fcr das Leben",
       "translator_type": "none",
       "protected": false,
       "verified": false,
-      "followers_count": 1049,
-      "friends_count": 331,
-      "listed_count": 25,
-      "favourites_count": 81,
-      "statuses_count": 470,
+      "followers_count": 9999999999999999,
+      "friends_count": 9999999999999999,
+      "listed_count": 9999999999999999,
+      "favourites_count": 9999999999999999,
+      "statuses_count": 9999999999999999,
       "created_at": "Wed May 29 10:56:58 +0000 2019",
       "utc_offset": null,
       "time_zone": null,
@@ -101,11 +101,11 @@
       "profile_link_color": "1DA1F2",
       "profile_sidebar_border_color": "C0DEED",
       "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "333333",
+      "profile_text_color": "9999999999999999",
       "profile_use_background_image": true,
-      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1172457063865376768\/dqj5ocjV_normal.jpg",
-      "profile_image_url_https": "https:\/\/pbs.twimg.com\/profile_images\/1172457063865376768\/dqj5ocjV_normal.jpg",
-      "profile_banner_url": "https:\/\/pbs.twimg.com\/profile_banners\/1133688679644520448\/1568370696",
+      "profile_image_url": "http://twitter.com/profile.jpg",
+      "profile_image_url_https": "https://twitter.com/profile.jpg",
+      "profile_banner_url": "https://twitter.com/ref",
       "default_profile": true,
       "default_profile_image": false,
       "following": null,
@@ -118,7 +118,7 @@
     "contributors": null,
     "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "Gratulation @rogerfederer f\u00fcr die Aufgabe deiner Werbevertr\u00e4ge mit Banken ( @CreditSuisse ), welche mit ihren Investitionen die Klimakatastrophe weiter anheizen. #RogerForClimate https:\/\/t.co\/4TEvRdOnv4",
+      "full_text": "Gratulation @searchword f\u00fcr die Aufgabe deiner Werbevertr\u00e4ge mit Banken ( @CreditSuisse ), welche mit ihren Investitionen die Klimakatastrophe weiter anheizen. #RogerForClimate https://twitter.com/ref",
       "display_text_range": [
         0,
         178
@@ -136,20 +136,20 @@
         "urls": [],
         "user_mentions": [
           {
-            "screen_name": "rogerfederer",
-            "name": "Roger Federer",
-            "id": 1337785291,
-            "id_str": "1337785291",
+            "screen_name": "screenName",
+            "name": "Search That Word",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               12,
               25
             ]
           },
           {
-            "screen_name": "CreditSuisse",
+            "screen_name": "screenName",
             "name": "Credit Suisse",
-            "id": 84281104,
-            "id_str": "84281104",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               76,
               89
@@ -159,37 +159,37 @@
         "symbols": [],
         "media": [
           {
-            "id": 1216639986717614080,
-            "id_str": "1216639986717614080",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               179,
               202
             ],
-            "media_url": "http:\/\/pbs.twimg.com\/media\/EOJfnzPW4AA9ina.jpg",
-            "media_url_https": "https:\/\/pbs.twimg.com\/media\/EOJfnzPW4AA9ina.jpg",
-            "url": "https:\/\/t.co\/4TEvRdOnv4",
+            "media_url": "http://twitter.com/profile.jpg",
+            "media_url_https": "https://twitter.com/profile.jpg",
+            "url": "https://twitter.com/ref",
             "display_url": "pic.twitter.com\/4TEvRdOnv4",
-            "expanded_url": "https:\/\/twitter.com\/XRZurich\/status\/1216648579466629120\/photo\/1",
+            "expanded_url": "https://twitter.com/ref",
             "type": "photo",
             "sizes": {
               "thumb": {
-                "w": 150,
-                "h": 150,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "crop"
               },
               "small": {
-                "w": 680,
-                "h": 367,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               },
               "large": {
-                "w": 2048,
-                "h": 1106,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               },
               "medium": {
-                "w": 1200,
-                "h": 648,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               }
             }
@@ -199,37 +199,37 @@
       "extended_entities": {
         "media": [
           {
-            "id": 1216639986717614080,
-            "id_str": "1216639986717614080",
+            "id": 9999999999999999,
+            "id_str": "9999999999999999",
             "indices": [
               179,
               202
             ],
-            "media_url": "http:\/\/pbs.twimg.com\/media\/EOJfnzPW4AA9ina.jpg",
-            "media_url_https": "https:\/\/pbs.twimg.com\/media\/EOJfnzPW4AA9ina.jpg",
-            "url": "https:\/\/t.co\/4TEvRdOnv4",
+            "media_url": "http://twitter.com/profile.jpg",
+            "media_url_https": "https://twitter.com/profile.jpg",
+            "url": "https://twitter.com/ref",
             "display_url": "pic.twitter.com\/4TEvRdOnv4",
-            "expanded_url": "https:\/\/twitter.com\/XRZurich\/status\/1216648579466629120\/photo\/1",
+            "expanded_url": "https://twitter.com/ref",
             "type": "photo",
             "sizes": {
               "thumb": {
-                "w": 150,
-                "h": 150,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "crop"
               },
               "small": {
-                "w": 680,
-                "h": 367,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               },
               "large": {
-                "w": 2048,
-                "h": 1106,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               },
               "medium": {
-                "w": 1200,
-                "h": 648,
+                "w": 9999999999999999,
+                "h": 9999999999999999,
                 "resize": "fit"
               }
             }
@@ -237,16 +237,16 @@
         ]
       }
     },
-    "quote_count": 5,
-    "reply_count": 1,
-    "retweet_count": 29,
-    "favorite_count": 41,
+    "quote_count": 9999999999999999,
+    "reply_count": 9999999999999999,
+    "retweet_count": 9999999999999999,
+    "favorite_count": 9999999999999999,
     "entities": {
       "hashtags": [],
       "urls": [
         {
-          "url": "https:\/\/t.co\/OSOdbxgUfZ",
-          "expanded_url": "https:\/\/twitter.com\/i\/web\/status\/1216648579466629120",
+          "url": "https://twitter.com/ref",
+          "expanded_url": "https://twitter.com/ref",
           "display_url": "twitter.com\/i\/web\/status\/1\u2026",
           "indices": [
             117,
@@ -256,20 +256,20 @@
       ],
       "user_mentions": [
         {
-          "screen_name": "rogerfederer",
-          "name": "Roger Federer",
-          "id": 1337785291,
-          "id_str": "1337785291",
+          "screen_name": "screenName",
+          "name": "Search That Word",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             12,
             25
           ]
         },
         {
-          "screen_name": "CreditSuisse",
+          "screen_name": "screenName",
           "name": "Credit Suisse",
-          "id": 84281104,
-          "id_str": "84281104",
+          "id": 9999999999999999,
+          "id_str": "9999999999999999",
           "indices": [
             76,
             89
@@ -285,10 +285,10 @@
     "lang": "de"
   },
   "is_quote_status": false,
-  "quote_count": 0,
-  "reply_count": 0,
-  "retweet_count": 0,
-  "favorite_count": 0,
+  "quote_count": 9999999999999999,
+  "reply_count": 9999999999999999,
+  "retweet_count": 9999999999999999,
+  "favorite_count": 9999999999999999,
   "entities": {
     "hashtags": [],
     "urls": [],
@@ -296,18 +296,18 @@
       {
         "screen_name": "XRZurich",
         "name": "Extinction Rebellion Z\u00fcrich",
-        "id": 1133688679644520448,
-        "id_str": "1133688679644520448",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           3,
           12
         ]
       },
       {
-        "screen_name": "rogerfederer",
-        "name": "Roger Federer",
-        "id": 1337785291,
-        "id_str": "1337785291",
+        "screen_name": "searchword",
+        "name": "Search That Word",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           26,
           39
@@ -316,8 +316,8 @@
       {
         "screen_name": "CreditSuisse",
         "name": "Credit Suisse",
-        "id": 84281104,
-        "id_str": "84281104",
+        "id": 9999999999999999,
+        "id_str": "9999999999999999",
         "indices": [
           90,
           103
@@ -330,5 +330,5 @@
   "retweeted": false,
   "filter_level": "low",
   "lang": "de",
-  "timestamp_ms": "1578935767349"
+  "timestamp_ms": "9999999999999999"
 }
