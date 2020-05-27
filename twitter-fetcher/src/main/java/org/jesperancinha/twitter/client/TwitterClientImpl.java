@@ -2,7 +2,6 @@ package org.jesperancinha.twitter.client;
 
 import com.twitter.hbc.ClientBuilder;
 import com.twitter.hbc.core.Constants;
-import com.twitter.hbc.core.Hosts;
 import com.twitter.hbc.core.HttpHosts;
 import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint;
 import com.twitter.hbc.core.processor.StringDelimitedProcessor;
@@ -62,10 +61,10 @@ public class TwitterClientImpl implements TwitterClient {
      * @throws InterruptedException This client {@link TwitterClientImpl} will throw this exception if interrupted
      */
     public PageDto startFetchProcess() throws InterruptedException {
-        final ExecutorService executorService = Executors.newFixedThreadPool(2);
-        final Set<String> allMessages = new HashSet<>();
-        final FetcherThread threadFetcher = createFetcherThread(executorService, allMessages);
-        final KillerThread killerThread = createKillerThread(executorService);
+        final var executorService = Executors.newFixedThreadPool(2);
+        final var allMessages = new HashSet<String>();
+        final var threadFetcher = createFetcherThread(executorService, allMessages);
+        final var killerThread = createKillerThread(executorService);
         final long timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         executorService.submit(killerThread);
         executorService.submit(threadFetcher);
@@ -90,8 +89,8 @@ public class TwitterClientImpl implements TwitterClient {
 
     private FetcherThread createFetcherThread(ExecutorService executorService, Set<String> allMessages) {
 
-        final Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
-        final StatusesFilterEndpoint statusesFilterEndpoint = new StatusesFilterEndpoint();
+        final var hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
+        final var statusesFilterEndpoint = new StatusesFilterEndpoint();
         statusesFilterEndpoint.trackTerms(searchTerms);
 
         final BasicClient client = new ClientBuilder()
