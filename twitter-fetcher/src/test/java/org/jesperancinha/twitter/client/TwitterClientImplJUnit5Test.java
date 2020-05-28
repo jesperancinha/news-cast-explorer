@@ -49,7 +49,7 @@ class TwitterClientImplJUnit5Test {
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    public void testStartFetchProcess_whenProgrammed5Second_endsGracefully1Second() throws InterruptedException {
+    public void testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediatelly() throws InterruptedException {
         final Iterator<String> iterator = List.of("mockString").iterator();
         when(searchTerms.iterator()).thenReturn(iterator);
 
@@ -64,5 +64,6 @@ class TwitterClientImplJUnit5Test {
         final Long endTimeStamp = allValues.get(1);
         final long timeStampDiff = endTimeStamp - startTimestamp;
         assertThat(timeStampDiff).isGreaterThanOrEqualTo(0);
+        assertThat(timeStampDiff).isLessThan(1);
     }
 }

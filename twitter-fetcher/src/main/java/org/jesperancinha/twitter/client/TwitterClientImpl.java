@@ -7,6 +7,7 @@ import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint;
 import com.twitter.hbc.core.processor.StringDelimitedProcessor;
 import com.twitter.hbc.httpclient.BasicClient;
 import com.twitter.hbc.httpclient.auth.Authentication;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.data.AuthorDto;
@@ -29,10 +30,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Getter
 @Component
+@Builder
 public class TwitterClientImpl implements TwitterClient {
 
-    @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
-    private int timeToWaitSeconds;
+
+    private final int timeToWaitSeconds;
 
     private final TwitterMessageProcessor twitterMessageProcessor;
 
@@ -42,10 +44,13 @@ public class TwitterClientImpl implements TwitterClient {
 
     private final List<String> searchTerms;
 
-    public TwitterClientImpl(TwitterMessageProcessor twitterMessageProcessor,
-                             Authentication authentication,
-                             BlockingQueue<String> stringLinkedBlockingQueue,
-                             List<String> searchTerms) {
+    public TwitterClientImpl(
+            @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
+                    int timeToWaitSeconds, TwitterMessageProcessor twitterMessageProcessor,
+            Authentication authentication,
+            BlockingQueue<String> stringLinkedBlockingQueue,
+            List<String> searchTerms) {
+        this.timeToWaitSeconds = timeToWaitSeconds;
         this.twitterMessageProcessor = twitterMessageProcessor;
         this.authentication = authentication;
         this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
