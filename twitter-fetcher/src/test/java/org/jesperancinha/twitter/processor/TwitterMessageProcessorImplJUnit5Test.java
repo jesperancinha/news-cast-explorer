@@ -162,11 +162,6 @@ public class TwitterMessageProcessorImplJUnit5Test {
     void testProcessAllMessages_when2Message2Author_OkParseOrdered() throws IOException {
     }
 
-    private String getMessageResource(String messageResource) throws IOException {
-        final InputStream resourceAsStream1 = getClass().getResourceAsStream(messageResource);
-        return IOUtils.toString(resourceAsStream1, Charset.defaultCharset());
-    }
-
     @Test
     void testMessages_whenMessageListInvalid_throwException() {
         var allMessages = Set.of("this is not a JSON", "And this is also not one!");
@@ -180,5 +175,10 @@ public class TwitterMessageProcessorImplJUnit5Test {
                                         1122333445566778899L,
                                         998877665544332211L))
                 .withMessageContaining("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path");
+    }
+
+    private String getMessageResource(String messageResource) throws IOException {
+        final InputStream resourceAsStream1 = getClass().getResourceAsStream(messageResource);
+        return IOUtils.toString(resourceAsStream1, Charset.defaultCharset());
     }
 }
