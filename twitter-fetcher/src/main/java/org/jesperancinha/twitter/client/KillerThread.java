@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Builder
 @AllArgsConstructor
-public class KillerThread extends Thread {
+public class  KillerThread extends Thread {
     private final ExecutorService executorService;
 
     private final long secondsDuration;

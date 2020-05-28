@@ -4,6 +4,8 @@ import org.jesperancinha.twitter.data.AuthorDto;
 import org.jesperancinha.twitter.model.db.Author;
 import org.jesperancinha.twitter.model.db.Page;
 
+import java.util.stream.Collectors;
+
 public class AuthorConverter {
     public static AuthorDto toDto(Author author) {
         return AuthorDto.builder()
@@ -12,6 +14,7 @@ public class AuthorConverter {
                 .name(author.getName())
                 .nMessages(author.getNMessages())
                 .screenName(author.getScreenName())
+                .messageDtos(author.getMessages().stream().map(MessageConverter::toDto).collect(Collectors.toList()))
                 .build();
     }
 
