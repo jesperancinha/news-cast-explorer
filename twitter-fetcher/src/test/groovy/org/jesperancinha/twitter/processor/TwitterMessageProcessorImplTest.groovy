@@ -38,9 +38,10 @@ class TwitterMessageProcessorImplTest extends Specification {
     private PageRepository pageRepository = Mock()
 
     private static Page testPage
-    private static Page testPageFistSave
+    private static Page testPageFirstSave
 
     private static Author testAuthor
+    private static Author testAuthorFirstSave
 
     private static Message testMessage
 
@@ -50,12 +51,21 @@ class TwitterMessageProcessorImplTest extends Specification {
                 .duration(2000L)
                 .createdAt(1550265180555L)
                 .build()
-        testPageFistSave = Page.builder()
+        testPageFirstSave = Page.builder()
                 .id(1L)
                 .duration(2000L)
                 .createdAt(1550265180555L)
                 .build()
         testAuthor = Author.builder()
+                .id(2L)
+                .twitterAuthorId("998877665544332211")
+                .createdAt(1550265180556L)
+                .nMessages(1L)
+                .screenName("Author1ScreenName")
+                .page(testPage)
+                .name("Author1")
+                .build()
+        testAuthorFirstSave = Author.builder()
                 .id(2L)
                 .twitterAuthorId("998877665544332211")
                 .createdAt(1550265180556L)
@@ -87,6 +97,7 @@ class TwitterMessageProcessorImplTest extends Specification {
         authorRepository.save(_) >> testAuthor
         messageRepository.save(_) >> testMessage
         List<Page> pages = new ArrayList<>()
+        List<Author> authors = new ArrayList<>()
 
         when:
         def pageDto = twitterMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
@@ -113,7 +124,7 @@ class TwitterMessageProcessorImplTest extends Specification {
         2 * pageRepository.save(_ as Page) >> { args ->
             Page page = args[0] as Page
             pages.add(page)
-            return testPageFistSave
+            return testPageFirstSave
         }
         def page1 = pages.getAt(0)
         assertThat(page1).isNotNull()
@@ -123,19 +134,22 @@ class TwitterMessageProcessorImplTest extends Specification {
         assertThat(page2).isNotNull()
         assertThat(page2.getId()).isEqualTo(1L)
         assertThat(page2.getAuthors()).hasSize(1)
-
-//            verify(authorRepository, times(2)).save(authorArgumentCaptor.capture());
-//            def authors = authorArgumentCaptor.getAllValues();
-//            def author = authors.get(0);
-//            assertThat(author).isNotNull();
-//            assertThat(author.getId()).isNull();
-//            def author2 = authors.get(1);
-//            assertThat(author2).isNotNull();
-//            assertThat(author2.getId()).isEqualTo(2L);
-//            verify(messageRepository, only()).save(messageArgumentCaptor.capture());
-//            def message = messageArgumentCaptor.getValue();
-//            assertThat(message).isNotNull();
-//            assertThat(message.getId()).isNull();
+        2 * authorRepository.save(_ as Author) >> { args ->
+            def author = args[0] as Author
+            authors.add(author)
+            return testAuthorFirstSave
+        }
+        def author = authors.get(0)
+        assertThat(author).isNotNull()
+        assertThat(author.getId()).isNull()
+        def author2 = authors.get(1)
+        assertThat(author2).isNotNull()
+        assertThat(author2.getId()).isEqualTo(2L)
+        1 * messageRepository.save(_ as Message) >> { args ->
+            def message = args[0] as Message
+            assertThat(message).isNotNull()
+            assertThat(message.getId()).isNull()
+        }
     }
 
     def getMessageResource(String messageResource) throws IOException {
