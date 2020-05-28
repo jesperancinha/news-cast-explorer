@@ -3,10 +3,10 @@ package org.jesperancinha.twitter.client;
 import com.twitter.hbc.httpclient.auth.Authentication;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -27,9 +27,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class TwitterClientImplJUnit4HamcrestTest {
 
-    @InjectMocks
-    private TwitterClientImpl twitterClient;
-
     @Mock
     private TwitterMessageProcessor twitterMessageProcessor;
 
@@ -44,6 +41,20 @@ public class TwitterClientImplJUnit4HamcrestTest {
 
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
+
+    private TwitterClient twitterClient;
+
+    @BeforeEach
+    public void setUp() {
+        this.twitterClient = TwitterClientImpl
+                .builder()
+                .twitterMessageProcessor(twitterMessageProcessor)
+                .authentication(authentication)
+                .searchTerms(searchTerms)
+                .stringLinkedBlockingQueue(blockingQueue)
+                .timeToWaitSeconds(0)
+                .build();
+    }
 
     /**
      * No exception is thrown while polling the buffer even though no connection has been made to twitter.

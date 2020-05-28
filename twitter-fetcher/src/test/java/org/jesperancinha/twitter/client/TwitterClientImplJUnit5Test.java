@@ -2,11 +2,11 @@ package org.jesperancinha.twitter.client;
 
 import com.twitter.hbc.httpclient.auth.Authentication;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -25,8 +25,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class TwitterClientImplJUnit5Test {
 
-    @InjectMocks
-    private TwitterClientImpl twitterClient;
 
     @Mock
     private TwitterMessageProcessor twitterMessageProcessor;
@@ -43,6 +41,20 @@ class TwitterClientImplJUnit5Test {
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
 
+    private TwitterClient twitterClient;
+
+    @BeforeEach
+    public void setUp() {
+        this.twitterClient = TwitterClientImpl
+                .builder()
+                .twitterMessageProcessor(twitterMessageProcessor)
+                .authentication(authentication)
+                .searchTerms(searchTerms)
+                .stringLinkedBlockingQueue(blockingQueue)
+                .timeToWaitSeconds(0)
+                .build();
+    }
+
     /**
      * No exception is thrown while polling the buffer even though no connection has been made to twitter.
      *
@@ -57,7 +69,7 @@ class TwitterClientImplJUnit5Test {
 
         verify(twitterMessageProcessor, only()).processAllMessages(any(), longArgumentCaptor.capture(), longArgumentCaptor.capture());
         verify(blockingQueue, times(1)).remainingCapacity();
-        verify(authentication,  atLeast(0)).setupConnection(any());
+        verify(authentication, atLeast(0)).setupConnection(any());
         final List<Long> allValues = longArgumentCaptor.getAllValues();
         assertThat(allValues).hasSize(2);
         final Long startTimestamp = allValues.get(0);

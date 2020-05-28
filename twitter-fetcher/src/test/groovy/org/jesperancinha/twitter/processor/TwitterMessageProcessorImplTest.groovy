@@ -90,7 +90,7 @@ class TwitterMessageProcessorImplTest extends Specification {
     void cleanup() {
     }
 
-    def "ProcessAllMessages"() {
+    def "Should process messages with example 1"() {
         given:
         def resultExample1 = getMessageResource("/example1.json")
         def allMessages = Set.of(resultExample1)

@@ -34,6 +34,7 @@ class TwitterClientImplTest extends Specification {
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .stringLinkedBlockingQueue(blockingQueue)
                 .searchTerms(searchTerms)
+                .timeToWaitSeconds(0)
                 .build()
         def iterator = List.of("mockString").iterator()
 
