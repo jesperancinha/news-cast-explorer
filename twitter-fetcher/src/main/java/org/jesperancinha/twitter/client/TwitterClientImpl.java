@@ -33,7 +33,6 @@ import java.util.concurrent.TimeUnit;
 @Builder
 public class TwitterClientImpl implements TwitterClient {
 
-
     private final int timeToWaitSeconds;
 
     private final TwitterMessageProcessor twitterMessageProcessor;
