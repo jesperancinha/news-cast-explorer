@@ -17,12 +17,11 @@ import spock.lang.Specification
 
 import java.nio.charset.Charset
 
-import static org.assertj.core.api.Assertions.assertThat
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ActiveProfiles("test")
-class TwitterMessageProcessorImplTest extends Specification {
+class TwitterMessageProcessorSpockOnlyImplTest extends Specification {
     @Autowired
     private TwitterMessageProcessor twitterMessageProcessor
 
@@ -104,22 +103,22 @@ class TwitterMessageProcessorImplTest extends Specification {
         def pageDto = twitterMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
 
         then:
-        assertThat(pageDto).isNotNull()
-        assertThat(pageDto.getDuration()).isEqualTo(2000L)
-        assertThat(pageDto.getAuthors()).hasSize(1)
+        pageDto != null
+        pageDto.getDuration() == 2000L
+        pageDto.getAuthors().size() == 1
         def authorDto = pageDto.getAuthors().get(0)
-        assertThat(authorDto).isNotNull()
-        assertThat(authorDto.getId()).isEqualTo("999999999000000000")
-        assertThat(authorDto.getName()).isEqualTo("Author1")
-        assertThat(authorDto.getScreenName()).isEqualTo("Author1ScreenName")
-        assertThat(authorDto.getCreatedAt()).isEqualTo(1550265180000L)
-        assertThat(authorDto.getMessageDtos()).isNotNull()
-        assertThat(authorDto.getMessageDtos()).hasSize(1)
+        authorDto != null
+        authorDto.getId() == "999999999000000000"
+        authorDto.getName() == "Author1"
+        authorDto.getScreenName() == "Author1ScreenName"
+        authorDto.getCreatedAt() == 1550265180000L
+        authorDto.getMessageDtos() != null
+        authorDto.getMessageDtos().size() == 1
         def messageDto = authorDto.getMessageDtos().get(0)
-        assertThat(messageDto).isNotNull()
-        assertThat(messageDto.getId()).isEqualTo("999999999000000000")
-        assertThat(messageDto.getText()).isEqualTo("Message1")
-        assertThat(messageDto.getCreatedAt()).isEqualTo(1578935617000L)
+        messageDto != null
+        messageDto.getId() == "999999999000000000"
+        messageDto.getText() == "Message1"
+        messageDto.getCreatedAt() == 1578935617000L
 
         (0..1) * twitterClient.startFetchProcess()
         2 * pageRepository.save(_ as Page) >> { args ->
@@ -128,28 +127,28 @@ class TwitterMessageProcessorImplTest extends Specification {
             return testPageFirstSave
         }
         def page1 = pages.getAt(0)
-        assertThat(page1).isNotNull()
-        assertThat(page1.getId()).isNull()
-        assertThat(page1.getAuthors()).isEmpty()
+        page1 != null
+        page1.getId() == null
+        page1.getAuthors().isEmpty()
         def page2 = pages.getAt(1)
-        assertThat(page2).isNotNull()
-        assertThat(page2.getId()).isEqualTo(1L)
-        assertThat(page2.getAuthors()).hasSize(1)
+        page2 != null
+        page2.getId() == 1L
+        page2.getAuthors().size() == 1
         2 * authorRepository.save(_ as Author) >> { args ->
             def author = args[0] as Author
             authors.add(author)
             return testAuthorFirstSave
         }
         def author = authors.get(0)
-        assertThat(author).isNotNull()
-        assertThat(author.getId()).isNull()
+        author != null
+        author.getId() == null
         def author2 = authors.get(1)
-        assertThat(author2).isNotNull()
-        assertThat(author2.getId()).isEqualTo(2L)
+        author2 != null
+        author2.getId() == 2L
         1 * messageRepository.save(_ as Message) >> { args ->
             def message = args[0] as Message
-            assertThat(message).isNotNull()
-            assertThat(message.getId()).isNull()
+            message != null
+            message.getId() != null
             return message
         }
     }
