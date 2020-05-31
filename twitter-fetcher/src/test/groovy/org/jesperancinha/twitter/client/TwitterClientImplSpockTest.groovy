@@ -8,9 +8,7 @@ import spock.lang.Specification
 
 import java.util.concurrent.BlockingQueue
 
-import static org.assertj.core.api.Assertions.assertThat
-
-class TwitterClientImplTest extends Specification {
+class TwitterClientImplSpockTest extends Specification {
 
     private TwitterMessageProcessor twitterMessageProcessor = Mock()
 
@@ -27,6 +25,9 @@ class TwitterClientImplTest extends Specification {
     }
 
     def "Should end gracefully when timeout is 0"() {
+        Set<String> messages = null
+        Long startTimestamp = null
+        Long endTimeStamp = null
         given:
         def twitterClient = TwitterClientImpl
                 .builder()
@@ -45,16 +46,15 @@ class TwitterClientImplTest extends Specification {
         1 * searchTerms.iterator() >> { args -> iterator }
         1 * twitterMessageProcessor.processAllMessages(_ as Set<String>, _ as Long, _ as Long) >> {
             args ->
-                Set<String> messages = args[0]
-                assertThat(messages).isEmpty()
-                final Long startTimestamp = args[1]
-                final Long endTimeStamp = args[2]
-                final int timeStampDiff = endTimeStamp - startTimestamp
-                assertThat(timeStampDiff).isGreaterThanOrEqualTo(0)
-                assertThat(timeStampDiff).isLessThan(1)
+                messages = args[0] as Set<String>
+                startTimestamp = args[1] as Long
+                endTimeStamp = args[2] as Long
                 return PageDto.builder().build()
-
         }
+        messages.isEmpty()
+        final long timeStampDiff = endTimeStamp - startTimestamp
+        timeStampDiff >= 0
+        timeStampDiff <= 1
         1 * blockingQueue.remainingCapacity()
         (0.._) * authentication.setupConnection(_ as AbstractHttpClient)
     }

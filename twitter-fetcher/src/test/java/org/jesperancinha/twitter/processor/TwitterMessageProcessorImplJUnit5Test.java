@@ -9,6 +9,8 @@ import org.jesperancinha.twitter.model.db.Page;
 import org.jesperancinha.twitter.repository.AuthorRepository;
 import org.jesperancinha.twitter.repository.MessageRepository;
 import org.jesperancinha.twitter.repository.PageRepository;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -37,7 +39,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class TwitterMessageProcessorImplJUnit5Test {
+class TwitterMessageProcessorImplJUnit5Test {
 
     @Autowired
     private TwitterMessageProcessor twitterMessageProcessor;
@@ -115,6 +117,8 @@ public class TwitterMessageProcessorImplJUnit5Test {
         final var authorDto = pageDto.getAuthors().get(0);
         assertThat(authorDto).isNotNull();
         assertThat(authorDto.getId()).isEqualTo("999999999000000000");
+        Assert.assertEquals("Fail Not Equal!", authorDto.getId(), "999999999000000000");
+        Assertions.assertEquals("999999999000000000", authorDto.getId(), "Fail Not Equal!");
         assertThat(authorDto.getName()).isEqualTo("Author1");
         assertThat(authorDto.getScreenName()).isEqualTo("Author1ScreenName");
         assertThat(authorDto.getCreatedAt()).isEqualTo(1550265180000L);

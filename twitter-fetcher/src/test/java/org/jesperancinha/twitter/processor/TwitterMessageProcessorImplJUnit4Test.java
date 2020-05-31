@@ -13,9 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -30,7 +28,7 @@ import java.nio.charset.Charset;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atMostOnce;
 import static org.mockito.Mockito.mockitoSession;
@@ -66,9 +64,6 @@ public class TwitterMessageProcessorImplJUnit4Test {
 
     @Captor
     private ArgumentCaptor<Page> pageArgumentCaptor;
-
-    @Rule
-    public ExpectedException exceptionCapturer = ExpectedException.none();
 
     private static Page testPage;
 
@@ -178,11 +173,15 @@ public class TwitterMessageProcessorImplJUnit4Test {
     public void testMessages_whenMessageListInvalid_throwException() throws JsonSyntaxException {
         var allMessages = Set.of("this is not a JSON", "And this is also not one!");
 
-        exceptionCapturer.expect(JsonSyntaxException.class);
-        exceptionCapturer.expectMessage(containsString("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path"));
-
-        twitterMessageProcessor
-                .processAllMessages(allMessages, 1122333445566778899L, 998877665544332211L);
+        assertThatExceptionOfType(
+                JsonSyntaxException.class)
+                .isThrownBy(() ->
+                        twitterMessageProcessor
+                                .processAllMessages(
+                                        allMessages,
+                                        1122333445566778899L,
+                                        998877665544332211L))
+                .withMessageContaining("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path");
     }
 
     @After

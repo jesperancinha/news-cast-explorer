@@ -12,6 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,6 +40,9 @@ public class TwitterClientImplJUnit4Test {
 
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
+
+    @Captor
+    private ArgumentCaptor<Set<String>> setArgumentCaptor;
 
     private TwitterClient twitterClient;
 
@@ -74,6 +78,9 @@ public class TwitterClientImplJUnit4Test {
         final Long startTimestamp = allValues.get(0);
         final Long endTimeStamp = allValues.get(1);
         final long timeStampDiff = endTimeStamp - startTimestamp;
-        assertThat(timeStampDiff).isGreaterThanOrEqualTo(0);
+        assertThat(timeStampDiff).isBetween(0L, 1L);
+        final Set<String> value = setArgumentCaptor.getValue();
+        assertThat(value).isEmpty();
+
     }
 }

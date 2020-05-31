@@ -85,7 +85,7 @@ public class TwitterClientImplJUnit4HamcrestTest {
         final long timeStampDiff = endTimeStamp - startTimestamp;
         assertThat(timeStampDiff, greaterThanOrEqualTo(0L));
         assertThat(timeStampDiff, lessThanOrEqualTo(1L));
-        final Set<String> value = setArgumentCaptor.getValue();
+         final Set<String> value = setArgumentCaptor.getValue();
         assertThat(value, is(emptyCollectionOf(String.class)));
     }
 }
