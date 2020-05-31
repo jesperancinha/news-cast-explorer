@@ -29,8 +29,13 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.emptyCollectionOf;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.junit.ExpectedException.none;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atMostOnce;
@@ -115,48 +120,51 @@ public class TwitterMessageProcessorImplJUnit4HamcrestTest {
         final var resultExample1 = getMessageResource("/example1.json");
         final var allMessages = Set.of(resultExample1);
 
-        final var pageDto = twitterMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L);
+        final var pageDto = twitterMessageProcessor.processAllMessages(
+                allMessages, 1579079712000L, 1579079714000L);
 
-        assertThat(pageDto).isNotNull();
-        assertThat(pageDto.getDuration()).isEqualTo(2000L);
-        assertThat(pageDto.getAuthors()).hasSize(1);
+        assertThat(pageDto, notNullValue());
+        assertThat(pageDto.getDuration(), is(2000L));
+        assertThat(pageDto.getAuthors(), hasSize(1));
         final var authorDto = pageDto.getAuthors().get(0);
-        assertThat(authorDto).isNotNull();
-        assertThat(authorDto.getId()).isEqualTo("999999999000000000");
-        assertThat(authorDto.getName()).isEqualTo("Author1");
-        assertThat(authorDto.getScreenName()).isEqualTo("Author1ScreenName");
-        assertThat(authorDto.getCreatedAt()).isEqualTo(1550265180000L);
-        assertThat(authorDto.getMessageDtos()).isNotNull();
-        assertThat(authorDto.getMessageDtos()).hasSize(1);
+        assertThat(authorDto, notNullValue());
+        assertThat(authorDto.getId(), is("999999999000000000"));
+        assertThat(authorDto.getName(), is("Author1"));
+        assertThat(authorDto.getScreenName(), is("Author1ScreenName"));
+        assertThat(authorDto.getCreatedAt(), is(1550265180000L));
+        assertThat(authorDto.getMessageDtos(), notNullValue());
+        assertThat(authorDto.getMessageDtos(), hasSize(1));
         final var messageDto = authorDto.getMessageDtos().get(0);
-        assertThat(messageDto).isNotNull();
-        assertThat(messageDto.getId()).isEqualTo("999999999000000000");
-        assertThat(messageDto.getText()).isEqualTo("Message1");
-        assertThat(messageDto.getCreatedAt()).isEqualTo(1578935617000L);
+        assertThat(messageDto, notNullValue());
+        assertThat(messageDto.getId(), is("999999999000000000"));
+        assertThat(messageDto.getText(), is("Message1"));
+        assertThat(messageDto.getCreatedAt(), is(1578935617000L));
 
         verify(twitterClient, atMostOnce()).startFetchProcess();
         verify(pageRepository, times(2)).save(pageArgumentCaptor.capture());
         final var pages = pageArgumentCaptor.getAllValues();
         final var page = pages.get(0);
-        assertThat(page).isNotNull();
-        assertThat(page.getId()).isNull();
-        assertThat(page.getAuthors()).isEmpty();
+        assertThat(page, notNullValue());
+        assertThat(page.getId(), nullValue());
+        assertThat(page.getAuthors(), is(emptyCollectionOf(Author.class)));
         final var page2 = pages.get(1);
-        assertThat(page2).isNotNull();
-        assertThat(page2.getId()).isEqualTo(1L);
-        assertThat(page2.getAuthors()).hasSize(1);
+        assertThat(page2, notNullValue());
+        assertThat(page2.getId(), is(1L));
+        assertThat(page2.getAuthors(), hasSize(1));
         verify(authorRepository, times(2)).save(authorArgumentCaptor.capture());
         final var authors = authorArgumentCaptor.getAllValues();
         final var author = authors.get(0);
-        assertThat(author).isNotNull();
-        assertThat(author.getId()).isNull();
+        assertThat(author, notNullValue());
+        assertThat(author.getId(), nullValue());
+        assertThat(author.getMessages(), is(emptyCollectionOf(Message.class)));
         final var author2 = authors.get(1);
-        assertThat(author2).isNotNull();
-        assertThat(author2.getId()).isEqualTo(2L);
+        assertThat(author2, notNullValue());
+        assertThat(author2.getId(), is(2L));
+        assertThat(author2.getMessages(), hasSize(1));
         verify(messageRepository, only()).save(messageArgumentCaptor.capture());
         final var message = messageArgumentCaptor.getValue();
-        assertThat(message).isNotNull();
-        assertThat(message.getId()).isNull();
+        assertThat(message, notNullValue());
+        assertThat(message.getId(), nullValue());
     }
 
     @Test

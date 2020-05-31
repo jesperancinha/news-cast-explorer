@@ -2,8 +2,8 @@ package org.jesperancinha.twitter.client;
 
 import com.twitter.hbc.httpclient.auth.Authentication;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -12,10 +12,14 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.emptyCollectionOf;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.atLeast;
@@ -42,9 +46,12 @@ public class TwitterClientImplJUnit4HamcrestTest {
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
 
+    @Captor
+    private ArgumentCaptor<Set<String>> setArgumentCaptor;
+
     private TwitterClient twitterClient;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         this.twitterClient = TwitterClientImpl
                 .builder()
@@ -68,7 +75,7 @@ public class TwitterClientImplJUnit4HamcrestTest {
 
         twitterClient.startFetchProcess();
 
-        verify(twitterMessageProcessor, only()).processAllMessages(any(), longArgumentCaptor.capture(), longArgumentCaptor.capture());
+        verify(twitterMessageProcessor, only()).processAllMessages(setArgumentCaptor.capture(), longArgumentCaptor.capture(), longArgumentCaptor.capture());
         verify(blockingQueue, times(1)).remainingCapacity();
         verify(authentication, atLeast(0)).setupConnection(any());
         final List<Long> allValues = longArgumentCaptor.getAllValues();
@@ -77,5 +84,8 @@ public class TwitterClientImplJUnit4HamcrestTest {
         final Long endTimeStamp = allValues.get(1);
         final long timeStampDiff = endTimeStamp - startTimestamp;
         assertThat(timeStampDiff, greaterThanOrEqualTo(0L));
+        assertThat(timeStampDiff, lessThanOrEqualTo(1L));
+        final Set<String> value = setArgumentCaptor.getValue();
+        assertThat(value, is(emptyCollectionOf(String.class)));
     }
 }
