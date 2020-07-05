@@ -136,8 +136,6 @@ brew uninstall docker-machine-driver-vmware
 brew uninstall --force docker-machine
 docker system prune -a
 ```
-
-
 -   [SDKMAN!](https://sdkman.io/install)
 
 -   Install java versions with [SDKMan](https://sdkman.io/) for MAC-OS and Linux based systems
