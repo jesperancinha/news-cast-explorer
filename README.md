@@ -26,26 +26,26 @@ What we want to do is to get the last 100 tweets over something in the last 30 s
 
 There are three modules:
 
-- twitter-explorer-fe - This is the front end of the application in Angular 9
-- twitter-fetcher - This is the java Spring Boot command line runner developed in Java 12
-- twitter-logger - These are python scripts to serve the logs.
+-   twitter-explorer-fe - This is the front end of the application in Angular 9
+-   twitter-fetcher - This is the java Spring Boot command line runner developed in Java 12
+-   twitter-logger - These are python scripts to serve the logs.
 
 Logs are placed in the workspace of the execution environment of the working jar
 
 These logs are read using two scripts
 
-- logserver.py - For local runs
-- log-docker-server.py - To be used in the docker image builds
+-   logserver.py - For local runs
+-   log-docker-server.py - To be used in the docker image builds
 
 The front end runs with NPM
 
 I have provided a few utilities:
 
-- docker-files - Here live the files used to make the docker image
-- docker-files/pushed-image - This is the docker file for the image I've created in Docker up.
-- Dockerfile - This is another docker image which uses the image jesperancinha/twitter-docker:0.0.2, that I have created as a starting point
-- build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
-- docker-init.sh - Does almost the same thing, but only executes docker commands.
+-   docker-files - Here live the files used to make the docker image
+-   docker-files/pushed-image - This is the docker file for the image I've created in Docker up.
+-   Dockerfile - This is another docker image which uses the image jesperancinha/twitter-docker:0.0.2, that I have created as a starting point
+-   build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
+-   docker-init.sh - Does almost the same thing, but only executes docker commands.
 
 The image used is available on [dockerhub](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14).
 
@@ -58,9 +58,9 @@ The repo of the source code for this image has moved. All code for my docker ima
 The reason for this is that I could not find any image suited for what I wanted.
 I needed:
 
-- NGINX
-- A fully compatible java distribution (12 or 13)
-- Cron tabs
+-   NGINX
+-   A fully compatible java distribution (12 or 13)
+-   Cron tabs
 
 The command line runner has the option to choose the profile "scheduler".
 Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
