@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.service.RunningService;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +24,7 @@ public class TwitterFetcherLauncher implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws InterruptedException {
+    public void run(String... args) throws InterruptedException, JsonProcessingException {
         runningService.startProcess();
     }
 }

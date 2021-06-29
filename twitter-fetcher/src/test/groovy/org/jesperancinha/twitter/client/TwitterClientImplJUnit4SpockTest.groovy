@@ -4,6 +4,7 @@ import com.twitter.hbc.httpclient.auth.Authentication
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor
 import org.mockito.ArgumentCaptor
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import java.util.concurrent.BlockingQueue
@@ -12,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.*
 
+@Ignore
 class TwitterClientImplJUnit4SpockTest extends Specification {
 
     private TwitterMessageProcessor twitterMessageProcessor = mock(TwitterMessageProcessor)

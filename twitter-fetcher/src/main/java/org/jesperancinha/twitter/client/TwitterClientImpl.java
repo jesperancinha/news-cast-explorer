@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.twitter.hbc.ClientBuilder;
 import com.twitter.hbc.core.Constants;
 import com.twitter.hbc.core.HttpHosts;
@@ -64,7 +65,7 @@ public class TwitterClientImpl implements TwitterClient {
      * @return A {@link PageDto} object with all the data for one run
      * @throws InterruptedException This client {@link TwitterClientImpl} will throw this exception if interrupted
      */
-    public PageDto startFetchProcess() throws InterruptedException {
+    public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
         final var executorService = Executors.newFixedThreadPool(2);
         final var allMessages = new HashSet<String>();
         final var threadFetcher = createFetcherThread(executorService, allMessages);

@@ -1,8 +1,7 @@
 package org.jesperancinha.twitter.processor;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.twitter.converters.AuthorConverter;
@@ -38,11 +37,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
 
     private final PageRepository pageRepository;
 
-    private final static Gson gson = new GsonBuilder()
-            .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create();
-
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private TwitterMessageProcessorImpl(MessageRepository messageRepository, AuthorRepository authorRepository, PageRepository pageRepository) {
         this.messageRepository = messageRepository;
@@ -50,9 +45,15 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
         this.pageRepository = pageRepository;
     }
 
-    public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) {
+    public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) throws JsonProcessingException {
         final var authorDtos = allMessages.parallelStream()
-                .map(message -> gson.fromJson(message, Message.class))
+                .map(message -> {
+                    try {
+                        return objectMapper.readValue(message, Message.class);
+                    } catch (JsonProcessingException e) {
+                        return null;
+                    }
+                })
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
                 .map(TwitterMessageProcessorImpl::fillAuthor).sorted(Comparator.comparing(AuthorDto::getCreatedAt)).collect(Collectors.toList());
@@ -62,8 +63,8 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
         return pageDto;
     }
 
-    private void savePageLog(PageDto pageDto) {
-        log.info(gson.toJson(pageDto));
+    private void savePageLog(PageDto pageDto) throws JsonProcessingException {
+        log.info(objectMapper.writeValueAsString(pageDto));
     }
 
     private void savePageDb(PageDto pageDto) {

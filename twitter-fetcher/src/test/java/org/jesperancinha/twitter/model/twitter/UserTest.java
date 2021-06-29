@@ -1,23 +1,18 @@
 package org.jesperancinha.twitter.model.twitter;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserTest {
 
-    private final static Gson gson = new GsonBuilder()
-            .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create();
-
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    void testEquals_whenEquals_Ok() {
-        final User user1 = gson.fromJson(
+    void testEquals_whenEquals_Ok() throws JsonProcessingException {
+        final User user1 = objectMapper.readValue(
                 "{\n" +
                         "      \"id\": 988105075267637248,\n" +
                         "      \"id_str\": \"988105075267637248\",\n" +
@@ -26,7 +21,7 @@ class UserTest {
                         "      \"created_at\": \"Sun Apr 22 17:19:42 +0000 2018\"\n" +
                         "    }", User.class);
 
-        final User user2 = gson.fromJson(
+        final User user2 = objectMapper.readValue(
                 "{\n" +
                         "      \"id\": 988105075267637248,\n" +
                         "      \"id_str\": \"988105075267637248\",\n" +
@@ -39,8 +34,8 @@ class UserTest {
     }
 
     @Test
-    void testHashCode_whenOther_NotSame() {
-        final User user1 = gson.fromJson(
+    void testHashCode_whenOther_NotSame() throws JsonProcessingException {
+        final User user1 = objectMapper.readValue(
                 "{\n" +
                         "      \"id\": 988105075267637248,\n" +
                         "      \"id_str\": \"988105075267637248\",\n" +
@@ -49,7 +44,7 @@ class UserTest {
                         "      \"created_at\": \"Sun Apr 22 17:19:42 +0000 2018\"\n" +
                         "    }", User.class);
 
-        final User user2 = gson.fromJson(
+        final User user2 = objectMapper.readValue(
                 "{\n" +
                         "      \"id\": 988105075267637248,\n" +
                         "      \"id_str\": \"988105075267637248\",\n" +

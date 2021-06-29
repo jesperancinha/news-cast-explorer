@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.Getter;
 @Builder
 @EqualsAndHashCode
 @Getter
+@AllArgsConstructor
 public class MessageDto {
     private final String id;
 

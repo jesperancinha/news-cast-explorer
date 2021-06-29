@@ -33,15 +33,26 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.12.3</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -107,7 +118,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>2.5.10</version>
+            <version>3.0.6</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -124,7 +135,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <spock.version>2.0-M1-groovy-2.5</spock.version>
+        <spock.version>2.0-groovy-3.0</spock.version>
     </properties>
 
     <build>
@@ -134,7 +145,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.2.6.RELEASE</version>
                 <configuration>
-                    <jvmArguments>--enable-preview</jvmArguments>
                     <mainClass>org.jesperancinha.twitter.TwitterFetcherLauncher</mainClass>
                 </configuration>
                 <executions>
@@ -152,25 +162,18 @@
                 <configuration>
                     <source>${maven-compiler-plugin.source}</source>
                     <target>${maven-compiler-plugin.target}</target>
-                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>--enable-preview</argLine>
-                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <argLine>--enable-preview</argLine>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.8.1</version>
+                <version>1.12.1</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>

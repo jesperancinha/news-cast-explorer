@@ -1,6 +1,6 @@
 package org.jesperancinha.twitter.processor;
 
-import com.google.gson.JsonSyntaxException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.hamcrest.junit.ExpectedException;
 import org.jesperancinha.twitter.repository.AuthorRepository;
 import org.jesperancinha.twitter.repository.MessageRepository;
@@ -29,10 +29,9 @@ public class TwitterMessageProcessorImplJUnit4HamcrestExceptionTest {
                     .build();
 
     @Test
-    public void testMessages_whenMessageListInvalid_throwException() throws JsonSyntaxException {
+    public void testMessages_whenMessageListInvalid_throwException() throws JsonProcessingException {
         var allMessages = Set.of("this is not a JSON", "And this is also not one!");
 
-        exceptionCapturer.expect(JsonSyntaxException.class);
         exceptionCapturer.expectMessage(containsString("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path"));
 
         twitterMessageProcessor

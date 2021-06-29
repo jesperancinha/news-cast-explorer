@@ -1,23 +1,19 @@
 package org.jesperancinha.twitter.model.twitter;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MessageTest {
 
-    private final static Gson gson = new GsonBuilder()
-            .setDateFormat("EEE MMM dd HH:mm:ss ZZZZZ yyyy")
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .create();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
     @Test
-    public void testEquals_whenEquals_Ok() {
-        final Message message1 = gson.fromJson(
+    public void testEquals_whenEquals_Ok() throws JsonProcessingException {
+        final Message message1 = objectMapper.readValue(
                 "{\n" +
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
@@ -29,7 +25,7 @@ public class MessageTest {
                         "  }" +
                         "}", Message.class);
 
-        final Message message2 = gson.fromJson(
+        final Message message2 = objectMapper.readValue(
                 "{\n" +
                         "  \"created_at\": \"Mon Jan 13 17:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
@@ -45,8 +41,8 @@ public class MessageTest {
     }
 
     @Test
-    public void testHashCode_whenOther_NotSame() {
-        final Message message1 = gson.fromJson(
+    public void testHashCode_whenOther_NotSame() throws JsonProcessingException {
+        final Message message1 = objectMapper.readValue(
                 "{\n" +
                         "  \"created_at\": \"Mon Feb 13 12:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +
@@ -58,7 +54,7 @@ public class MessageTest {
                         "  }" +
                         "}", Message.class);
 
-        final Message message2 = gson.fromJson(
+        final Message message2 = objectMapper.readValue(
                 "{\n" +
                         "  \"created_at\": \"Mon Jan 13 17:15:04 +0000 2020\",\n" +
                         "  \"id\": 1216770650121084933,\n" +

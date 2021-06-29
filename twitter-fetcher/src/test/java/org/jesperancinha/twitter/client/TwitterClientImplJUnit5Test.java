@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.client;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.twitter.hbc.httpclient.auth.Authentication;
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,7 +61,7 @@ class TwitterClientImplJUnit5Test {
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    public void testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediatelly() throws InterruptedException {
+    public void testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediatelly() throws InterruptedException, JsonProcessingException {
         final Iterator<String> iterator = List.of("mockString").iterator();
         when(searchTerms.iterator()).thenReturn(iterator);
 

@@ -1,6 +1,5 @@
 package org.jesperancinha.twitter.processor
 
-import com.google.gson.JsonSyntaxException
 import org.apache.commons.io.IOUtils
 import org.jesperancinha.twitter.client.TwitterClient
 import org.jesperancinha.twitter.model.db.Author

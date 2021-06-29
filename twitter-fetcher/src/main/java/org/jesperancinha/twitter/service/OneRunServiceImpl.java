@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.jesperancinha.twitter.client.TwitterClient;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class OneRunServiceImpl implements RunningService {
     }
 
     @Override
-    public void startProcess() throws InterruptedException {
+    public void startProcess() throws InterruptedException, JsonProcessingException {
         twitterClient.startFetchProcess();
     }
 }
