@@ -26,3 +26,4 @@ jobs:
 
       # run tests!
       - run: mvn clean install
+      - run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
