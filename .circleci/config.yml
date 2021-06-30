@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:16.0.0-browsers
+      - image: cimg/openjdk:16.0.0-browsers
 
     working_directory: ~/repo
 

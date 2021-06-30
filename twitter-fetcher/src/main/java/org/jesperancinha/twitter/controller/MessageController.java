@@ -1,4 +1,4 @@
-package org.jesperancinha.twitter.contoller;
+package org.jesperancinha.twitter.controller;
 
 import org.jesperancinha.twitter.data.MessageDto;
 import org.jesperancinha.twitter.service.MessageService;
