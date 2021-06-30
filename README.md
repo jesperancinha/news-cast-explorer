@@ -13,6 +13,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/twitter-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&utm_medium=referral&utm_content=jesperancinha/twitter-explorer&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/bb/jesperancinha/twitter-explorer/branch/master/graph/badge.svg?token=ZZQIS9S1LR)](https://codecov.io/bb/jesperancinha/twitter-explorer)
+[![Coverage Status](https://coveralls.io/repos/bitbucket/jesperancinha/twitter-explorer/badge.svg?branch=master)](https://coveralls.io/bitbucket/jesperancinha/twitter-explorer?branch=master)
 
 ---
 
