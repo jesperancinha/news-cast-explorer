@@ -8,6 +8,9 @@
 [![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/twitter-explorer/master)](https://bitbucket.org/jesperancinha/twitter-explorer/addon/pipelines/home#!/)
 [![CircleCI](https://circleci.com/bb/jesperancinha/twitter-explorer.svg?style=svg)](https://circleci.com/bb/jesperancinha/twitter-explorer)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/twitter-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/twitter-explorer&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/d02c6697-4f3f-486a-9297-c45fc0f46402)](https://codebeat.co/projects/bitbucket-org-jesperancinha-twitter-explorer-master)
+
 ---
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/docker-50.png)](https://www.docker.com/)
