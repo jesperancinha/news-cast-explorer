@@ -135,8 +135,20 @@ java -jar
 --org.jesperancinha.twitter.searchTerm=<searchWord>
 ```
 
+## Roadmap to v3.0.0
+
+- Saga patters namely choreography and orchestration
+- Kotest, Mockk, Testcontainers
+- JDK 16
+- Version updates
+- Kotlin service
+- Makefile
+- Use available Docker images
+- Python unit tests
+
 ## References
 
+-   [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
 -   [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
 -   [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
 -   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
