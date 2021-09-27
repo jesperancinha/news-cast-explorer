@@ -34,7 +34,19 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/assertj-50.png "AssertJ")](https://assertj.github.io/doc/)
 
 ---
-What we want to do is to get the last 100 tweets over something in the last 30 seconds or just all the tweets over that something that we could get in 30 seconds. In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one. For this reason, let’s try something that we know sticks on twitter for a long time. Let’s pick up one of the most successful artists of all time: Cher!. Also, let’s make this analysis more interesting. Let’s get all these tweets visible on a webpage. In order to do that let’s make a design in which we can consult each run. Per run, we want to see a list of all the authors who have written in this time. After this we finally want to read their messages. For this, we will go further into the author details and read every message they wrote in this short period. Sounds simple? The concept is very simple, but let’s break this down and develop this concept further.
+What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds. 
+
+In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one. 
+
+For this reason we should pick something trending on Twitter like politics, successful artists like Madonna, Cher and Kylie Minogue, climate change issues and any other theme that we know is popular.
+
+Just because we don't want to keep trying to find the best theme to work on, please use the mock demo provided.
+
+It is about plants, and it generates new examples all the time.
+
+All data will finally be visualized in a webpage.
+
+In order to handle data, we'll use the [Saga](https://microservices.io/patterns/data/saga.html) pattern.
 
 There are three modules:
 
