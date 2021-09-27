@@ -118,7 +118,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>3.0.6</version>
+            <version>${groovy.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -136,6 +136,8 @@
     </dependencies>
     <properties>
         <spock.version>2.0-groovy-3.0</spock.version>
+        <gmavenplus-plugin.version>1.13.0</gmavenplus-plugin.version>
+        <groovy.version>3.0.9</groovy.version>
     </properties>
 
     <build>
@@ -175,7 +177,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.12.1</version>
+                <version>${gmavenplus-plugin.version}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>

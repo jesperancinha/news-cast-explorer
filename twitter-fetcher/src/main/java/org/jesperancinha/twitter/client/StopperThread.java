@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Builder
 @AllArgsConstructor
-public class  KillerThread extends Thread {
+public class StopperThread extends Thread {
     private final ExecutorService executorService;
 
     private final long secondsDuration;
@@ -23,7 +23,7 @@ public class  KillerThread extends Thread {
         try {
             sleep();
         } catch (InterruptedException e) {
-            log.error("An exception has ocurred!", e);
+            log.error("An exception has occurred!", e);
         } finally {
             executorService.shutdownNow();
             log.info("Well, it's time to go and sleep... :)");

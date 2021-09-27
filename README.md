@@ -23,6 +23,7 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/spring-50.png)](https://spring.io/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/spring-boot-50.png)](https://spring.io/projects/spring-boot)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/java-50.png "Java")](https://www.oracle.com/java/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/spock-50.png "Spock")](http://spockframework.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/groovy-50.png "Groovy")](https://groovy-lang.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/angular-50.png "Angular")](https://angular.io/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/python-50.png)](https://www.python.org/)
@@ -66,15 +67,13 @@ The repo of the source code for this image has moved. All code for my docker ima
 
 [https://bitbucket.org/jesperancinha/docker-images/](https://bitbucket.org/jesperancinha/docker-images/)
 
-The reason for this is that I could not find any image suited for what I wanted.
-I needed:
+The reason for this is that I could not find any image suited for what I wanted.	I needed:
 
 -   NGINX
 -   A fully compatible java distribution (12 or 13)
 -   Cron tabs
 
-The command line runner has the option to choose the profile "scheduler".
-Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
+The command line runner has the option to choose the profile "scheduler".	Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
 
 This project is also the official support project of my article on medium:
 
@@ -90,7 +89,13 @@ Run the TwitterFetcherLauncher with the following parameters:
 
 Please replace AAAAAAAAAAAAAAAAAAAAAAAAA accordingly:
 
-    --org.jesperancinha.twitter.consumerKey=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.consumerSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.token=AAAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.tokenSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ --org.jesperancinha.twitter.searchTerm=AAAAAAAAAAAAAAAAAAAAAAAAA
+```shell
+--org.jesperancinha.twitter.consumerKey=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
+--org.jesperancinha.twitter.consumerSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
+--org.jesperancinha.twitter.token=AAAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAAAAAAA \ 
+--org.jesperancinha.twitter.tokenSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
+--org.jesperancinha.twitter.searchTerm=AAAAAAAAAAAAAAAAAAAAAAAAA
+```
 
 ```bash
 curl http://localhost:8080/api/twitter/explorer/
@@ -101,7 +106,8 @@ curl http://localhost:8080/api/twitter/explorer/
 ### Java version
 
 ```bash
-sdk use java 16.0.0.hs-adpt
+sdk install java 17-open
+sdk use java 17-open
 ```
 
 ### Python
@@ -118,8 +124,7 @@ docker exec -it jef-nginx /bin/bash
 
 ## Starting the application
 
-This is a Spring Boot application and you can customize paramters via the command line.
-This is an example:
+This is a Spring Boot application and you can customize paramters via the command line.	This is an example:
 
 ```text
 java -jar 
@@ -135,16 +140,9 @@ java -jar
 --org.jesperancinha.twitter.searchTerm=<searchWord>
 ```
 
-## Roadmap to v3.0.0
+## Roadmap
 
-- Saga patters namely choreography and orchestration
-- Kotest, Mockk, Testcontainers
-- JDK 16
-- Version updates
-- Kotlin service
-- Makefile
-- Use available Docker images
-- Python unit tests
+For roadmap information and current developments please check document [Roadmap.md](./Roadmap.md)
 
 ## References
 

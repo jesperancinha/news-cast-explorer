@@ -13,7 +13,7 @@ public class KillerThreadTest {
     @Test
     void testRun_whenRun_CallsServiceShutdown() throws InterruptedException {
         final ExecutorService executorServiceMock = mock(ExecutorService.class);
-        final KillerThread killerThread = KillerThread.builder().executorService(executorServiceMock).secondsDuration(1).build();
+        final StopperThread killerThread = StopperThread.builder().executorService(executorServiceMock).secondsDuration(1).build();
 
         killerThread.start();
 

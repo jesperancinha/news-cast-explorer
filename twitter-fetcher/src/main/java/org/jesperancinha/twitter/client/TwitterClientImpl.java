@@ -69,24 +69,27 @@ public class TwitterClientImpl implements TwitterClient {
         final var executorService = Executors.newFixedThreadPool(2);
         final var allMessages = new HashSet<String>();
         final var threadFetcher = createFetcherThread(executorService, allMessages);
-        final var killerThread = createKillerThread(executorService);
+        final var killerThread = StopperThread(executorService);
         final long timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         executorService.submit(killerThread);
         executorService.submit(threadFetcher);
         executorService.shutdown();
-        executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
+        boolean terminated = false;
+        while (!terminated) {
+            terminated = executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
+        }
         final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return twitterMessageProcessor.processAllMessages(allMessages, timestampBefore, timestampAfter);
     }
 
     /**
-     * Creates a Killer thread. {@link KillerThread}.
+     * Creates a Stop thread. {@link StopperThread}.
      *
      * @param executorService The {@link ExecutorService} responsible for the pool of threads
-     * @return A {@link KillerThread} thread.
+     * @return A {@link StopperThread} thread.
      */
-    private KillerThread createKillerThread(ExecutorService executorService) {
-        return KillerThread.builder()
+    private StopperThread StopperThread(ExecutorService executorService) {
+        return StopperThread.builder()
                 .executorService(executorService)
                 .secondsDuration(timeToWaitSeconds)
                 .build();
