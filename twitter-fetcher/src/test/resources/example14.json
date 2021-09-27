@@ -1,51 +1,41 @@
 {
-  "created_at": "Mon Jan 13 17:18:17 +0000 2020",
-  "id": 9999999999999999,
-  "id_str": "9999999999999999",
-  "text": "Message14",
-  "source": "Source14",
-  "truncated": false,
+  "created_at": "naga jolokia",
+  "id": 2927,
+  "id_str": "2928",
+  "text": "tuna mint naga jolokia sugar parsley oregano seitan california reaper edamame tofu",
+  "source": "naga jolokia",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,
   "in_reply_to_user_id": null,
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "name": "Author1",
-    "screen_name": "Author1ScreenName",
+    "id": 2938,
+    "id_str": "2939",
+    "name": "super_man",
+    "screen_name": "woman_super",
     "location": null,
     "url": null,
     "description": null,
-    "translator_type": "none",
-    "protected": false,
-    "verified": false,
-    "followers_count": 9999999999999999,
-    "friends_count": 9999999999999999,
-    "listed_count": 9999999999999999,
-    "favourites_count": 9999999999999999,
-    "statuses_count": 9999999999999999,
-    "created_at": "Fri Feb 15 10:30:46 +0000 2013",
+    "translator_type": "oregano",
+    "followers_count": "3243",
+    "friends_count": "8094",
+    "listed_count": "3722",
+    "favourites_count": "1204",
+    "statuses_count": "6752",
+    "created_at": "salt",
     "utc_offset": null,
     "time_zone": null,
-    "geo_enabled": false,
     "lang": null,
-    "contributors_enabled": false,
-    "is_translator": false,
-    "profile_background_color": "C0DEED",
-    "profile_background_image_url": "http://twitter.com/profile.png",
-    "profile_background_image_url_https": "https://twitter.com/profile.png",
-    "profile_background_tile": false,
-    "profile_link_color": "1DA1F2",
-    "profile_sidebar_border_color": "C0DEED",
-    "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "9999999999999999",
-    "profile_use_background_image": true,
-    "profile_image_url": "http://twitter.com/profile.jpg",
-    "profile_image_url_https": "https://twitter.com/profile.jpg",
-    "default_profile": true,
-    "default_profile_image": false,
+    "profile_background_color": "edamame",
+    "profile_background_image_url": "naga jolokia",
+    "profile_background_image_url_https": "mint",
+    "profile_link_color": "seitan",
+    "profile_sidebar_border_color": "mint",
+    "profile_sidebar_fill_color": "beef",
+    "profile_text_color": "chicken liver oregano california reaper cod fish naga jolokia oregano thyme edamame cinnamon sucrose",
+    "profile_image_url": "tofu",
+    "profile_image_url_https": "chicken",
     "following": null,
     "follow_request_sent": null,
     "notifications": null
@@ -55,54 +45,43 @@
   "place": null,
   "contributors": null,
   "retweeted_status": {
-    "created_at": "Mon Jan 13 12:06:53 +0000 2020",
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "text": "Aujourd'hui c'est le verdict du proc\u00e8s des 12 activistes pour match de tennis dans une banque, mais pas celui du\u2026 https://twitter.com/ref",
-    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-    "truncated": true,
+    "created_at": "tofu",
+    "id": 2982,
+    "id_str": "2983",
+    "text": "pepper salt mint chicken mint seitan oregano seitan sucrose pepper",
+    "source": "thyme",
     "in_reply_to_status_id": null,
     "in_reply_to_status_id_str": null,
     "in_reply_to_user_id": null,
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "name": "Partager C'est Sympa",
-      "screen_name": "screenName",
-      "location": null,
-      "url": null,
-      "description": "Vid\u00e9aste-activiste, avec les gens qui se bougent, promoteur d'avenirs justes et durables pour tous \u25bahttp:\/\/youtube.com\/c\/PartagerCestSympa",
-      "translator_type": "none",
-      "protected": false,
-      "verified": false,
-      "followers_count": 9999999999999999,
-      "friends_count": 9999999999999999,
-      "listed_count": 9999999999999999,
-      "favourites_count": 9999999999999999,
-      "statuses_count": 9999999999999999,
-      "created_at": "Mon Oct 23 21:32:11 +0000 2017",
+      "id": 2993,
+      "id_str": "2994",
+      "name": "fantastic_javi",
+      "screen_name": "bacalhau_oil",
+      "location": "cinnamon",
+      "url": "tofu",
+      "description": "sucrose",
+      "followers_count": "6933",
+      "friends_count": "4558",
+      "listed_count": "3784",
+      "favourites_count": "3160",
+      "statuses_count": "1368",
+      "created_at": "seitan",
       "utc_offset": null,
       "time_zone": null,
-      "geo_enabled": false,
       "lang": null,
-      "contributors_enabled": false,
-      "is_translator": false,
-      "profile_background_color": "F5F8FA",
-      "profile_background_image_url": "",
-      "profile_background_image_url_https": "",
-      "profile_background_tile": false,
-      "profile_link_color": "1DA1F2",
-      "profile_sidebar_border_color": "C0DEED",
-      "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "9999999999999999",
-      "profile_use_background_image": true,
-      "profile_image_url": "http://twitter.com/profile.jpg",
-      "profile_image_url_https": "https://twitter.com/profile.jpg",
-      "profile_banner_url": "https://twitter.com/ref",
-      "default_profile": true,
-      "default_profile_image": false,
+      "profile_background_color": "sucrose",
+      "profile_background_image_url": "sugar",
+      "profile_background_image_url_https": "chicken",
+      "profile_link_color": "seitan",
+      "profile_sidebar_border_color": "chicken",
+      "profile_sidebar_fill_color": "beef",
+      "profile_text_color": "sucrose sucrose sugar naga jolokia chicken california reaper chicken  tuna cod fish",
+      "profile_image_url": "salt",
+      "profile_image_url_https": "beef",
+      "profile_banner_url": "california reaper",
       "following": null,
       "follow_request_sent": null,
       "notifications": null
@@ -111,552 +90,143 @@
     "coordinates": null,
     "place": null,
     "contributors": null,
-    "quoted_status_id": 9999999999999999,
-    "quoted_status_id_str": "9999999999999999",
-    "quoted_status": {
-      "created_at": "Mon Jan 13 09:46:07 +0000 2020",
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "text": "PARTAGEZ CETTE VIDEO UN MAX #RogerForClimate #DisCreditSuisse @searchword https://twitter.com/ref",
-      "display_text_range": [
-        0,
-        75
-      ],
-      "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-      "truncated": false,
-      "in_reply_to_status_id": null,
-      "in_reply_to_status_id_str": null,
-      "in_reply_to_user_id": null,
-      "in_reply_to_user_id_str": null,
-      "in_reply_to_screen_name": null,
-      "user": {
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "name": "Gr\u00e8ve du Climat Suisse #RogerForClimate",
-        "screen_name": "screenName",
-        "location": "Suisse",
-        "url": "https://twitter.com/ref",
-        "description": "La politique et la soci\u00e9t\u00e9 ne font pas assez pour contrer la crise climatique. C'est pourquoi NOUS AGISSONS! \ud83d\udd25 #Le15MaiOnBloqueTout #RogerForClimate",
-        "translator_type": "none",
-        "protected": false,
-        "verified": false,
-        "followers_count": 9999999999999999,
-        "friends_count": 9999999999999999,
-        "listed_count": 9999999999999999,
-        "favourites_count": 9999999999999999,
-        "statuses_count": 9999999999999999,
-        "created_at": "Fri Nov 08 15:39:12 +0000 2021",
-        "utc_offset": null,
-        "time_zone": null,
-        "geo_enabled": false,
-        "lang": null,
-        "contributors_enabled": false,
-        "is_translator": false,
-        "profile_background_color": "F5F8FA",
-        "profile_background_image_url": "",
-        "profile_background_image_url_https": "",
-        "profile_background_tile": false,
-        "profile_link_color": "1DA1F2",
-        "profile_sidebar_border_color": "C0DEED",
-        "profile_sidebar_fill_color": "DDEEF6",
-        "profile_text_color": "9999999999999999",
-        "profile_use_background_image": true,
-        "profile_image_url": "http://twitter.com/profile.jpg",
-        "profile_image_url_https": "https://twitter.com/profile.jpg",
-        "profile_banner_url": "https://twitter.com/ref",
-        "default_profile": true,
-        "default_profile_image": false,
-        "following": null,
-        "follow_request_sent": null,
-        "notifications": null
-      },
-      "geo": null,
-      "coordinates": null,
-      "place": null,
-      "contributors": null,
-      "is_quote_status": false,
-      "quote_count": 9999999999999999,
-      "reply_count": 9999999999999999,
-      "retweet_count": 9999999999999999,
-      "favorite_count": 9999999999999999,
-      "entities": {
-        "hashtags": [
-          {
-            "text": "RogerForClimate",
-            "indices": [
-              28,
-              44
-            ]
-          },
-          {
-            "text": "DisCreditSuisse",
-            "indices": [
-              45,
-              61
-            ]
-          }
-        ],
-        "urls": [],
-        "user_mentions": [
-          {
-            "screen_name": "screenName",
-            "name": "Search That Word",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              62,
-              75
-            ]
-          }
-        ],
-        "symbols": [],
-        "media": [
-          {
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              76,
-              99
-            ],
-            "additional_media_info": {
-              "monetizable": false
-            },
-            "media_url": "http://twitter.com/profile.jpg",
-            "media_url_https": "https://twitter.com/profile.jpg",
-            "url": "https://twitter.com/ref",
-            "display_url": "pic.twitter.com\/1XFmZxwMgz",
-            "expanded_url": "https://twitter.com/ref",
-            "type": "photo",
-            "sizes": {
-              "thumb": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "crop"
-              },
-              "medium": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "small": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "large": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              }
-            }
-          }
-        ]
-      },
-      "extended_entities": {
-        "media": [
-          {
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              76,
-              99
-            ],
-            "additional_media_info": {
-              "monetizable": false
-            },
-            "media_url": "http://twitter.com/profile.jpg",
-            "media_url_https": "https://twitter.com/profile.jpg",
-            "url": "https://twitter.com/ref",
-            "display_url": "pic.twitter.com\/1XFmZxwMgz",
-            "expanded_url": "https://twitter.com/ref",
-            "type": "video",
-            "video_info": {
-              "aspect_ratio": [
-                16,
-                9
-              ],
-              "duration_millis": 9999999999999999,
-              "variants": [
-                {
-                  "bitrate": 9999999999999999,
-                  "content_type": "video\/mp4",
-                  "url": "https://twitter.com/ref-_fxw3vcuMRyxWP.mp4?tag=10"
-                },
-                {
-                  "bitrate": 9999999999999999,
-                  "content_type": "video\/mp4",
-                  "url": "https://twitter.com/ref?tag=10"
-                },
-                {
-                  "bitrate": 9999999999999999,
-                  "content_type": "video\/mp4",
-                  "url": "https://twitter.com/ref?tag=10"
-                },
-                {
-                  "content_type": "application\/x-mpegURL",
-                  "url": "https://twitter.com/ref?tag=10"
-                }
-              ]
-            },
-            "sizes": {
-              "thumb": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "crop"
-              },
-              "medium": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "small": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "large": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              }
-            }
-          }
-        ]
-      },
-      "favorited": false,
-      "retweeted": false,
-      "possibly_sensitive": false,
-      "filter_level": "low",
-      "lang": "fr"
-    },
-    "quoted_status_permalink": {
-      "url": "https://twitter.com/ref",
-      "expanded": "https://twitter.com/ref",
-      "display": "twitter.com\/greveduclimat\/\u2026"
-    },
-    "is_quote_status": true,
     "extended_tweet": {
-      "full_text": "Aujourd'hui c'est le verdict du proc\u00e8s des 12 activistes pour match de tennis dans une banque, mais pas celui du @CreditSuisse qui finance \u00e0 fond les \u00e9nergies fossiles et la destruction du climat !\n@searchword c'est le moment de partir non ?\n#rogerforclimate  #RogerWakeUpNow",
-      "display_text_range": [
-        0,
-        277
-      ],
+      "full_text": "seitan seitan  cinnamon sugar  thyme tuna edamame tuna",
+      "display_text_range": {
+        "0": "2633",
+        "1": "3340"
+      },
       "entities": {
-        "hashtags": [
-          {
-            "text": "rogerforclimate",
-            "indices": [
-              244,
-              260
-            ]
-          },
-          {
-            "text": "RogerWakeUpNow",
-            "indices": [
-              262,
-              277
-            ]
+        "hashtags": {
+          "0": {
+            "text": "salt chicken liver oregano parsley california reaper oregano oregano chicken thyme mint",
+            "indices": {
+              "0": "1823",
+              "1": "6654"
+            }
           }
-        ],
-        "urls": [],
-        "user_mentions": [
-          {
-            "screen_name": "Author1",
-            "name": "Author1ScreenName",
-            "id": 999999999000000000,
-            "id_str": "999999999000000000",
-            "indices": [
-              113,
-              126
-            ]
-          },
-          {
-            "screen_name": "screenName",
-            "name": "Search That Word",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              198,
-              211
-            ]
-          }
-        ],
-        "symbols": []
-      }
-    },
-    "quote_count": 9999999999999999,
-    "reply_count": 9999999999999999,
-    "retweet_count": 9999999999999999,
-    "favorite_count": 9999999999999999,
-    "entities": {
-      "hashtags": [],
-      "urls": [
-        {
-          "url": "https://twitter.com/ref",
-          "expanded_url": "https://twitter.com/ref",
-          "display_url": "twitter.com\/i\/web\/status\/1\u2026",
-          "indices": [
-            114,
-            137
-          ]
-        }
-      ],
-      "user_mentions": [],
-      "symbols": []
-    },
-    "favorited": false,
-    "retweeted": false,
-    "filter_level": "low",
-    "lang": "fr"
-  },
-  "quoted_status_id": 9999999999999999,
-  "quoted_status_id_str": "9999999999999999",
-  "quoted_status": {
-    "created_at": "Mon Jan 13 09:46:07 +0000 2020",
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "text": "PARTAGEZ CETTE VIDEO UN MAX #RogerForClimate #DisCreditSuisse @searchword https://twitter.com/ref",
-    "display_text_range": [
-      0,
-      75
-    ],
-    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-    "truncated": false,
-    "in_reply_to_status_id": null,
-    "in_reply_to_status_id_str": null,
-    "in_reply_to_user_id": null,
-    "in_reply_to_user_id_str": null,
-    "in_reply_to_screen_name": null,
-    "user": {
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "name": "Gr\u00e8ve du Climat Suisse #RogerForClimate",
-      "screen_name": "screenName",
-      "location": "Suisse",
-      "url": "https://twitter.com/ref",
-      "description": "La politique et la soci\u00e9t\u00e9 ne font pas assez pour contrer la crise climatique. C'est pourquoi NOUS AGISSONS! \ud83d\udd25 #Le15MaiOnBloqueTout #RogerForClimate",
-      "translator_type": "none",
-      "protected": false,
-      "verified": false,
-      "followers_count": 9999999999999999,
-      "friends_count": 9999999999999999,
-      "listed_count": 9999999999999999,
-      "favourites_count": 9999999999999999,
-      "statuses_count": 9999999999999999,
-      "created_at": "Fri Nov 08 15:39:12 +0000 2021",
-      "utc_offset": null,
-      "time_zone": null,
-      "geo_enabled": false,
-      "lang": null,
-      "contributors_enabled": false,
-      "is_translator": false,
-      "profile_background_color": "F5F8FA",
-      "profile_background_image_url": "",
-      "profile_background_image_url_https": "",
-      "profile_background_tile": false,
-      "profile_link_color": "1DA1F2",
-      "profile_sidebar_border_color": "C0DEED",
-      "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "9999999999999999",
-      "profile_use_background_image": true,
-      "profile_image_url": "http://twitter.com/profile.jpg",
-      "profile_image_url_https": "https://twitter.com/profile.jpg",
-      "profile_banner_url": "https://twitter.com/ref/yetanother",
-      "default_profile": true,
-      "default_profile_image": false,
-      "following": null,
-      "follow_request_sent": null,
-      "notifications": null
-    },
-    "geo": null,
-    "coordinates": null,
-    "place": null,
-    "contributors": null,
-    "is_quote_status": false,
-    "quote_count": 9999999999999999,
-    "reply_count": 9999999999999999,
-    "retweet_count": 9999999999999999,
-    "favorite_count": 9999999999999999,
-    "entities": {
-      "hashtags": [
-        {
-          "text": "RogerForClimate",
-          "indices": [
-            28,
-            44
-          ]
         },
-        {
-          "text": "DisCreditSuisse",
-          "indices": [
-            45,
-            61
-          ]
-        }
-      ],
-      "urls": [],
-      "user_mentions": [
-        {
-          "screen_name": "screenName",
-          "name": "Search That Word",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            62,
-            75
-          ]
-        }
-      ],
-      "symbols": [],
-      "media": [
-        {
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            76,
-            99
-          ],
-          "additional_media_info": {
-            "monetizable": false
-          },
-          "media_url": "http://twitter.com/profile.jpg",
-          "media_url_https": "https://twitter.com/profile.jpg",
-          "url": "https://twitter.com/ref/yetanother",
-          "display_url": "pic.twitter.com\/1XFmZxwMgz",
-          "expanded_url": "https://twitter.com/ref/yetanother",
-          "type": "photo",
-          "sizes": {
-            "thumb": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "crop"
-            },
-            "medium": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
-            },
-            "small": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
-            },
-            "large": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
+        "urls": {
+          "0": {
+            "url": "mint",
+            "expanded_url": "thyme",
+            "display_url": "pepper",
+            "indices": {
+              "0": "8201",
+              "1": "825"
             }
           }
-        }
-      ]
-    },
-    "extended_entities": {
-      "media": [
-        {
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            76,
-            99
-          ],
-          "additional_media_info": {
-            "monetizable": false
+        },
+        "user_mentions": {
+          "0": {
+            "screen_name": "woman_super",
+            "name": "woman_super",
+            "id": 3061,
+            "id_str": "3062",
+            "indices": {
+              "0": "278",
+              "1": "375"
+            }
           },
-          "media_url": "http://twitter.com/profile.jpg",
-          "media_url_https": "https://twitter.com/profile.jpg",
-          "url": "https://twitter.com/ref/yetanother",
-          "display_url": "pic.twitter.com\/1XFmZxwMgz",
-          "expanded_url": "https://twitter.com/ref/yetanother",
-          "type": "video",
-          "video_info": {
-            "aspect_ratio": [
-              16,
-              9
-            ],
-            "duration_millis": 9999999999999999,
-            "variants": [
-              {
-                "bitrate": 9999999999999999,
-                "content_type": "video\/mp4",
-                "url": "https://twitter.com/ref/yetanother-_fxw3vcuMRyxWP.mp4?tag=10"
-              },
-              {
-                "bitrate": 9999999999999999,
-                "content_type": "video\/mp4",
-                "url": "https://twitter.com/ref/yetanother?tag=10"
-              },
-              {
-                "bitrate": 9999999999999999,
-                "content_type": "video\/mp4",
-                "url": "https://twitter.com/ref/yetanother?tag=10"
-              },
-              {
-                "content_type": "application\/x-mpegURL",
-                "url": "https://twitter.com/ref/yetanother?tag=10"
-              }
-            ]
-          },
-          "sizes": {
-            "thumb": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "crop"
-            },
-            "medium": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
-            },
-            "small": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
-            },
-            "large": {
-              "w": 9999999999999999,
-              "h": 9999999999999999,
-              "resize": "fit"
+          "1": {
+            "screen_name": "los_montaditos",
+            "name": "lola_montes",
+            "id": 3069,
+            "id_str": "3070",
+            "indices": {
+              "0": "3561",
+              "1": "7817"
             }
           }
-        }
-      ]
-    },
-    "favorited": false,
-    "retweeted": false,
-    "possibly_sensitive": false,
-    "filter_level": "low",
-    "lang": "fr"
-  },
-  "quoted_status_permalink": {
-    "url": "https://twitter.com/ref/yetanother",
-    "expanded": "https://twitter.com/ref/yetanother",
-    "display": "twitter.com\/greveduclimat\/\u2026"
-  },
-  "is_quote_status": true,
-  "quote_count": 9999999999999999,
-  "reply_count": 9999999999999999,
-  "retweet_count": 9999999999999999,
-  "favorite_count": 9999999999999999,
-  "entities": {
-    "hashtags": [],
-    "urls": [],
-    "user_mentions": [
-      {
-        "screen_name": "screenName",
-        "name": "Partager C'est Sympa",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          3,
-          18
-        ]
+        },
+        "symbols": null
       }
-    ],
-    "symbols": []
+    },
+    "quote_count": "2997",
+    "reply_count": "3586",
+    "retweet_count": "8150",
+    "favorite_count": "8156",
+    "entities": {
+      "hashtags": null,
+      "urls": {
+        "0": {
+          "url": "sucrose",
+          "expanded_url": "sucrose",
+          "display_url": "seitan",
+          "indices": {
+            "0": "6011",
+            "1": "1448"
+          }
+        }
+      },
+      "user_mentions": {
+        "0": {
+          "screen_name": "super_man",
+          "name": "",
+          "id": 3093,
+          "id_str": "3094",
+          "indices": {
+            "0": "5196",
+            "1": "6209"
+          }
+        },
+        "1": {
+          "screen_name": "super_man",
+          "name": "woman_super",
+          "id": 3101,
+          "id_str": "3102",
+          "indices": {
+            "0": "5714",
+            "1": "4417"
+          }
+        }
+      },
+      "symbols": null
+    },
+    "filter_level": "parsley",
+    "lang": "california reaper"
   },
-  "favorited": false,
-  "retweeted": false,
-  "filter_level": "low",
-  "lang": "fr",
-  "timestamp_ms": "9999999999999999"
+  "quote_count": "3473",
+  "reply_count": "8335",
+  "retweet_count": "5048",
+  "favorite_count": "7778",
+  "entities": {
+    "hashtags": null,
+    "urls": null,
+    "user_mentions": {
+      "0": {
+        "screen_name": "bacalhau_oil",
+        "name": "super_man",
+        "id": 3124,
+        "id_str": "3125",
+        "indices": {
+          "0": "199",
+          "1": "3920"
+        }
+      },
+      "1": {
+        "screen_name": "fantastic_javi",
+        "name": "lola_montes",
+        "id": 3132,
+        "id_str": "3133",
+        "indices": {
+          "0": "4891",
+          "1": "1997"
+        }
+      },
+      "2": {
+        "screen_name": "uber_joao",
+        "name": "bacalhau_oil",
+        "id": 3140,
+        "id_str": "3141",
+        "indices": {
+          "0": "8475",
+          "1": "1438"
+        }
+      }
+    },
+    "symbols": null
+  },
+  "lang": "california reaper",
+  "timestamp_ms": "tofu"
 }

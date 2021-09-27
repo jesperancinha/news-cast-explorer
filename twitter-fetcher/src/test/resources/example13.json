@@ -1,51 +1,41 @@
 {
-  "created_at": "Mon Jan 13 17:18:15 +0000 2020",
-  "id": 9999999999999999,
-  "id_str": "9999999999999999",
-  "text": "Message13",
-  "source": "Source13",
-  "truncated": false,
+  "created_at": "cod fish",
+  "id": 2702,
+  "id_str": "2703",
+  "text": "chicken liver cinnamon chicken liver chicken salt cinnamon naga jolokia salt oregano naga jolokia",
+  "source": "tofu",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,
   "in_reply_to_user_id": null,
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "name": "Bj\u00f6rn",
-    "screen_name": "screenName",
+    "id": 2713,
+    "id_str": "2714",
+    "name": "super_man",
+    "screen_name": "bacalhau_oil",
     "location": null,
     "url": null,
     "description": null,
-    "translator_type": "none",
-    "protected": false,
-    "verified": false,
-    "followers_count": 9999999999999999,
-    "friends_count": 9999999999999999,
-    "listed_count": 9999999999999999,
-    "favourites_count": 9999999999999999,
-    "statuses_count": 9999999999999999,
-    "created_at": "Wed Jan 08 05:28:30 +0000 2020",
+    "translator_type": "beef",
+    "followers_count": "2471",
+    "friends_count": "5668",
+    "listed_count": "7397",
+    "favourites_count": "300",
+    "statuses_count": "8344",
+    "created_at": "naga jolokia",
     "utc_offset": null,
     "time_zone": null,
-    "geo_enabled": false,
     "lang": null,
-    "contributors_enabled": false,
-    "is_translator": false,
-    "profile_background_color": "F5F8FA",
-    "profile_background_image_url": "",
-    "profile_background_image_url_https": "",
-    "profile_background_tile": false,
-    "profile_link_color": "1DA1F2",
-    "profile_sidebar_border_color": "C0DEED",
-    "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "9999999999999999",
-    "profile_use_background_image": true,
-    "profile_image_url": "http://twitter.com/profile.png",
-    "profile_image_url_https": "https://twitter.com/profile.png",
-    "default_profile": true,
-    "default_profile_image": false,
+    "profile_background_color": "thyme",
+    "profile_background_image_url": "thyme",
+    "profile_background_image_url_https": "chicken",
+    "profile_link_color": "",
+    "profile_sidebar_border_color": "california reaper",
+    "profile_sidebar_fill_color": "chicken liver",
+    "profile_text_color": "parsley salt salt oregano edamame seitan mint chicken coffee chicken",
+    "profile_image_url": "tuna",
+    "profile_image_url_https": "",
     "following": null,
     "follow_request_sent": null,
     "notifications": null
@@ -55,57 +45,42 @@
   "place": null,
   "contributors": null,
   "retweeted_status": {
-    "created_at": "Mon Jan 13 11:41:29 +0000 2020",
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "text": "@By2020WeRiseUp @BreakfreeCH @searchword @CreditSuisse #RogerForClimate trending Place No.1 - done.",
-    "display_text_range": [
-      57,
-      101
-    ],
-    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-    "truncated": false,
-    "in_reply_to_status_id": 9999999999999999,
-    "in_reply_to_status_id_str": "9999999999999999",
-    "in_reply_to_user_id": 9999999999999999,
-    "in_reply_to_user_id_str": "9999999999999999",
-    "in_reply_to_screen_name": "By2020WeRiseUp",
+    "created_at": "",
+    "id": 2757,
+    "id_str": "2758",
+    "text": "oregano coffee beef parsley pepper sucrose chicken liver california reaper beef parsley",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
     "user": {
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "name": "username",
-      "screen_name": "screenName",
-      "location": null,
-      "url": null,
-      "description": null,
-      "translator_type": "none",
-      "protected": false,
-      "verified": false,
-      "followers_count": 9999999999999999,
-      "friends_count": 9999999999999999,
-      "listed_count": 9999999999999999,
-      "favourites_count": 9999999999999999,
-      "statuses_count": 9999999999999999,
-      "created_at": "Sun Oct 25 14:30:14 +0000 2009",
+      "id": 2768,
+      "id_str": "2769",
+      "name": "wonder_brand",
+      "screen_name": "super_man",
+      "location": "sugar",
+      "url": "beef",
+      "description": "coffee",
+      "translator_type": "pepper",
+      "followers_count": "3014",
+      "friends_count": "8454",
+      "listed_count": "8982",
+      "favourites_count": "5217",
+      "statuses_count": "706",
+      "created_at": "edamame",
       "utc_offset": null,
       "time_zone": null,
-      "geo_enabled": false,
       "lang": null,
-      "contributors_enabled": false,
-      "is_translator": false,
-      "profile_background_color": "C0DEED",
-      "profile_background_image_url": "http://twitter.com/profile.png",
-      "profile_background_image_url_https": "https://twitter.com/profile.png",
-      "profile_background_tile": false,
-      "profile_link_color": "1DA1F2",
-      "profile_sidebar_border_color": "C0DEED",
-      "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "9999999999999999",
-      "profile_use_background_image": true,
-      "profile_image_url": "http://twitter.com/profile.png",
-      "profile_image_url_https": "https://twitter.com/profile.png",
-      "default_profile": true,
-      "default_profile_image": false,
+      "profile_background_color": "tofu",
+      "profile_background_image_url": "california reaper",
+      "profile_link_color": "thyme",
+      "profile_sidebar_border_color": "oregano",
+      "profile_sidebar_fill_color": "oregano",
+      "profile_text_color": "pepper salt pepper coffee parsley oregano tuna cod fish sugar tuna",
+      "profile_image_url": "mint",
+      "profile_image_url_https": "coffee",
+      "profile_banner_url": "cod fish",
       "following": null,
       "follow_request_sent": null,
       "notifications": null
@@ -114,144 +89,144 @@
     "coordinates": null,
     "place": null,
     "contributors": null,
-    "is_quote_status": false,
-    "quote_count": 9999999999999999,
-    "reply_count": 9999999999999999,
-    "retweet_count": 9999999999999999,
-    "favorite_count": 9999999999999999,
-    "entities": {
-      "hashtags": [
-        {
-          "text": "RogerForClimate",
-          "indices": [
-            57,
-            73
-          ]
-        }
-      ],
-      "urls": [],
-      "user_mentions": [
-        {
-          "screen_name": "screenName",
-          "name": "username",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            0,
-            15
-          ]
+    "extended_tweet": {
+      "full_text": "edamame beef beef tuna naga jolokia mint parsley tofu oregano chicken liver",
+      "display_text_range": {
+        "0": "2636",
+        "1": "1313"
+      },
+      "entities": {
+        "hashtags": {
+          "0": {
+            "text": "beef naga jolokia california reaper  mint edamame pepper salt tofu california reaper",
+            "indices": {
+              "0": "7741",
+              "1": "1647"
+            }
+          }
         },
-        {
-          "screen_name": "screenName",
-          "name": "Collectif Breakfree Suisse",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            16,
-            28
-          ]
+        "urls": {
+          "0": {
+            "url": "coffee",
+            "expanded_url": "cod fish",
+            "display_url": "salt",
+            "indices": {
+              "0": "3857",
+              "1": "4423"
+            }
+          }
         },
-        {
-          "screen_name": "screenName",
-          "name": "Search That Word",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            29,
-            42
-          ]
+        "user_mentions": {
+          "0": {
+            "screen_name": "fantastic_javi",
+            "name": "lola_montes",
+            "id": 2836,
+            "id_str": "2837",
+            "indices": {
+              "0": "5251",
+              "1": "1773"
+            }
+          },
+          "1": {
+            "screen_name": "los_montaditos",
+            "name": "wonder_brand",
+            "id": 2844,
+            "id_str": "2845",
+            "indices": {
+              "0": "5170",
+              "1": "1117"
+            }
+          }
         },
-        {
-          "screen_name": "screenName",
-          "name": "Credit Suisse",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            43,
-            56
-          ]
-        }
-      ],
-      "symbols": []
+        "symbols": null
+      }
     },
-    "favorited": false,
-    "retweeted": false,
-    "filter_level": "low",
-    "lang": "en"
+    "quote_count": "733",
+    "reply_count": "692",
+    "retweet_count": "6301",
+    "favorite_count": "5165",
+    "entities": {
+      "hashtags": null,
+      "urls": {
+        "0": {
+          "url": "beef",
+          "expanded_url": "parsley",
+          "display_url": "cod fish",
+          "indices": {
+            "0": "3565",
+            "1": "8775"
+          }
+        }
+      },
+      "user_mentions": {
+        "0": {
+          "screen_name": "wonder_brand",
+          "name": "wonder_brand",
+          "id": 2868,
+          "id_str": "2869",
+          "indices": {
+            "0": "7251",
+            "1": "1860"
+          }
+        },
+        "1": {
+          "screen_name": "wonder_brand",
+          "name": "bacalhau_oil",
+          "id": 2876,
+          "id_str": "2877",
+          "indices": {
+            "0": "416",
+            "1": "3384"
+          }
+        }
+      },
+      "symbols": null
+    },
+    "filter_level": "tofu",
+    "lang": "pepper"
   },
-  "is_quote_status": false,
-  "quote_count": 9999999999999999,
-  "reply_count": 9999999999999999,
-  "retweet_count": 9999999999999999,
-  "favorite_count": 9999999999999999,
+  "quote_count": "3562",
+  "reply_count": "6052",
+  "retweet_count": "2328",
+  "favorite_count": "274",
   "entities": {
-    "hashtags": [
-      {
-        "text": "RogerForClimate",
-        "indices": [
-          71,
-          87
-        ]
+    "hashtags": null,
+    "urls": null,
+    "user_mentions": {
+      "0": {
+        "screen_name": "super_man",
+        "name": "los_montaditos",
+        "id": 2899,
+        "id_str": "2900",
+        "indices": {
+          "0": "8604",
+          "1": "8022"
+        }
+      },
+      "1": {
+        "screen_name": "bacalhau_oil",
+        "name": "woman_super",
+        "id": 2907,
+        "id_str": "2908",
+        "indices": {
+          "0": "253",
+          "1": "2706"
+        }
+      },
+      "2": {
+        "screen_name": "uber_joao",
+        "name": "bacalhau_oil",
+        "id": 2915,
+        "id_str": "2916",
+        "indices": {
+          "0": "8407",
+          "1": "2893"
+        }
       }
-    ],
-    "urls": [],
-    "user_mentions": [
-      {
-        "screen_name": "screenName",
-        "name": "username",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          3,
-          12
-        ]
-      },
-      {
-        "screen_name": "screenName",
-        "name": "username",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          14,
-          29
-        ]
-      },
-      {
-        "screen_name": "screenName",
-        "name": "Collectif Breakfree Suisse",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          30,
-          42
-        ]
-      },
-      {
-        "screen_name": "screenName",
-        "name": "Search That Word",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          43,
-          56
-        ]
-      },
-      {
-        "screen_name": "screenName",
-        "name": "Credit Suisse",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          57,
-          70
-        ]
-      }
-    ],
-    "symbols": []
+    },
+    "symbols": null
   },
-  "favorited": false,
-  "retweeted": false,
-  "filter_level": "low",
-  "lang": "en",
-  "timestamp_ms": "9999999999999999"
+  "filter_level": "sucrose",
+  "lang": "oregano",
+  "timestamp_ms": "oregano"
 }

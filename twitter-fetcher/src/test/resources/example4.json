@@ -1,51 +1,41 @@
 {
-  "created_at": "Mon Jan 13 17:17:51 +0000 2020",
-  "id": 9999999999999999,
-  "id_str": "9999999999999999",
-  "text": "Message4",
-  "source": "Source4",
-  "truncated": false,
+  "created_at": "parsley",
+  "id": 677,
+  "id_str": "678",
+  "text": "seitan tofu thyme beef thyme edamame tofu seitan sucrose seitan",
+  "source": "seitan",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,
   "in_reply_to_user_id": null,
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "name": "Bj\u00f6rn",
-    "screen_name": "screenName",
+    "id": 688,
+    "id_str": "689",
+    "name": "los_montaditos",
+    "screen_name": "bacalhau_oil",
     "location": null,
     "url": null,
     "description": null,
-    "translator_type": "none",
-    "protected": false,
-    "verified": false,
-    "followers_count": 9999999999999999,
-    "friends_count": 9999999999999999,
-    "listed_count": 9999999999999999,
-    "favourites_count": 9999999999999999,
-    "statuses_count": 9999999999999999,
-    "created_at": "Wed Jan 08 05:28:30 +0000 2020",
+    "translator_type": "sugar",
+    "followers_count": "3783",
+    "friends_count": "3595",
+    "listed_count": "1162",
+    "favourites_count": "8727",
+    "statuses_count": "7061",
+    "created_at": "parsley",
     "utc_offset": null,
     "time_zone": null,
-    "geo_enabled": false,
     "lang": null,
-    "contributors_enabled": false,
-    "is_translator": false,
-    "profile_background_color": "F5F8FA",
-    "profile_background_image_url": "",
-    "profile_background_image_url_https": "",
-    "profile_background_tile": false,
-    "profile_link_color": "1DA1F2",
-    "profile_sidebar_border_color": "C0DEED",
-    "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "9999999999999999",
-    "profile_use_background_image": true,
-    "profile_image_url": "http://twitter.com/profile.png",
-    "profile_image_url_https": "https://twitter.com/profile.png",
-    "default_profile": true,
-    "default_profile_image": false,
+    "profile_background_color": "pepper",
+    "profile_background_image_url": "seitan",
+    "profile_background_image_url_https": "oregano",
+    "profile_link_color": "cinnamon",
+    "profile_sidebar_border_color": "sucrose",
+    "profile_sidebar_fill_color": "mint",
+    "profile_text_color": "tofu mint california reaper chicken liver mint thyme naga jolokia beef  edamame",
+    "profile_image_url": "parsley",
+    "profile_image_url_https": "sugar",
     "following": null,
     "follow_request_sent": null,
     "notifications": null
@@ -55,58 +45,44 @@
   "place": null,
   "contributors": null,
   "retweeted_status": {
-    "created_at": "Mon Jan 13 11:54:30 +0000 2020",
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "text": "Le @CreditSuisse est l'\u00e9tablissement bancaire helv\u00e9tique le plus impliqu\u00e9 dans les \u00e9nergies fossiles. Entre 2016 et\u2026 https://twitter.com/ref",
-    "display_text_range": [
-      0,
-      140
-    ],
-    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-    "truncated": true,
+    "created_at": "oregano",
+    "id": 732,
+    "id_str": "733",
+    "text": "seitan tuna seitan chicken oregano naga jolokia chicken liver  mint chicken",
+    "source": "parsley",
     "in_reply_to_status_id": null,
     "in_reply_to_status_id_str": null,
     "in_reply_to_user_id": null,
     "in_reply_to_user_id_str": null,
     "in_reply_to_screen_name": null,
     "user": {
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "name": "Alternatiba L\u00e9man",
-      "screen_name": "screenName",
-      "location": "Gen\u00e8ve, Suisse",
-      "url": "http:\/\/alternatibaleman.org",
-      "description": "Ensemble, construisons un monde meilleur en relevant le d\u00e9fi climatique #Altlem #Alternatiba #JusticeClimatique #ClimateChange",
-      "translator_type": "none",
-      "protected": false,
-      "verified": false,
-      "followers_count": 9999999999999999,
-      "friends_count": 9999999999999999,
-      "listed_count": 9999999999999999,
-      "favourites_count": 9999999999999999,
-      "statuses_count": 9999999999999999,
-      "created_at": "Thu Jun 04 17:25:28 +0000 2015",
+      "id": 743,
+      "id_str": "744",
+      "name": "",
+      "screen_name": "bacalhau_oil",
+      "location": "mint",
+      "url": "beef",
+      "description": "cinnamon",
+      "translator_type": "chicken",
+      "followers_count": "5309",
+      "friends_count": "3606",
+      "listed_count": "577",
+      "favourites_count": "488",
+      "statuses_count": "1574",
+      "created_at": "naga jolokia",
       "utc_offset": null,
       "time_zone": null,
-      "geo_enabled": true,
       "lang": null,
-      "contributors_enabled": false,
-      "is_translator": false,
-      "profile_background_color": "9999999999999999",
-      "profile_background_image_url": "http://twitter.com/profile.png",
-      "profile_background_image_url_https": "https://twitter.com/profile.png",
-      "profile_background_tile": false,
-      "profile_link_color": "19CF86",
-      "profile_sidebar_border_color": "9999999999999999",
-      "profile_sidebar_fill_color": "9999999999999999",
-      "profile_text_color": "9999999999999999",
-      "profile_use_background_image": false,
-      "profile_image_url": "http://twitter.com/profile.jpg",
-      "profile_image_url_https": "https://twitter.com/profile.jpg",
-      "profile_banner_url": "https://twitter.com/ref",
-      "default_profile": false,
-      "default_profile_image": false,
+      "profile_background_color": "beef",
+      "profile_background_image_url": "sugar",
+      "profile_background_image_url_https": "salt",
+      "profile_link_color": "california reaper",
+      "profile_sidebar_border_color": "parsley",
+      "profile_sidebar_fill_color": "california reaper",
+      "profile_text_color": "tofu parsley seitan tuna mint cod fish sugar chicken beef coffee",
+      "profile_image_url": "cod fish",
+      "profile_image_url_https": "seitan",
+      "profile_banner_url": "coffee",
       "following": null,
       "follow_request_sent": null,
       "notifications": null
@@ -115,213 +91,144 @@
     "coordinates": null,
     "place": null,
     "contributors": null,
-    "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "Le @CreditSuisse est l'\u00e9tablissement bancaire helv\u00e9tique le plus impliqu\u00e9 dans les \u00e9nergies fossiles. Entre 2016 et 2017, au lendemain de la signature de l' #AccorddeParis, il a multipli\u00e9 par 16 ses investissements dans le charbon #DisCreditSuisse #RogerForClimate @searchword https://twitter.com/ref",
-      "display_text_range": [
-        0,
-        278
-      ],
+      "full_text": "tuna thyme california reaper seitan sugar chicken liver pepper california reaper coffee thyme",
+      "display_text_range": {
+        "0": "3886",
+        "1": "2142"
+      },
       "entities": {
-        "hashtags": [
-          {
-            "text": "AccorddeParis",
-            "indices": [
-              157,
-              171
-            ]
-          },
-          {
-            "text": "DisCreditSuisse",
-            "indices": [
-              231,
-              247
-            ]
-          },
-          {
-            "text": "RogerForClimate",
-            "indices": [
-              248,
-              264
-            ]
-          }
-        ],
-        "urls": [],
-        "user_mentions": [
-          {
-            "screen_name": "screenName",
-            "name": "Credit Suisse",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              3,
-              16
-            ]
-          },
-          {
-            "screen_name": "screenName",
-            "name": "Search That Word",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              265,
-              278
-            ]
-          }
-        ],
-        "symbols": [],
-        "media": [
-          {
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              279,
-              302
-            ],
-            "media_url": "http://twitter.com/profile.jpg",
-            "media_url_https": "https://twitter.com/profile.jpg",
-            "url": "https://twitter.com/ref",
-            "display_url": "pic.twitter.com\/hjzanvV0Dd",
-            "expanded_url": "https://twitter.com/ref",
-            "type": "photo",
-            "sizes": {
-              "thumb": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "crop"
-              },
-              "large": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "small": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "medium": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              }
+        "hashtags": {
+          "0": {
+            "text": "chicken sugar chicken sucrose sucrose thyme sucrose mint sugar ",
+            "indices": {
+              "0": "6413",
+              "1": "4287"
             }
           }
-        ]
-      },
-      "extended_entities": {
-        "media": [
-          {
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              279,
-              302
-            ],
-            "media_url": "http://twitter.com/profile.jpg",
-            "media_url_https": "https://twitter.com/profile.jpg",
-            "url": "https://twitter.com/ref",
-            "display_url": "pic.twitter.com\/hjzanvV0Dd",
-            "expanded_url": "https://twitter.com/ref",
-            "type": "photo",
-            "sizes": {
-              "thumb": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "crop"
-              },
-              "large": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "small": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              },
-              "medium": {
-                "w": 9999999999999999,
-                "h": 9999999999999999,
-                "resize": "fit"
-              }
+        },
+        "urls": {
+          "0": {
+            "url": "edamame",
+            "expanded_url": "cod fish",
+            "display_url": "",
+            "indices": {
+              "0": "3210",
+              "1": "7040"
             }
           }
-        ]
+        },
+        "user_mentions": {
+          "0": {
+            "screen_name": "fantastic_javi",
+            "name": "wonder_brand",
+            "id": 811,
+            "id_str": "812",
+            "indices": {
+              "0": "3104",
+              "1": "1484"
+            }
+          },
+          "1": {
+            "screen_name": "los_montaditos",
+            "name": "sunflower_oil",
+            "id": 819,
+            "id_str": "820",
+            "indices": {
+              "0": "7907",
+              "1": "5393"
+            }
+          }
+        },
+        "symbols": null
       }
     },
-    "quote_count": 9999999999999999,
-    "reply_count": 9999999999999999,
-    "retweet_count": 9999999999999999,
-    "favorite_count": 9999999999999999,
+    "quote_count": "1853",
+    "reply_count": "982",
+    "retweet_count": "2403",
+    "favorite_count": "5631",
     "entities": {
-      "hashtags": [],
-      "urls": [
-        {
-          "url": "https://twitter.com/ref",
-          "expanded_url": "https://twitter.com/ref",
-          "display_url": "twitter.com\/i\/web\/status\/1\u2026",
-          "indices": [
-            117,
-            140
-          ]
+      "hashtags": null,
+      "urls": {
+        "0": {
+          "url": "coffee",
+          "expanded_url": "thyme",
+          "display_url": "",
+          "indices": {
+            "0": "3073",
+            "1": "1930"
+          }
         }
-      ],
-      "user_mentions": [
-        {
-          "screen_name": "screenName",
-          "name": "Credit Suisse",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            3,
-            16
-          ]
-        }
-      ],
-      "symbols": []
-    },
-    "favorited": false,
-    "retweeted": false,
-    "possibly_sensitive": false,
-    "filter_level": "low",
-    "lang": "fr"
-  },
-  "is_quote_status": false,
-  "quote_count": 9999999999999999,
-  "reply_count": 9999999999999999,
-  "retweet_count": 9999999999999999,
-  "favorite_count": 9999999999999999,
-  "entities": {
-    "hashtags": [],
-    "urls": [],
-    "user_mentions": [
-      {
-        "screen_name": "alternatibalem",
-        "name": "Alternatiba L\u00e9man",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          3,
-          18
-        ]
       },
-      {
-        "screen_name": "CreditSuisse",
-        "name": "Credit Suisse",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          23,
-          36
-        ]
-      }
-    ],
-    "symbols": []
+      "user_mentions": {
+        "0": {
+          "screen_name": "super_man",
+          "name": "super_man",
+          "id": 843,
+          "id_str": "844",
+          "indices": {
+            "0": "2269",
+            "1": "8834"
+          }
+        },
+        "1": {
+          "screen_name": "bacalhau_oil",
+          "name": "los_montaditos",
+          "id": 851,
+          "id_str": "852",
+          "indices": {
+            "0": "3087",
+            "1": "4618"
+          }
+        }
+      },
+      "symbols": null
+    },
+    "filter_level": "tofu",
+    "lang": "cod fish"
   },
-  "favorited": false,
-  "retweeted": false,
-  "filter_level": "low",
-  "lang": "fr",
-  "timestamp_ms": "9999999999999999"
+  "quote_count": "4189",
+  "reply_count": "8153",
+  "retweet_count": "8894",
+  "favorite_count": "5710",
+  "entities": {
+    "hashtags": null,
+    "urls": null,
+    "user_mentions": {
+      "0": {
+        "screen_name": "",
+        "name": "los_montaditos",
+        "id": 874,
+        "id_str": "875",
+        "indices": {
+          "0": "2221",
+          "1": "8695"
+        }
+      },
+      "1": {
+        "screen_name": "super_man",
+        "name": "bacalhau_oil",
+        "id": 882,
+        "id_str": "883",
+        "indices": {
+          "0": "2996",
+          "1": "8043"
+        }
+      },
+      "2": {
+        "screen_name": "lola_montes",
+        "name": "super_man",
+        "id": 890,
+        "id_str": "891",
+        "indices": {
+          "0": "3088",
+          "1": "5509"
+        }
+      }
+    },
+    "symbols": null
+  },
+  "filter_level": "edamame",
+  "lang": "salt",
+  "timestamp_ms": "naga jolokia"
 }

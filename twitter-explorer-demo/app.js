@@ -13,6 +13,7 @@ let id = 0
 function range(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
 }
+
 function toNewJson(json) {
     let newJson = {};
     for (const key in json) {
@@ -22,11 +23,11 @@ function toNewJson(json) {
         }
         if (typeof (json[key]) == "string")
             if (key.indexOf("text") >= 0) {
-                newJson[key] = range(1, 10).map(() => foods[Number((Math.random() * (foodsSize-1)).toFixed(0))])
+                newJson[key] = range(1, 10).map(() => foods[Number((Math.random() * (foodsSize - 1)).toFixed(0))])
                     .join(" ")
             } else {
                 newJson[key] = key.startsWith("id") ? id.toString() :
-                    (key.indexOf("name") >= 0 ? users[Number((Math.random() * (userSize-1)).toFixed(0))]
+                    (key.indexOf("name") >= 0 ? users[Number((Math.random() * (userSize - 1)).toFixed(0))]
                         : foods[Number((Math.random() * foodsSize).toFixed(0))])
             }
         if (typeof (json[key]) == "number")
@@ -37,7 +38,8 @@ function toNewJson(json) {
     return newJson;
 }
 
-let dstJsonData = toNewJson(jsonData)
-
-let destData = JSON.stringify(dstJsonData, null).replaceAll("{}", null)
-fs.writeFileSync('dst/example.json', destData);
+for (let i = 1; i <= 15; i++) {
+    let dstJsonData = toNewJson(jsonData)
+    let destData = JSON.stringify(dstJsonData, null).replaceAll("{}", null)
+    fs.writeFileSync('dst/example' + i + '.json', destData);
+}

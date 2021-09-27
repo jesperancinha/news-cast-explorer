@@ -1,51 +1,41 @@
 {
-  "created_at": "Mon Jan 13 17:18:05 +0000 2020",
-  "id": 9999999999999999,
-  "id_str": "9999999999999999",
-  "text": "Message9",
-  "source": "Source9",
-  "truncated": false,
+  "created_at": "edamame",
+  "id": 1802,
+  "id_str": "1803",
+  "text": "chicken salt oregano chicken liver mint mint chicken thyme sucrose chicken",
+  "source": "tofu",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,
   "in_reply_to_user_id": null,
   "in_reply_to_user_id_str": null,
   "in_reply_to_screen_name": null,
   "user": {
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "name": "Bj\u00f6rn",
-    "screen_name": "screenName",
+    "id": 1813,
+    "id_str": "1814",
+    "name": "woman_super",
+    "screen_name": "bacalhau_oil",
     "location": null,
     "url": null,
     "description": null,
-    "translator_type": "none",
-    "protected": false,
-    "verified": false,
-    "followers_count": 9999999999999999,
-    "friends_count": 9999999999999999,
-    "listed_count": 9999999999999999,
-    "favourites_count": 9999999999999999,
-    "statuses_count": 9999999999999999,
-    "created_at": "Wed Jan 08 05:28:30 +0000 2020",
+    "translator_type": "chicken liver",
+    "followers_count": "1108",
+    "friends_count": "1603",
+    "listed_count": "7438",
+    "favourites_count": "142",
+    "statuses_count": "857",
+    "created_at": "oregano",
     "utc_offset": null,
     "time_zone": null,
-    "geo_enabled": false,
     "lang": null,
-    "contributors_enabled": false,
-    "is_translator": false,
-    "profile_background_color": "F5F8FA",
-    "profile_background_image_url": "",
+    "profile_background_color": "mint",
+    "profile_background_image_url": "sugar",
     "profile_background_image_url_https": "",
-    "profile_background_tile": false,
-    "profile_link_color": "1DA1F2",
-    "profile_sidebar_border_color": "C0DEED",
-    "profile_sidebar_fill_color": "DDEEF6",
-    "profile_text_color": "9999999999999999",
-    "profile_use_background_image": true,
-    "profile_image_url": "http://twitter.com/profile.png",
-    "profile_image_url_https": "https://twitter.com/profile.png",
-    "default_profile": true,
-    "default_profile_image": false,
+    "profile_link_color": "pepper",
+    "profile_sidebar_border_color": "sugar",
+    "profile_sidebar_fill_color": "tofu",
+    "profile_text_color": "edamame sucrose salt naga jolokia sugar salt sugar california reaper chicken cod fish",
+    "profile_image_url": "parsley",
+    "profile_image_url_https": "oregano",
     "following": null,
     "follow_request_sent": null,
     "notifications": null
@@ -55,58 +45,43 @@
   "place": null,
   "contributors": null,
   "retweeted_status": {
-    "created_at": "Mon Jan 13 11:45:43 +0000 2020",
-    "id": 9999999999999999,
-    "id_str": "9999999999999999",
-    "text": "@searchword .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\",\u2026 https://twitter.com/ref",
-    "display_text_range": [
-      14,
-      140
-    ],
-    "source": "\u003ca href=\"https://twitter.com/ref\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e",
-    "truncated": true,
-    "in_reply_to_status_id": 9999999999999999,
-    "in_reply_to_status_id_str": "9999999999999999",
-    "in_reply_to_user_id": 9999999999999999,
-    "in_reply_to_user_id_str": "9999999999999999",
-    "in_reply_to_screen_name": "searchword",
+    "created_at": "coffee",
+    "id": 1857,
+    "id_str": "1858",
+    "text": "thyme cinnamon sucrose salt oregano edamame thyme tuna salt tuna",
+    "source": "pepper",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
     "user": {
-      "id": 9999999999999999,
-      "id_str": "9999999999999999",
-      "name": "\ud83d\udca7Linda Gill \ud83d\udca7 \ud83d\udc99\ud83d\udc9a\ud83c\udf0f\ud83d\udc9a\ud83d\udc99\ud83d\udca7",
-      "screen_name": "screenName",
-      "location": "NSW #Worimi country, Australia",
-      "url": null,
-      "description": "This is OUR #BlueGreenPlanet \nWe want it back from the 1% #FutureEaters & Governments who are killing it 4 $'s & power.\nThis is #Ecocide & it will Be a #Crime!",
-      "translator_type": "none",
-      "protected": false,
-      "verified": false,
-      "followers_count": 9999999999999999,
-      "friends_count": 9999999999999999,
-      "listed_count": 9999999999999999,
-      "favourites_count": 9999999999999999,
-      "statuses_count": 9999999999999999,
-      "created_at": "Sat Nov 17 05:57:40 +0000 2018",
+      "id": 1868,
+      "id_str": "1869",
+      "name": "fantastic_javi",
+      "screen_name": "super_man",
+      "location": "chicken liver",
+      "url": "oregano",
+      "description": "salt",
+      "translator_type": "salt",
+      "followers_count": "4398",
+      "friends_count": "3834",
+      "listed_count": "2449",
+      "favourites_count": "2787",
+      "statuses_count": "4056",
+      "created_at": "chicken liver",
       "utc_offset": null,
       "time_zone": null,
-      "geo_enabled": false,
       "lang": null,
-      "contributors_enabled": false,
-      "is_translator": false,
-      "profile_background_color": "F5F8FA",
-      "profile_background_image_url": "",
-      "profile_background_image_url_https": "",
-      "profile_background_tile": false,
-      "profile_link_color": "1DA1F2",
-      "profile_sidebar_border_color": "C0DEED",
-      "profile_sidebar_fill_color": "DDEEF6",
-      "profile_text_color": "9999999999999999",
-      "profile_use_background_image": true,
-      "profile_image_url": "http:\/\/pbs.twimg.com\/profile_images\/1216689395475992576\/NdhaBXQ-_normal.jpg",
-      "profile_image_url_https": "https://twitter.com/ref-_normal.jpg",
-      "profile_banner_url": "https://twitter.com/ref",
-      "default_profile": true,
-      "default_profile_image": false,
+      "profile_background_color": "salt",
+      "profile_background_image_url": "edamame",
+      "profile_background_image_url_https": "cod fish",
+      "profile_link_color": "",
+      "profile_sidebar_border_color": "cinnamon",
+      "profile_sidebar_fill_color": "sucrose",
+      "profile_text_color": "sugar cod fish coffee tuna mint sucrose cod fish cinnamon  oregano",
+      "profile_image_url": "coffee",
+      "profile_banner_url": "thyme",
       "following": null,
       "follow_request_sent": null,
       "notifications": null
@@ -115,147 +90,144 @@
     "coordinates": null,
     "place": null,
     "contributors": null,
-    "is_quote_status": false,
     "extended_tweet": {
-      "full_text": "@searchword .@CreditSuisse is \"seeking to align its loan portfolios with the objectives of the Paris Agreement\", but in December fought to manage the initial public offering of the world's leading oil exporter, Saudi Aramco. #DisCreditSuisse #RogerForClimate",
-      "display_text_range": [
-        14,
-        260
-      ],
+      "full_text": "chicken oregano naga jolokia thyme chicken liver oregano mint sucrose beef beef",
+      "display_text_range": {
+        "0": "1806",
+        "1": "8658"
+      },
       "entities": {
-        "hashtags": [
-          {
-            "text": "DisCreditSuisse",
-            "indices": [
-              227,
-              243
-            ]
-          },
-          {
-            "text": "RogerForClimate",
-            "indices": [
-              244,
-              260
-            ]
+        "hashtags": {
+          "0": {
+            "text": "sucrose oregano thyme thyme thyme edamame beef naga jolokia california reaper sucrose",
+            "indices": {
+              "0": "4617",
+              "1": "8154"
+            }
           }
-        ],
-        "urls": [],
-        "user_mentions": [
-          {
-            "screen_name": "screenName",
-            "name": "Search That Word",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              0,
-              13
-            ]
-          },
-          {
-            "screen_name": "screenName",
-            "name": "Credit Suisse",
-            "id": 9999999999999999,
-            "id_str": "9999999999999999",
-            "indices": [
-              15,
-              28
-            ]
-          }
-        ],
-        "symbols": []
-      }
-    },
-    "quote_count": 9999999999999999,
-    "reply_count": 9999999999999999,
-    "retweet_count": 9999999999999999,
-    "favorite_count": 9999999999999999,
-    "entities": {
-      "hashtags": [],
-      "urls": [
-        {
-          "url": "https://twitter.com/ref",
-          "expanded_url": "https://twitter.com/ref",
-          "display_url": "twitter.com\/i\/web\/status\/1\u2026",
-          "indices": [
-            116,
-            139
-          ]
-        }
-      ],
-      "user_mentions": [
-        {
-          "screen_name": "screenName",
-          "name": "Search That Word",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            0,
-            13
-          ]
         },
-        {
-          "screen_name": "CreditSuisse",
-          "name": "Credit Suisse",
-          "id": 9999999999999999,
-          "id_str": "9999999999999999",
-          "indices": [
-            15,
-            28
-          ]
-        }
-      ],
-      "symbols": []
-    },
-    "favorited": false,
-    "retweeted": false,
-    "filter_level": "low",
-    "lang": "en"
-  },
-  "is_quote_status": false,
-  "quote_count": 9999999999999999,
-  "reply_count": 9999999999999999,
-  "retweet_count": 9999999999999999,
-  "favorite_count": 9999999999999999,
-  "entities": {
-    "hashtags": [],
-    "urls": [],
-    "user_mentions": [
-      {
-        "screen_name": "Earth1stlinda2",
-        "name": "\ud83d\udca7Linda Gill \ud83d\udca7 \ud83d\udc99\ud83d\udc9a\ud83c\udf0f\ud83d\udc9a\ud83d\udc99\ud83d\udca7",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          3,
-          18
-        ]
-      },
-      {
-        "screen_name": "searchword",
-        "name": "Search That Word",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          20,
-          33
-        ]
-      },
-      {
-        "screen_name": "CreditSuisse",
-        "name": "Credit Suisse",
-        "id": 9999999999999999,
-        "id_str": "9999999999999999",
-        "indices": [
-          35,
-          48
-        ]
+        "urls": {
+          "0": {
+            "url": "naga jolokia",
+            "expanded_url": "edamame",
+            "display_url": "beef",
+            "indices": {
+              "0": "983",
+              "1": "1173"
+            }
+          }
+        },
+        "user_mentions": {
+          "0": {
+            "screen_name": "lola_montes",
+            "name": "woman_super",
+            "id": 1936,
+            "id_str": "1937",
+            "indices": {
+              "0": "3258",
+              "1": "8195"
+            }
+          },
+          "1": {
+            "screen_name": "uber_joao",
+            "name": "sunflower_oil",
+            "id": 1944,
+            "id_str": "1945",
+            "indices": {
+              "0": "4275",
+              "1": "7963"
+            }
+          }
+        },
+        "symbols": null
       }
-    ],
-    "symbols": []
+    },
+    "quote_count": "2477",
+    "reply_count": "8042",
+    "retweet_count": "5923",
+    "favorite_count": "4305",
+    "entities": {
+      "hashtags": null,
+      "urls": {
+        "0": {
+          "url": "california reaper",
+          "expanded_url": "chicken liver",
+          "display_url": "sugar",
+          "indices": {
+            "0": "3",
+            "1": "1156"
+          }
+        }
+      },
+      "user_mentions": {
+        "0": {
+          "screen_name": "lola_montes",
+          "name": "lola_montes",
+          "id": 1968,
+          "id_str": "1969",
+          "indices": {
+            "0": "6565",
+            "1": "2281"
+          }
+        },
+        "1": {
+          "screen_name": "super_man",
+          "name": "bacalhau_oil",
+          "id": 1976,
+          "id_str": "1977",
+          "indices": {
+            "0": "5386",
+            "1": "903"
+          }
+        }
+      },
+      "symbols": null
+    },
+    "filter_level": "sugar",
+    "lang": "parsley"
   },
-  "favorited": false,
-  "retweeted": false,
-  "filter_level": "low",
-  "lang": "en",
-  "timestamp_ms": "9999999999999999"
+  "quote_count": "4619",
+  "reply_count": "5087",
+  "retweet_count": "4069",
+  "favorite_count": "2473",
+  "entities": {
+    "hashtags": null,
+    "urls": null,
+    "user_mentions": {
+      "0": {
+        "screen_name": "fantastic_javi",
+        "name": "sunflower_oil",
+        "id": 1999,
+        "id_str": "2000",
+        "indices": {
+          "0": "7782",
+          "1": "8503"
+        }
+      },
+      "1": {
+        "screen_name": "bacalhau_oil",
+        "name": "fantastic_javi",
+        "id": 2007,
+        "id_str": "2008",
+        "indices": {
+          "0": "5487",
+          "1": "707"
+        }
+      },
+      "2": {
+        "screen_name": "wonder_brand",
+        "name": "fantastic_javi",
+        "id": 2015,
+        "id_str": "2016",
+        "indices": {
+          "0": "1174",
+          "1": "3766"
+        }
+      }
+    },
+    "symbols": null
+  },
+  "filter_level": "pepper",
+  "lang": "oregano",
+  "timestamp_ms": "tofu"
 }
