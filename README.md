@@ -42,7 +42,7 @@ For this reason we should pick something trending on Twitter like politics, succ
 
 Just because we don't want to keep trying to find the best theme to work on, please use the mock demo provided.
 
-It is about plants, and it generates new examples all the time.
+It is about food, and it generates new examples everytime you run it
 
 All data will finally be visualized in a webpage.
 
@@ -50,9 +50,11 @@ In order to handle data, we'll use the [Saga](https://microservices.io/patterns/
 
 There are three modules:
 
--   twitter-explorer-fe - This is the front end of the application in Angular 9
--   twitter-fetcher - This is the java Spring Boot command line runner developed in Java 16
--   twitter-logger - These are python scripts to serve the logs.
+- [twitter-explorer-fe](./twitter-explorer-fe) - This is the front end of the application - Angular 9
+- [twitter-fetcher](./twitter-fetcher) - This is the java Spring Boot command line runner - Java 17
+- [twitter-logger](./twitter-logger)- These are python scripts to serve the logs - Python 3.8
+- [twitter-explorer-demo](./twitter-explorer-demo) - The Payload generation for the mock twitter service - Python 3.8
+- [twitter-aggregator](./twitter-aggregator) - An aggregator module - Java 17
 
 Logs are placed in the workspace of the execution environment of the working jar
 
