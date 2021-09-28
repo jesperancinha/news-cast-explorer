@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.processor
 
+import com.fasterxml.jackson.core.JsonProcessingException
 import org.apache.commons.io.IOUtils
 import org.jesperancinha.twitter.client.TwitterClient
 import org.jesperancinha.twitter.model.db.Author
@@ -107,17 +108,17 @@ class TwitterMessageProcessorSpockOnlyImplTest extends Specification {
         pageDto.getAuthors().size() == 1
         def authorDto = pageDto.getAuthors().get(0)
         authorDto != null
-        authorDto.getId() == "999999999000000000"
-        authorDto.getName() == "Author1"
-        authorDto.getScreenName() == "Author1ScreenName"
-        authorDto.getCreatedAt() == 1550265180000L
+        authorDto.getId() == "206"
+        authorDto.getName() == "lola_montes"
+        authorDto.getScreenName() == "bacalhau_oil"
+        authorDto.getCreatedAt() == 1632872907000L
         authorDto.getMessageDtos() != null
         authorDto.getMessageDtos().size() == 1
         def messageDto = authorDto.getMessageDtos().get(0)
         messageDto != null
-        messageDto.getId() == "999999999000000000"
-        messageDto.getText() == "Message1"
-        messageDto.getCreatedAt() == 1578935617000L
+        messageDto.getId() == "195"
+        messageDto.getText() == "tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley"
+        messageDto.getCreatedAt() == 1632872907000L
 
         (0..1) * twitterClient.startFetchProcess()
         2 * pageRepository.save(_ as Page) >> { args ->
@@ -164,8 +165,8 @@ class TwitterMessageProcessorSpockOnlyImplTest extends Specification {
                         1122333445566778899L,
                         998877665544332211L)
         then:
-        def e = thrown(JsonSyntaxException)
-        e.message.contains("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path")
+        def e = thrown(JsonProcessingException)
+        e.message.contains("Unrecognized token 'this': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')")
     }
 
 

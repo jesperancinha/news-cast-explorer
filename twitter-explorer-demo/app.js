@@ -1,6 +1,7 @@
 'use strict';
 
-const fs = require('fs');
+import fs from 'fs'
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 
 let sourceData = fs.readFileSync('src/example.json');
 let users = fs.readFileSync('src/users.txt', 'utf8').split('\n');
@@ -38,8 +39,10 @@ function toNewJson(json) {
         else if (json[key] === null) {
             newJson[key] = null
         } else if (typeof (json[key]) == "string") {
-            if (key.indexOf("created") >= 0) {
-                newJson[key] = Date().toString()
+            if (key.indexOf("timestamp") >= 0) {
+                newJson[key] = (Math.random() * new Date().getTime()).toFixed(0)
+            } else if (key.indexOf("created") >= 0) {
+                newJson[key] = format(new Date(), "EEE MMM dd HH:mm:ss +0000 yyyy");
             } else if (key.indexOf("text") >= 0) {
                 newJson[key] = range(1, 10).map(() => foods[Number((Math.random() * (foodsSize - 1)).toFixed(0))])
                     .join(" ")
@@ -48,6 +51,7 @@ function toNewJson(json) {
                     (key.indexOf("name") >= 0 ? users[Number((Math.random() * (userSize - 1)).toFixed(0))]
                         : foods[Number((Math.random() * foodsSize).toFixed(0))])
             }
+
         } else if (typeof (json[key]) == "number")
             newJson[key] = key.startsWith("id") ? id : createRandomNumber()
         else if (typeof (json[key]) == "object")
@@ -55,6 +59,7 @@ function toNewJson(json) {
         else if (typeof (json[key]) == "boolean")
             newJson[key] = json[key]
     }
+
     return newJson;
 }
 

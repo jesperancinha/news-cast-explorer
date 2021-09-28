@@ -34,6 +34,8 @@ import java.util.concurrent.TimeUnit;
 @Builder
 public class TwitterClientImpl implements TwitterClient {
 
+    private final String searchTerm;
+
     private final int timeToWaitSeconds;
 
     private final TwitterMessageProcessor twitterMessageProcessor;
@@ -42,19 +44,19 @@ public class TwitterClientImpl implements TwitterClient {
 
     private final BlockingQueue<String> stringLinkedBlockingQueue;
 
-    private final List<String> searchTerms;
 
     public TwitterClientImpl(
+            @Value("${org.jesperancinha.twitter.searchTerm}")
+            final String searchTerm,
             @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
-                    int timeToWaitSeconds, TwitterMessageProcessor twitterMessageProcessor,
-            Authentication authentication,
-            BlockingQueue<String> stringLinkedBlockingQueue,
-            List<String> searchTerms) {
+            final int timeToWaitSeconds, TwitterMessageProcessor twitterMessageProcessor,
+            final Authentication authentication,
+            BlockingQueue<String> stringLinkedBlockingQueue) {
+        this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.twitterMessageProcessor = twitterMessageProcessor;
         this.authentication = authentication;
         this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
-        this.searchTerms = searchTerms;
     }
 
     /**
@@ -99,7 +101,7 @@ public class TwitterClientImpl implements TwitterClient {
 
         final var httpHosts = new HttpHosts(Constants.STREAM_HOST);
         final var statusesFilterEndpoint = new StatusesFilterEndpoint();
-        statusesFilterEndpoint.trackTerms(searchTerms);
+        statusesFilterEndpoint.trackTerms(List.of(searchTerm));
 
         final BasicClient client = new ClientBuilder()
                 .hosts(httpHosts)

@@ -41,9 +41,6 @@ public class TwitterClientImplJUnit4HamcrestTest {
     @Mock
     private BlockingQueue<String> blockingQueue;
 
-    @Mock
-    private List<String> searchTerms;
-
     @Captor
     private ArgumentCaptor<Long> longArgumentCaptor;
 
@@ -58,7 +55,7 @@ public class TwitterClientImplJUnit4HamcrestTest {
                 .builder()
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .authentication(authentication)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .stringLinkedBlockingQueue(blockingQueue)
                 .timeToWaitSeconds(0)
                 .build();
@@ -72,7 +69,6 @@ public class TwitterClientImplJUnit4HamcrestTest {
     @Test
     public void testStartFetchProcess_whenProgrammed5Second_endsGracefully1Second() throws InterruptedException, JsonProcessingException {
         final Iterator<String> iterator = List.of("mockString").iterator();
-        when(searchTerms.iterator()).thenReturn(iterator);
 
         twitterClient.startFetchProcess();
 

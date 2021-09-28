@@ -17,9 +17,11 @@ import org.jesperancinha.twitter.repository.MessageRepository;
 import org.jesperancinha.twitter.repository.PageRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -46,17 +48,25 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
     }
 
     public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) throws JsonProcessingException {
+        final var list = new ArrayList<JsonProcessingException>();
         final var authorDtos = allMessages.parallelStream()
                 .map(message -> {
                     try {
                         return objectMapper.readValue(message, Message.class);
                     } catch (JsonProcessingException e) {
+                        list.add(e);
                         return null;
                     }
                 })
+                .filter(Objects::nonNull)
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
-                .map(TwitterMessageProcessorImpl::fillAuthor).sorted(Comparator.comparing(AuthorDto::getCreatedAt)).collect(Collectors.toList());
+                .map(TwitterMessageProcessorImpl::fillAuthor)
+                .sorted(Comparator.comparing(AuthorDto::getCreatedAt))
+                .collect(Collectors.toList());
+        if (list.size() > 0) {
+            throw list.stream().sorted((o1, o2) -> o2.getMessage().compareTo(o1.getMessage())).findFirst().orElse(null);
+        }
         final var pageDto = PageDto.builder().createdAt(timestampBefore).authors(authorDtos).duration(timestampAfter - timestampBefore).build();
         savePageLog(pageDto);
         savePageDb(pageDto);

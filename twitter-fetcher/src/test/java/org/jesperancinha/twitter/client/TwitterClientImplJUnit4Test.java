@@ -53,7 +53,7 @@ public class TwitterClientImplJUnit4Test {
                 .builder()
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .authentication(authentication)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .stringLinkedBlockingQueue(blockingQueue)
                 .timeToWaitSeconds(0)
                 .build();

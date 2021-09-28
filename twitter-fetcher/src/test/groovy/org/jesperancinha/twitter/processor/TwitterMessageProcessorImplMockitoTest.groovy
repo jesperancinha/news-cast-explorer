@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.processor
 
+import com.fasterxml.jackson.core.JsonProcessingException
 import org.apache.commons.io.IOUtils
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.twitter.client.TwitterClient
@@ -102,17 +103,17 @@ class TwitterMessageProcessorImplMockitoTest extends Specification {
         assertThat(pageDto.getAuthors()).hasSize(1)
         def authorDto = pageDto.getAuthors().get(0)
         assertThat(authorDto).isNotNull()
-        assertThat(authorDto.getId()).isEqualTo("999999999000000000")
-        assertThat(authorDto.getName()).isEqualTo("Author1")
-        assertThat(authorDto.getScreenName()).isEqualTo("Author1ScreenName")
-        assertThat(authorDto.getCreatedAt()).isEqualTo(1550265180000L)
+        assertThat(authorDto.getId()).isEqualTo("206")
+        assertThat(authorDto.getName()).isEqualTo("lola_montes")
+        assertThat(authorDto.getScreenName()).isEqualTo("bacalhau_oil")
+        assertThat(authorDto.getCreatedAt()).isEqualTo(1632872907000L)
         assertThat(authorDto.getMessageDtos()).isNotNull()
         assertThat(authorDto.getMessageDtos()).hasSize(1)
         def messageDto = authorDto.getMessageDtos().get(0)
         assertThat(messageDto).isNotNull()
-        assertThat(messageDto.getId()).isEqualTo("999999999000000000")
-        assertThat(messageDto.getText()).isEqualTo("Message1")
-        assertThat(messageDto.getCreatedAt()).isEqualTo(1578935617000L)
+        assertThat(messageDto.getId()).isEqualTo("195")
+        assertThat(messageDto.getText()).isEqualTo("tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley")
+        assertThat(messageDto.getCreatedAt()).isEqualTo(1632872907000L)
 
         SoftAssertions.assertSoftly { softly ->
             verify(twitterClient, atMostOnce()).startFetchProcess()
@@ -153,8 +154,8 @@ class TwitterMessageProcessorImplMockitoTest extends Specification {
                         1122333445566778899L,
                         998877665544332211L)
         then:
-        def e = thrown(JsonSyntaxException)
-        e.message.contains("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path")
+        def e = thrown(JsonProcessingException)
+        e.message.contains("Unrecognized token 'this': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')")
     }
 
 

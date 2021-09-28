@@ -22,8 +22,6 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
 
     private BlockingQueue<String> blockingQueue = mock(BlockingQueue.class)
 
-    private List<String> searchTerms = mock(List.class)
-
     private ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class)
 
     private TwitterClient twitterClient
@@ -33,7 +31,7 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
                 .builder()
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .authentication(authentication)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .stringLinkedBlockingQueue(blockingQueue)
                 .timeToWaitSeconds(0)
                 .build()
@@ -49,7 +47,7 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
                 .authentication(authentication)
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .stringLinkedBlockingQueue(blockingQueue)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .timeToWaitSeconds(0)
                 .build()
         def iterator = List.of("mockString").iterator()

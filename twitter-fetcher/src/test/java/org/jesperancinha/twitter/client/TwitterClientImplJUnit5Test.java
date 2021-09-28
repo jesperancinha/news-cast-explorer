@@ -49,7 +49,7 @@ class TwitterClientImplJUnit5Test {
                 .builder()
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .authentication(authentication)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .stringLinkedBlockingQueue(blockingQueue)
                 .timeToWaitSeconds(0)
                 .build();
@@ -62,9 +62,6 @@ class TwitterClientImplJUnit5Test {
      */
     @Test
     public void testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediatelly() throws InterruptedException, JsonProcessingException {
-        final Iterator<String> iterator = List.of("mockString").iterator();
-        when(searchTerms.iterator()).thenReturn(iterator);
-
         twitterClient.startFetchProcess();
 
         verify(twitterMessageProcessor, only()).processAllMessages(any(), longArgumentCaptor.capture(), longArgumentCaptor.capture());
