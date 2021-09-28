@@ -14,15 +14,33 @@ function range(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
 }
 
+function createRandomNumber() {
+    return Number((Math.random() * 9000).toFixed(0));
+}
+
 function toNewJson(json) {
     let newJson = {};
+
+
     for (const key in json) {
         id++;
-        if (json[key] === null) {
+        if (Array.isArray(json[key]))
+            newJson[key] = json[key].map(entry => {
+                if (typeof (entry) == "object")
+                    return toNewJson(entry)
+                else if (typeof (entry) == "number")
+                    return createRandomNumber()
+                else if (typeof (entry) == "string")
+                    return range(1, 10).map(() => foods[Number((Math.random() * (foodsSize - 1)).toFixed(0))])
+                        .join(" ")
+                else return entry
+            })
+        else if (json[key] === null) {
             newJson[key] = null
-        }
-        if (typeof (json[key]) == "string")
-            if (key.indexOf("text") >= 0) {
+        } else if (typeof (json[key]) == "string") {
+            if (key.indexOf("created") >= 0) {
+                newJson[key] = Date().toString()
+            } else if (key.indexOf("text") >= 0) {
                 newJson[key] = range(1, 10).map(() => foods[Number((Math.random() * (foodsSize - 1)).toFixed(0))])
                     .join(" ")
             } else {
@@ -30,13 +48,20 @@ function toNewJson(json) {
                     (key.indexOf("name") >= 0 ? users[Number((Math.random() * (userSize - 1)).toFixed(0))]
                         : foods[Number((Math.random() * foodsSize).toFixed(0))])
             }
-        if (typeof (json[key]) == "number")
-            newJson[key] = key.startsWith("id") ? id : (Math.random() * 9000).toFixed(0)
-        if (typeof (json[key]) == "object")
+        } else if (typeof (json[key]) == "number")
+            newJson[key] = key.startsWith("id") ? id : createRandomNumber()
+        else if (typeof (json[key]) == "object")
             newJson[key] = toNewJson(json[key]);
+        else if (typeof (json[key]) == "boolean")
+            newJson[key] = json[key]
     }
     return newJson;
 }
+
+
+let dstJsonData = toNewJson(jsonData)
+let destData = JSON.stringify(dstJsonData, null).replaceAll("{}", null)
+fs.writeFileSync('dst/example.json', destData);
 
 for (let i = 1; i <= 15; i++) {
     let dstJsonData = toNewJson(jsonData)
