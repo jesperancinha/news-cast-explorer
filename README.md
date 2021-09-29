@@ -31,6 +31,8 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/jupiter5-50.png "Jupiter 5")](https://junit.org/junit5/docs/current/user-guide/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockito-50.png "Mockito")](https://site.mockito.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/assertj-50.png "AssertJ")](https://assertj.github.io/doc/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotest-50.png "Kotest 4.6.1")](https://kotest.io/)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockk-50.png "MockK")](https://mockk.io/)
 
 ---
 What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds. 
@@ -49,11 +51,11 @@ In order to handle data, we'll use the [Saga](https://microservices.io/patterns/
 
 There are three modules:
 
-- [twitter-explorer-fe](./twitter-explorer-fe) - This is the front end of the application - Angular 9
-- [twitter-fetcher](./twitter-fetcher) - This is the java Spring Boot command line runner - Java 17
-- [twitter-logger](./twitter-logger)- These are python scripts to serve the logs - Python 3.8
-- [twitter-explorer-demo](./twitter-explorer-demo) - The Payload generation for the mock twitter service - Python 3.8
-- [twitter-aggregator](./twitter-aggregator) - An aggregator module - Java 17
+-   [twitter-explorer-fe](./twitter-explorer-fe) - This is the front end of the application - Angular 9
+-   [twitter-fetcher](./twitter-fetcher) - This is the java Spring Boot command line runner - Java 17
+-   [twitter-logger](./twitter-logger)- These are python scripts to serve the logs - Python 3.8
+-   [twitter-explorer-demo](./twitter-explorer-demo) - The Payload generation for the mock twitter service - Python 3.8
+-   [twitter-aggregator](./twitter-aggregator) - An aggregator module - Java 17
 
 Logs are placed in the workspace of the execution environment of the working jar
 
@@ -158,15 +160,15 @@ For roadmap information and current developments please check document [Roadmap.
 
 ## References
 
-- [Managing data consistency in a microservice architecture using Sagas - Implementing an orchestration-based saga](https://chrisrichardson.net/post/sagas/2019/12/12/developing-sagas-part-4.html)
-- [Managing data consistency in a microservice architecture using Sagas - Implementing a choreography-based saga](https://chrisrichardson.net/post/sagas/2019/08/15/developing-sagas-part-3.html)
-- [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
-- [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
-- [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
-- [Hosebird Client (hbc)](https://github.com/twitter/hbc)
-- [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
-- [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
-- [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
+-   [Managing data consistency in a microservice architecture using Sagas - Implementing an orchestration-based saga](https://chrisrichardson.net/post/sagas/2019/12/12/developing-sagas-part-4.html)
+-   [Managing data consistency in a microservice architecture using Sagas - Implementing a choreography-based saga](https://chrisrichardson.net/post/sagas/2019/08/15/developing-sagas-part-3.html)
+-   [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
+-   [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
+-   [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
+-   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
+-   [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
+-   [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
+-   [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
