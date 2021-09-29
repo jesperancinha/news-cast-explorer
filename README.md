@@ -88,13 +88,12 @@ The reason for this is that I could not find any image suited for what I wanted.
 
 The command line runner has the option to choose the profile "scheduler".	Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
 
-This project is also the official support project of my article on medium:
+This project is also the official support project of my article on medium:   
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [What did they say? — Tweeting with Hosebird Client](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+👇👇👇👇👇👇🚧 Under Construction 🚧👇👇👇👇👇👇   
 
-And my blog post:
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [What did they say? — Using Sagas in Choreography and Orchestration modes](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "JEsperancinha.org")](http://joaofilipesabinoesperancinha.nl/blog/blog5-comparing-testing) [Why not change to Junit Jupiter 5 and AssertJ or Spock? Let's compare test frameworks!](http://joaofilipesabinoesperancinha.nl/blog/blog5-comparing-testing)
 
 ## Run locally
 
