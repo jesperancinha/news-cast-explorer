@@ -1,41 +1,31 @@
-package org.jesperancinha.twitter.processor;
+package org.jesperancinha.twitter.processor
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.hamcrest.junit.ExpectedException;
-import org.jesperancinha.twitter.repository.AuthorRepository;
-import org.jesperancinha.twitter.repository.MessageRepository;
-import org.jesperancinha.twitter.repository.PageRepository;
-import org.junit.Rule;
-import org.junit.Test;
+import com.fasterxml.jackson.core.JsonProcessingException
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.string.shouldContain
+import org.jesperancinha.twitter.repository.AuthorRepository
+import org.jesperancinha.twitter.repository.MessageRepository
+import org.jesperancinha.twitter.repository.PageRepository
+import org.junit.Test
+import org.mockito.Mockito
 
-import java.util.Set;
-
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.junit.ExpectedException.none;
-import static org.mockito.Mockito.mock;
-
-
-public class TwitterMessageProcessorImplJUnit4HamcrestExceptionTest {
-
-    @Rule
-    public ExpectedException exceptionCapturer = none();
-
-    private final TwitterMessageProcessor twitterMessageProcessor =
-            TwitterMessageProcessorImpl
-                    .builder()
-                    .messageRepository(mock(MessageRepository.class))
-                    .authorRepository(mock(AuthorRepository.class))
-                    .pageRepository(mock(PageRepository.class))
-                    .build();
+class TwitterMessageProcessorImplJUnit4HamcrestExceptionTest {
+    private val twitterMessageProcessor: TwitterMessageProcessor = TwitterMessageProcessorImpl
+        .builder()
+        .messageRepository(Mockito.mock(MessageRepository::class.java))
+        .authorRepository(Mockito.mock(AuthorRepository::class.java))
+        .pageRepository(Mockito.mock(PageRepository::class.java))
+        .build()
 
     @Test
-    public void testMessages_whenMessageListInvalid_throwException() throws JsonProcessingException {
-        var allMessages = Set.of("this is not a JSON", "And this is also not one!");
+    @Throws(JsonProcessingException::class)
+    fun testMessages_whenMessageListInvalid_throwException() {
+        val allMessages = setOf("this is not a JSON", "And this is also not one!")
+        val exception = shouldThrow<JsonProcessingException> {
+            twitterMessageProcessor
+                .processAllMessages(allMessages, 1122333445566778899L, 998877665544332211L)
+        }
+        exception.message.shouldContain("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path")
 
-        exceptionCapturer.expectMessage(containsString("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path"));
-
-        twitterMessageProcessor
-                .processAllMessages(allMessages, 1122333445566778899L, 998877665544332211L);
     }
-
 }

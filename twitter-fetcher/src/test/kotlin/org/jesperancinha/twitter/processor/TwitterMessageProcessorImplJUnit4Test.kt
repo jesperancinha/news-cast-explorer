@@ -1,83 +1,154 @@
-package org.jesperancinha.twitter.processor;
+package org.jesperancinha.twitter.processor
 
-import org.apache.commons.io.IOUtils;
-import org.jesperancinha.twitter.client.TwitterClient;
-import org.jesperancinha.twitter.model.db.Author;
-import org.jesperancinha.twitter.model.db.Message;
-import org.jesperancinha.twitter.model.db.Page;
-import org.jesperancinha.twitter.repository.AuthorRepository;
-import org.jesperancinha.twitter.repository.MessageRepository;
-import org.jesperancinha.twitter.repository.PageRepository;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atMostOnce;
-import static org.mockito.Mockito.mockitoSession;
-import static org.mockito.Mockito.only;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.fasterxml.jackson.core.JsonProcessingException
+import com.ninjasquad.springmockk.MockkBean
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.string.shouldContain
+import io.mockk.every
+import org.apache.commons.io.IOUtils
+import org.assertj.core.api.Assertions
+import org.jesperancinha.twitter.client.TwitterClient
+import org.jesperancinha.twitter.model.db.Author
+import org.jesperancinha.twitter.model.db.Message
+import org.jesperancinha.twitter.model.db.Page
+import org.jesperancinha.twitter.repository.AuthorRepository
+import org.jesperancinha.twitter.repository.MessageRepository
+import org.jesperancinha.twitter.repository.PageRepository
+import org.junit.After
+import org.junit.Before
+import org.junit.BeforeClass
+import org.junit.Test
+import org.mockito.ArgumentCaptor
+import org.mockito.ArgumentMatchers
+import org.mockito.Captor
+import org.mockito.Mockito
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import java.io.IOException
+import java.nio.charset.Charset
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
-public class TwitterMessageProcessorImplJUnit4Test {
-
+class TwitterMessageProcessorImplJUnit4Test {
     @Autowired
-    private TwitterMessageProcessor twitterMessageProcessor;
+    private val twitterMessageProcessor: TwitterMessageProcessor? = null
 
-    @MockBean
-    private TwitterClient twitterClient;
+    @MockkBean(relaxed = true)
+    lateinit var twitterClient: TwitterClient
 
-    @MockBean
-    private AuthorRepository authorRepository;
+    @MockkBean(relaxed = true)
+    lateinit var authorRepository: AuthorRepository
 
-    @MockBean
-    private MessageRepository messageRepository;
+    @MockkBean(relaxed = true)
+    lateinit var messageRepository: MessageRepository
 
-    @MockBean
-    private PageRepository pageRepository;
-
-    @Captor
-    private ArgumentCaptor<Message> messageArgumentCaptor;
+    @MockkBean(relaxed = true)
+    lateinit var pageRepository: PageRepository
 
     @Captor
-    private ArgumentCaptor<Author> authorArgumentCaptor;
+    private val messageArgumentCaptor: ArgumentCaptor<Message>? = null
 
     @Captor
-    private ArgumentCaptor<Page> pageArgumentCaptor;
+    private val authorArgumentCaptor: ArgumentCaptor<Author>? = null
 
-    private static Page testPage;
+    @Captor
+    private val pageArgumentCaptor: ArgumentCaptor<Page>? = null
 
-    private static Author testAuthor;
+    @Before
+    fun setUp() {
+        every { pageRepository.save(ArgumentMatchers.any(Page::class.java)) } returns testPage
+        every { authorRepository.save(ArgumentMatchers.any(Author::class.java)) } returns testAuthor
+        every { messageRepository.save(ArgumentMatchers.any(Message::class.java)) } returns testMessage
+    }
 
-    private static Message testMessage;
+    @Test
+    @Throws(IOException::class, InterruptedException::class)
+    fun testProcessAllMessages_whenGoodMessage_OkParse() {
+        val resultExample1 = getMessageResource("/example1.json")
+        val allMessages = setOf(resultExample1)
+        val pageDto = twitterMessageProcessor!!.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
+        Assertions.assertThat(pageDto).isNotNull
+        Assertions.assertThat(pageDto.duration).isEqualTo(2000L)
+        Assertions.assertThat(pageDto.authors).hasSize(1)
+        val authorDto = pageDto.authors[0]
+        Assertions.assertThat(authorDto).isNotNull
+        Assertions.assertThat(authorDto.id).isEqualTo("999999999000000000")
+        Assertions.assertThat(authorDto.name).isEqualTo("Author1")
+        Assertions.assertThat(authorDto.screenName).isEqualTo("Author1ScreenName")
+        Assertions.assertThat(authorDto.createdAt).isEqualTo(1550265180000L)
+        Assertions.assertThat(authorDto.messageDtos).isNotNull
+        Assertions.assertThat(authorDto.messageDtos).hasSize(1)
+        val messageDto = authorDto.messageDtos[0]
+        Assertions.assertThat(messageDto).isNotNull
+        Assertions.assertThat(messageDto.id).isEqualTo("999999999000000000")
+        Assertions.assertThat(messageDto.text).isEqualTo("Message1")
+        Assertions.assertThat(messageDto.createdAt).isEqualTo(1578935617000L)
+        Mockito.verify(twitterClient, Mockito.atMostOnce())?.startFetchProcess()
+        Mockito.verify(pageRepository, Mockito.times(2))?.save(
+            pageArgumentCaptor!!.capture())
+        val pages = pageArgumentCaptor?.allValues
+        pages.shouldNotBeNull()
+        val page = pages[0]
+        Assertions.assertThat(page).isNotNull
+        Assertions.assertThat(page.id).isNull()
+        Assertions.assertThat(page.authors).isEmpty()
+        val page2 = pages[1]
+        Assertions.assertThat(page2).isNotNull
+        Assertions.assertThat(page2.id).isEqualTo(1L)
+        Assertions.assertThat(page2.authors).hasSize(1)
+        Mockito.verify(authorRepository, Mockito.times(2))?.save(authorArgumentCaptor!!.capture())
+        val authors = authorArgumentCaptor?.allValues
+        authors.shouldNotBeNull()
+        val author = authors[0]
+        Assertions.assertThat(author).isNotNull
+        Assertions.assertThat(author.id).isNull()
+        val author2 = authors[1]
+        Assertions.assertThat(author2).isNotNull
+        Assertions.assertThat(author2.id).isEqualTo(2L)
+        Mockito.verify(messageRepository, Mockito.only())?.save(
+            messageArgumentCaptor!!.capture())
+        val message = messageArgumentCaptor?.value
+        Assertions.assertThat(message).isNotNull
+        Assertions.assertThat(message?.id).isNull()
+    }
 
-    @BeforeClass
-    public static void beforeAll() {
-        testPage = Page.builder()
+    private fun getMessageResource(messageResource: String): String {
+        val resourceAsStream1 = javaClass.getResourceAsStream(messageResource)
+        return IOUtils.toString(resourceAsStream1, Charset.defaultCharset())
+    }
+
+    @Test
+    fun testMessages_whenMessageListInvalid_throwException() {
+        val allMessages = setOf("this is not a JSON", "And this is also not one!")
+
+        val exception = shouldThrow<JsonProcessingException> {
+            twitterMessageProcessor
+                ?.processAllMessages(
+                    allMessages,
+                    1122333445566778899L,
+                    998877665544332211L)
+        }
+        exception.message.shouldContain("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path");
+    }
+
+    @After
+    fun tearDown() {
+        Mockito.mockitoSession().initMocks(twitterClient)
+    }
+
+    companion object {
+        private var testPage: Page? = null
+        private var testAuthor: Author? = null
+        private var testMessage: Message? = null
+
+        @BeforeClass
+        fun beforeAll() {
+            testPage = Page.builder()
                 .id(1L)
                 .duration(2000L)
                 .createdAt(1550265180555L)
-                .build();
-        testAuthor = Author.builder()
+                .build()
+            testAuthor = Author.builder()
                 .id(2L)
                 .twitterAuthorId("998877665544332211")
                 .createdAt(1550265180556L)
@@ -85,106 +156,14 @@ public class TwitterMessageProcessorImplJUnit4Test {
                 .screenName("Author1ScreenName")
                 .page(testPage)
                 .name("Author1")
-                .build();
-        testMessage = Message.builder()
+                .build()
+            testMessage = Message.builder()
                 .id(3L)
                 .author(testAuthor)
                 .twitterMessageId("1122333445566778899")
                 .text("Message1")
                 .createdAt(1550265180557L)
-                .build();
-
-    }
-
-    @Before
-    public void setUp() {
-        when(pageRepository.save(any(Page.class))).thenReturn(testPage);
-        when(authorRepository.save(any(Author.class))).thenReturn(testAuthor);
-        when(messageRepository.save(any(Message.class))).thenReturn(testMessage);
-    }
-
-    @Test
-    public void testProcessAllMessages_whenGoodMessage_OkParse() throws IOException, InterruptedException {
-        final var resultExample1 = getMessageResource("/example1.json");
-        final var allMessages = Set.of(resultExample1);
-
-        final var pageDto = twitterMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L);
-
-        assertThat(pageDto).isNotNull();
-        assertThat(pageDto.getDuration()).isEqualTo(2000L);
-        assertThat(pageDto.getAuthors()).hasSize(1);
-        final var authorDto = pageDto.getAuthors().get(0);
-        assertThat(authorDto).isNotNull();
-        assertThat(authorDto.getId()).isEqualTo("999999999000000000");
-        assertThat(authorDto.getName()).isEqualTo("Author1");
-        assertThat(authorDto.getScreenName()).isEqualTo("Author1ScreenName");
-        assertThat(authorDto.getCreatedAt()).isEqualTo(1550265180000L);
-        assertThat(authorDto.getMessageDtos()).isNotNull();
-        assertThat(authorDto.getMessageDtos()).hasSize(1);
-        final var messageDto = authorDto.getMessageDtos().get(0);
-        assertThat(messageDto).isNotNull();
-        assertThat(messageDto.getId()).isEqualTo("999999999000000000");
-        assertThat(messageDto.getText()).isEqualTo("Message1");
-        assertThat(messageDto.getCreatedAt()).isEqualTo(1578935617000L);
-
-        verify(twitterClient, atMostOnce()).startFetchProcess();
-        verify(pageRepository, times(2)).save(pageArgumentCaptor.capture());
-        final var pages = pageArgumentCaptor.getAllValues();
-        final var page = pages.get(0);
-        assertThat(page).isNotNull();
-        assertThat(page.getId()).isNull();
-        assertThat(page.getAuthors()).isEmpty();
-        final var page2 = pages.get(1);
-        assertThat(page2).isNotNull();
-        assertThat(page2.getId()).isEqualTo(1L);
-        assertThat(page2.getAuthors()).hasSize(1);
-        verify(authorRepository, times(2)).save(authorArgumentCaptor.capture());
-        final var authors = authorArgumentCaptor.getAllValues();
-        final var author = authors.get(0);
-        assertThat(author).isNotNull();
-        assertThat(author.getId()).isNull();
-        final var author2 = authors.get(1);
-        assertThat(author2).isNotNull();
-        assertThat(author2.getId()).isEqualTo(2L);
-        verify(messageRepository, only()).save(messageArgumentCaptor.capture());
-        final var message = messageArgumentCaptor.getValue();
-        assertThat(message).isNotNull();
-        assertThat(message.getId()).isNull();
-    }
-
-    @Test
-    @Ignore
-    public void testProcessAllMessages_when2Message1Author_OkParseOrdered() throws IOException {
-
-    }
-
-    @Test
-    @Ignore
-    public void testProcessAllMessages_when2Message2Author_OkParseOrdered() throws IOException {
-    }
-
-    private String getMessageResource(String messageResource) throws IOException {
-        final InputStream resourceAsStream1 = getClass().getResourceAsStream(messageResource);
-        return IOUtils.toString(resourceAsStream1, Charset.defaultCharset());
-    }
-
-    @Test
-    public void testMessages_whenMessageListInvalid_throwException()  {
-        var allMessages = Set.of("this is not a JSON", "And this is also not one!");
-
-//        assertThatExceptionOfType(
-//                JsonSyntaxException.class)
-//                .isThrownBy(() ->
-//                        twitterMessageProcessor
-//                                .processAllMessages(
-//                                        allMessages,
-//                                        1122333445566778899L,
-//                                        998877665544332211L))
-//                .withMessageContaining("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path");
-    }
-
-    @After
-    public void tearDown() {
-        mockitoSession().initMocks(twitterClient);
+                .build()
+        }
     }
 }

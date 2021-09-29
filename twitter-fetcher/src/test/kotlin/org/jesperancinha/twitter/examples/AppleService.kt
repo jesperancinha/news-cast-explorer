@@ -1,17 +1,19 @@
-package org.jesperancinha.twitter.examples;
+package org.jesperancinha.twitter.examples
 
-public class AppleService {
+open class AppleService {
+    // TODO: Example of method not implemented yet.
+    open val appleFromFrige: Int
+        get() {
+            // TODO: Example of method not implemented yet.
+            throw RuntimeException("Method not implemented yet!")
+        }
 
-    public int getAppleFromFrige(){
-        // TODO: Example of method not implemented yet.
-        throw new RuntimeException("Method not implemented yet!");
-    }
-    public int getAppleFromSupermarket(){
-        // TODO: Example of method not implemented yet.
-        throw new RuntimeException("Method not implemented yet!");
-    }
-
-    public int getTotalApples(){
-        return getAppleFromFrige() + getAppleFromSupermarket();
-    }
+    // TODO: Example of method not implemented yet.
+    open val appleFromSupermarket: Int
+        get() {
+            // TODO: Example of method not implemented yet.
+            throw RuntimeException("Method not implemented yet!")
+        }
+    val totalApples: Int
+        get() = appleFromFrige + appleFromSupermarket
 }
