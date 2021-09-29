@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat
 import static org.mockito.ArgumentMatchers.any
 import static org.mockito.Mockito.*
 
-@Ignore
 class TwitterClientImplJUnit4SpockTest extends Specification {
 
     private TwitterMessageProcessor twitterMessageProcessor = mock(TwitterMessageProcessor)
@@ -50,8 +49,6 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
                 .searchTerm("test")
                 .timeToWaitSeconds(0)
                 .build()
-        def iterator = List.of("mockString").iterator()
-        when(searchTerms.iterator()).thenReturn(iterator)
         when:
         twitterClient.startFetchProcess()
 
@@ -65,7 +62,7 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
             final Long startTimestamp = allValues.get(0)
             final Long endTimeStamp = allValues.get(1)
             final long timeStampDiff = endTimeStamp - startTimestamp
-            assertThat(timeStampDiff).isBetween(0L, 1L)
+            assertThat(timeStampDiff).isBetween(0L, 10L)
         }
     }
 }

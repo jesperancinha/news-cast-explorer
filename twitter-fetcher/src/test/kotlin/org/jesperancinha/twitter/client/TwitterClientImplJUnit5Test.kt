@@ -1,38 +1,31 @@
 package org.jesperancinha.twitter.client
 
-import com.fasterxml.jackson.core.JsonProcessingException
 import com.twitter.hbc.httpclient.auth.Authentication
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.mockk.impl.annotations.MockK
+import io.mockk.junit5.MockKExtension
+import io.mockk.verify
 import org.assertj.core.api.Assertions
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers
-import org.mockito.Captor
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.junit.jupiter.MockitoExtension
 import java.util.concurrent.BlockingQueue
 
-@ExtendWith(MockitoExtension::class)
+@ExtendWith(MockKExtension::class)
 internal class TwitterClientImplJUnit5Test {
-    @Mock
-    private val twitterMessageProcessor: TwitterMessageProcessor? = null
+    @MockK(relaxed = true)
+    lateinit var twitterMessageProcessor: TwitterMessageProcessor
 
-    @Mock
-    private val authentication: Authentication? = null
+    @MockK(relaxed = true)
+    lateinit var authentication: Authentication
 
-    @Mock
-    private val blockingQueue: BlockingQueue<String>? = null
+    @MockK(relaxed = true)
+    lateinit var blockingQueue: BlockingQueue<String>
 
-    @Mock
-    private val searchTerms: List<String>? = null
+    lateinit var twitterClient: TwitterClient
 
-    @Captor
-    private val longArgumentCaptor: ArgumentCaptor<Long>? = null
-    private var twitterClient: TwitterClient? = null
     @BeforeEach
     fun setUp() {
         twitterClient = TwitterClientImpl
@@ -51,18 +44,20 @@ internal class TwitterClientImplJUnit5Test {
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    @Throws(InterruptedException::class, JsonProcessingException::class)
     fun testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediatelly() {
-        twitterClient!!.startFetchProcess()
-        Mockito.verify(twitterMessageProcessor, Mockito.only())
-            ?.processAllMessages(ArgumentMatchers.any(), longArgumentCaptor!!.capture(), longArgumentCaptor.capture())
-        Mockito.verify(blockingQueue, Mockito.times(1))?.remainingCapacity()
-        Mockito.verify(authentication, Mockito.atLeast(0))?.setupConnection(ArgumentMatchers.any())
-        val allValues = longArgumentCaptor?.allValues
-        Assertions.assertThat(allValues).hasSize(2)
-        allValues.shouldNotBeNull()
-        val startTimestamp = allValues[0]
-        val endTimeStamp = allValues[1]
+        twitterClient.startFetchProcess()
+        val longArgumentCaptor = mutableListOf<Long>()
+        verify {
+            twitterMessageProcessor.processAllMessages(any(),
+                capture(longArgumentCaptor),
+                capture(longArgumentCaptor))
+        }
+        verify(exactly = 1) { blockingQueue.remainingCapacity() }
+        verify { authentication.setupConnection(any()) }
+        Assertions.assertThat(longArgumentCaptor).hasSize(2)
+        longArgumentCaptor.shouldNotBeNull()
+        val startTimestamp = longArgumentCaptor[0]
+        val endTimeStamp = longArgumentCaptor[1]
         val timeStampDiff = endTimeStamp - startTimestamp
         Assertions.assertThat(timeStampDiff).isGreaterThanOrEqualTo(0)
         Assertions.assertThat(timeStampDiff).isLessThan(1)

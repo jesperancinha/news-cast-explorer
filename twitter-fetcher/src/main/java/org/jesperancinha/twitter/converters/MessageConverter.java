@@ -15,11 +15,10 @@ public class MessageConverter {
 
     public static Message toData(MessageDto messageDto, Author author) {
         return Message.builder()
-                .author(null)
                 .createdAt(messageDto.getCreatedAt())
                 .twitterMessageId(messageDto.getId())
                 .text(messageDto.getText())
-                .author(author)
+//                .author(author)
                 .build();
     }
 }

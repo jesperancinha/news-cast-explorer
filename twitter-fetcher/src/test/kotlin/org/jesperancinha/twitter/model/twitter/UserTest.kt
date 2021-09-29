@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test
 
 internal class UserTest {
     private val objectMapper = ObjectMapper()
+
     @Test
     @Throws(JsonProcessingException::class)
     fun testEquals_whenEquals_Ok() {

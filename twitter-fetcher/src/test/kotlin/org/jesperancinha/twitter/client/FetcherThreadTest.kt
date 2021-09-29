@@ -2,15 +2,16 @@ package org.jesperancinha.twitter.client
 
 import com.twitter.hbc.core.event.Event
 import com.twitter.hbc.httpclient.BasicClient
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
+import io.mockk.mockk
+import io.mockk.verify
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
-import org.mockito.invocation.InvocationOnMock
 import java.util.*
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.ExecutorService
@@ -24,40 +25,37 @@ class FetcherThreadTest {
     @MockK
     lateinit var executorServiceMock: ExecutorService
 
-    @MockK
+    @MockK(relaxed = true)
     lateinit var clientMock: BasicClient
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRun_whenFetchOk_thenReturnMessage() {
-        MockitoAnnotations.initMocks(this)
-        val allmessages: Set<String> = HashSet()
-        every { queueMock?.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
+        val messages: Set<String> = HashSet()
+        every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(1)
-            .allMessages(allmessages)
+            .allMessages(messages)
             .executorService(executorServiceMock)
             .client(clientMock)
             .build()
         fetcherThread.start()
         fetcherThread.join()
-        Assertions.assertThat(allmessages).isNotNull
-        Assertions.assertThat(allmessages).hasSize(1)
-        Assertions.assertThat(allmessages).contains("I am a message!")
-        Mockito.verify(queueMock, Mockito.only())?.poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1))?.connect()
-        Mockito.verify(clientMock, Mockito.times(1))?.stop()
-        Mockito.verify(clientMock, Mockito.times(1))?.isDone
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        Assertions.assertThat(messages).isNotNull
+        Assertions.assertThat(messages).hasSize(1)
+        Assertions.assertThat(messages).contains("I am a message!")
+        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 1) { clientMock.connect() }
+        verify(exactly = 1) { clientMock.stop() }
+        verify(exactly = 1) { clientMock.isDone }
+        verify { executorServiceMock.shutdownNow() }
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRunWithCapacity5_whenFetchOk_thenReturnMessage() {
-        MockitoAnnotations.initMocks(this)
         val allmessages: Set<String> = HashSet()
-        every { queueMock!!.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
+        every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
+        every { executorServiceMock.shutdownNow() } returns listOf()
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(5)
@@ -67,31 +65,30 @@ class FetcherThreadTest {
             .build()
         fetcherThread.start()
         fetcherThread.join()
-        Assertions.assertThat(allmessages).isNotNull
+        allmessages.shouldNotBeNull()
         Assertions.assertThat(allmessages).hasSize(1)
         Assertions.assertThat(allmessages).contains("I am a message!")
-        Mockito.verify(queueMock, Mockito.times(5))?.poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1))?.connect()
-        Mockito.verify(clientMock, Mockito.times(1))?.stop()
-        Mockito.verify(clientMock, Mockito.times(5))?.isDone
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        verify(exactly = 5) { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 1) { clientMock.connect() }
+        verify(exactly = 1) { clientMock.stop() }
+        verify(exactly = 5) { clientMock.isDone }
+        verify { executorServiceMock.shutdownNow() }
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRunWithCapacity5_whenFetchOkButOneNull_thenReturnStill5Messages() {
-        MockitoAnnotations.initMocks(this)
         val testMessage = "I am a message!"
         val allmessages: Set<String> = HashSet()
         val stringStack = Stack<String?>()
-        stringStack.push(testMessage)
-        stringStack.push(testMessage)
-        stringStack.push(testMessage)
-        stringStack.push(testMessage)
-        stringStack.push(testMessage)
         stringStack.push(null)
-        Mockito.`when`(queueMock!!.poll(1, TimeUnit.SECONDS))
-            .thenAnswer { invocationOnMock: InvocationOnMock? -> stringStack.pop() }
+        stringStack.push(testMessage)
+        stringStack.push(testMessage)
+        stringStack.push(testMessage)
+        stringStack.push(testMessage)
+        stringStack.push(testMessage)
+        stringStack.push(testMessage)
+        every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
+        every { executorServiceMock.shutdownNow() } returns listOf()
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(5)
@@ -105,17 +102,15 @@ class FetcherThreadTest {
         Assertions.assertThat(allmessages).hasSize(1)
         Assertions.assertThat(allmessages).contains("I am a message!")
         Assertions.assertThat(allmessages).containsOnly("I am a message!")
-        Mockito.verify(queueMock, Mockito.times(6)).poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1))?.connect()
-        Mockito.verify(clientMock, Mockito.times(1))?.stop()
-        Mockito.verify(clientMock, Mockito.times(6))?.isDone
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        verify(atLeast = 5, atMost = 6) { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 1) { clientMock.connect() }
+        verify(exactly = 1) { clientMock.stop() }
+        verify(atLeast = 5, atMost = 6) { clientMock.isDone }
+        verify { executorServiceMock.shutdownNow() }
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRun_whenFetchMostlyEmptyAndCapacity_thenReturnOneMessage() {
-        MockitoAnnotations.initMocks(this)
         val allmessages: Set<String> = HashSet()
         val testMessage = "I am a message!"
         val stringStack = Stack<String?>()
@@ -127,8 +122,7 @@ class FetcherThreadTest {
         stringStack.push(null)
         stringStack.push(null)
         stringStack.push(null)
-        Mockito.`when`(queueMock!!.poll(1, TimeUnit.SECONDS))
-            .thenAnswer { invocationOnMock: InvocationOnMock? -> stringStack.pop() }
+        every { queueMock.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(1)
@@ -141,21 +135,20 @@ class FetcherThreadTest {
         Assertions.assertThat(allmessages).isNotNull
         Assertions.assertThat(allmessages).hasSize(1)
         Assertions.assertThat(allmessages).contains("I am a message!")
-        Mockito.verify(queueMock, Mockito.atLeastOnce()).poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1))?.connect()
-        Mockito.verify(clientMock, Mockito.times(1))?.stop()
-        Mockito.verify(clientMock, Mockito.atLeastOnce())?.isDone
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 1) { clientMock.connect() }
+        verify(exactly = 1) { clientMock.stop() }
+        verify { clientMock.isDone }
+        verify { executorServiceMock.shutdownNow() }
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRun_whenFetchMostlyTrackTimesamptAndCapacity_thenReturnOneMessage() {
-        MockitoAnnotations.initMocks(this)
         val allmessages: Set<String> = HashSet()
         val testMessage = "I am a message!"
         val testLimitTrack = "{\"limit\":{\"track\":26,\"timestamp_ms\":\"1579144966748\"}}"
         val stringStack = Stack<String>()
+        stringStack.push(null)
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
@@ -164,8 +157,9 @@ class FetcherThreadTest {
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
-        Mockito.`when`(queueMock!!.poll(1, TimeUnit.SECONDS))
-            .thenAnswer { invocationOnMock: InvocationOnMock? -> stringStack.pop() }
+        every {
+            queueMock.poll(1, TimeUnit.SECONDS)
+        } returnsMany (stringStack)
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(1)
@@ -178,21 +172,19 @@ class FetcherThreadTest {
         Assertions.assertThat(allmessages).isNotNull
         Assertions.assertThat(allmessages).hasSize(1)
         Assertions.assertThat(allmessages).contains("I am a message!")
-        Mockito.verify(queueMock, Mockito.atLeastOnce()).poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1))?.connect()
-        Mockito.verify(clientMock, Mockito.times(1))?.stop()
-        Mockito.verify(clientMock, Mockito.atLeastOnce())?.isDone
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 1) { clientMock.connect() }
+        verify(exactly = 1) { clientMock.stop() }
+        verify { clientMock.isDone }
+        verify { executorServiceMock.shutdownNow() }
     }
 
     @Test
-    @Throws(InterruptedException::class)
     fun testRun_whenClientIsDone_thenReturnNoMessage() {
-        MockitoAnnotations.initMocks(this)
         val allmessages: Set<String> = HashSet()
-        val event = Mockito.mock(Event::class.java)
-        Mockito.`when`(clientMock!!.isDone).thenReturn(true)
-        Mockito.`when`(clientMock.exitEvent).thenReturn(event)
+        val event: Event = mockk()
+        every { clientMock.isDone } returns true
+        every { clientMock.exitEvent } returns event
         val fetcherThread = FetcherThread.builder()
             .stringLinkedBlockingQueue(queueMock)
             .capacity(1)
@@ -202,13 +194,11 @@ class FetcherThreadTest {
             .build()
         fetcherThread.start()
         fetcherThread.join()
-        Assertions.assertThat(allmessages).isNotNull
-        Assertions.assertThat(allmessages).isEmpty()
-        Mockito.verify(queueMock, Mockito.never())?.poll(1, TimeUnit.SECONDS)
-        Mockito.verify(clientMock, Mockito.times(1)).connect()
-        Mockito.verify(clientMock, Mockito.times(1)).isDone
-        Mockito.verify(clientMock, Mockito.times(1)).exitEvent
-        Mockito.verify(clientMock, Mockito.times(1)).stop()
-        Mockito.verify(executorServiceMock, Mockito.only())?.shutdownNow()
+        allmessages.shouldNotBeNull()
+        allmessages.shouldBeEmpty()
+        verify(exactly = 0) { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify { clientMock.connect() }
+        verify { clientMock.isDone }
+        verify { clientMock.exitEvent }
     }
 }

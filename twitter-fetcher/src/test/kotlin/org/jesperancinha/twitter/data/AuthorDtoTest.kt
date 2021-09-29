@@ -1,5 +1,6 @@
 package org.jesperancinha.twitter.data
 
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -35,7 +36,7 @@ class AuthorDtoTest {
             .screenName("Jim Morrissey")
             .messageDtos(ArrayList())
             .build()
-        Assertions.assertThat(authorDto1).isNotSameAs(authorDto2)
+        authorDto1.shouldNotBeSameInstanceAs(authorDto2)
         Assertions.assertThat(authorDto1.hashCode()).isEqualTo(authorDto2.hashCode())
     }
 }

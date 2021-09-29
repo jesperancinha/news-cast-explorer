@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.CascadeType.MERGE;
 import static javax.persistence.GenerationType.AUTO;
 
 @Builder
@@ -36,10 +34,10 @@ public class Message {
     @EqualsAndHashCode.Exclude
     private String text;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "author_id",
-            nullable = false,
-            updatable = false,
-            referencedColumnName = "id")
-    private Author author;
+//    @ManyToOne(optional = false)
+//    @JoinColumn(name = "author_id",
+//            nullable = false,
+//            updatable = false,
+//            referencedColumnName = "id")
+//    private Author author;
 }

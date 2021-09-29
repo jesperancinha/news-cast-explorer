@@ -77,7 +77,6 @@ class TwitterMessageProcessorImplTest extends Specification {
                 .build()
         testMessage = Message.builder()
                 .id(3L)
-                .author(testAuthor)
                 .twitterMessageId("1122333445566778899")
                 .text("Message1")
                 .createdAt(1550265180557L)

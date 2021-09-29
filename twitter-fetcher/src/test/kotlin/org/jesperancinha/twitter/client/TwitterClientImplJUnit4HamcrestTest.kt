@@ -3,39 +3,41 @@ package org.jesperancinha.twitter.client
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.twitter.hbc.httpclient.auth.Authentication
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.mockk.junit5.MockKExtension
+import io.mockk.verify
 import org.hamcrest.MatcherAssert
 import org.hamcrest.Matchers
 import org.hamcrest.collection.IsCollectionWithSize
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.ArgumentCaptor
 import org.mockito.ArgumentMatchers
 import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnitRunner
-import java.util.List
 import java.util.concurrent.BlockingQueue
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(MockKExtension::class)
 class TwitterClientImplJUnit4HamcrestTest {
     @Mock
-    private val twitterMessageProcessor: TwitterMessageProcessor? = null
+    lateinit var twitterMessageProcessor: TwitterMessageProcessor
 
     @Mock
-    private val authentication: Authentication? = null
+    lateinit var authentication: Authentication
 
     @Mock
-    private val blockingQueue: BlockingQueue<String>? = null
+    lateinit var blockingQueue: BlockingQueue<String>
 
     @Captor
-    private val longArgumentCaptor: ArgumentCaptor<Long>? = null
+    lateinit var longArgumentCaptor: ArgumentCaptor<Long>
 
     @Captor
-    private val setArgumentCaptor: ArgumentCaptor<Set<String>>? = null
-    private var twitterClient: TwitterClient? = null
+    lateinit var setArgumentCaptor: ArgumentCaptor<Set<String>>
+
+    lateinit var twitterClient: TwitterClient
+
     @Before
     fun setUp() {
         twitterClient = TwitterClientImpl
@@ -56,13 +58,15 @@ class TwitterClientImplJUnit4HamcrestTest {
     @Test
     @Throws(InterruptedException::class, JsonProcessingException::class)
     fun testStartFetchProcess_whenProgrammed5Second_endsGracefully1Second() {
-        val iterator: Iterator<String> = List.of("mockString").iterator()
-        twitterClient!!.startFetchProcess()
-        Mockito.verify(twitterMessageProcessor, Mockito.only())?.processAllMessages(
-            setArgumentCaptor!!.capture(), longArgumentCaptor!!.capture(), longArgumentCaptor.capture())
-        Mockito.verify(blockingQueue, Mockito.times(1))?.remainingCapacity()
+        val iterator: Iterator<String> = listOf("mockString").iterator()
+        twitterClient.startFetchProcess()
+        verify {
+            twitterMessageProcessor.processAllMessages(
+                setArgumentCaptor.capture(), longArgumentCaptor.capture(), longArgumentCaptor.capture())
+        }
+        verify(exactly = 1) { blockingQueue.remainingCapacity() }
         Mockito.verify(authentication, Mockito.atLeast(0))?.setupConnection(ArgumentMatchers.any())
-        val allValues = longArgumentCaptor?.allValues
+        val allValues = longArgumentCaptor.allValues
         allValues.shouldNotBeNull()
         MatcherAssert.assertThat(allValues, IsCollectionWithSize.hasSize(2))
         val startTimestamp = allValues[0]
@@ -70,7 +74,7 @@ class TwitterClientImplJUnit4HamcrestTest {
         val timeStampDiff = endTimeStamp - startTimestamp
         MatcherAssert.assertThat(timeStampDiff, Matchers.greaterThanOrEqualTo(0L))
         MatcherAssert.assertThat(timeStampDiff, Matchers.lessThanOrEqualTo(1L))
-        val value = setArgumentCaptor?.value
+        val value = setArgumentCaptor.value
         MatcherAssert.assertThat(value, Matchers.`is`(Matchers.emptyCollectionOf(
             String::class.java)))
     }

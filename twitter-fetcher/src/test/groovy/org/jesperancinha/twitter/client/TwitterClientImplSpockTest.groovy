@@ -16,8 +16,6 @@ class TwitterClientImplSpockTest extends Specification {
 
     private BlockingQueue<String> blockingQueue = Mock()
 
-    private List<String> searchTerms = Mock()
-
     def setup() {
     }
 
@@ -34,7 +32,7 @@ class TwitterClientImplSpockTest extends Specification {
                 .authentication(authentication)
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .stringLinkedBlockingQueue(blockingQueue)
-                .searchTerms(searchTerms)
+                .searchTerm("test")
                 .timeToWaitSeconds(0)
                 .build()
         def iterator = List.of("mockString").iterator()
@@ -43,7 +41,6 @@ class TwitterClientImplSpockTest extends Specification {
         twitterClient.startFetchProcess()
 
         then:
-        1 * searchTerms.iterator() >> { args -> iterator }
         1 * twitterMessageProcessor.processAllMessages(_ as Set<String>, _ as Long, _ as Long) >> {
             args ->
                 messages = args[0] as Set<String>

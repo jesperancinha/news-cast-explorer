@@ -41,7 +41,7 @@ public class Author {
 
     private String screenName;
 
-    @OneToMany(mappedBy = "author",
+    @OneToMany(mappedBy = "id",
             cascade = CascadeType.MERGE)
     private final List<Message> messages = new ArrayList<>();
 
