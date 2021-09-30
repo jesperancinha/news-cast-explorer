@@ -27,9 +27,6 @@ public class TwitterConfiguration {
     @Value("${org.jesperancinha.twitter.capacity}")
     private int capacity;
 
-    @Value("${org.jesperancinha.twitter.host:Constants.STREAM_HOST}")
-    private String host;
-
     @Bean
     public OAuth1 authentication() {
         return new OAuth1(consumerKey, consumerSecret, token, tokenSecret);

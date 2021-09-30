@@ -29,6 +29,7 @@ class TwitterClientImplSpockTest extends Specification {
         given:
         def twitterClient = TwitterClientImpl
                 .builder()
+                .host("http://dummy.twitter.stream")
                 .authentication(authentication)
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .stringLinkedBlockingQueue(blockingQueue)

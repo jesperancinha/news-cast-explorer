@@ -26,3 +26,5 @@ prune-all: stop
 	docker system prune --all
 	docker builder prune
 	docker system prune --all --volumes
+case:
+	cd twitter-explorer-demo && mkdir -p dst && yarn install && node app.js

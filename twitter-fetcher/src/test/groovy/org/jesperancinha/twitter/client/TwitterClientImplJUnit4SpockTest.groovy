@@ -4,7 +4,6 @@ import com.twitter.hbc.httpclient.auth.Authentication
 import org.assertj.core.api.SoftAssertions
 import org.jesperancinha.twitter.processor.TwitterMessageProcessor
 import org.mockito.ArgumentCaptor
-import spock.lang.Ignore
 import spock.lang.Specification
 
 import java.util.concurrent.BlockingQueue
@@ -43,6 +42,7 @@ class TwitterClientImplJUnit4SpockTest extends Specification {
         given:
         def twitterClient = TwitterClientImpl
                 .builder()
+                .host("http://dummy.twitter.stream")
                 .authentication(authentication)
                 .twitterMessageProcessor(twitterMessageProcessor)
                 .stringLinkedBlockingQueue(blockingQueue)

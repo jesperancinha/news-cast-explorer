@@ -65,7 +65,7 @@ public class TwitterMessageProcessorImpl implements TwitterMessageProcessor {
                 .sorted(Comparator.comparing(AuthorDto::getCreatedAt))
                 .collect(Collectors.toList());
         if (list.size() > 0) {
-            throw list.stream().sorted((o1, o2) -> o2.getMessage().compareTo(o1.getMessage())).findFirst().orElse(null);
+            throw list.stream().min((o1, o2) -> o2.getMessage().compareTo(o1.getMessage())).orElse(null);
         }
         final var pageDto = PageDto.builder().createdAt(timestampBefore).authors(authorDtos).duration(timestampAfter - timestampBefore).build();
         savePageLog(pageDto);

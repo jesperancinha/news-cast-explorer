@@ -43,6 +43,7 @@ class TwitterClientImplJUnit4Test {
     fun setUp() {
         twitterClient = TwitterClientImpl
             .builder()
+            .host("http://dummy.twitter.stream")
             .twitterMessageProcessor(twitterMessageProcessor)
             .authentication(authentication)
             .searchTerm("test")

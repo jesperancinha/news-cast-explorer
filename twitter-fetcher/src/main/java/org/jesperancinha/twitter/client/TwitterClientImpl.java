@@ -2,7 +2,6 @@ package org.jesperancinha.twitter.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.twitter.hbc.ClientBuilder;
-import com.twitter.hbc.core.Constants;
 import com.twitter.hbc.core.HttpHosts;
 import com.twitter.hbc.core.endpoint.StatusesFilterEndpoint;
 import com.twitter.hbc.core.processor.StringDelimitedProcessor;
@@ -34,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 @Builder
 public class TwitterClientImpl implements TwitterClient {
 
+    private final String host;
+
     private final String searchTerm;
 
     private final int timeToWaitSeconds;
@@ -46,12 +47,16 @@ public class TwitterClientImpl implements TwitterClient {
 
 
     public TwitterClientImpl(
+            @Value("${org.jesperancinha.twitter.host}")
+            final String host,
             @Value("${org.jesperancinha.twitter.searchTerm}")
             final String searchTerm,
             @Value("${org.jesperancinha.twitter.timeToWaitSeconds}")
-            final int timeToWaitSeconds, TwitterMessageProcessor twitterMessageProcessor,
+            final int timeToWaitSeconds,
+            TwitterMessageProcessor twitterMessageProcessor,
             final Authentication authentication,
             BlockingQueue<String> stringLinkedBlockingQueue) {
+        this.host = host;
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.twitterMessageProcessor = twitterMessageProcessor;
@@ -99,7 +104,7 @@ public class TwitterClientImpl implements TwitterClient {
 
     private FetcherThread createFetcherThread(ExecutorService executorService, Set<String> allMessages) {
 
-        final var httpHosts = new HttpHosts(Constants.STREAM_HOST);
+        final var httpHosts = new HttpHosts(host);
         final var statusesFilterEndpoint = new StatusesFilterEndpoint();
         statusesFilterEndpoint.trackTerms(List.of(searchTerm));
 
