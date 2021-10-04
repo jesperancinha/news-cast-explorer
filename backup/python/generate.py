@@ -43,5 +43,5 @@ ret = parse_data(data, df)
 print(ret)
 # pprint.pprint(ret, width=20)          # here it will be wrapped exactly as expected
 
-with open('../../twitter-explorer-demo/dst/example.json', 'w') as json_file:
+with open('../../news-cast-demo/dst/example.json', 'w') as json_file:
     json.dump(ret, json_file, indent=4)

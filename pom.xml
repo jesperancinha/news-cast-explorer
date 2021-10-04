@@ -13,10 +13,10 @@
     </parent>
 
     <modules>
-        <module>twitter-explorer-plain</module>
-        <module>twitter-explorer-saga-orchestration</module>
-        <module>twitter-explorer-saga-choreography</module>
-        <module>twitter-mock</module>
+        <module>news-cast-explorer-plain</module>
+        <module>news-cast-explorer-saga-orchestration</module>
+        <module>news-cast-saga-choreography</module>
+        <module>news-cast-mock</module>
     </modules>
 
     <properties>

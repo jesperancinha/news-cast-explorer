@@ -35,6 +35,11 @@
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/mockk-50.png "MockK")](https://mockk.io/)
 
 ---
+
+This project is ongoing bulldozing changes. Keep coming back to witness its transformation. All references to Twitter will be removed soon and the project will run in a self-reliance way.
+
+(TO BE ALTERED 👇)
+
 What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds. 
 
 In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one. 
@@ -49,71 +54,12 @@ All data will finally be visualized in a webpage.
 
 In order to handle data, we'll use the [Saga](https://microservices.io/patterns/data/saga.html) pattern.
 
-There are three modules:
-
--   [twitter-explorer-fe](./twitter-explorer-fe) - This is the front end of the application - Angular 9
--   [twitter-fetcher](./twitter-fetcher) - This is the java Spring Boot command line runner - Java 17
--   [twitter-logger](./twitter-logger)- These are python scripts to serve the logs - Python 3.8
--   [twitter-explorer-demo](./twitter-explorer-demo) - The Payload generation for the mock twitter service - Python 3.8
--   [twitter-aggregator](./twitter-aggregator) - An aggregator module - Java 17
-
-Logs are placed in the workspace of the execution environment of the working jar
-
-These logs are read using two scripts
-
--   logserver.py - For local runs
--   log-docker-server.py - To be used in the docker image builds
-
-The front end runs with NPM
-
-I have provided a few utilities:
-
--   docker-files - Here live the files used to make the docker image
--   docker-files/pushed-image - This is the docker file for the image I've created in Docker up.
--   Dockerfile - This is another docker image which uses the image jesperancinha/twitter-docker:0.0.2, that I have created as a starting point
--   build.sh - In this bashscript you can find all the commands used to build the project, package it and mount everything in the docker container
--   docker-init.sh - Does almost the same thing, but only executes docker commands.
-
-The image used is available on [dockerhub](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14).
-
-[![dockeri.co](https://dockeri.co/image/jesperancinha/je-all-build-jdk-14)](https://hub.docker.com/r/jesperancinha/je-all-build-jdk-14)
-
-The repo of the source code for this image has moved. All code for my docker images will now reside in a separate repo:
-
-[https://bitbucket.org/jesperancinha/docker-images/](https://bitbucket.org/jesperancinha/docker-images/)
-
-The reason for this is that I could not find any image suited for what I wanted.	I needed:
-
--   NGINX
--   A fully compatible java distribution (12 or 13)
--   Cron tabs
-
-The command line runner has the option to choose the profile "scheduler".	Starting the application with this profile will cause it to never stop and it will launch the Twitter fetcher in the interval specified in org.jesperancinha.twitter.cron of the application.properties file.
-
 This project is also the official support project of my article on medium:   
 
 👇👇👇👇👇👇🚧 Under Construction 🚧👇👇👇👇👇👇   
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [What did they say? — Using Sagas in Choreography and Orchestration modes](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
 
-
-## Run locally
-
-Run the TwitterFetcherLauncher with the following parameters:
-
-Please replace AAAAAAAAAAAAAAAAAAAAAAAAA accordingly:
-
-```shell
---org.jesperancinha.twitter.consumerKey=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
---org.jesperancinha.twitter.consumerSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
---org.jesperancinha.twitter.token=AAAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAAAAAAA \ 
---org.jesperancinha.twitter.tokenSecret=AAAAAAAAAAAAAAAAAAAAAAAAA \ 
---org.jesperancinha.twitter.searchTerm=AAAAAAAAAAAAAAAAAAAAAAAAA
-```
-
-```bash
-curl http://localhost:8080/api/twitter/explorer/
-```
 
 ## Installation Notes
 
