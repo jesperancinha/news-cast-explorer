@@ -1,0 +1,259 @@
+{
+  "created_at": "Mon Oct 04 21:33:04 +0000 2021",
+  "id": 388,
+  "id_str": "389",
+  "text": "sucrose cinnamon beef sucrose coffee chicken liver thyme edamame california reaper seitan",
+  "source": "chicken",
+  "truncated": false,
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 399,
+    "id_str": "400",
+    "name": "uber_joao",
+    "screen_name": "sunflower_oil",
+    "location": null,
+    "url": null,
+    "description": null,
+    "translator_type": "sucrose",
+    "protected": false,
+    "verified": false,
+    "followers_count": 738,
+    "friends_count": 7594,
+    "listed_count": 8858,
+    "favourites_count": 2311,
+    "statuses_count": 4302,
+    "created_at": "Mon Oct 04 21:33:04 +0000 2021",
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "profile_background_color": "cod fish",
+    "profile_background_image_url": "chicken liver",
+    "profile_background_image_url_https": "oregano",
+    "profile_background_tile": false,
+    "profile_link_color": "cinnamon",
+    "profile_sidebar_border_color": "parsley",
+    "profile_sidebar_fill_color": "thyme",
+    "profile_text_color": "thyme tuna cinnamon sugar cod fish tuna chicken liver california reaper naga jolokia pepper",
+    "profile_use_background_image": true,
+    "profile_image_url": "oregano",
+    "profile_image_url_https": "pepper",
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": null,
+    "follow_request_sent": null,
+    "notifications": null
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "retweeted_status": {
+    "created_at": "Mon Oct 04 21:33:04 +0000 2021",
+    "id": 443,
+    "id_str": "444",
+    "text": "chicken liver chicken liver beef california reaper coffee mint edamame cod fish beef naga jolokia",
+    "source": "cinnamon",
+    "truncated": true,
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 454,
+      "id_str": "455",
+      "name": "sunflower_oil",
+      "screen_name": "sunflower_oil",
+      "location": "tofu",
+      "url": "naga jolokia",
+      "description": "mint",
+      "translator_type": "edamame",
+      "protected": false,
+      "verified": false,
+      "followers_count": 2070,
+      "friends_count": 5406,
+      "listed_count": 1175,
+      "favourites_count": 4942,
+      "statuses_count": 792,
+      "created_at": "Mon Oct 04 21:33:04 +0000 2021",
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": true,
+      "lang": null,
+      "contributors_enabled": false,
+      "is_translator": false,
+      "profile_background_color": "chicken",
+      "profile_background_image_url": "sucrose",
+      "profile_background_image_url_https": "edamame",
+      "profile_background_tile": false,
+      "profile_link_color": "edamame",
+      "profile_sidebar_border_color": "chicken",
+      "profile_sidebar_fill_color": "sucrose",
+      "profile_text_color": "seitan parsley sugar chicken liver coffee mint mint salt california reaper edamame",
+      "profile_use_background_image": true,
+      "profile_image_url": "salt",
+      "profile_image_url_https": "sugar",
+      "profile_banner_url": "thyme",
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": null,
+      "follow_request_sent": null,
+      "notifications": null
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "extended_tweet": {
+      "full_text": "chicken liver california reaper seitan  chicken tofu edamame sugar  coffee",
+      "display_text_range": [
+        162,
+        2440
+      ],
+      "entities": {
+        "hashtags": [
+          {
+            "text": "tuna pepper chicken liver pepper chicken liver chicken liver salt parsley tuna cinnamon",
+            "indices": [
+              3383,
+              5029
+            ]
+          }
+        ],
+        "urls": [
+          {
+            "url": "chicken liver",
+            "display_url": "chicken liver",
+            "indices": [
+              2994,
+              5925
+            ]
+          }
+        ],
+        "user_mentions": [
+          {
+            "screen_name": "bacalhau_oil",
+            "name": "",
+            "id": 513,
+            "id_str": "514",
+            "indices": [
+              5918,
+              4310
+            ]
+          },
+          {
+            "screen_name": "los_montaditos",
+            "name": "fantastic_javi",
+            "id": 518,
+            "id_str": "519",
+            "indices": [
+              7712,
+              803
+            ]
+          }
+        ],
+        "symbols": []
+      }
+    },
+    "quote_count": 5572,
+    "reply_count": 8378,
+    "retweet_count": 1699,
+    "favorite_count": 7505,
+    "entities": {
+      "hashtags": [],
+      "urls": [
+        {
+          "expanded_url": "oregano",
+          "display_url": "salt",
+          "indices": [
+            1392,
+            1144
+          ]
+        }
+      ],
+      "user_mentions": [
+        {
+          "screen_name": "fantastic_javi",
+          "name": "woman_super",
+          "id": 536,
+          "id_str": "537",
+          "indices": [
+            4096,
+            3623
+          ]
+        },
+        {
+          "screen_name": "fantastic_javi",
+          "name": "lola_montes",
+          "id": 541,
+          "id_str": "542",
+          "indices": [
+            4663,
+            972
+          ]
+        }
+      ],
+      "symbols": []
+    },
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "filter_level": "pepper",
+    "lang": "coffee"
+  },
+  "is_quote_status": false,
+  "quote_count": 4134,
+  "reply_count": 8216,
+  "retweet_count": 4306,
+  "favorite_count": 2543,
+  "entities": {
+    "hashtags": [],
+    "urls": [],
+    "user_mentions": [
+      {
+        "screen_name": "",
+        "name": "wonder_brand",
+        "id": 561,
+        "id_str": "562",
+        "indices": [
+          3920,
+          8354
+        ]
+      },
+      {
+        "screen_name": "fantastic_javi",
+        "name": "fantastic_javi",
+        "id": 566,
+        "id_str": "567",
+        "indices": [
+          5864,
+          841
+        ]
+      },
+      {
+        "screen_name": "woman_super",
+        "name": "woman_super",
+        "id": 571,
+        "id_str": "572",
+        "indices": [
+          8239,
+          6477
+        ]
+      }
+    ],
+    "symbols": []
+  },
+  "favorited": false,
+  "retweeted": false,
+  "filter_level": "tofu",
+  "lang": "sugar",
+  "timestamp_ms": "798611547084"
+}
