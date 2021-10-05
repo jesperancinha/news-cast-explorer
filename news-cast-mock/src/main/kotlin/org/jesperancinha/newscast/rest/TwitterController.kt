@@ -15,20 +15,16 @@ import java.nio.charset.StandardCharsets
  * Created by jofisaes on 04/10/2021
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/newscast")
 class TwitterController {
 
-    @GetMapping("/1.1/statuses/filter.json")
-    fun filterJsonGet(
-        @RequestParam("delimited") delimited: String, @RequestParam("stall_warnings") stallWarnings: Boolean,
-    ): List<ObjectNode> {
+    @GetMapping("/messages")
+    fun filterJsonGet(): List<ObjectNode> {
         return FILES
     }
 
-    @PostMapping("/1.1/statuses/filter.json")
-    fun filterJsonPost(
-        @RequestParam("delimited") delimited: String, @RequestParam("stall_warnings") stallWarnings: Boolean,
-    ): List<ObjectNode> {
+    @PostMapping("/messages")
+    fun filterJsonPost(): List<ObjectNode> {
         return FILES
     }
 

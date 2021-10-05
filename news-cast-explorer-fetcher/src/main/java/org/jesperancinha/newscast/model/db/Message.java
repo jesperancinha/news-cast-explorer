@@ -31,11 +31,4 @@ public class Message {
 
     @EqualsAndHashCode.Exclude
     private String text;
-
-//    @ManyToOne(optional = false)
-//    @JoinColumn(name = "author_id",
-//            nullable = false,
-//            updatable = false,
-//            referencedColumnName = "id")
-//    private Author author;
 }
