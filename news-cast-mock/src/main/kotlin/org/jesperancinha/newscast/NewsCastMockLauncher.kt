@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * Created by jofisaes on 01/10/2021
  */
 @SpringBootApplication
-class TwitterMockLauncher
+class NewsCastMockLauncher
 
 fun main(args: Array<String>) {
-    SpringApplication.run(TwitterMockLauncher::class.java, *args)
+    SpringApplication.run(NewsCastMockLauncher::class.java, *args)
 }

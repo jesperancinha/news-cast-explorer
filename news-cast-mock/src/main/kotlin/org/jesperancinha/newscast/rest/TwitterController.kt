@@ -1,7 +1,6 @@
 package org.jesperancinha.newscast.rest
 
 import com.fasterxml.jackson.core.JsonFactory
-import com.fasterxml.jackson.core.JsonParser
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ObjectNode
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,32 +22,23 @@ class TwitterController {
     fun filterJsonGet(
         @RequestParam("delimited") delimited: String, @RequestParam("stall_warnings") stallWarnings: Boolean,
     ): List<ObjectNode> {
-        val mapper = ObjectMapper()
-        val factory: JsonFactory = mapper.getJsonFactory()
-        return FILES.map {
-            val parser: JsonParser = factory.createJsonParser(it)
-            mapper.readTree(parser)
-        }
+        return FILES
     }
 
     @PostMapping("/1.1/statuses/filter.json")
     fun filterJsonPost(
         @RequestParam("delimited") delimited: String, @RequestParam("stall_warnings") stallWarnings: Boolean,
     ): List<ObjectNode> {
-        val mapper = ObjectMapper()
-        val factory: JsonFactory = mapper.getJsonFactory()
-
-
-        return FILES.map {
-            val parser: JsonParser = factory.createJsonParser(it)
-            mapper.readTree(parser)
-        }
+        return FILES
     }
 
     companion object {
-        val FILES = (1..10).map {
-            javaClass.getResourceAsStream("/example${it}.json")
-                ?.let { stream -> String(stream.readAllBytes(), StandardCharsets.UTF_8) } ?: ""
+        val mapper = ObjectMapper()
+        val factory: JsonFactory = mapper.jsonFactory
+        val FILES: List<ObjectNode> = (1..15).map {
+            (javaClass.getResourceAsStream("/example${it}.json")
+                ?.let { stream -> String(stream.readAllBytes(), StandardCharsets.UTF_8) } ?: "")
+                .let { envelope -> mapper.readTree(factory.createParser(envelope)) }
         }
     }
 }
