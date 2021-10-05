@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jesperancinha.twitter</groupId>
-    <artifactId>twitter-explorer</artifactId>
+    <groupId>org.jesperancinha.newscast</groupId>
+    <artifactId>newscast-explorer</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0</version>
 
@@ -13,9 +13,10 @@
     </parent>
 
     <modules>
+        <module>news-cast-explorer-fetcher</module>
         <module>news-cast-explorer-plain</module>
         <module>news-cast-explorer-saga-orchestration</module>
-        <module>news-cast-saga-choreography</module>
+        <module>news-cast-explorer-saga-choreography</module>
         <module>news-cast-mock</module>
     </modules>
 
@@ -30,7 +31,6 @@
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
-        <hbc-core.version>2.2.0</hbc-core.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <lombok.version>1.18.20</lombok.version>
         <logback-classic.version>1.2.3</logback-classic.version>
@@ -40,9 +40,6 @@
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
-        <spock.version>2.0-groovy-3.0</spock.version>
-        <gmavenplus-plugin.version>1.13.0</gmavenplus-plugin.version>
-        <groovy.version>3.0.9</groovy.version>
         <kotlin.version>1.6.0-M1</kotlin.version>
         <kotest.version>4.4.0</kotest.version>
         <jackson.version>2.12.3</jackson.version>
@@ -94,11 +91,6 @@
                 <version>${google-oauth-client.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.twitter</groupId>
-                <artifactId>hbc-core</artifactId> <!-- or hbc-twitter4j -->
-                <version>${hbc-core.version}</version> <!-- or whatever the latest version is -->
-            </dependency>
-            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
@@ -131,7 +123,6 @@
                 <version>${kotlin.version}</version>
                 <scope>test</scope>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
@@ -176,7 +167,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>${java.version}</jvmTarget>
                 </configuration>
             </plugin>
         </plugins>

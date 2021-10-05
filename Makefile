@@ -27,4 +27,4 @@ prune-all: stop
 	docker builder prune
 	docker system prune --all --volumes
 case:
-	cd twitter-explorer-demo && mkdir -p dst && yarn install && node app.js
+	cd news-cast-demo && mkdir -p dst && yarn install && node app.js

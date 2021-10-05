@@ -21,10 +21,8 @@ function createRandomNumber() {
 
 function toNewJson(json) {
     let newJson = {};
-
-
+    id++;
     for (const key in json) {
-        id++;
         if (Array.isArray(json[key]))
             newJson[key] = json[key].map(entry => {
                 if (typeof (entry) == "object")

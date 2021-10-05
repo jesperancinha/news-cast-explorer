@@ -2,19 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>org.jesperancinha.newscast</groupId>
         <artifactId>newscast-explorer</artifactId>
+        <groupId>org.jesperancinha.newscast</groupId>
         <version>2.0.0</version>
     </parent>
-    <artifactId>newscast-mock</artifactId>
+    <modelVersion>4.0.0</modelVersion>
 
-    <properties>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-    </properties>
+    <artifactId>news-cast-explorer-fetcher</artifactId>
 
     <dependencies>
         <dependency>
@@ -160,18 +155,6 @@
                         <configuration>
                             <sourceDirs>
                                 <source>${project.basedir}/src/test/kotlin</source>
-                            </sourceDirs>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                             </sourceDirs>
                         </configuration>
                     </execution>
