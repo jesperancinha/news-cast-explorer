@@ -1,12 +1,12 @@
 b: build
 build: build-npm build-maven
 build-npm:
-	cd twitter-explorer-fe && yarn install && npm run build
+	cd news-cast-explorer-fe && yarn install && npm run build
 build-maven:
 	mvn clean install -DskipTests
 test:
 	mvn test
-	cd twitter-explorer-fe && yarn install && npm run test
+	cd news-cast-explorer-fe && yarn install && npm run test
 test-maven:
 	mvn test
 local: no-test

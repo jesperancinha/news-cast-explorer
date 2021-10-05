@@ -9,7 +9,7 @@
         <groupId>org.jesperancinha.newscast</groupId>
         <version>2.0.0</version>
     </parent>
-    <artifactId>newscast-explorer-saga-choreography</artifactId>
+    <artifactId>news-cast-explorer-saga-choreography</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

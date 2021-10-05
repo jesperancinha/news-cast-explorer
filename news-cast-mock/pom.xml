@@ -9,7 +9,7 @@
         <artifactId>newscast-explorer</artifactId>
         <version>2.0.0</version>
     </parent>
-    <artifactId>newscast-mock</artifactId>
+    <artifactId>news-cast-mock</artifactId>
 
     <properties>
         <maven.compiler.source>${java.version}</maven.compiler.source>
