@@ -13,13 +13,13 @@
     </parent>
 
     <modules>
+        <module>news-cast-explorer-common</module>
+        <module>news-cast-explorer-saga-common</module>
         <module>news-cast-explorer-fetcher</module>
         <module>news-cast-explorer-plain</module>
         <module>news-cast-explorer-saga-orchestration</module>
         <module>news-cast-explorer-saga-choreography</module>
         <module>news-cast-mock</module>
-        <module>news-cast-explorer-common</module>
-        <module>news-cast-explorer-saga-common</module>
     </modules>
 
     <properties>
