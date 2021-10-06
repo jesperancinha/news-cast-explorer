@@ -37,9 +37,9 @@ This project is ongoing bulldozing changes. Keep coming back to witness its tran
 
 (TO BE ALTERED 👇)
 
-What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds. 
+What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds.
 
-In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one. 
+In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one.
 
 For this reason we should pick something trending on Twitter like politics, successful artists like Madonna, Cher and Kylie Minogue, climate change issues and any other theme that we know is popular.
 
@@ -51,12 +51,11 @@ All data will finally be visualized in a webpage.
 
 In order to handle data, we'll use the [Saga](https://microservices.io/patterns/data/saga.html) pattern.
 
-This project is also the official support project of my article on medium:   
+This project is also the official support project of my article on medium:
 
-👇👇👇👇👇👇🚧 Under Construction 🚧👇👇👇👇👇👇   
+👇👇👇👇👇👇🚧 Under Construction 🚧👇👇👇👇👇👇
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
-
 
 ## Installation Notes
 
@@ -91,15 +90,17 @@ I hope you enjoyed this repository. If you did please buy me a coffee which enab
 
 ## References
 
--   [Managing data consistency in a microservice architecture using Sagas - Implementing an orchestration-based saga](https://chrisrichardson.net/post/sagas/2019/12/12/developing-sagas-part-4.html)
--   [Managing data consistency in a microservice architecture using Sagas - Implementing a choreography-based saga](https://chrisrichardson.net/post/sagas/2019/0x§8/15/developing-sagas-part-3.html)
--   [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
--   [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
--   [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
--   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
--   [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
--   [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
--   [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
+- [Eventuate.IO](https://eventuate.io/)
+- [Saga: How to implement complex business transactions without two phase commit](https://blog.bernd-ruecker.com/saga-how-to-implement-complex-business-transactions-without-two-phase-commit-e00aa41a1b1b)
+- [Managing data consistency in a microservice architecture using Sagas - Implementing an orchestration-based saga](https://chrisrichardson.net/post/sagas/2019/12/12/developing-sagas-part-4.html)
+- [Managing data consistency in a microservice architecture using Sagas - Implementing a choreography-based saga](https://chrisrichardson.net/post/sagas/2019/0x§8/15/developing-sagas-part-3.html)
+- [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
+- [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
+- [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
+- [Hosebird Client (hbc)](https://github.com/twitter/hbc)
+- [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
+- [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
+- [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
 
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
