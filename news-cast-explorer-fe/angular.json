@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "twitter-fe": {
+    "news-cast-explorer-fe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "twitter-fe:build"
+            "browserTarget": "news-cast-explorer-fe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "twitter-fe:build:production"
+              "browserTarget": "news-cast-explorer-fe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "twitter-fe:build"
+            "browserTarget": "news-cast-explorer-fe:build"
           }
         },
         "test": {
@@ -112,18 +112,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "twitter-fe:serve"
+            "devServerTarget": "news-cast-explorer-fe:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "twitter-fe:serve:production"
+              "devServerTarget": "news-cast-explorer-fe:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "twitter-fe",
+  "defaultProject": "news-cast-explorer-fe",
   "cli": {
     "analytics": "3e459a80-eff3-4a2b-89ca-27f2969c893b"
   }

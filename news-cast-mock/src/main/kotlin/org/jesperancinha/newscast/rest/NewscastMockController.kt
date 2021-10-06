@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets
  */
 @RestController
 @RequestMapping("/api/newscast")
-class TwitterController {
+class NewscastMockController {
 
     @GetMapping("/messages")
     fun filterJsonGet(): List<ObjectNode> {
