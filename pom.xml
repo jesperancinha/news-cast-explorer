@@ -19,6 +19,7 @@
         <module>news-cast-explorer-saga-choreography</module>
         <module>news-cast-mock</module>
         <module>news-cast-explorer-common</module>
+        <module>news-cast-explorer-saga-common</module>
     </modules>
 
     <properties>
