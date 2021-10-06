@@ -12,6 +12,6 @@ class NewsCastAuthorCommentService(
     val authorCommentRepository: AuthorCommentRepository,
 ) {
     fun save(authorComment: AuthorComment): AuthorComment {
-       return authorCommentRepository.save(authorComment)
+        return authorCommentRepository.save(authorComment)
     }
 }

@@ -3,10 +3,12 @@ package org.jesperancinha.newscast.orchestration.saga
 import io.eventuate.tram.commands.consumer.CommandWithDestination
 import io.eventuate.tram.sagas.orchestration.SagaDefinition
 import io.eventuate.tram.sagas.simpledsl.SimpleSaga
+import org.springframework.stereotype.Component
 
 /**
  * Created by jofisaes on 06/10/2021
  */
+@Component
 class CreateCommentSaga : SimpleSaga<CreateCommentSagaData> {
     private val sagaDefinition = step()
         .invokeLocal { createCommentSagaData: CreateCommentSagaData -> create(createCommentSagaData) }
@@ -19,8 +21,14 @@ class CreateCommentSaga : SimpleSaga<CreateCommentSagaData> {
         return null
     }
 
-    private fun reject(createCommentSagaData: CreateCommentSagaData) {}
-    private fun create(createCommentSagaData: CreateCommentSagaData) {}
+    private fun reject(createCommentSagaData: CreateCommentSagaData) {
+
+    }
+
+    private fun create(createCommentSagaData: CreateCommentSagaData) {
+
+    }
+
     override fun getSagaDefinition(): SagaDefinition<CreateCommentSagaData> {
         return sagaDefinition
     }

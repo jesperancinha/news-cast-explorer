@@ -27,10 +27,10 @@ class NewsCastAuthorCommentHandler(
     private fun createAuthorComment(commandMessage: CommandMessage<NewsCastAuthorCommand>): Message {
         val command = commandMessage.command
         val authorComment =
-        newsCastAuthorCommentService.save(AuthorComment(
-            authorId= command.idAuthor,
-            comment = command.authorComment
-        ))
+            newsCastAuthorCommentService.save(AuthorComment(
+                authorId = command.idAuthor,
+                comment = command.authorComment
+            ))
         return withSuccess(authorComment)
     }
 

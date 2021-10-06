@@ -14,34 +14,20 @@
     <name>Newscast Saga Orchestration</name>
 
     <dependencies>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-messaging</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl-starter</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-spring-participant-starter -->
         <dependency>
             <groupId>io.eventuate.tram.sagas</groupId>
             <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
-            <version>0.18.0.RELEASE</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-participant -->
-        <dependency>
-            <groupId>io.eventuate.tram.sagas</groupId>
-            <artifactId>eventuate-tram-sagas-participant</artifactId>
-            <version>0.18.0.RELEASE</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-common -->
-        <dependency>
-            <groupId>io.eventuate.tram.sagas</groupId>
-            <artifactId>eventuate-tram-sagas-common</artifactId>
-            <version>0.18.0.RELEASE</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-orchestration -->
-        <dependency>
-            <groupId>io.eventuate.tram.sagas</groupId>
-            <artifactId>eventuate-tram-sagas-orchestration</artifactId>
-            <version>0.18.0.RELEASE</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-orchestration-simple-dsl -->
-        <dependency>
-            <groupId>io.eventuate.tram.sagas</groupId>
-            <artifactId>eventuate-tram-sagas-orchestration-simple-dsl</artifactId>
             <version>0.18.0.RELEASE</version>
         </dependency>
         <dependency>
@@ -69,15 +55,10 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -98,7 +79,6 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

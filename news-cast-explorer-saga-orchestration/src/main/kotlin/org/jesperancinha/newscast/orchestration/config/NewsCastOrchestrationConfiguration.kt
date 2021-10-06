@@ -15,14 +15,14 @@ import org.springframework.context.annotation.Import
  */
 @Configuration
 @Import(SagaParticipantConfiguration::class)
-class NewsCastOrchestrationConfiguration {
+open class NewsCastOrchestrationConfiguration {
     @Bean
-    fun newsCastAuthorCommentHandler(newsCastAuthorCommentService: NewsCastAuthorCommentService): NewsCastAuthorCommentHandler {
+    open fun newsCastAuthorCommentHandler(newsCastAuthorCommentService: NewsCastAuthorCommentService): NewsCastAuthorCommentHandler {
         return NewsCastAuthorCommentHandler(newsCastAuthorCommentService)
     }
 
     @Bean
-    fun consumerCommandDispatcher(
+    open fun consumerCommandDispatcher(
         target: NewsCastAuthorCommentHandler,
         sagaCommandDispatcherFactory: SagaCommandDispatcherFactory,
     ): CommandDispatcher {
