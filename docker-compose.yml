@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  postgres:
+    hostname: postgres
+    build:
+      context: ./docker-psql/.
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_MULTIPLE_DATABASES=ncexplorer
+    ports:
+      - "5432:5432"
