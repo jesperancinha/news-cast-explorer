@@ -14,6 +14,12 @@
     <name>Newscast Saga Orchestration</name>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-spring-participant-starter -->
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-participant -->
         <dependency>
             <groupId>io.eventuate.tram.sagas</groupId>
@@ -37,6 +43,10 @@
             <groupId>io.eventuate.tram.sagas</groupId>
             <artifactId>eventuate-tram-sagas-orchestration-simple-dsl</artifactId>
             <version>0.18.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jesperancinha.newscast</groupId>
+            <artifactId>news-cast-explorer-saga-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jesperancinha.newscast</groupId>

@@ -7,6 +7,7 @@ import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
 import org.jesperancinha.newscast.orchestration.commands.NewsCastAuthorCommand
 import org.jesperancinha.newscast.orchestration.service.NewsCastAuthorCommentService
+import org.jesperancinha.newscast.saga.domain.AuthorComment
 
 
 /**
@@ -18,14 +19,19 @@ class NewsCastAuthorCommentHandler(
 
     fun commandHandlerDefinitions(): CommandHandlers {
         return SagaCommandHandlersBuilder
-            .fromChannel("customerService")
+            .fromChannel("newsCastAuthorCommentService")
             .onMessage(NewsCastAuthorCommand::class.java, this::createAuthorComment)
             .build()
     }
 
     private fun createAuthorComment(commandMessage: CommandMessage<NewsCastAuthorCommand>): Message {
         val command = commandMessage.command
-        return withSuccess("OK!")
+        val authorComment =
+        newsCastAuthorCommentService.save(AuthorComment(
+            authorId= command.idAuthor,
+            comment = command.authorComment
+        ))
+        return withSuccess(authorComment)
     }
 
 }
