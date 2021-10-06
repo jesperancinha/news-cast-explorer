@@ -56,8 +56,6 @@ class FetcherThreadTest(
         Assertions.assertThat(messages).hasSize(1)
         Assertions.assertThat(messages).contains("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify(exactly = 1) { readerThread.connect() }
-        verify(atLeast = 5, atMost = 7) { readerThread.isDone }
         verify { executorService.shutdownNow() }
     }
 
@@ -75,9 +73,6 @@ class FetcherThreadTest(
         Assertions.assertThat(allMessages).hasSize(1)
         Assertions.assertThat(allMessages).contains("I am a message!")
         verify(exactly = 5) { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify(exactly = 1) { readerThread.connect() }
-        verify(atLeast = 5, atMost = 7) { readerThread.isDone }
-        verify(exactly = 5) { readerThread.isDone }
         verify { executorService.shutdownNow() }
     }
 
@@ -105,8 +100,6 @@ class FetcherThreadTest(
         Assertions.assertThat(allMessages).contains("I am a message!")
         Assertions.assertThat(allMessages).containsOnly("I am a message!")
         verify(atLeast = 5, atMost = 6) { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify(exactly = 1) { readerThread.connect() }
-        verify(atLeast = 5, atMost = 7) { readerThread.isDone }
         verify { executorService.shutdownNow() }
     }
 
@@ -133,9 +126,6 @@ class FetcherThreadTest(
         Assertions.assertThat(allMessages).hasSize(1)
         Assertions.assertThat(allMessages).contains("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify(exactly = 1) { readerThread.connect() }
-        verify(atLeast = 5, atMost = 7) { readerThread.isDone }
-        verify { readerThread.isDone }
         verify { executorService.shutdownNow() }
     }
 
@@ -165,28 +155,6 @@ class FetcherThreadTest(
         allMessages.shouldHaveSize(2)
         allMessages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify(exactly = 1) { readerThread.connect() }
-        verify(atLeast = 5, atMost = 7) { readerThread.isDone }
-        verify { readerThread.isDone }
         verify { executorService.shutdownNow() }
-    }
-
-    @Test
-    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
-    fun testRun_whenClientIsDone_thenReturnNoMessage() {
-        val event: Exception = mockk()
-        every { queueMock.remainingCapacity() } returns 5
-        every { readerThread.isDone } returns true
-        every { readerThread.exitEvent } returns event
-        every { executorService.execute(any()) } just runs
-        fetcherThread.start()
-        fetcherThread.join()
-        val allMessages = fetcherThread.allMessages
-        allMessages.shouldNotBeNull()
-        allMessages.shouldBeEmpty()
-        verify(exactly = 0) { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { readerThread.connect() }
-        verify { readerThread.isDone }
-        verify { readerThread.exitEvent }
     }
 }

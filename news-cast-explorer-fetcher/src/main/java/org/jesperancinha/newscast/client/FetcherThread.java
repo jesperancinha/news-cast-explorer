@@ -23,13 +23,8 @@ public class FetcherThread extends Thread {
     @Override
     public void run() {
         try {
-            client.connect();
             int msgRead = 0;
             while (msgRead < stringLinkedBlockingQueue.remainingCapacity()) {
-                if (client.isDone()) {
-                    log.error("Client connection closed unexpectedly: " + client.getExitEvent().getMessage());
-                    break;
-                }
                 final String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
                 msgRead = processMessage(msgRead, msg);
             }

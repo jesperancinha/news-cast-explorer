@@ -42,18 +42,6 @@ public class ReaderThread extends Thread {
         this.executorService = executorService;
     }
 
-    public void connect() {
-
-    }
-
-    public boolean isDone() {
-        return false;
-    }
-
-    public Throwable getExitEvent() {
-        return null;
-    }
-
     @Override
     public void run() {
 
