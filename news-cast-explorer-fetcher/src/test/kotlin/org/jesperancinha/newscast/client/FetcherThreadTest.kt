@@ -1,13 +1,11 @@
 package org.jesperancinha.newscast.client
 
 import com.ninjasquad.springmockk.MockkBean
-import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.every
 import io.mockk.just
-import io.mockk.mockk
 import io.mockk.runs
 import io.mockk.verify
 import org.assertj.core.api.Assertions
