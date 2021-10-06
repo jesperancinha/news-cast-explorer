@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional
  * Created by jofisaes on 06/10/2021
  */
 @Service
-
 open class NewsCastTicketService(
     @Autowired
     val sagaInstanceFactory: SagaInstanceFactory,
