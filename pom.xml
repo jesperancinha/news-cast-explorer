@@ -36,7 +36,6 @@
         <lombok.version>1.18.20</lombok.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <assertj-core.version>3.14.0</assertj-core.version>
         <commons-io.version>2.6</commons-io.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
@@ -110,12 +109,6 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>2.12.3</version>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj-core.version}</version>
-                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>

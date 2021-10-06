@@ -2,13 +2,13 @@ package org.jesperancinha.newscast.client
 
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.matchers.collections.shouldContain
+import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.every
 import io.mockk.just
 import io.mockk.runs
 import io.mockk.verify
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -51,8 +51,8 @@ class FetcherThreadTest(
         fetcherThread.join()
         val messages = fetcherThread.allMessages
         messages.shouldNotBeNull()
-        Assertions.assertThat(messages).hasSize(1)
-        Assertions.assertThat(messages).contains("I am a message!")
+        messages.shouldHaveSize(1)
+        messages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
         verify { executorService.shutdownNow() }
     }
@@ -68,8 +68,8 @@ class FetcherThreadTest(
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
         allMessages.shouldNotBeNull()
-        Assertions.assertThat(allMessages).hasSize(1)
-        Assertions.assertThat(allMessages).contains("I am a message!")
+        allMessages.shouldHaveSize(1)
+        allMessages.shouldContain("I am a message!")
         verify(exactly = 5) { queueMock.poll(1, TimeUnit.SECONDS) }
         verify { executorService.shutdownNow() }
     }
@@ -93,10 +93,10 @@ class FetcherThreadTest(
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
-        Assertions.assertThat(allMessages).isNotNull
-        Assertions.assertThat(allMessages).hasSize(1)
-        Assertions.assertThat(allMessages).contains("I am a message!")
-        Assertions.assertThat(allMessages).containsOnly("I am a message!")
+        allMessages.shouldNotBeNull()
+        allMessages.shouldHaveSize(1)
+        allMessages.shouldContain("I am a message!")
+        allMessages.shouldContainExactly("I am a message!")
         verify(atLeast = 5, atMost = 6) { queueMock.poll(1, TimeUnit.SECONDS) }
         verify { executorService.shutdownNow() }
     }
@@ -120,9 +120,9 @@ class FetcherThreadTest(
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
-        Assertions.assertThat(allMessages).isNotNull
-        Assertions.assertThat(allMessages).hasSize(1)
-        Assertions.assertThat(allMessages).contains("I am a message!")
+        allMessages.shouldNotBeNull()
+        allMessages.shouldHaveSize(1)
+        allMessages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
         verify { executorService.shutdownNow() }
     }

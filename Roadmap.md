@@ -5,7 +5,8 @@
 2021/10/06
 - Mock service
 - Common library
-- Saga pattern choreography
+- Saga pattern orchestration
+- Version updates
 
 2021/10/05
 - Drop Hosebird Client
@@ -23,9 +24,8 @@
 2021/09/27
 - JDK 17
 
-- Saga pattern orchestration
+- Saga pattern choreography
 - Testcontainers
-- Version updates
 - Kotlin service
 - Use available Docker images
 - Python unit tests

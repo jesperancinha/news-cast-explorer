@@ -6,7 +6,6 @@ import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.junit.jupiter.api.Test
@@ -53,6 +52,6 @@ internal class NewsCastClientJUnit5Test(
         val endTimeStamp = longArgumentCaptor[1]
         val timeStampDiff = endTimeStamp - startTimestamp
         timeStampDiff.shouldBeGreaterThanOrEqual(0)
-        timeStampDiff.shouldBeLessThan(1)
+        timeStampDiff.shouldBeLessThan(2)
     }
 }

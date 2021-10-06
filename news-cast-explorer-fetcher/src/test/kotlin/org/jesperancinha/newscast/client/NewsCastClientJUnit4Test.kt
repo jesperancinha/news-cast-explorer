@@ -1,9 +1,11 @@
 package org.jesperancinha.newscast.client
 
 import com.fasterxml.jackson.core.JsonProcessingException
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.longs.shouldBeBetween
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.junit.Test
 import org.junit.jupiter.api.BeforeEach
@@ -20,7 +22,6 @@ import java.util.concurrent.BlockingQueue
 class NewsCastClientJUnit4Test {
     @Mock
     lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
-
 
     @Mock
     lateinit var blockingQueue: BlockingQueue<String>
@@ -65,13 +66,13 @@ class NewsCastClientJUnit4Test {
         }
         verify(exactly = 1) { blockingQueue.remainingCapacity() }
         val allValues = longArgumentCaptor.allValues
-        Assertions.assertThat(allValues).hasSize(2)
+        allValues.shouldHaveSize(2)
         allValues.shouldNotBeNull()
         val startTimestamp = allValues[0]
         val endTimeStamp = allValues[1]
         val timeStampDiff = endTimeStamp - startTimestamp
-        Assertions.assertThat(timeStampDiff).isBetween(0L, 1L)
+        timeStampDiff.shouldBeBetween(0L, 1L)
         val value = setArgumentCaptor.value
-        Assertions.assertThat(value).isEmpty()
+        value.shouldBeEmpty()
     }
 }

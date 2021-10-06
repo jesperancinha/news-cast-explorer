@@ -1,8 +1,8 @@
 package org.jesperancinha.newscast.service
 
 import com.ninjasquad.springmockk.MockkBean
+import io.kotest.matchers.types.shouldBeInstanceOf
 import io.mockk.verify
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.client.NewsCastClient
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,7 +20,7 @@ class OneRunServiceImplTest(
 
     @Test
     fun testStartProcess_whenRunnerCreated_thenOneServiceInstance() {
-        Assertions.assertThat(runningService).isInstanceOf(OneRunServiceImpl::class.java)
+        runningService.shouldBeInstanceOf<OneRunServiceImpl>()
         verify { newsCastClient.startFetchProcess() }
     }
 

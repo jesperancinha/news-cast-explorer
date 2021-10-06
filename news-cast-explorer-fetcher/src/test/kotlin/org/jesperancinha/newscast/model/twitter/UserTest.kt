@@ -2,7 +2,8 @@ package org.jesperancinha.newscast.model.twitter
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.Test
 
 internal class UserTest {
@@ -27,7 +28,7 @@ internal class UserTest {
       "screen_name": "UUUU",
       "created_at": "Sun Jan 22 17:19:42 +0000 2018"
     }""", User::class.java)
-        Assertions.assertThat(user1).isEqualTo(user2)
+        user1 shouldBe user2
     }
 
     @Test
@@ -49,7 +50,7 @@ internal class UserTest {
       "screen_name": "UUUU",
       "created_at": "Sun Jan 22 17:19:42 +0000 2018"
     }""", User::class.java)
-        Assertions.assertThat(user1).isNotSameAs(user2)
-        Assertions.assertThat(user1.hashCode()).isEqualTo(user2.hashCode())
+        user1 shouldNotBeSameInstanceAs user2
+        user1.hashCode() shouldBe user2.hashCode()
     }
 }

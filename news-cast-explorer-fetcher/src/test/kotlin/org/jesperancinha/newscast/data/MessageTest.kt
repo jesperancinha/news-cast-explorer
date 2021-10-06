@@ -1,6 +1,7 @@
 package org.jesperancinha.newscast.data
 
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.Test
 
 class MessageTest {
@@ -14,7 +15,7 @@ class MessageTest {
             .createdAt(1234324L)
             .text("nononono")
             .build()
-        Assertions.assertThat(messageDto1).isEqualTo(messageDto2)
+        messageDto1 shouldBe messageDto2
     }
 
     @Test
@@ -27,7 +28,7 @@ class MessageTest {
             .createdAt(1234324L)
             .text("nononono")
             .build()
-        Assertions.assertThat(messageDto1).isNotSameAs(messageDto2)
-        Assertions.assertThat(messageDto1.hashCode()).isEqualTo(messageDto2.hashCode())
+        messageDto1 shouldNotBeSameInstanceAs messageDto2
+        messageDto1.hashCode() shouldBe messageDto2.hashCode()
     }
 }

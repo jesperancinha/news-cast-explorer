@@ -3,12 +3,15 @@ package org.jesperancinha.newscast.processor
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import io.mockk.every
 import io.mockk.verify
 import org.apache.commons.io.IOUtils
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.client.NewsCastClient
 import org.jesperancinha.newscast.model.db.Author
 import org.jesperancinha.newscast.model.db.Message
@@ -68,22 +71,22 @@ class NewsCastMessageProcessor1Test {
         val resultExample1 = getMessageResource("/example1.json")
         val allMessages = setOf(resultExample1)
         val pageDto = messageProcessor!!.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
-        Assertions.assertThat(pageDto).isNotNull
-        Assertions.assertThat(pageDto.duration).isEqualTo(2000L)
-        Assertions.assertThat(pageDto.authors).hasSize(1)
+        pageDto.shouldNotBeNull()
+        pageDto.duration shouldBe 2000L
+        pageDto.authors.shouldHaveSize(1)
         val authorDto = pageDto.authors[0]
-        Assertions.assertThat(authorDto).isNotNull
-        Assertions.assertThat(authorDto.id).isEqualTo("999999999000000000")
-        Assertions.assertThat(authorDto.name).isEqualTo("Author1")
-        Assertions.assertThat(authorDto.screenName).isEqualTo("Author1ScreenName")
-        Assertions.assertThat(authorDto.createdAt).isEqualTo(1550265180000L)
-        Assertions.assertThat(authorDto.messageDtos).isNotNull
-        Assertions.assertThat(authorDto.messageDtos).hasSize(1)
+        authorDto.shouldNotBeNull()
+        authorDto.id shouldBe "999999999000000000"
+        authorDto.name shouldBe "Author1"
+        authorDto.screenName shouldBe "Author1ScreenName"
+        authorDto.createdAt shouldBe 1550265180000L
+        authorDto.messageDtos.shouldNotBeNull()
+        authorDto.messageDtos.shouldHaveSize(1)
         val messageDto = authorDto.messageDtos[0]
-        Assertions.assertThat(messageDto).isNotNull
-        Assertions.assertThat(messageDto.id).isEqualTo("999999999000000000")
-        Assertions.assertThat(messageDto.text).isEqualTo("Message1")
-        Assertions.assertThat(messageDto.createdAt).isEqualTo(1578935617000L)
+        messageDto.shouldNotBeNull()
+        messageDto.id shouldBe "999999999000000000"
+        messageDto.text shouldBe "Message1"
+        messageDto.createdAt shouldBe 1578935617000L
         Mockito.verify(newsCastClient, Mockito.atMostOnce())?.startFetchProcess()
         verify(exactly = 2) {
             pageRepository.save(
@@ -92,29 +95,29 @@ class NewsCastMessageProcessor1Test {
         val pages = pageArgumentCaptor?.allValues
         pages.shouldNotBeNull()
         val page = pages[0]
-        Assertions.assertThat(page).isNotNull
-        Assertions.assertThat(page.id).isNull()
-        Assertions.assertThat(page.authors).isEmpty()
+        page.shouldNotBeNull()
+        page.id.shouldBeNull()
+        page.authors.shouldBeEmpty()
         val page2 = pages[1]
-        Assertions.assertThat(page2).isNotNull
-        Assertions.assertThat(page2.id).isEqualTo(1L)
-        Assertions.assertThat(page2.authors).hasSize(1)
+        page2.shouldNotBeNull()
+        page2.id shouldBe 1L
+        page2.authors.shouldHaveSize(1)
         verify(exactly = 2) { authorRepository.save(authorArgumentCaptor!!.capture()) }
         val authors = authorArgumentCaptor?.allValues
         authors.shouldNotBeNull()
         val author = authors[0]
-        Assertions.assertThat(author).isNotNull
-        Assertions.assertThat(author.id).isNull()
+        author.shouldNotBeNull()
+        author.id.shouldBeNull()
         val author2 = authors[1]
-        Assertions.assertThat(author2).isNotNull
-        Assertions.assertThat(author2.id).isEqualTo(2L)
+        author2.shouldNotBeNull()
+        author2.id shouldBe 2L
         verify {
             messageRepository.save(
                 messageArgumentCaptor!!.capture())
         }
         val message = messageArgumentCaptor?.value
-        Assertions.assertThat(message).isNotNull
-        Assertions.assertThat(message?.id).isNull()
+        message.shouldNotBeNull()
+        message.id.shouldBeNull()
     }
 
     private fun getMessageResource(messageResource: String): String {

@@ -4,13 +4,13 @@ import com.fasterxml.jackson.core.JsonParseException
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldBeNull
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.verify
 import org.apache.commons.io.IOUtils
-import org.assertj.core.api.Assertions
 import org.jesperancinha.newscast.client.NewsCastClient
 import org.jesperancinha.newscast.model.db.Author
 import org.jesperancinha.newscast.model.db.Message
@@ -81,25 +81,24 @@ internal class NewsCastMessageProcessor2Test(
         val resultExample1 = getMessageResource("/example1.json")
         val allMessages = setOf(resultExample1)
         val pageDto = newsCastMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
-        Assertions.assertThat(pageDto).isNotNull
-        Assertions.assertThat(pageDto.duration).isEqualTo(2000L)
-        Assertions.assertThat(pageDto.authors).hasSize(1)
+        pageDto.shouldNotBeNull()
+        pageDto.duration shouldBe 2000L
+        pageDto.authors.shouldHaveSize(1)
         val authorDto = pageDto.authors[0]
-        Assertions.assertThat(authorDto).isNotNull
-        Assertions.assertThat(authorDto.id).isEqualTo("206")
+        authorDto.shouldNotBeNull()
+        authorDto.id shouldBe "206"
         Assert.assertEquals("Fail Not Equal!", authorDto.id, "206")
         assertEquals("206", authorDto.id, "Fail Not Equal!")
-        Assertions.assertThat(authorDto.name).isEqualTo("lola_montes")
-        Assertions.assertThat(authorDto.screenName).isEqualTo("bacalhau_oil")
-        Assertions.assertThat(authorDto.createdAt).isEqualTo(1632872907000L)
-        Assertions.assertThat(authorDto.messageDtos).isNotNull
-        Assertions.assertThat(authorDto.messageDtos).hasSize(1)
+        authorDto.name shouldBe "lola_montes"
+        authorDto.screenName shouldBe "bacalhau_oil"
+        authorDto.createdAt shouldBe 1632872907000L
+        authorDto.messageDtos.shouldNotBeNull()
+        authorDto.messageDtos.shouldHaveSize(1)
         val messageDto = authorDto.messageDtos[0]
-        Assertions.assertThat(messageDto).isNotNull
+        messageDto.shouldNotBeNull()
         messageDto.id shouldBe "195"
-        Assertions.assertThat(messageDto.text)
-            .isEqualTo("tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley")
-        Assertions.assertThat(messageDto.createdAt).isEqualTo(1632872907000L)
+        messageDto.text shouldBe "tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley"
+        messageDto.createdAt shouldBe 1632872907000L
         val capturedPages = mutableListOf<Page>()
         verify(exactly = 2) {
             pageRepository.save(
@@ -122,13 +121,13 @@ internal class NewsCastMessageProcessor2Test(
         author.id.shouldBeNull()
         val author2 = captureAuthors[1]
         author2.shouldNotBeNull()
-        Assertions.assertThat(author2.id).isEqualTo(2L)
+        author2.id shouldBe 2L
         val captureMessages = mutableListOf<Message>()
         verify {
             messageRepository.save(
                 capture(captureMessages))
         }
-        Assertions.assertThat(captureMessages).isNotNull
+        captureMessages.shouldNotBeNull()
         captureMessages.size shouldBe 1
         captureMessages[0].id.shouldBeNull()
     }

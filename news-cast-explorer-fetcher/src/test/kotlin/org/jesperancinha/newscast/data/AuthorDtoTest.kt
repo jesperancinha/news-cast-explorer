@@ -1,7 +1,7 @@
 package org.jesperancinha.newscast.data
 
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 class AuthorDtoTest {
@@ -19,7 +19,7 @@ class AuthorDtoTest {
             .screenName("Morrissey")
             .messageDtos(ArrayList())
             .build()
-        Assertions.assertThat(authorDto1).isEqualTo(authorDto2)
+        authorDto1 shouldBe authorDto2
     }
 
     @Test
@@ -37,6 +37,6 @@ class AuthorDtoTest {
             .messageDtos(ArrayList())
             .build()
         authorDto1.shouldNotBeSameInstanceAs(authorDto2)
-        Assertions.assertThat(authorDto1.hashCode()).isEqualTo(authorDto2.hashCode())
+        authorDto1.hashCode() shouldBe authorDto2.hashCode()
     }
 }

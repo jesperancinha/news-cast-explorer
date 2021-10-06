@@ -2,7 +2,8 @@ package org.jesperancinha.newscast.model.twitter
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.assertj.core.api.Assertions
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import org.junit.jupiter.api.Test
 
 class MessageTest {
@@ -29,7 +30,7 @@ class MessageTest {
     "name": "Author3",
     "notifications": null
   }}""", Message::class.java)
-        Assertions.assertThat(message1).isEqualTo(message2)
+        message1 shouldBe message2
     }
 
     @Test
@@ -55,8 +56,8 @@ class MessageTest {
     "name": "Author3",
     "notifications": null
   }}""", Message::class.java)
-        Assertions.assertThat(message1).isNotSameAs(message2)
-        Assertions.assertThat(message1.hashCode()).isEqualTo(message2.hashCode())
+        message1 shouldNotBeSameInstanceAs message2
+        message1.hashCode() shouldBe message2.hashCode()
     }
 
     companion object {
