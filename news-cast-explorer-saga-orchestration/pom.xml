@@ -14,6 +14,12 @@
     <name>Newscast Saga Orchestration</name>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-participant -->
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-participant</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-common -->
         <dependency>
             <groupId>io.eventuate.tram.sagas</groupId>
