@@ -7,6 +7,7 @@
 - Common library
 - Saga pattern orchestration
 - Version updates
+- Buy me a coffee
 
 2021/10/05
 - Drop Hosebird Client
