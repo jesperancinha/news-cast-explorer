@@ -4,12 +4,13 @@
 
 2021/10/06
 - Mock service
+- Common library
+- Saga pattern choreography
 
 2021/10/05
 - Drop Hosebird Client
 - Kotest, Mockk
 - Makefile
-
 
 2021/10/04
 - Remove twitter out of the equation 🐥
@@ -22,7 +23,7 @@
 2021/09/27
 - JDK 17
 
-- Saga patters namely choreography and orchestration
+- Saga pattern orchestration
 - Testcontainers
 - Version updates
 - Kotlin service

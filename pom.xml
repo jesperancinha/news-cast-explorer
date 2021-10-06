@@ -18,6 +18,7 @@
         <module>news-cast-explorer-saga-orchestration</module>
         <module>news-cast-explorer-saga-choreography</module>
         <module>news-cast-mock</module>
+        <module>news-cast-explorer-common</module>
     </modules>
 
     <properties>
@@ -49,6 +50,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.jesperancinha.newscast</groupId>
+                <artifactId>news-cast-explorer-common</artifactId>
+                <version>2.0.0</version>
+            </dependency>
             <dependency>
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk</artifactId>
