@@ -2,6 +2,9 @@
 
 ## Roadmap to v3.0.0
 
+2021/10/06
+- Mock service
+
 2021/10/05
 - Drop Hosebird Client
 - Kotest, Mockk
@@ -19,7 +22,6 @@
 2021/09/27
 - JDK 17
 
-- Mock service
 - Saga patters namely choreography and orchestration
 - Testcontainers
 - Version updates
