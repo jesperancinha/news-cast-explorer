@@ -1,4 +1,4 @@
-package org.jesperancinha.newscast.model.twitter
+package org.jesperancinha.newscast.model.source
 
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper

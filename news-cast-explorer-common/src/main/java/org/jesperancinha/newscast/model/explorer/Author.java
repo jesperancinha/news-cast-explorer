@@ -1,4 +1,4 @@
-package org.jesperancinha.newscast.model.db;
+package org.jesperancinha.newscast.model.explorer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

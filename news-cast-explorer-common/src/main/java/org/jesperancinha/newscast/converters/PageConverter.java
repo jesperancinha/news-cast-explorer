@@ -1,7 +1,7 @@
 package org.jesperancinha.newscast.converters;
 
 import org.jesperancinha.newscast.data.PageDto;
-import org.jesperancinha.newscast.model.db.Page;
+import org.jesperancinha.newscast.model.explorer.Page;
 
 import java.util.stream.Collectors;
 

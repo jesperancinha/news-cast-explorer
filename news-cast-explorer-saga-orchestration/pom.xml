@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>news-cast-explorer-saga-orchestration</artifactId>
+    <name>Newscast Saga Orchestration</name>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-common -->
@@ -30,6 +31,14 @@
             <groupId>io.eventuate.tram.sagas</groupId>
             <artifactId>eventuate-tram-sagas-orchestration-simple-dsl</artifactId>
             <version>0.18.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jesperancinha.newscast</groupId>
+            <artifactId>news-cast-explorer-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jesperancinha.newscast</groupId>
+            <artifactId>news-cast-explorer-saga-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

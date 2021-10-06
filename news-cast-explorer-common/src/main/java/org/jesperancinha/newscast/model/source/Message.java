@@ -1,4 +1,4 @@
-package org.jesperancinha.newscast.model.twitter;
+package org.jesperancinha.newscast.model.source;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

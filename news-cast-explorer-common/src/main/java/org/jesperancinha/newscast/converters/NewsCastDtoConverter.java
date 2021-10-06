@@ -2,8 +2,8 @@ package org.jesperancinha.newscast.converters;
 
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
-import org.jesperancinha.newscast.model.twitter.Message;
-import org.jesperancinha.newscast.model.twitter.User;
+import org.jesperancinha.newscast.model.source.Message;
+import org.jesperancinha.newscast.model.source.User;
 
 public class NewsCastDtoConverter {
     public static MessageDto toMessageDto(Message message) {

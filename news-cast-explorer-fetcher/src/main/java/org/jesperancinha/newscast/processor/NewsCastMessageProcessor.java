@@ -11,7 +11,7 @@ import org.jesperancinha.newscast.converters.NewsCastDtoConverter;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
 import org.jesperancinha.newscast.data.PageDto;
-import org.jesperancinha.newscast.model.twitter.Message;
+import org.jesperancinha.newscast.model.source.Message;
 import org.jesperancinha.newscast.repository.AuthorRepository;
 import org.jesperancinha.newscast.repository.MessageRepository;
 import org.jesperancinha.newscast.repository.PageRepository;

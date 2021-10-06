@@ -1,8 +1,7 @@
 package org.jesperancinha.newscast.converters;
 
 import org.jesperancinha.newscast.data.MessageDto;
-import org.jesperancinha.newscast.model.db.Author;
-import org.jesperancinha.newscast.model.db.Message;
+import org.jesperancinha.newscast.model.explorer.Message;
 
 public class MessageConverter {
     public static MessageDto toDto(Message message) {

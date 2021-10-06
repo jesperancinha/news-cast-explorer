@@ -1,35 +1,34 @@
-package org.jesperancinha.newscast.model.db;
+package org.jesperancinha.newscast.model.explorer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Builder
+@EqualsAndHashCode
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Page {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = AUTO)
     private Long id;
 
-    private Long duration;
+    private String newscastMessageId;
 
+    @EqualsAndHashCode.Exclude
     private Long createdAt;
 
-    @OneToMany(mappedBy = "page", cascade = CascadeType.MERGE)
-    private final List<Author> authors = new ArrayList<>();
+    @EqualsAndHashCode.Exclude
+    private String text;
 }

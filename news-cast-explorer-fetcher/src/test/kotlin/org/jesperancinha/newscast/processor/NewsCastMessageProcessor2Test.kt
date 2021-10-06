@@ -12,9 +12,9 @@ import io.mockk.every
 import io.mockk.verify
 import org.apache.commons.io.IOUtils
 import org.jesperancinha.newscast.client.NewsCastClient
-import org.jesperancinha.newscast.model.db.Author
-import org.jesperancinha.newscast.model.db.Message
-import org.jesperancinha.newscast.model.db.Page
+import org.jesperancinha.newscast.model.explorer.Author
+import org.jesperancinha.newscast.model.explorer.Message
+import org.jesperancinha.newscast.model.explorer.Page
 import org.jesperancinha.newscast.repository.AuthorRepository
 import org.jesperancinha.newscast.repository.MessageRepository
 import org.jesperancinha.newscast.repository.PageRepository

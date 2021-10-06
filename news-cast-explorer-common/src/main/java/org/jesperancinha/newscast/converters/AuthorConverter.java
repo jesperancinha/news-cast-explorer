@@ -1,8 +1,8 @@
 package org.jesperancinha.newscast.converters;
 
 import org.jesperancinha.newscast.data.AuthorDto;
-import org.jesperancinha.newscast.model.db.Author;
-import org.jesperancinha.newscast.model.db.Page;
+import org.jesperancinha.newscast.model.explorer.Author;
+import org.jesperancinha.newscast.model.explorer.Page;
 
 import java.util.stream.Collectors;
 
