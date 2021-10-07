@@ -1,18 +1,18 @@
 package org.jesperancinha.newscast.orchestration.service
 
 import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory
+import io.eventuate.tram.sagas.orchestration.SagaManagerImpl
 import org.jesperancinha.newscast.orchestration.saga.CreateCommentSaga
 import org.jesperancinha.newscast.orchestration.saga.CreateCommentSagaData
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+
 
 /**
  * Created by jofisaes on 06/10/2021
  */
 open class NewsCastTicketService(
-    val sagaInstanceFactory: SagaInstanceFactory,
-    val createCommentSaga: CreateCommentSaga,
+    private val sagaInstanceFactory: SagaInstanceFactory,
+    private val createCommentSaga: CreateCommentSaga,
 ) {
     @Transactional
     open fun createOrder(orderDetails: CreateCommentSagaData): String {

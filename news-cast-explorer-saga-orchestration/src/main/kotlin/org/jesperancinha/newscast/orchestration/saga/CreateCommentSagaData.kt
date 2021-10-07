@@ -10,6 +10,9 @@ data class CreateCommentSagaData(
     val authorComment: String? = null,
     val idMessage: Long? = null,
     val messageComment: String? = null,
+    var authorRequestId: Long? = null,
+    var pageRequestId:Long? = null,
+    var messageRequestId:Long? = null
 ) {
     constructor() : this(null, null, null, null, null, null)
 }

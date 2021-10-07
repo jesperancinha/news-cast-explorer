@@ -14,12 +14,12 @@ import org.jesperancinha.newscast.saga.domain.AuthorComment
  * Created by jofisaes on 06/10/2021
  */
 class NewsCastAuthorCommentHandler(
-    val newsCastAuthorCommentService: NewsCastAuthorCommentService,
+    private val newsCastAuthorCommentService: NewsCastAuthorCommentService,
 ) {
 
     fun commandHandlerDefinitions(): CommandHandlers {
         return SagaCommandHandlersBuilder
-            .fromChannel("newsCastAuthorCommentService")
+            .fromChannel("authorChannel")
             .onMessage(NewsCastAuthorCommand::class.java, this::createAuthorComment)
             .build()
     }
@@ -29,7 +29,7 @@ class NewsCastAuthorCommentHandler(
         val authorComment =
             newsCastAuthorCommentService.save(AuthorComment(
                 authorId = command.idAuthor,
-                comment = command.authorComment
+                comment = command.comment
             ))
         return withSuccess(authorComment)
     }

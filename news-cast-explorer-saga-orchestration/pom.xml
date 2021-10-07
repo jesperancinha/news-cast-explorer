@@ -15,8 +15,29 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
+        <dependency>
             <groupId>io.eventuate.tram.core</groupId>
-            <artifactId>eventuate-tram-messaging</artifactId>
+            <artifactId>eventuate-tram-spring-commands-starter</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <!--DuplicateMessageDetector-->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-producer-jdbc</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-consumer-kafka</artifactId>
             <version>0.29.0.RELEASE</version>
         </dependency>
         <dependency>
