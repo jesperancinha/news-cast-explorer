@@ -10,15 +10,12 @@ import org.springframework.transaction.annotation.Transactional
 /**
  * Created by jofisaes on 06/10/2021
  */
-@Service
 open class NewsCastTicketService(
-    @Autowired
     val sagaInstanceFactory: SagaInstanceFactory,
-    @Autowired
     val createCommentSaga: CreateCommentSaga,
 ) {
     @Transactional
-    fun createOrder(orderDetails: CreateCommentSagaData): String {
+    open fun createOrder(orderDetails: CreateCommentSagaData): String {
         val sagaInstance = sagaInstanceFactory.create(createCommentSaga, orderDetails)
         return sagaInstance.id
     }
