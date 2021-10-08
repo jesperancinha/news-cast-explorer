@@ -13,15 +13,13 @@ import org.jesperancinha.newscast.choreography.event.NewsCastEvent
 /**
  * Created by jofisaes on 08/10/2021
  */
-class NewsCastEventConsumer(
-    val domainEventPublisher: DomainEventPublisher? = null
-) {
+class NewsCastEventConsumer(val domainEventPublisher: DomainEventPublisher? = null) {
 
     fun domainEventHandlers(): DomainEventHandlers {
         return DomainEventHandlersBuilder
             .forAggregateType("org.jesperancinha.newscast.saga.data.NewsCastComments")
             .onEvent(NewsCastEvent::class.java) { domainEventEnvelope: DomainEventEnvelope<NewsCastEvent?>? ->
-                handleCreateEventHandler(domainEventEnvelope)
+                handleCreateNewsCastCommentEvent(domainEventEnvelope)
             }
             .onEvent(NewsCastCommentCreatedEvent::class.java) { domainEventEnvelope: DomainEventEnvelope<NewsCastCommentCreatedEvent?>? ->
                 handleOrderCreatedEventHandler(domainEventEnvelope)
@@ -32,12 +30,12 @@ class NewsCastEventConsumer(
             .build()
     }
 
-    private fun handleCreateEventHandler(domainEventEnvelope: DomainEventEnvelope<NewsCastEvent?>?) {
-
-
+    private fun handleCreateNewsCastCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastEvent?>?) {
     }
 
-    private fun <E : DomainEvent?> handleOrderCancelledEvent(eDomainEventEnvelope: DomainEventEnvelope<E>) {}
+    private fun <E : DomainEvent?> handleOrderCancelledEvent(eDomainEventEnvelope: DomainEventEnvelope<E>) {
+
+    }
     fun handleOrderCreatedEventHandler(
         domainEventEnvelope: DomainEventEnvelope<NewsCastCommentCreatedEvent?>?
     ) {

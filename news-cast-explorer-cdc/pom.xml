@@ -12,7 +12,7 @@
     <artifactId>news-cast-explorer-cdc</artifactId>
     <packaging>jar</packaging>
 
-    <name>org.jesperancinha.newscast news-cast-explorer-cdc</name>
+    <name>news-cast-explorer-cdc</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

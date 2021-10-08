@@ -13,7 +13,7 @@ import java.util.*
 open class NewsCastTicketService(
     val domainEventPublisher: DomainEventPublisher? = null,
 ) {
-    open fun createOrder(newsCastComments: NewsCastComments): NewsCastComments {
+   open fun createOrder(newsCastComments: NewsCastComments): NewsCastComments {
         domainEventPublisher!!.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastEvent(newsCastComments)))
         return newsCastComments
     }

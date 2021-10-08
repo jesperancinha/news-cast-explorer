@@ -6,5 +6,6 @@ import org.jesperancinha.newscast.saga.data.NewsCastComments
 /**
  * Created by jofisaes on 08/10/2021
  */
-class NewsCastEvent(newsCastComments: NewsCastComments) : DomainEvent {
+data class NewsCastEvent(val newsCastComments: NewsCastComments? = null) : DomainEvent {
+    constructor() : this(null)
 }
