@@ -24,10 +24,14 @@ class CreateCommentSaga(
         .step()
         .invokeParticipant(this::recordAuthorComment)
         .step()
-        .invokeLocal(this::approve)
+        .invokeLocal(this::done)
         .build()
 
     private fun approve(createCommentSagaData: CreateCommentSagaData) {
+    }
+
+    private fun done(createCommentSagaData: CreateCommentSagaData) {
+        System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
     }
 
     fun didit(saga:CreateCommentSagaData,authorComment: AuthorComment?) {
