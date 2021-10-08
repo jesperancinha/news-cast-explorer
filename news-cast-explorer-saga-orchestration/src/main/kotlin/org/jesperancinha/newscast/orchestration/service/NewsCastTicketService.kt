@@ -1,9 +1,8 @@
 package org.jesperancinha.newscast.orchestration.service
 
 import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory
-import io.eventuate.tram.sagas.orchestration.SagaManagerImpl
 import org.jesperancinha.newscast.orchestration.saga.CreateCommentSaga
-import org.jesperancinha.newscast.orchestration.saga.CreateCommentSagaData
+import org.jesperancinha.newscast.saga.data.NewsCastComments
 import org.springframework.transaction.annotation.Transactional
 
 
@@ -15,8 +14,8 @@ open class NewsCastTicketService(
     private val createCommentSaga: CreateCommentSaga,
 ) {
     @Transactional
-    open fun createOrder(orderDetails: CreateCommentSagaData): String {
-        val sagaInstance = sagaInstanceFactory.create(createCommentSaga, orderDetails)
+    open fun createOrder(newsCastComments: NewsCastComments): String {
+        val sagaInstance = sagaInstanceFactory.create(createCommentSaga, newsCastComments)
         return sagaInstance.id
     }
 }

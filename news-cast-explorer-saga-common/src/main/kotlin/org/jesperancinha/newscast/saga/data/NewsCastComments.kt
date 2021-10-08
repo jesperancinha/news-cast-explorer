@@ -1,9 +1,9 @@
-package org.jesperancinha.newscast.orchestration.saga
+package org.jesperancinha.newscast.saga.data
 
 /**
  * Created by jofisaes on 06/10/2021
  */
-data class CreateCommentSagaData(
+data class NewsCastComments(
     val idPage: Long? = null,
     val pageComment: String? = null,
     val idAuthor: Long? = null,

@@ -5,6 +5,7 @@ import io.eventuate.tram.commands.consumer.CommandWithDestinationBuilder.send
 import io.eventuate.tram.sagas.orchestration.SagaDefinition
 import io.eventuate.tram.sagas.simpledsl.SimpleSaga
 import org.jesperancinha.newscast.orchestration.commands.NewsCastAuthorCommand
+import org.jesperancinha.newscast.saga.data.NewsCastComments
 import org.jesperancinha.newscast.saga.domain.AuthorComment
 import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
 
@@ -13,7 +14,7 @@ import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
  */
 class CreateCommentSaga(
     val authorCommentRepository: AuthorCommentRepository,
-) : SimpleSaga<CreateCommentSagaData> {
+) : SimpleSaga<NewsCastComments> {
     private val sagaDefinition = this.step()
 //        .invokeLocal { createCommentSagaData: CreateCommentSagaData -> createAuthorComment(createCommentSagaData) }
 //        .withCompensation { createCommentSagaData: CreateCommentSagaData -> reject(createCommentSagaData) }
@@ -29,23 +30,23 @@ class CreateCommentSaga(
         .invokeLocal(this::done)
         .build()
 
-    private fun reject1(createCommentSagaData: CreateCommentSagaData): CommandWithDestination? {
+    private fun reject1(createCommentSagaData: NewsCastComments): CommandWithDestination? {
         TODO("Not yet implemented")
     }
 
-    private fun approve(createCommentSagaData: CreateCommentSagaData) {
+    private fun approve(createCommentSagaData: NewsCastComments) {
     }
 
-    private fun done(createCommentSagaData: CreateCommentSagaData) {
+    private fun done(createCommentSagaData: NewsCastComments) {
         System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
     }
 
-    fun didit(saga: CreateCommentSagaData, authorComment: AuthorComment?) {
+    fun didit(saga: NewsCastComments, authorComment: AuthorComment?) {
         System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
     }
 
 
-    private fun createAuthorComment(createCommentSagaData: CreateCommentSagaData) {
+    private fun createAuthorComment(createCommentSagaData: NewsCastComments) {
 //        val authorComment = AuthorComment(
 //            authorId = createCommentSagaData.idAuthor,
 //            comment = createCommentSagaData.authorComment
@@ -54,7 +55,7 @@ class CreateCommentSaga(
 //        createCommentSagaData.authorRequestId = authorCommentRequest.id
     }
 
-    private fun recordAuthorComment(createCommentSagaData: CreateCommentSagaData): CommandWithDestination? {
+    private fun recordAuthorComment(createCommentSagaData: NewsCastComments): CommandWithDestination? {
         return send(NewsCastAuthorCommand(
             idAuthor = createCommentSagaData.idAuthor,
             requestId = createCommentSagaData.authorRequestId,
@@ -62,11 +63,11 @@ class CreateCommentSaga(
         )).to("authorChannel").build()
     }
 
-    private fun reject(createCommentSagaData: CreateCommentSagaData) {
+    private fun reject(createCommentSagaData: NewsCastComments) {
 
     }
 
-    override fun getSagaDefinition(): SagaDefinition<CreateCommentSagaData> {
+    override fun getSagaDefinition(): SagaDefinition<NewsCastComments> {
         return sagaDefinition
     }
 }

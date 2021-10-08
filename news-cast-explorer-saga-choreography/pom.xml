@@ -13,6 +13,46 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-commands-starter</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <!--DuplicateMessageDetector-->
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-producer-jdbc</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-consumer-kafka</artifactId>
+            <version>0.29.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl-starter</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-spring-participant-starter -->
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
+            <version>0.18.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jesperancinha.newscast</groupId>
+            <artifactId>news-cast-explorer-saga-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jesperancinha.newscast</groupId>
+            <artifactId>news-cast-explorer-common</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -25,15 +65,10 @@
             <artifactId>lombok</artifactId>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -54,7 +89,6 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
