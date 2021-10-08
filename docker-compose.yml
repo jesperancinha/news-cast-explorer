@@ -28,24 +28,24 @@ services:
         reservations:
           memory: 1000M
 
-  cdcservice:
-    image: eventuateio/eventuate-cdc-service:0.12.0.RELEASE
-    container_name: nc_cdcservice
-    ports:
-      - "8099:8080"
-    depends_on:
-      - nc_postgres
-      - nc_kafka
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://nc_postgres:5432/eventuate
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: admin
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
-      EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: nc_kafka:9092
-      EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: nc_kafka:2181
-      EVENTUATELOCAL_CDC_DB_USER_NAME: root
-      EVENTUATELOCAL_CDC_DB_PASSWORD: rootpassword
-      EVENTUATELOCAL_CDC_READER_NAME: MySqlReader
-      EVENTUATELOCAL_CDC_MYSQL_BINLOG_CLIENT_UNIQUE_ID: 1234567890
-      EVENTUATELOCAL_CDC_READ_OLD_DEBEZIUM_DB_OFFSET_STORAGE_TOPIC: "false"
-      EVENTUATE_OUTBOX_ID: 1
+#   cdcservice:
+#     image: eventuateio/eventuate-cdc-service:0.12.0.RELEASE
+#     container_name: nc_cdcservice
+#     ports:
+#       - "8099:8080"
+#     depends_on:
+#       - nc_postgres
+#       - nc_kafka
+#     environment:
+#       SPRING_DATASOURCE_URL: jdbc:postgresql://nc_postgres:5432/eventuate
+#       SPRING_DATASOURCE_USERNAME: postgres
+#       SPRING_DATASOURCE_PASSWORD: admin
+#       SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+#       EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS: nc_kafka:9092
+#       EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING: nc_kafka:2181
+#       EVENTUATELOCAL_CDC_DB_USER_NAME: root
+#       EVENTUATELOCAL_CDC_DB_PASSWORD: rootpassword
+#       EVENTUATELOCAL_CDC_READER_NAME: MySqlReader
+#       EVENTUATELOCAL_CDC_MYSQL_BINLOG_CLIENT_UNIQUE_ID: 1234567890
+#       EVENTUATELOCAL_CDC_READ_OLD_DEBEZIUM_DB_OFFSET_STORAGE_TOPIC: "false"
+#       EVENTUATE_OUTBOX_ID: 1
