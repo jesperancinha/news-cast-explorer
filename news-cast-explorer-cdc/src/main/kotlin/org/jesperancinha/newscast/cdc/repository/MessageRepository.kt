@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 /**
  * Created by jofisaes on 08/10/2021
  */
-interface MessageRepository :JpaRepository<Message, Long>
+interface MessageRepository : JpaRepository<Message, Long> {
+    fun findAllByPublishedIs(published: Int): List<Message>
+}

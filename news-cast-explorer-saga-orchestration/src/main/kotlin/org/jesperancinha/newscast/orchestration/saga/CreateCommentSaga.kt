@@ -23,9 +23,15 @@ class CreateCommentSaga(
         .invokeLocal(this::approve)
         .step()
         .invokeParticipant(this::recordAuthorComment)
+        .withCompensation(this::reject1)
+        .onReply(AuthorComment::class.java, this::didit)
         .step()
         .invokeLocal(this::done)
         .build()
+
+    private fun reject1(createCommentSagaData: CreateCommentSagaData): CommandWithDestination? {
+        TODO("Not yet implemented")
+    }
 
     private fun approve(createCommentSagaData: CreateCommentSagaData) {
     }
@@ -34,7 +40,7 @@ class CreateCommentSaga(
         System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
     }
 
-    fun didit(saga:CreateCommentSagaData,authorComment: AuthorComment?) {
+    fun didit(saga: CreateCommentSagaData, authorComment: AuthorComment?) {
         System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
     }
 
