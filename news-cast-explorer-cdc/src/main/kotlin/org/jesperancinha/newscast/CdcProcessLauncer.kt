@@ -17,7 +17,7 @@ open class CdcProcessLauncer(
     val messageRepository: MessageRepository,
 ) {
 
-    @Scheduled(cron = "0 * * * * *")
+    @Scheduled(cron = "0/5 * * ? * *")
     fun fetchAndPublish() {
         messageRepository.findAllByPublishedIs(0).forEach {
             val objectMapper = ObjectMapper()
