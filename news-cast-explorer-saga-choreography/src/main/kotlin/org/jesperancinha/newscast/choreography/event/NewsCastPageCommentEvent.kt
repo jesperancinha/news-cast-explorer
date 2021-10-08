@@ -5,4 +5,8 @@ import io.eventuate.tram.events.common.DomainEvent
 /**
  * Created by jofisaes on 08/10/2021
  */
-class NewsCastCommentCreatedEvent : DomainEvent
+class NewsCastPageCommentEvent(
+    val event: NewsCastEvent? = null,
+) : DomainEvent {
+    constructor() : this(null)
+}
