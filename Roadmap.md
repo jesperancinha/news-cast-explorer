@@ -1,6 +1,12 @@
-# Twitter explorer Roadmap
+# NewsCast explorer Roadmap
 
 ## Roadmap to v3.0.0
+
+2021/10/08
+- Saga pattern choreography
+- Kotlin service
+- Use available Docker images
+- ~~Python unit tests~~
 
 2021/10/06
 - Mock service
@@ -25,8 +31,7 @@
 2021/09/27
 - JDK 17
 
-- Saga pattern choreography
 - Testcontainers
-- Kotlin service
-- Use available Docker images
-- Python unit tests
+- Code cleanup
+- Improvements
+- Wrap-up and publish
