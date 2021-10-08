@@ -1,19 +1,19 @@
-# Twitter Explorer
+# Newscast Explorer
 
 ---
 
-[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=Checkout%20this%20@bitbucket%20repo%20by%20@joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB:%20https://bitbucket.org/jesperancinha/twitter-explorer/src/master/)
-[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Twitter%20Explorer&color=informational)](https://bitbucket.org/jesperancinha/twitter-explorer)
+[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=Checkout%20this%20@bitbucket%20repo%20by%20@joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB:%20https://bitbucket.org/jesperancinha/news-cast-explorer/src/master/)
+[![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Newscast%20Explorer&color=informational)](https://bitbucket.org/jesperancinha/news-cast-explorer)
 
-[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/twitter-explorer/master)](https://bitbucket.org/jesperancinha/twitter-explorer/addon/pipelines/home#!/)
-[![CircleCI](https://circleci.com/bb/jesperancinha/twitter-explorer.svg?style=svg)](https://circleci.com/bb/jesperancinha/twitter-explorer)
+[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/news-cast-explorer/master)](https://bitbucket.org/jesperancinha/news-cast-explorer/addon/pipelines/home#!/)
+[![CircleCI](https://circleci.com/bb/jesperancinha/news-cast-explorer.svg?style=svg)](https://circleci.com/bb/jesperancinha/news-cast-explorer)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/twitter-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/twitter-explorer&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/d02c6697-4f3f-486a-9297-c45fc0f46402)](https://codebeat.co/projects/bitbucket-org-jesperancinha-twitter-explorer-master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/news-cast-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
+[![codebeat badge](https://codebeat.co/badges/d02c6697-4f3f-486a-9297-c45fc0f46402)](https://codebeat.co/projects/bitbucket-org-jesperancinha-news-cast-explorer-master)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/twitter-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&utm_medium=referral&utm_content=jesperancinha/twitter-explorer&utm_campaign=Badge_Coverage)
-[![codecov](https://codecov.io/bb/jesperancinha/twitter-explorer/branch/master/graph/badge.svg?token=ZZQIS9S1LR)](https://codecov.io/bb/jesperancinha/twitter-explorer)
-[![Coverage Status](https://coveralls.io/repos/bitbucket/jesperancinha/twitter-explorer/badge.svg?branch=master)](https://coveralls.io/bitbucket/jesperancinha/twitter-explorer?branch=master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/news-cast-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
+[![codecov](https://codecov.io/bb/jesperancinha/news-cast-explorer/branch/master/graph/badge.svg?token=ZZQIS9S1LR)](https://codecov.io/bb/jesperancinha/news-cast-explorer)
+[![Coverage Status](https://coveralls.io/repos/bitbucket/jesperancinha/news-cast-explorer/badge.svg?branch=master)](https://coveralls.io/bitbucket/jesperancinha/news-cast-explorer?branch=master)
 
 ---
 
