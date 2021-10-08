@@ -24,5 +24,6 @@ The whole cdc service can be found in the [eventuate-cdc source code](https://gi
 
 ## References
 
+- [eventuate-tram-embedded-schema.sql](https://github.com/eventuate-tram/eventuate-tram-core/blob/master/eventuate-tram-in-memory/src/main/resources/eventuate-tram-embedded-schema.sql)
 - [eventuate-tram](https://github.com/eventuate-tram)
 - [CDC service](https://eventuate.io/docs/manual/eventuate-tram/latest/cdc-configuration.html)
