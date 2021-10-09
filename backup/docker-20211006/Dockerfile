@@ -8,7 +8,7 @@ RUN mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 
 COPY twitter-fetcher/target/twitter-fetcher*.jar ${runningFolder}/twitter-fetcher.jar
 
-COPY ../../backup/news-cast-logger2021-10-08/log-docker-server.py ${runningFolder}
+COPY ../news-cast-logger2021-10-08/log-docker-server.py ${runningFolder}
 
 COPY docker-entrypoint.sh ${runningFolder}
 
