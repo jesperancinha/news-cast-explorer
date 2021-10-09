@@ -44,7 +44,7 @@ class NewsCastAuthorCommentHandler(
         val authorComment =
             command.requestId?.let { newsCastAuthorCommentService.getByRequestId(it) }
         authorComment?.copy(notAvailable = false)?.let { newsCastAuthorCommentService.save(it) }
-            ?: CommandHandlerReplyBuilder.withFailure()
+            ?: withFailure()
         return withSuccess(authorComment)
     }
 
