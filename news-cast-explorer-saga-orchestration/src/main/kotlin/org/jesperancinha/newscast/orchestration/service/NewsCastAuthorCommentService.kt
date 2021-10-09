@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
  */
 @Service
 class NewsCastAuthorCommentService(
-    val authorCommentRepository: AuthorCommentRepository,
+    private val authorCommentRepository: AuthorCommentRepository,
 ) {
     fun save(authorComment: AuthorComment): AuthorComment {
         return authorCommentRepository.save(authorComment)

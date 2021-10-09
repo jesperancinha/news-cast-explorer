@@ -23,8 +23,6 @@ open class CdcProcessLauncer(
             val objectMapper = ObjectMapper()
             val producer = KafkaProducerCreator.createProducer()
             val headers = objectMapper.readTree(it.headers)
-            (headers as ObjectNode).put("command_type",
-                "org.jesperancinha.newscast.orchestration.commands.NewsCastAuthorCommand")
             val command = KafkaCommand(it.payload, headers)
             val commandPayload = objectMapper.writeValueAsString(command)
             val record = ProducerRecord<Long?, String?>(it.destination, commandPayload)
