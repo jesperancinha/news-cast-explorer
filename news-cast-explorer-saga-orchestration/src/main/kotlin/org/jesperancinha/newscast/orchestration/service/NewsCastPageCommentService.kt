@@ -12,5 +12,5 @@ class NewsCastPageCommentService(
     private val pageCommentRepository: PageCommentRepository,
 ) {
     fun save(pageComment: PageComment): PageComment = pageCommentRepository.save(pageComment)
-    fun getByRequestId(requestId: Long): PageComment? = pageCommentRepository.findByRequestId(requestId)
+    fun getByRequestId(requestId: Long): List<PageComment>? = pageCommentRepository.findByRequestId(requestId)
 }

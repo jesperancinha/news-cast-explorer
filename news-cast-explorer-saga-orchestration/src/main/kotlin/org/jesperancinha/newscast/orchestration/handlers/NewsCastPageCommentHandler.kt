@@ -1,6 +1,5 @@
 package org.jesperancinha.newscast.orchestration.handlers
 
-import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess
 import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
@@ -39,10 +38,13 @@ class NewsCastPageCommentHandler(
 
     private fun rejectPageComment(commandPage: CommandMessage<NewsCastPageRejectCommand>): Message {
         val command = commandPage.command
-        val messageComment =
-            command.requestId?.let { newsCastPageCommentService.getByRequestId(it) }
-        messageComment?.copy(notAvailable = false)?.let { newsCastPageCommentService.save(it) }
-            ?: CommandHandlerReplyBuilder.withFailure()
+        val messageComment = command.requestId?.let {
+            newsCastPageCommentService.getByRequestId(it).let { pageComments ->
+                pageComments?.forEach { pageComment ->
+                    newsCastPageCommentService.save(pageComment.copy(notAvailable = true))
+                }
+            }
+        }
         return withSuccess(messageComment)
     }
 

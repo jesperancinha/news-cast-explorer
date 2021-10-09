@@ -13,5 +13,5 @@ class NewsCastAuthorCommentService(
 ) {
     fun save(authorComment: AuthorComment): AuthorComment = authorCommentRepository.save(authorComment)
 
-    fun getByRequestId(requestId: Long): AuthorComment? = authorCommentRepository.findByRequestId(requestId)
+    fun getByRequestId(requestId: Long): List<AuthorComment>? = authorCommentRepository.findByRequestId(requestId)
 }
