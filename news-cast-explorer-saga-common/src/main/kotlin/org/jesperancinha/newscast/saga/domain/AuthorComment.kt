@@ -11,5 +11,7 @@ data class AuthorComment(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null,
     val authorId: Long? = null,
+    val requestId: Long? = null,
     val comment: String? = null,
+    val notAvailable: Boolean = false
 )

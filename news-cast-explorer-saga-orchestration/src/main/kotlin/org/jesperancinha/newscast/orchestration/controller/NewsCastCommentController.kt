@@ -1,7 +1,7 @@
 package org.jesperancinha.newscast.orchestration.controller
 
-import org.jesperancinha.newscast.saga.data.NewsCastComments
 import org.jesperancinha.newscast.orchestration.service.NewsCastTicketService
+import org.jesperancinha.newscast.saga.data.NewsCastComments
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping

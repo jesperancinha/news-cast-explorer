@@ -12,4 +12,6 @@ class NewsCastMessageCommentService(
     private val messageCommentRepository: MessageCommentRepository,
 ) {
     fun save(messageComment: MessageComment): MessageComment = messageCommentRepository.save(messageComment)
+
+    fun getByRequestId(requestId: Long): MessageComment? = messageCommentRepository.findByRequestId(requestId)
 }

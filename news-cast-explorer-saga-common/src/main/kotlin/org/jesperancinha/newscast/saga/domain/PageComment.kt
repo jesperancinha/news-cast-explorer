@@ -11,5 +11,7 @@ data class PageComment(
     @GeneratedValue(strategy = GenerationType.AUTO)
     private val id: Long? = null,
     val pageId: Long? = null,
+    val requestId: Long? = null,
     val comment: String? = null,
+    val notAvailable: Boolean = false
 )

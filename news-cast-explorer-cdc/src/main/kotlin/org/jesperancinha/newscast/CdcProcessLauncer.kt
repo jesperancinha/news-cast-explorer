@@ -14,14 +14,14 @@ import org.springframework.scheduling.annotation.Scheduled
 @SpringBootApplication
 @EnableScheduling
 open class CdcProcessLauncer(
-    val messageRepository: MessageRepository,
+    private val messageRepository: MessageRepository,
 ) {
+    private val producer = KafkaProducerCreator.createProducer()
 
     @Scheduled(cron = "0/5 * * ? * *")
     fun fetchAndPublish() {
         messageRepository.findAllByPublishedIs(0).forEach {
             val objectMapper = ObjectMapper()
-            val producer = KafkaProducerCreator.createProducer()
             val headers = objectMapper.readTree(it.headers)
             val command = KafkaCommand(it.payload, headers)
             val commandPayload = objectMapper.writeValueAsString(command)

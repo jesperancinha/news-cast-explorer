@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 class NewsCastAuthorCommentService(
     private val authorCommentRepository: AuthorCommentRepository,
 ) {
-    fun save(authorComment: AuthorComment): AuthorComment {
-        return authorCommentRepository.save(authorComment)
-    }
+    fun save(authorComment: AuthorComment): AuthorComment = authorCommentRepository.save(authorComment)
+
+    fun getByRequestId(requestId: Long): AuthorComment? = authorCommentRepository.findByRequestId(requestId)
 }

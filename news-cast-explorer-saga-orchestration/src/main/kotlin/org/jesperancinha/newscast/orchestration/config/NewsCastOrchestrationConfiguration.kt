@@ -30,8 +30,7 @@ import org.springframework.context.annotation.Import
     SagaOrchestratorConfiguration::class,
     TramMessageProducerJdbcConfiguration::class,
     EventuateTramKafkaMessageConsumerConfiguration::class)
-open class NewsCastOrchestrationConfiguration(
-) {
+open class NewsCastOrchestrationConfiguration {
     @Bean("newsCastPageCommentHandler")
     open fun newsCastPageCommentHandler(newsCastPageCommentService: NewsCastPageCommentService): NewsCastPageCommentHandler {
         return NewsCastPageCommentHandler(newsCastPageCommentService)
@@ -59,7 +58,8 @@ open class NewsCastOrchestrationConfiguration(
                 CommandHandlers(
                     newsCastPageCommentHandler.commandHandlerDefinitions().handlers +
                             newsCastAuthorCommentHandler.commandHandlerDefinitions().handlers +
-                            newsCastMessageCommentHandler.commandHandlerDefinitions().handlers)
+                            newsCastMessageCommentHandler.commandHandlerDefinitions().handlers
+                )
             )
     }
 
