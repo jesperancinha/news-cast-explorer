@@ -66,18 +66,6 @@ sdk install java 17-open
 sdk use java 17-open
 ```
 
-### Python
-
-```bash
-sudo pip install flask
-```
-
-### SSH Docker Container
-
-```bash
-docker exec -it jef-nginx /bin/bash
-```
-
 ## Roadmap
 
 For roadmap information and current developments please check document [Roadmap.md](./Roadmap.md)
