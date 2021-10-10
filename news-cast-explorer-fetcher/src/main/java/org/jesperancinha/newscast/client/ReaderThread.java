@@ -57,6 +57,8 @@ public class ReaderThread extends Thread {
                     }
                 });
             }
+        } catch (InterruptedException e) {
+            log.info("Reader task finished running!");
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
         } finally {
