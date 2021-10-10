@@ -32,8 +32,8 @@ export class AuthorComponent implements OnInit {
         this.filterMessages = '';
     }
 
-    toDate(created_at: number) {
-        return new Date(created_at);
+    toDate(createdAt: number) {
+        return new Date(createdAt);
     }
 
 

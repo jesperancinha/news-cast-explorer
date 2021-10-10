@@ -1,8 +1,8 @@
-import {Message} from "./message";
+import {Message} from './message';
 
 export interface Author {
   id: string;
-  created_at: number;
+  createdAt: number;
   name: string;
   screenName: string;
   message_dtos: Message[];

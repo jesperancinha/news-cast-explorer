@@ -1,11 +1,11 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {MatTableDataSource} from "@angular/material/table";
-import {Page} from "../../model/page";
-import {Message} from "../../model/message";
-import {Author} from "../../model/author";
-import {PageService} from "../../service/page.service";
-import {interval, Subscription} from "rxjs";
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatTableDataSource} from '@angular/material/table';
+import {Page} from '../../model/page';
+import {Message} from '../../model/message';
+import {Author} from '../../model/author';
+import {PageService} from '../../service/page.service';
+import {interval, Subscription} from 'rxjs';
 
 @Component({
     selector: 'page-component',
@@ -25,8 +25,8 @@ export class PageComponent implements OnInit {
     displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
     messagesSelected: MatTableDataSource<Message>;
     authorsSelected: MatTableDataSource<Author>;
-    filterPage: string = '';
-    filterAuthor: string = '';
+    filterPage = '';
+    filterAuthor = '';
     @Output() authorsToEmit = new EventEmitter<MatTableDataSource<Author>>();
 
 
@@ -47,7 +47,7 @@ export class PageComponent implements OnInit {
             .subscribe(data => {
                 if (this.dataSource.data.length < data.length) {
                     this.dataSource.data.push(data[data.length - 1]);
-                    this.dataSource.filter = "";
+                    this.dataSource.filter = '';
                 }
             });
     }
@@ -67,8 +67,8 @@ export class PageComponent implements OnInit {
     }
 
 
-    toDate(created_at: number) {
-        return new Date(created_at);
+    toDate(createdAt: number) {
+        return new Date(createdAt);
     }
 
     applyFilter(filterValue: string) {
@@ -83,13 +83,13 @@ export class PageComponent implements OnInit {
     }
 
     calculateAverage(element: Page) {
-        let duration: number = element.duration;
-        let authors = element.authors;
+        const duration: number = element.duration;
+        const authors = element.authors;
         if (authors && authors.length > 0) {
-            let nMessages = this.calculateNumberOfMessages(authors);
+            const nMessages = this.calculateNumberOfMessages(authors);
             return (nMessages / duration).toFixed(2);
         }
-        return "N/A";
+        return 'N/A';
     }
 
     calculateNumberOfMessages(authors: Author[]) {

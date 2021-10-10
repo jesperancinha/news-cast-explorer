@@ -1,29 +1,19 @@
 package org.jesperancinha.newscast.data;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-@Builder
-@EqualsAndHashCode
-@Data
-public class AuthorDto {
-    private String id;
+public record AuthorDto(
+        String id,
+        Long createdAt,
+        String name,
+        String screenName,
+        List<MessageDto> messageDtos,
+        Integer nMessages
+) {
+    @Builder
+    public AuthorDto {
 
-    @EqualsAndHashCode.Exclude
-    private Long createdAt;
-
-    @EqualsAndHashCode.Exclude
-    private String name;
-
-    @EqualsAndHashCode.Exclude
-    private String screenName;
-
-    @EqualsAndHashCode.Exclude
-    private List<MessageDto> messageDtos;
-
-    @EqualsAndHashCode.Exclude
-    private Long nMessages;
+    }
 }

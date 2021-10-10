@@ -1,7 +1,7 @@
-import {PageComponent} from "./page.component";
-import {Page} from "../../model/page";
-import {MatTableDataSource} from "@angular/material/table";
-import {Author} from "../../model/author";
+import {PageComponent} from './page.component';
+import {Page} from '../../model/page';
+import {MatTableDataSource} from '@angular/material/table';
+import {Author} from '../../model/author';
 
 describe('Page Component', () => {
     let pageComponent: PageComponent;
@@ -27,9 +27,9 @@ describe('Page Component', () => {
     it('#number of messages should be one if one author has only one message', () => {
         expect(pageComponent.calculateNumberOfMessages([{
             message_dtos: [{
-                text: "message",
+                text: 'message',
                 created_at: 234324,
-                id: "23432432423"
+                id: '23432432423'
             }],
             name: "",
             created_at: 9777,

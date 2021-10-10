@@ -16,8 +16,8 @@ public class PageConverter {
 
     public static Page toData(PageDto pageDto) {
         return Page.builder()
-                .createdAt(pageDto.getCreatedAt())
-                .duration(pageDto.getDuration())
+                .createdAt(pageDto.createdAt())
+                .duration(pageDto.duration())
                 .build();
     }
 }

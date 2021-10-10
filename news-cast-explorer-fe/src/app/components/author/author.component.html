@@ -10,7 +10,7 @@
             <ng-container matColumnDef="createdAt">
                 <th mat-header-cell *matHeaderCellDef>Created At</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-                    (click)="authorClicked(element)"> {{toDate(element.created_at)}} </td>
+                    (click)="authorClicked(element)"> {{toDate(element.createdAt * 1000)}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">

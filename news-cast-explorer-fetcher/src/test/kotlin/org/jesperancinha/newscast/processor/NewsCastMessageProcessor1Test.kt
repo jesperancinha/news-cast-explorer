@@ -160,7 +160,7 @@ class NewsCastMessageProcessor1Test {
                 .id(2L)
                 .newsCastAuthorId("998877665544332211")
                 .createdAt(1550265180556L)
-                .nMessages(1L)
+                .nMessages(1)
                 .screenName("Author1ScreenName")
                 .page(testPage)
                 .name("Author1")

@@ -1,7 +1,7 @@
-import {Author} from "./author";
+import {Author} from './author';
 
 export interface Page  {
-  created_at: number;
+  createdAt: number;
   duration: number;
   authors: Author[];
 }

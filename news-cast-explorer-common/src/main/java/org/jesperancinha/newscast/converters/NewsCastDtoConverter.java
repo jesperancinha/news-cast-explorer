@@ -20,7 +20,6 @@ public class NewsCastDtoConverter {
                 .name(user.name())
                 .createdAt(user.createdAt().getTime())
                 .screenName(user.screenName())
-                .nMessages(0L)
                 .build();
     }
 }

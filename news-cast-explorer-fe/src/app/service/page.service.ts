@@ -2,9 +2,9 @@ import {catchError, retry} from 'rxjs/internal/operators';
 import {Injectable, NgModule} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Page} from "../model/page";
+import {Page} from '../model/page';
 
-const localUrl = '/api/';
+const localUrl = '/api/newscast/fetcher/pages';
 
 @Injectable({
   providedIn: 'root'

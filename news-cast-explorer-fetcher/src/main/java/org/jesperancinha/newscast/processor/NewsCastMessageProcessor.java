@@ -6,8 +6,8 @@ import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.converters.AuthorConverter;
 import org.jesperancinha.newscast.converters.MessageConverter;
-import org.jesperancinha.newscast.converters.PageConverter;
 import org.jesperancinha.newscast.converters.NewsCastDtoConverter;
+import org.jesperancinha.newscast.converters.PageConverter;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
 import org.jesperancinha.newscast.data.PageDto;
@@ -62,7 +62,7 @@ public class NewsCastMessageProcessor {
                 .collect(twitterMessageCollector())
                 .entrySet().stream()
                 .map(NewsCastMessageProcessor::fillAuthor)
-                .sorted(Comparator.comparing(AuthorDto::getCreatedAt))
+                .sorted(Comparator.comparing(AuthorDto::createdAt))
                 .collect(Collectors.toList());
         if (list.size() > 0) {
             throw list.stream().min((o1, o2) -> o2.getMessage().compareTo(o1.getMessage())).orElse(null);
@@ -79,12 +79,12 @@ public class NewsCastMessageProcessor {
 
     private void savePageDb(PageDto pageDto) {
         var page = pageRepository.save(PageConverter.toData(pageDto));
-        for (var authorDto : pageDto.getAuthors()) {
+        for (var authorDto : pageDto.authors()) {
             var authorToSave = AuthorConverter.toData(authorDto, page);
             page.getAuthors().add(authorToSave);
             authorToSave.setPage(pageRepository.save(page));
             var author = authorRepository.save(authorToSave);
-            authorDto.getMessageDtos()
+            authorDto.messageDtos()
                     .forEach(messageDto -> {
                         var message = MessageConverter.toData(messageDto);
                         var save = messageRepository.save(message);
@@ -103,10 +103,15 @@ public class NewsCastMessageProcessor {
     private static AuthorDto fillAuthor(Map.Entry<AuthorDto, List<MessageDto>> authorDtoListEntry) {
         var authorDto = authorDtoListEntry.getKey();
         var listEntryValue = authorDtoListEntry.getValue();
-        listEntryValue.sort(Comparator.comparing(MessageDto::getCreatedAt));
-        authorDto.setMessageDtos(listEntryValue);
-        authorDto.setNMessages((long) listEntryValue.size());
-        return authorDto;
+        listEntryValue.sort(Comparator.comparing(MessageDto::createdAt));
+        return AuthorDto.builder()
+                .id(authorDto.id())
+                .createdAt(authorDto.createdAt())
+                .name(authorDto.name())
+                .screenName(authorDto.screenName())
+                .messageDtos(listEntryValue)
+                .nMessages(listEntryValue.size())
+                .build();
     }
 
 }

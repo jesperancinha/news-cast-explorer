@@ -14,9 +14,9 @@ public class MessageConverter {
 
     public static Message toData(MessageDto messageDto) {
         return Message.builder()
-                .createdAt(messageDto.getCreatedAt())
-                .newscastMessageId(messageDto.getId())
-                .text(messageDto.getText())
+                .createdAt(messageDto.createdAt())
+                .newscastMessageId(messageDto.id())
+                .text(messageDto.text())
                 .build();
     }
 }
