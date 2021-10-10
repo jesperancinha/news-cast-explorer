@@ -8,15 +8,18 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
+import org.jetbrains.kotlin.script.util.classpathFromClass
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.annotation.DirtiesContext
 import java.util.concurrent.BlockingQueue
 
 @SpringBootTest(properties = [
     "org.jesperancinha.newscast.host=http://localhost:8080",
     "org.jesperancinha.newscast.timeToWaitSeconds=5"
 ])
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 internal class NewsCastClientJUnit5Test(
     @Autowired
     val newsCastClient: NewsCastClient,
