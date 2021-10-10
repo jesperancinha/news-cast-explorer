@@ -12,9 +12,9 @@ import org.jesperancinha.newscast.orchestration.handlers.NewsCastAuthorCommentHa
 import org.jesperancinha.newscast.orchestration.handlers.NewsCastMessageCommentHandler
 import org.jesperancinha.newscast.orchestration.handlers.NewsCastPageCommentHandler
 import org.jesperancinha.newscast.orchestration.saga.CreateCommentSaga
-import org.jesperancinha.newscast.orchestration.service.NewsCastAuthorCommentService
-import org.jesperancinha.newscast.orchestration.service.NewsCastMessageCommentService
-import org.jesperancinha.newscast.orchestration.service.NewsCastPageCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastAuthorCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
 import org.jesperancinha.newscast.orchestration.service.NewsCastTicketService
 import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
 import org.springframework.context.annotation.Bean

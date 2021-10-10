@@ -1,4 +1,4 @@
-package org.jesperancinha.newscast.orchestration.service
+package org.jesperancinha.newscast.saga.service
 
 import org.jesperancinha.newscast.saga.domain.MessageComment
 import org.jesperancinha.newscast.saga.repository.MessageCommentRepository

@@ -7,7 +7,7 @@ import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageRejectCommand
-import org.jesperancinha.newscast.orchestration.service.NewsCastMessageCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.saga.domain.MessageComment
 
 

@@ -8,21 +8,29 @@ import io.eventuate.tram.spring.events.subscriber.TramEventSubscriberConfigurati
 import io.eventuate.tram.spring.jdbckafka.TramJdbcKafkaConfiguration
 import org.jesperancinha.newscast.choreography.consumer.NewsCastEventConsumer
 import org.jesperancinha.newscast.choreography.service.NewsCastTicketService
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.jesperancinha.newscast.saga.service.NewsCastAuthorCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
+import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @Configuration
-@EnableJpaRepositories
-@EnableAutoConfiguration
 @Import(
     TramJdbcKafkaConfiguration::class, TramEventsPublisherConfiguration::class, TramEventSubscriberConfiguration::class)
 open class NewsCastChoreographyConfiguration {
     @Bean
-    open fun orderEventConsumer(domainEventPublisher: DomainEventPublisher): NewsCastEventConsumer {
-        return NewsCastEventConsumer(domainEventPublisher)
+    open fun orderEventConsumer(
+        domainEventPublisher: DomainEventPublisher,
+        newsCasePageCommentService: NewsCastPageCommentService,
+        newsCastAuthorCommentService: NewsCastAuthorCommentService,
+        newsCastMessageCommentService: NewsCastMessageCommentService,
+    ): NewsCastEventConsumer {
+        return NewsCastEventConsumer(domainEventPublisher,
+            newsCasePageCommentService,
+            newsCastAuthorCommentService,
+            newsCastMessageCommentService)
     }
 
     @Bean
