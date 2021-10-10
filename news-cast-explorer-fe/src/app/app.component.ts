@@ -36,6 +36,13 @@ export class AppComponent implements OnInit {
   getPages() {
     return this.pageService.getPages()
       .subscribe(data => {
+        data.forEach(page => {
+          page.authors.forEach(author => {
+            this.pageService.getAuthor(author.id).subscribe(
+              authorData => author.message_dtos = authorData.message_dtos
+            )
+          })
+        })
         this.dataSource = new MatTableDataSource(data);
       });
   }

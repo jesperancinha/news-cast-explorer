@@ -4,11 +4,15 @@ import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.model.explorer.Author;
 import org.jesperancinha.newscast.model.explorer.Page;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class AuthorConverter {
     public static AuthorDto toDto(Author author) {
-            return AuthorDto.builder()
+        if (Objects.isNull(author)) {
+            return null;
+        }
+        return AuthorDto.builder()
                 .id(author.getNewsCastAuthorId())
                 .createdAt(author.getCreatedAt())
                 .name(author.getName())

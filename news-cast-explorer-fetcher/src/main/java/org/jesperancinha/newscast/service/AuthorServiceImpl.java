@@ -17,9 +17,13 @@ public class AuthorServiceImpl {
         this.authorRepository = authorRepository;
     }
 
-    public List<AuthorDto> getMessages() {
+    public List<AuthorDto> getAuthors() {
         return authorRepository.findAll().stream()
                 .map(AuthorConverter::toDto)
                 .collect(Collectors.toList());
+    }
+
+    public AuthorDto getAuthorById(Long authorId) {
+        return AuthorConverter.toDto(authorRepository.findById(authorId).orElse(null));
     }
 }
