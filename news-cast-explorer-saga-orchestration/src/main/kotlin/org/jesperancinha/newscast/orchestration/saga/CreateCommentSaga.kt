@@ -4,6 +4,7 @@ import io.eventuate.tram.commands.consumer.CommandWithDestination
 import io.eventuate.tram.commands.consumer.CommandWithDestinationBuilder.send
 import io.eventuate.tram.sagas.orchestration.SagaDefinition
 import io.eventuate.tram.sagas.simpledsl.SimpleSaga
+import mu.KotlinLogging
 import org.jesperancinha.newscast.orchestration.commands.NewsCastAuthorCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastAuthorRejectCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageCommand
@@ -12,89 +13,101 @@ import org.jesperancinha.newscast.orchestration.commands.NewsCastPageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastPageRejectCommand
 import org.jesperancinha.newscast.saga.data.NewsCastComments
 import org.jesperancinha.newscast.saga.domain.AuthorComment
-import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
+import org.jesperancinha.newscast.saga.domain.MessageComment
+import org.jesperancinha.newscast.saga.domain.PageComment
 
 /**
  * Created by jofisaes on 06/10/2021
  */
-class CreateCommentSaga(
-    val authorCommentRepository: AuthorCommentRepository,
-) : SimpleSaga<NewsCastComments> {
+class CreateCommentSaga : SimpleSaga<NewsCastComments> {
+    private val logger = KotlinLogging.logger {}
+
     private val sagaDefinition = this.step()
         .invokeLocal(this::startSaga)
         .step()
         .invokeParticipant(this::recordPageComment)
+        .onReply(PageComment::class.java, this::savedPageComent)
         .withCompensation(this::rejectPageComment)
+        .onReply(PageComment::class.java, this::rejectedPageComment)
         .step()
         .invokeParticipant(this::recordAuthorComment)
+        .onReply(AuthorComment::class.java, this::savedAuthorComment)
         .withCompensation(this::rejectAuthorComment)
+        .onReply(AuthorComment::class.java, this::rejectedAuthorComment)
         .step()
         .invokeParticipant(this::recordMessageComment)
+        .onReply(MessageComment::class.java, this::savedMessageComment)
         .withCompensation(this::rejectMessageComment)
-        .onReply(AuthorComment::class.java, this::didit)
+        .onReply(MessageComment::class.java, this::rejectedMessageComment)
         .step()
         .invokeLocal(this::done)
         .build()
 
-    private fun recordPageComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
+    private fun startSaga(newsCastComments: NewsCastComments) = logger.info("Saga has started: $newsCastComments")
+
+    private fun recordPageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
         send(NewsCastPageCommand(
-            idPage = createCommentSagaData.idPage,
-            requestId = createCommentSagaData.pageRequestId,
-            comment = createCommentSagaData.pageComment
+            idPage = newsCastComments.idPage,
+            requestId = newsCastComments.pageRequestId,
+            comment = newsCastComments.pageComment
         )).to("pageChannel").build()
 
-    private fun recordAuthorComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
-        send(NewsCastAuthorCommand(
-            idAuthor = createCommentSagaData.idAuthor,
-            requestId = createCommentSagaData.authorRequestId,
-            comment = createCommentSagaData.authorComment
-        )).to("authorChannel").build()
+    private fun savedPageComent(newsCastComments: NewsCastComments, pageComment: PageComment?) {
+        logger.info("Page comment is registered: $pageComment")
+    }
 
-    private fun recordMessageComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
-        send(NewsCastMessageCommand(
-            idMessage = createCommentSagaData.idMessage,
-            requestId = createCommentSagaData.messageRequestId,
-            comment = createCommentSagaData.messageComment
-        )).to("messageChannel").build()
 
-    private fun rejectPageComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
+    private fun rejectPageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
         send(NewsCastPageRejectCommand(
-            requestId = createCommentSagaData.pageRequestId
+            requestId = newsCastComments.pageRequestId
         )).to("pageChannel").build()
 
-    private fun rejectAuthorComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
-        send(NewsCastAuthorRejectCommand(
-            requestId = createCommentSagaData.authorRequestId
+    private fun rejectedPageComment(newsCastComments: NewsCastComments, pageComment: PageComment?) {
+        logger.info("Page comment is rejected: $pageComment")
+    }
+
+    private fun recordAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+        send(NewsCastAuthorCommand(
+            idAuthor = newsCastComments.idAuthor,
+            requestId = newsCastComments.authorRequestId,
+            comment = newsCastComments.authorComment
         )).to("authorChannel").build()
 
-    private fun rejectMessageComment(createCommentSagaData: NewsCastComments): CommandWithDestination? =
-        send(NewsCastMessageRejectCommand(
-            requestId = createCommentSagaData.messageRequestId
+    fun savedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment?) {
+        logger.info("Author comment is registered: $authorComment")
+    }
+
+    private fun rejectAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+        send(NewsCastAuthorRejectCommand(
+            requestId = newsCastComments.authorRequestId
+        )).to("authorChannel").build()
+
+    private fun rejectedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment?) {
+        logger.info("Author comment is rejected: $authorComment")
+    }
+
+    private fun recordMessageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+        send(NewsCastMessageCommand(
+            idMessage = newsCastComments.idMessage,
+            requestId = newsCastComments.messageRequestId,
+            comment = newsCastComments.messageComment
         )).to("messageChannel").build()
 
-    private fun startSaga(createCommentSagaData: NewsCastComments) {
+    private fun savedMessageComment(newsCastComments: NewsCastComments, messageComment: MessageComment?) {
+        logger.info("Message comment is registered: $messageComment")
     }
 
-    private fun done(createCommentSagaData: NewsCastComments) {
-        System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
+    private fun rejectMessageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+        send(NewsCastMessageRejectCommand(
+            requestId = newsCastComments.messageRequestId
+        )).to("messageChannel").build()
+
+    private fun rejectedMessageComment(saga: NewsCastComments, messageComment: MessageComment?) {
+        logger.info("Message comment is rejected: $messageComment")
     }
 
-
-    fun didit(saga: NewsCastComments, authorComment: AuthorComment?) {
-        System.out.println("WOWOWOWOOWOWOW!!!!!!!!--------")
-    }
-
-    private fun createAuthorComment(createCommentSagaData: NewsCastComments) {
-//        val authorComment = AuthorComment(
-//            authorId = createCommentSagaData.idAuthor,
-//            comment = createCommentSagaData.authorComment
-//        )
-//        val authorCommentRequest = authorCommentRepository.save(authorComment)
-//        createCommentSagaData.authorRequestId = authorCommentRequest.id
-    }
-
-    private fun reject(createCommentSagaData: NewsCastComments) {
-
+    private fun done(newsCastComments: NewsCastComments) {
+        logger.info("Saga is completed: $newsCastComments")
     }
 
     override fun getSagaDefinition(): SagaDefinition<NewsCastComments> {

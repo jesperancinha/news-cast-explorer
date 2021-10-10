@@ -67,7 +67,7 @@ open class NewsCastOrchestrationConfiguration {
     open fun createCommentSaga(
         authorCommentRepository: AuthorCommentRepository,
     ): CreateCommentSaga {
-        return CreateCommentSaga(authorCommentRepository)
+        return CreateCommentSaga()
     }
 
     @Bean("newsCastTicketService")

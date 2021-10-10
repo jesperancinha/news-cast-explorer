@@ -13,5 +13,5 @@ class NewsCastMessageCommentService(
 ) {
     fun save(messageComment: MessageComment): MessageComment = messageCommentRepository.save(messageComment)
 
-    fun getByRequestId(requestId: Long): MessageComment? = messageCommentRepository.findByRequestId(requestId)
+    fun getByRequestId(requestId: Long): List<MessageComment>? = messageCommentRepository.findByRequestId(requestId)
 }
