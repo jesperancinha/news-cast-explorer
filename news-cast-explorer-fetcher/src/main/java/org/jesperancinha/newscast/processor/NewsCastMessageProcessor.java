@@ -11,6 +11,7 @@ import org.jesperancinha.newscast.converters.PageConverter;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
 import org.jesperancinha.newscast.data.PageDto;
+import org.jesperancinha.newscast.model.explorer.Author;
 import org.jesperancinha.newscast.model.source.Message;
 import org.jesperancinha.newscast.repository.AuthorRepository;
 import org.jesperancinha.newscast.repository.MessageRepository;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -80,16 +82,21 @@ public class NewsCastMessageProcessor {
     private void savePageDb(PageDto pageDto) {
         var page = pageRepository.save(PageConverter.toData(pageDto));
         for (var authorDto : pageDto.authors()) {
-            var authorToSave = AuthorConverter.toData(authorDto, page);
-            page.getAuthors().add(authorToSave);
-            authorToSave.setPage(pageRepository.save(page));
-            var author = authorRepository.save(authorToSave);
-            authorDto.messageDtos()
+            Author author = authorRepository.findFirstByNewsCastAuthorIdAndPageId(authorDto.id(), page.getId());
+            var authorToSave = author;
+            if (author == null) {
+                authorToSave = AuthorConverter.toData(authorDto, page);
+                author = authorRepository.save(authorToSave);
+                page.getAuthors().add(author);
+                authorToSave.setPage(pageRepository.save(page));
+            }
+            final var authorRef = new AtomicReference<>(author);
+            authorDto.messages()
                     .forEach(messageDto -> {
-                        var message = MessageConverter.toData(messageDto);
-                        var save = messageRepository.save(message);
-                        author.getMessages().add(save);
-                        authorRepository.save(author);
+                        var message = MessageConverter.toData(messageDto, authorRef.get());
+                        var save = messageRepository.saveAndFlush(message);
+                        authorRef.get().getMessages().add(save);
+                        authorRef.set(authorRepository.save(authorRef.get()));
                     });
         }
     }
@@ -109,8 +116,7 @@ public class NewsCastMessageProcessor {
                 .createdAt(authorDto.createdAt())
                 .name(authorDto.name())
                 .screenName(authorDto.screenName())
-                .messageDtos(listEntryValue)
-                .nMessages(listEntryValue.size())
+                .messages(listEntryValue)
                 .build();
     }
 

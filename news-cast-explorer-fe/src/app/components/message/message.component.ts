@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {MatTableDataSource} from "@angular/material/table";
-import {Message} from "../../model/message";
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatTableDataSource} from '@angular/material/table';
+import {Message} from '../../model/message';
 
 @Component({
     selector: 'message-component',
@@ -23,8 +23,8 @@ export class MessageComponent implements OnInit {
     ngOnInit() {
     }
 
-    toDate(created_at: number) {
-        return new Date(created_at);
+    toDate(createdAt: number) {
+        return new Date(createdAt);
     }
 
 

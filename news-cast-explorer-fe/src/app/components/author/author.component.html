@@ -14,7 +14,7 @@
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef>Authors</th>
+                <th mat-header-cell *matHeaderCellDef>Author</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
                     (click)="authorClicked(element)"> {{element.name}} </td>
             </ng-container>
@@ -22,13 +22,13 @@
             <ng-container matColumnDef="screenName">
                 <th mat-header-cell *matHeaderCellDef>Screen Name</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-                    (click)="authorClicked(element)"> {{element.screen_name}} </td>
+                    (click)="authorClicked(element)"> {{element.screenName}} </td>
             </ng-container>
 
             <ng-container matColumnDef="nMessages">
                 <th mat-header-cell *matHeaderCellDef>Message Number</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-                    (click)="authorClicked(element)"> {{element.n_messages}} </td>
+                    (click)="authorClicked(element)"> {{element.messages.length}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedAuthorsColumns"></tr>

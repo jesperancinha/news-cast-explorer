@@ -80,9 +80,9 @@ class NewsCastMessageProcessor1Test {
         authorDto.name shouldBe "Author1"
         authorDto.screenName shouldBe "Author1ScreenName"
         authorDto.createdAt shouldBe 1550265180000L
-        authorDto.messageDtos.shouldNotBeNull()
-        authorDto.messageDtos.shouldHaveSize(1)
-        val messageDto = authorDto.messageDtos[0]
+        authorDto.messages.shouldNotBeNull()
+        authorDto.messages.shouldHaveSize(1)
+        val messageDto = authorDto.messages[0]
         messageDto.shouldNotBeNull()
         messageDto.id shouldBe "999999999000000000"
         messageDto.text shouldBe "Message1"

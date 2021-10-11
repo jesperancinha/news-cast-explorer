@@ -9,11 +9,9 @@ public record AuthorDto(
         Long createdAt,
         String name,
         String screenName,
-        List<MessageDto> messageDtos,
-        Integer nMessages
+        List<MessageDto> messages
 ) {
     @Builder
     public AuthorDto {
-
     }
 }

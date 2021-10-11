@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {PageService} from "./service/page.service";
-import {Page} from "./model/page";
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {Message} from "./model/message";
-import {Author} from "./model/author";
-import {MatTableDataSource} from "@angular/material/table";
+import {PageService} from './service/page.service';
+import {Page} from './model/page';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {Message} from './model/message';
+import {Author} from './model/author';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +19,12 @@ import {MatTableDataSource} from "@angular/material/table";
   ],
 })
 export class AppComponent implements OnInit {
-  title = 'twitter-fe';
+  title = 'news-cast-explorer-fe';
   dataSource: MatTableDataSource<Page>;
   messagesSelected: MatTableDataSource<Message>;
   authorsSelected: MatTableDataSource<Author>;
-  filterAuthor: string = '';
-  filterMessages: string = '';
+  filterAuthor = '';
+  filterMessages = '';
 
   constructor(private pageService: PageService) {
   }
@@ -36,13 +36,6 @@ export class AppComponent implements OnInit {
   getPages() {
     return this.pageService.getPages()
       .subscribe(data => {
-        data.forEach(page => {
-          page.authors.forEach(author => {
-            this.pageService.getAuthor(author.id).subscribe(
-              authorData => author.message_dtos = authorData.message_dtos
-            )
-          })
-        })
         this.dataSource = new MatTableDataSource(data);
       });
   }

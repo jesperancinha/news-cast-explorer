@@ -19,7 +19,7 @@ describe('Page Component', () => {
         expect(pageComponent.calculateNumberOfMessages([{
             message_dtos: [],
             name: "",
-            created_at: 9777,
+            createdAt: 9777,
             id: "sklndfnskf23i",
             screenName: "aloha"
         }])).toBe(0);
@@ -28,11 +28,11 @@ describe('Page Component', () => {
         expect(pageComponent.calculateNumberOfMessages([{
             message_dtos: [{
                 text: 'message',
-                created_at: 234324,
+                createdAt: 234324,
                 id: '23432432423'
             }],
             name: "",
-            created_at: 9777,
+            createdAt: 9777,
             id: "sklndfnskf23i",
             screenName: "aloha"
         }])).toBe(1);
@@ -42,7 +42,7 @@ describe('Page Component', () => {
     });
     it('#average of 0 messages in 30 seconds in a page with authors should be N/A', () => {
         let page: Page = {
-            created_at: 888888,
+            createdAt: 888888,
             duration: 30,
             authors: []
         };
@@ -51,7 +51,7 @@ describe('Page Component', () => {
     });
     it('#average of 4 messages in 30 seconds should be 0.13', () => {
         let page: Page = {
-            created_at: 888888,
+            createdAt: 888888,
             duration: 30,
             authors: getTestAuthors()
         };
@@ -62,7 +62,7 @@ describe('Page Component', () => {
         pageComponent.authorsSelected = new MatTableDataSource<Author>([]);
         let page: Page = {
             duration: 30,
-            created_at: 23432423423,
+            createdAt: 23432423423,
             authors: pageComponent.authorsSelected.data
         };
         expect(pageComponent.calculateBackgroundPage(page)).toBe("green");
@@ -71,7 +71,7 @@ describe('Page Component', () => {
         pageComponent.authorsSelected = new MatTableDataSource<Author>([]);
         let page: Page = {
             duration: 30,
-            created_at: 23432423423,
+            createdAt: 23432423423,
             authors: []
         };
         expect(pageComponent.calculateBackgroundPage(page)).toBe("white");
@@ -83,31 +83,31 @@ function getTestAuthors() {
     return [
         {
             name: "",
-            created_at: 9777,
+            createdAt: 9777,
             id: "sklndfnskf23i",
             screenName: "aloha",
             message_dtos: [{
                 text: "message",
-                created_at: 234324,
+                createdAt: 234324,
                 id: "23432432423"
             }, {
                 text: "message",
-                created_at: 234324,
+                createdAt: 234324,
                 id: "23432432423",
             },
             ],
         }, {
             name: "",
-            created_at: 9777,
+            createdAt: 9777,
             id: "sklndfnskf23i",
             screenName: "aloha",
             message_dtos: [{
                 text: "message",
-                created_at: 234324,
+                createdAt: 234324,
                 id: "23432432423"
             }, {
                 text: "message",
-                created_at: 234324,
+                createdAt: 234324,
                 id: "23432432423",
             }]
         }];

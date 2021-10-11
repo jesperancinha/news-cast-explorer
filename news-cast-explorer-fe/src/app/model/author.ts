@@ -5,6 +5,6 @@ export interface Author {
   createdAt: number;
   name: string;
   screenName: string;
-  message_dtos: Message[];
+  messages: Message[];
 }
 

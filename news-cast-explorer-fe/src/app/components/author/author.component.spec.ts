@@ -16,7 +16,7 @@ describe('Author Component', () => {
             name: "WOW",
             screenName: "wowy",
             id: "234324",
-            created_at: 23432423423,
+            createdAt: 23432423423,
             message_dtos: authorComponent.messagesSelected.data
         };
         expect(authorComponent.calculateBackgroundAuthors(author)).toBe("green");
@@ -27,7 +27,7 @@ describe('Author Component', () => {
             name: "WOW",
             screenName: "wowy",
             id: "234324",
-            created_at: 23432423423,
+            createdAt: 23432423423,
             message_dtos: []
         };
         expect(authorComponent.calculateBackgroundAuthors(author)).toBe("white");

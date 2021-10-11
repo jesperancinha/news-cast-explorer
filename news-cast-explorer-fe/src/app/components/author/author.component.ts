@@ -18,8 +18,8 @@ import {Author} from "../../model/author";
 })
 export class AuthorComponent implements OnInit {
     displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName', 'nMessages'];
-    filterAuthor: string = '';
-    filterMessages: string = '';
+    filterAuthor = '';
+    filterMessages = '';
     @Input() messagesSelected: MatTableDataSource<Message>;
     @Input() authorsSelected: MatTableDataSource<Author>;
     @Output() messagesToEmit = new EventEmitter<MatTableDataSource<Message>>();
@@ -28,7 +28,7 @@ export class AuthorComponent implements OnInit {
     }
 
     authorClicked(element: Author) {
-        this.messagesToEmit.emit(new MatTableDataSource(element.message_dtos));
+        this.messagesToEmit.emit(new MatTableDataSource(element.messages));
         this.filterMessages = '';
     }
 
@@ -42,7 +42,7 @@ export class AuthorComponent implements OnInit {
     }
 
     calculateBackgroundAuthors(element: Author) {
-        if (this.messagesSelected && element.message_dtos === this.messagesSelected.data) {
+        if (this.messagesSelected && element.messages === this.messagesSelected.data) {
             return 'green'
         }
         return 'white';

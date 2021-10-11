@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import static javax.persistence.GenerationType.AUTO;
 
@@ -31,4 +33,12 @@ public class Message {
 
     @EqualsAndHashCode.Exclude
     private String text;
+
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "author_id",
+            nullable = false,
+            updatable = false,
+            referencedColumnName = "id")
+    private Author author;
 }

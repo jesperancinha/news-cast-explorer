@@ -92,9 +92,9 @@ internal class NewsCastMessageProcessor2Test(
         authorDto.name shouldBe "lola_montes"
         authorDto.screenName shouldBe "bacalhau_oil"
         authorDto.createdAt shouldBe 1632872907000L
-        authorDto.messageDtos.shouldNotBeNull()
-        authorDto.messageDtos.shouldHaveSize(1)
-        val messageDto = authorDto.messageDtos[0]
+        authorDto.messages.shouldNotBeNull()
+        authorDto.messages.shouldHaveSize(1)
+        val messageDto = authorDto.messages[0]
         messageDto.shouldNotBeNull()
         messageDto.id shouldBe "195"
         messageDto.text shouldBe "tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley"

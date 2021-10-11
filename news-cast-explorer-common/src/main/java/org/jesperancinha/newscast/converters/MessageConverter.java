@@ -1,6 +1,7 @@
 package org.jesperancinha.newscast.converters;
 
 import org.jesperancinha.newscast.data.MessageDto;
+import org.jesperancinha.newscast.model.explorer.Author;
 import org.jesperancinha.newscast.model.explorer.Message;
 
 public class MessageConverter {
@@ -12,9 +13,10 @@ public class MessageConverter {
                 .build();
     }
 
-    public static Message toData(MessageDto messageDto) {
+    public static Message toData(MessageDto messageDto, Author author) {
         return Message.builder()
                 .createdAt(messageDto.createdAt())
+                .author(author)
                 .newscastMessageId(messageDto.id())
                 .text(messageDto.text())
                 .build();
