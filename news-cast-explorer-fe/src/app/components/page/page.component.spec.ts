@@ -17,7 +17,7 @@ describe('Page Component', () => {
   it('#number of messages should be zero even if the author doesnt have any', () => {
 
     expect(pageComponent.calculateNumberOfMessages([{
-      message_dtos: [],
+      messages: [],
       name: '',
       createdAt: 9777,
       id: "sklndfnskf23i",
@@ -26,7 +26,7 @@ describe('Page Component', () => {
   });
   it('#number of messages should be one if one author has only one message', () => {
     expect(pageComponent.calculateNumberOfMessages([{
-      message_dtos: [{
+      messages: [{
         text: 'message',
         createdAt: 234324,
         id: '23432432423'
@@ -86,7 +86,7 @@ function getTestAuthors() {
       createdAt: 9777,
       id: "sklndfnskf23i",
       screenName: "aloha",
-      message_dtos: [{
+      messages: [{
         text: "message",
         createdAt: 234324,
         id: "23432432423"
@@ -101,7 +101,7 @@ function getTestAuthors() {
       createdAt: 9777,
       id: "sklndfnskf23i",
       screenName: "aloha",
-      message_dtos: [{
+      messages: [{
         text: "message",
         createdAt: 234324,
         id: "23432432423"
