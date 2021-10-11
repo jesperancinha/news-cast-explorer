@@ -2,24 +2,36 @@ package org.jesperancinha.newscast.service;
 
 import org.jesperancinha.newscast.converters.PageConverter;
 import org.jesperancinha.newscast.data.PageDto;
+import org.jesperancinha.newscast.model.explorer.Author;
+import org.jesperancinha.newscast.model.explorer.Page;
+import org.jesperancinha.newscast.repository.AuthorRepository;
 import org.jesperancinha.newscast.repository.PageRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class PageServiceImpl {
 
     private final PageRepository pageRepository;
+    private final AuthorRepository authorRepository;
 
-    public PageServiceImpl(PageRepository pageRepository) {
+    public PageServiceImpl(PageRepository pageRepository, AuthorRepository authorRepository) {
         this.pageRepository = pageRepository;
+        this.authorRepository = authorRepository;
     }
 
     public List<PageDto> getAllPages() {
-        return pageRepository
-                .findAll()
+        final List<Page> pageList = pageRepository
+                .findAll();
+        pageList.forEach(page -> page.getAuthors().forEach(author -> {
+            final Long authorId = author.getId();
+            final Optional<Author> authorOptional = authorRepository.findById(authorId);
+            authorOptional.ifPresent(value -> author.getMessages().addAll(value.getMessages()));
+        }));
+        return pageList
                 .stream()
                 .map(PageConverter::toDto).collect(Collectors.toList());
     }

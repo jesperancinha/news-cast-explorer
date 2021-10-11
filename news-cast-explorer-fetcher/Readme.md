@@ -1,5 +1,11 @@
 # twitter-fetcher
 
+## How to run
+
+```shell
+mvn spring-boot:run
+```
+
 ## About me 👨🏽‍💻🚀🏳️‍🌈
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/JEOrgLogo-20.png "João Esperancinha Homepage")](http://joaofilipesabinoesperancinha.nl)
