@@ -24,12 +24,14 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.annotation.DirtiesContext
 import java.io.IOException
 import java.nio.charset.Charset
 
 @SpringBootTest(
     properties = ["org.jesperancinha.newscast.host=http://localhost:8080"]
 )
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 internal class NewsCastMessageProcessor2Test(
     @Autowired
     val newsCastMessageProcessor: NewsCastMessageProcessor,
