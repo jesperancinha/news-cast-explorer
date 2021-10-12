@@ -10,6 +10,7 @@ import org.jesperancinha.newscast.choreography.event.NewsCastAuthorRejectComment
 import org.jesperancinha.newscast.choreography.event.NewsCastEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastEventDone
 import org.jesperancinha.newscast.choreography.event.NewsCastMessageCommentEvent
+import org.jesperancinha.newscast.choreography.event.NewsCastMessageRejectCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastPageCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastPageRejectCommentEvent
 import org.jesperancinha.newscast.saga.data.NewsCastComments
@@ -69,7 +70,7 @@ class NewsCastEventConsumer(
                 comment = newsCastComments.pageComment,
                 requestId = newsCastComments.pageRequestId
             ))
-        pageService.getPageById(newsCastComments.idPage).ifPresentOrElse(Consumer {
+        pageService.findPageById(newsCastComments.idPage).ifPresentOrElse(Consumer {
             logger.info("Page comment registered $pageComment")
             domainEventPublisher.publish(NewsCastComments::class.java,
                 UUID.randomUUID(),
@@ -91,10 +92,18 @@ class NewsCastEventConsumer(
                 requestId = newsCastComments.authorRequestId
             ))
         logger.info("Author comment registered $authorComment")
-        domainEventPublisher?.publish(NewsCastComments::class.java,
-            UUID.randomUUID(),
-            listOf(NewsCastMessageCommentEvent(
-                newsCastComments)))
+        authorService.findAuthorById(newsCastComments.idAuthor).ifPresentOrElse(
+            {
+                domainEventPublisher.publish(NewsCastComments::class.java,
+                    UUID.randomUUID(),
+                    listOf(NewsCastMessageCommentEvent(
+                        newsCastComments)))
+            }
+        ) {
+            domainEventPublisher.publish(NewsCastAuthorRejectCommentEvent::class.java,
+                UUID.randomUUID(), listOf())
+        }
+
     }
 
     private fun handleCreateMessageCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastMessageCommentEvent>) {
@@ -106,8 +115,15 @@ class NewsCastEventConsumer(
                 requestId = newsCastComments.messageRequestId
             ))
         logger.info("Message comment registered $messageComment")
-        domainEventPublisher?.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastEventDone(
-            newsCastComments)))
+        messageService.findMessageById(newsCastComments.idMessage)
+            .ifPresentOrElse({
+                domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastEventDone(
+                    newsCastComments)))
+
+            }) {
+                domainEventPublisher.publish(NewsCastMessageRejectCommentEvent::class.java,
+                    UUID.randomUUID(), listOf())
+            }
     }
 
     private fun handleDone(domainEventEnvelope: DomainEventEnvelope<NewsCastEventDone>) {

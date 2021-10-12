@@ -15,7 +15,6 @@ open class NewsCastTicketService(
 ) {
     @Transactional
     open fun createOrder(newsCastComments: NewsCastComments): String {
-        val sagaInstance = sagaInstanceFactory.create(createCommentSaga, newsCastComments)
-        return sagaInstance.id
+        return sagaInstanceFactory.create(createCommentSaga, newsCastComments).id
     }
 }

@@ -33,6 +33,19 @@
 
 ---
 
+## Libraries
+
+- [news-cast-explorer-common](./news-cast-explorer-common) - Java libraries to support Page, Authors and Messages
+- [news-cast-explorer-saga-common](./news-cast-explorer-saga-common) - Kotlin library to support the comments for the previously mentioned entitites
+
+## Running services
+
+- [news-cast-mock](./news-cast-mock) - News feeder simulation. This is where the data starts - Spring - Kotlin module - Port 8081
+- [news-cast-explorer-fetcher](./news-cast-explorer-fetcher) - Makes different runs, scheduled or non schedule. Each run can fetch up to 100 messages in a maximum period of 30 seconds by default - Spring Java 17 module - Port 8080
+- [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
+- [news-cast-explorer-saga-orchestration](./news-cast-explorer-saga-orchestration) - An orchestration implementation of the Saga Architecture - Spring - Kotlin module - Port 8082
+- [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
+
 This project is ongoing bulldozing changes. Keep coming back to witness its transformation. All references to Twitter will be removed soon and the project will run in a self-reliance way.
 
 (TO BE ALTERED 👇)

@@ -1,5 +1,7 @@
 package org.jesperancinha.newscast.orchestration.handlers
 
+import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder
+import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withFailure
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess
 import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
@@ -7,8 +9,9 @@ import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
 import org.jesperancinha.newscast.orchestration.commands.NewsCastPageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastPageRejectCommand
-import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
 import org.jesperancinha.newscast.saga.domain.PageComment
+import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
+import org.jesperancinha.newscast.service.PageService
 
 
 /**
@@ -16,6 +19,7 @@ import org.jesperancinha.newscast.saga.domain.PageComment
  */
 class NewsCastPageCommentHandler(
     private val newsCastPageCommentService: NewsCastPageCommentService,
+    private val pageService: PageService,
 ) {
     fun commandHandlerDefinitions(): CommandHandlers {
         return SagaCommandHandlersBuilder
@@ -27,13 +31,15 @@ class NewsCastPageCommentHandler(
 
     private fun createPageComment(commandPage: CommandMessage<NewsCastPageCommand>): Message {
         val command = commandPage.command
-        val authorComment =
+        val pageComment =
             newsCastPageCommentService.save(PageComment(
                 pageId = command.idPage,
                 comment = command.comment,
                 requestId = command.requestId
             ))
-        return withSuccess(authorComment)
+        return if (pageService.findPageById(command.idPage).isPresent)
+            withSuccess(pageComment) else
+            withFailure()
     }
 
     private fun rejectPageComment(commandPage: CommandMessage<NewsCastPageRejectCommand>): Message {

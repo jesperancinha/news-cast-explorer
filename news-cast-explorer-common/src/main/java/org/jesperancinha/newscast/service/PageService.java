@@ -40,7 +40,7 @@ public class PageService {
         return PageConverter.toDto(pageRepository.save(PageConverter.toData(pageDto)));
     }
 
-    public Optional<Page> getPageById(Long idPage) {
+    public Optional<Page> findPageById(Long idPage) {
         return pageRepository.findById(idPage);
     }
 }

@@ -1,5 +1,6 @@
 package org.jesperancinha.newscast.orchestration.handlers
 
+import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess
 import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
@@ -9,6 +10,7 @@ import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageRejectCommand
 import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.saga.domain.MessageComment
+import org.jesperancinha.newscast.service.MessageService
 
 
 /**
@@ -16,6 +18,7 @@ import org.jesperancinha.newscast.saga.domain.MessageComment
  */
 class NewsCastMessageCommentHandler(
     private val newsCastMessageCommentService: NewsCastMessageCommentService,
+    private val messageService: MessageService
 ) {
 
     fun commandHandlerDefinitions(): CommandHandlers {
@@ -34,7 +37,9 @@ class NewsCastMessageCommentHandler(
                 comment = command.comment,
                 requestId = command.requestId
             ))
-        return withSuccess(messageComment)
+        return if (messageService.findMessageById(command.idMessage).isPresent)
+            withSuccess(messageComment) else
+            CommandHandlerReplyBuilder.withFailure()
     }
 
     private fun rejectMessageComment(commandMessage: CommandMessage<NewsCastMessageRejectCommand>): Message {

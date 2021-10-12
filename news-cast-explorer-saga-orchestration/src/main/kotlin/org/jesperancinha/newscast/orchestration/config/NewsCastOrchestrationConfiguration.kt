@@ -12,11 +12,14 @@ import org.jesperancinha.newscast.orchestration.handlers.NewsCastAuthorCommentHa
 import org.jesperancinha.newscast.orchestration.handlers.NewsCastMessageCommentHandler
 import org.jesperancinha.newscast.orchestration.handlers.NewsCastPageCommentHandler
 import org.jesperancinha.newscast.orchestration.saga.CreateCommentSaga
+import org.jesperancinha.newscast.orchestration.service.NewsCastTicketService
+import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
 import org.jesperancinha.newscast.saga.service.NewsCastAuthorCommentService
 import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
-import org.jesperancinha.newscast.orchestration.service.NewsCastTicketService
-import org.jesperancinha.newscast.saga.repository.AuthorCommentRepository
+import org.jesperancinha.newscast.service.AuthorService
+import org.jesperancinha.newscast.service.MessageService
+import org.jesperancinha.newscast.service.PageService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
@@ -32,18 +35,28 @@ import org.springframework.context.annotation.Import
     EventuateTramKafkaMessageConsumerConfiguration::class)
 open class NewsCastOrchestrationConfiguration {
     @Bean("newsCastPageCommentHandler")
-    open fun newsCastPageCommentHandler(newsCastPageCommentService: NewsCastPageCommentService): NewsCastPageCommentHandler {
-        return NewsCastPageCommentHandler(newsCastPageCommentService)
+    open fun newsCastPageCommentHandler(
+        newsCastPageCommentService: NewsCastPageCommentService,
+        pageService: PageService,
+    ): NewsCastPageCommentHandler {
+        return NewsCastPageCommentHandler(newsCastPageCommentService, pageService)
     }
 
     @Bean("newsCastAuthorCommentHandler")
-    open fun newsCastAuthorCommentHandler(newsCastAuthorCommentService: NewsCastAuthorCommentService): NewsCastAuthorCommentHandler {
-        return NewsCastAuthorCommentHandler(newsCastAuthorCommentService)
+    open fun newsCastAuthorCommentHandler(
+        newsCastAuthorCommentService: NewsCastAuthorCommentService,
+        authorService: AuthorService,
+    ): NewsCastAuthorCommentHandler {
+        return NewsCastAuthorCommentHandler(newsCastAuthorCommentService,
+            authorService)
     }
 
     @Bean("newsCastMessageCommentHandler")
-    open fun newsCastMessageCommentHandler(newsCastMessageCommentService: NewsCastMessageCommentService): NewsCastMessageCommentHandler {
-        return NewsCastMessageCommentHandler(newsCastMessageCommentService)
+    open fun newsCastMessageCommentHandler(
+        newsCastMessageCommentService: NewsCastMessageCommentService,
+        messageService: MessageService,
+    ): NewsCastMessageCommentHandler {
+        return NewsCastMessageCommentHandler(newsCastMessageCommentService, messageService)
     }
 
     @Bean
