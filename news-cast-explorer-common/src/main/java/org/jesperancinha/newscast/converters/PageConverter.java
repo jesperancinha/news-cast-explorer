@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class PageConverter {
     public static PageDto toDto(Page page) {
         return PageDto.builder()
+                .id(page.getId())
                 .createdAt(page.getCreatedAt())
                 .duration(page.getDuration())
                 .authors(page.getAuthors().stream().map(AuthorConverter::toDto).collect(Collectors.toList()))

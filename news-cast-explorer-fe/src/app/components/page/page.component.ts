@@ -1,4 +1,4 @@
-import {Component, EventEmitter, NgModule, NO_ERRORS_SCHEMA, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import {Page} from '../../model/page';
@@ -23,7 +23,7 @@ import {interval, Subscription} from 'rxjs';
 export class PageComponent implements OnInit {
   private updateSubscription: Subscription;
   dataSource: MatTableDataSource<Page>;
-  displayedColumns: string[] = ['createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
+  displayedColumns: string[] = ['id', 'createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
   messagesSelected: MatTableDataSource<Message>;
   authorsSelected: MatTableDataSource<Author>;
   filterPage = '';
