@@ -26,11 +26,6 @@ public class PageService {
     public List<PageDto> getAllPages() {
         final List<Page> pageList = pageRepository
                 .findAll();
-        pageList.forEach(page -> page.getAuthors().forEach(author -> {
-            final Long authorId = author.getId();
-            final Optional<Author> authorOptional = authorRepository.findById(authorId);
-            authorOptional.ifPresent(value -> author.getMessages().addAll(value.getMessages()));
-        }));
         return pageList
                 .stream()
                 .map(PageConverter::toDto).collect(Collectors.toList());

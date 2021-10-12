@@ -19,6 +19,7 @@ docker-clean:
 	docker-compose rm -svf
 docker:
 	rm -rf out
+	cp -r news-cast-explorer-fe/dist docker-files/nginx
 	docker-compose up -d --build --remove-orphans
 docker-local:
 	cd docker/local

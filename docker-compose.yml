@@ -56,6 +56,12 @@ services:
     ports:
       - "8085:8085"
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 300M
     networks:
       - newscast
 
@@ -109,3 +115,21 @@ services:
           memory: 300M
     networks:
       - newscast
+
+  news_cast_fe:
+    hostname: news_cast_fe
+    container_name: news_cast_fe
+    build:
+      context: docker-files/nginx/.
+    ports:
+      - 9000:9000
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 300M
+    networks:
+      - newscast
+

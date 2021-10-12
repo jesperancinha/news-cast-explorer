@@ -12,9 +12,9 @@ COPY ../news-cast-logger2021-10-08/log-docker-server.py ${runningFolder}
 
 COPY docker-entrypoint.sh ${runningFolder}
 
-COPY ../../docker-files/docker-files/default.conf /etc/nginx/conf.d/default.conf
+COPY ../../docker-files/nginx/default.conf /etc/nginx/conf.d/default.conf
 
-COPY ../../docker-files/docker-files/nginx.conf /etc/nginx/nginx.conf
+COPY ../../docker-files/nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY ../../news-cast-explorer-fe/dist /usr/share/nginx/html
 
