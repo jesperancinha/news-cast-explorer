@@ -2,6 +2,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Message} from '../../model/message';
 import {AuthorComponent} from './author.component';
 import {Author} from '../../model/author';
+import {} from 'jasmine';
 
 describe('Author Component', () => {
   let authorComponent: AuthorComponent;

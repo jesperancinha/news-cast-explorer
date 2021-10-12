@@ -2,6 +2,7 @@ import {PageComponent} from './page.component';
 import {Page} from '../../model/page';
 import {MatTableDataSource} from '@angular/material/table';
 import {Author} from '../../model/author';
+import {} from 'jasmine';
 
 describe('Page Component', () => {
   let pageComponent: PageComponent;
@@ -20,8 +21,8 @@ describe('Page Component', () => {
       messages: [],
       name: '',
       createdAt: 9777,
-      id: "sklndfnskf23i",
-      screenName: "aloha"
+      id: 'sklndfnskf23i',
+      screenName: 'aloha'
     }])).toBe(0);
   });
   it('#number of messages should be one if one author has only one message', () => {
@@ -33,24 +34,26 @@ describe('Page Component', () => {
       }],
       name: '',
       createdAt: 9777,
-      id: "sklndfnskf23i",
-      screenName: "aloha"
+      id: 'sklndfnskf23i',
+      screenName: 'aloha'
     }])).toBe(1);
   });
   it('#number of messages should be 4 if one each author has two  messages', () => {
     expect(pageComponent.calculateNumberOfMessages(getTestAuthors())).toBe(4);
   });
   it('#average of 0 messages in 30 seconds in a page with authors should be N/A', () => {
-    let page: Page = {
+    const page: Page = {
+      id: 1,
       createdAt: 888888,
       duration: 30,
       authors: []
     };
     expect(pageComponent.calculateAverage(page))
-      .toBe("N/A");
+      .toBe('N/A');
   });
   it('#average of 4 messages in 30 seconds should be 0.13', () => {
-    let page: Page = {
+    const page: Page = {
+      id: 1,
       createdAt: 888888,
       duration: 30,
       authors: getTestAuthors()
@@ -60,7 +63,8 @@ describe('Page Component', () => {
   });
   it('should be green when the selected authors are from this page', () => {
     pageComponent.authorsSelected = new MatTableDataSource<Author>([]);
-    let page: Page = {
+    const page: Page = {
+      id: 1,
       duration: 30,
       createdAt: 23432423423,
       authors: pageComponent.authorsSelected.data
@@ -69,12 +73,13 @@ describe('Page Component', () => {
   });
   it('should be white when the selected authors are not from this page', () => {
     pageComponent.authorsSelected = new MatTableDataSource<Author>([]);
-    let page: Page = {
+    const page: Page = {
+      id: 1,
       duration: 30,
       createdAt: 23432423423,
       authors: []
     };
-    expect(pageComponent.calculateBackgroundPage(page)).toBe("white");
+    expect(pageComponent.calculateBackgroundPage(page)).toBe('white');
   });
 })
 ;
@@ -82,33 +87,33 @@ describe('Page Component', () => {
 function getTestAuthors() {
   return [
     {
-      name: "",
+      name: '',
       createdAt: 9777,
-      id: "sklndfnskf23i",
-      screenName: "aloha",
+      id: 'sklndfnskf23i',
+      screenName: 'aloha',
       messages: [{
-        text: "message",
+        text: 'message',
         createdAt: 234324,
-        id: "23432432423"
+        id: '23432432423'
       }, {
-        text: "message",
+        text: 'message',
         createdAt: 234324,
-        id: "23432432423",
+        id: '23432432423',
       },
       ],
     }, {
-      name: "",
+      name: '',
       createdAt: 9777,
-      id: "sklndfnskf23i",
-      screenName: "aloha",
+      id: 'sklndfnskf23i',
+      screenName: 'aloha',
       messages: [{
-        text: "message",
+        text: 'message',
         createdAt: 234324,
-        id: "23432432423"
+        id: '23432432423'
       }, {
-        text: "message",
+        text: 'message',
         createdAt: 234324,
-        id: "23432432423",
+        id: '23432432423',
       }]
     }];
 }
