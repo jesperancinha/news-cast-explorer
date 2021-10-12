@@ -13,12 +13,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class PageServiceImpl {
+public class PageService {
 
     private final PageRepository pageRepository;
     private final AuthorRepository authorRepository;
 
-    public PageServiceImpl(PageRepository pageRepository, AuthorRepository authorRepository) {
+    public PageService(PageRepository pageRepository, AuthorRepository authorRepository) {
         this.pageRepository = pageRepository;
         this.authorRepository = authorRepository;
     }
@@ -38,5 +38,9 @@ public class PageServiceImpl {
 
     public PageDto create(PageDto pageDto) {
         return PageConverter.toDto(pageRepository.save(PageConverter.toData(pageDto)));
+    }
+
+    public Optional<Page> getPageById(Long idPage) {
+        return pageRepository.findById(idPage);
     }
 }

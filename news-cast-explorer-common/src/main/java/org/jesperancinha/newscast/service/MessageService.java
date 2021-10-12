@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MessageServiceImpl {
+public class MessageService {
 
     private final MessageRepository messageRepository;
 
-    public MessageServiceImpl(MessageRepository messageRepository) {
+    public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
 

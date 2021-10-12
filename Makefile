@@ -4,6 +4,8 @@ build-npm:
 	cd news-cast-explorer-fe && yarn install && npm run build
 build-maven:
 	mvn clean install -DskipTests
+build-test:
+	mvn clean install
 test:
 	mvn test
 	cd news-cast-explorer-fe && yarn install && npm run test

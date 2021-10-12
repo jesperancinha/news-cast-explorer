@@ -11,10 +11,12 @@ import org.jesperancinha.newscast.choreography.service.NewsCastTicketService
 import org.jesperancinha.newscast.saga.service.NewsCastAuthorCommentService
 import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.saga.service.NewsCastPageCommentService
+import org.jesperancinha.newscast.service.AuthorService
+import org.jesperancinha.newscast.service.MessageService
+import org.jesperancinha.newscast.service.PageService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @Configuration
 @Import(
@@ -26,11 +28,17 @@ open class NewsCastChoreographyConfiguration {
         newsCasePageCommentService: NewsCastPageCommentService,
         newsCastAuthorCommentService: NewsCastAuthorCommentService,
         newsCastMessageCommentService: NewsCastMessageCommentService,
+        pageService: PageService,
+        authorService: AuthorService,
+        messageService: MessageService,
     ): NewsCastEventConsumer {
         return NewsCastEventConsumer(domainEventPublisher,
             newsCasePageCommentService,
             newsCastAuthorCommentService,
-            newsCastMessageCommentService)
+            newsCastMessageCommentService,
+            pageService,
+            authorService,
+            messageService)
     }
 
     @Bean

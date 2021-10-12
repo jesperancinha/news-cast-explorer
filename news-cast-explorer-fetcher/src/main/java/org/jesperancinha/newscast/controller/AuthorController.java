@@ -1,7 +1,7 @@
 package org.jesperancinha.newscast.controller;
 
 import org.jesperancinha.newscast.data.AuthorDto;
-import org.jesperancinha.newscast.service.AuthorServiceImpl;
+import org.jesperancinha.newscast.service.AuthorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,9 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
 
-    private final AuthorServiceImpl authorService;
+    private final AuthorService authorService;
 
-    public AuthorController(AuthorServiceImpl authorService) {
+    public AuthorController(AuthorService authorService) {
         this.authorService = authorService;
     }
 
