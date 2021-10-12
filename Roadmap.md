@@ -1,6 +1,17 @@
 # NewsCast explorer Roadmap
 
+## Roadmap to v3.0.1
+
+- Testcontainers
+
 ## Roadmap to v3.0.0
+
+- Release
+
+2021/10/12
+- Code cleanup
+- Improvements
+- Wrap-up and publish
 
 2021/10/08
 - Saga pattern choreography
@@ -29,9 +40,5 @@
 	- Drop twitter model
 
 2021/09/27
-- JDK 17
-
-- Testcontainers
-- Code cleanup
-- Improvements
-- Wrap-up and publish
+`- JDK 17
+`

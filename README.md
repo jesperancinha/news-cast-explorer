@@ -17,6 +17,10 @@
 
 ---
 
+## Technologies used
+
+---
+
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/kotlin-50.png "Kotlin")](https://kotlinlang.org/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/java-50.png "Java")](https://www.oracle.com/java/)
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-50/docker-50.png)](https://www.docker.com/)
@@ -33,6 +37,39 @@
 
 ---
 
+## Introduction
+
+In this project are going to explore a known EIP known as [Saga](https://microservices.io/patterns/data/saga.html).
+
+A saga is in its essence, a way to describe a sequence of processes that should occur sequentially in a transactional way.
+
+There are two major [Saga](https://microservices.io/patterns/data/saga.html) types: A choreography and an orchestration Saga types.
+
+A choreography Saga is based on event sourcing. We have multiple decoupled processes that wait for certain events in order to be triggered.
+
+An orchestration Saga is also based on event sourcing, but instead of having the events scattered, it provides a series of rules on how processes should react to certain sub-process results.
+An orchestration Saga has provisions for rollback processes for example. As soon as an error occurred, all provisioned methods to perform a rollback will be triggered from the point of failure. This follows the direct opposite direction of the successful route.
+In this saga, we layout a chain of processes and for each process we can optionally define a rollback process or any other process we want to trigger should a fail occur.
+
+Sagas work in a different way than chained processes in the sense that they are thought out to be design to predict failures and act upon them. Whether we choose Choreography or Orchestration, we always get an out-of-the-box plan to go forward and go back.
+
+In this project we have two steps:
+
+#### Fetching data
+We run a process to fetch data from a mock feeder. This is not directly related to Sagas but it is part of the example of the use case.
+The data is sent in a message node containing an author node. The fetch process will run by default configured take maximum 30 seconds per run and a maximum of 100 messages under that run.
+
+#### Sending comments
+We will send comments via POST requests. If the id's of the page, author and message match, then the sagas will run normally.
+If the any of the id's fail, the process will perform a reactive chain of processes which will mark these comments as not available in the database. It will perform this in this order in reverse.
+So this means that if the id of a page does not match, there will be a comment of that page in the database as a dangling reference. It will be marked as not available. The comment for the author and the message will be ignored because the sagas will not allow the chain to continue.
+If the author id does not match, both page and author comments will be marked as not available. There will be no record of message.
+
+This repo is the official support article to my article on medium:
+
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+
+
 ## Libraries
 
 - [news-cast-explorer-common](./news-cast-explorer-common) - Java libraries to support Page, Authors and Messages
@@ -46,29 +83,9 @@
 - [news-cast-explorer-saga-orchestration](./news-cast-explorer-saga-orchestration) - An orchestration implementation of the Saga Architecture - Spring - Kotlin module - Port 8082
 - [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
 
-This project is ongoing bulldozing changes. Keep coming back to witness its transformation. All references to Twitter will be removed soon and the project will run in a self-reliance way.
+## GUI
 
-(TO BE ALTERED 👇)
-
-What we want to do is to get the last x tweets about a certain word in the last y seconds or just all the tweets over that something that we could get in y seconds.
-
-In the case of a tweet, all that we are interested in is trendy subjects. Without tweets, our test case will just not be a very interesting one.
-
-For this reason we should pick something trending on Twitter like politics, successful artists like Madonna, Cher and Kylie Minogue, climate change issues and any other theme that we know is popular.
-
-Just because we don't want to keep trying to find the best theme to work on, please use the mock demo provided.
-
-It is about food, and it generates new examples everytime you run it
-
-All data will finally be visualized in a webpage.
-
-In order to handle data, we'll use the [Saga](https://microservices.io/patterns/data/saga.html) pattern.
-
-This project is also the official support project of my article on medium:
-
-👇👇👇👇👇👇🚧 Under Construction 🚧👇👇👇👇👇👇
-
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/what-did-they-say-tweeting-with-hosebird-client-d15b1e22058b)
+- [news-cast-explorer-fe](./news-cast-explorer-fe) - A front end tool providing and interface to visualize the results of the news feed fetcher
 
 ## Installation Notes
 
