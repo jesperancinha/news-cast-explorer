@@ -78,14 +78,30 @@ This repo is the official support article to my article on medium:
 ## Running services
 
 - [news-cast-mock](./news-cast-mock) - News feeder simulation. This is where the data starts - Spring - Kotlin module - Port 8081
+> [http://localhost:8081/api/newscast/messages](http://localhost:8081/api/newscast/messages)
+
 - [news-cast-explorer-fetcher](./news-cast-explorer-fetcher) - Makes different runs, scheduled or non schedule. Each run can fetch up to 100 messages in a maximum period of 30 seconds by default - Spring Java 17 module - Port 8080
-- [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
-- [news-cast-explorer-saga-orchestration](./news-cast-explorer-saga-orchestration) - An orchestration implementation of the Saga Architecture - Spring - Kotlin module - Port 8082
+> [http://localhost:8080/api/newscast/fetcher/pages](http://localhost:8080/api/newscast/fetcher/pages)
+
 - [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
+- [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
+
+Example request:
+```shell
+curl -X POST http://localhost:8083/api/saga/choreography -H 'Content-Type: application/json' --data '{ "idPage": 1, "pageComment": "I love this", "idAuthor": 2, "authorComment": "This is my favourite author", "idMessage": 3, "messageComment": "I agree", "authorRequestId":123,"pageRequestId":456,"messageRequestId":789 }'
+```
+
+- [news-cast-explorer-saga-orchestration](./news-cast-explorer-saga-orchestration) - An orchestration implementation of the Saga Architecture - Spring - Kotlin module - Port 8082
+
+Example request:
+```shell
+curl -X POST http://localhost:8082/api/saga/orchestration -H 'Content-Type: application/json' --data '{ "idPage": 1, "pageComment": "I love this", "idAuthor": 2, "authorComment": "This is my favourite author", "idMessage": 3, "messageComment": "I agree", "authorRequestId":123,"pageRequestId":456,"messageRequestId":789 }'
+```
 
 ## GUI
 
 - [news-cast-explorer-fe](./news-cast-explorer-fe) - A front end tool providing and interface to visualize the results of the news feed fetcher
+> [http://localhost:9000/](http://localhost:9000/)
 
 ## Installation Notes
 
