@@ -7,6 +7,12 @@
                       *ngIf="validateCurrentAuthorSelection()">
         <table mat-table [dataSource]="authorsSelected" class="mat-elevation-z8">
 
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Id</th>
+                <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
+                    (click)="authorClicked(element)"> {{element.id}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="createdAt">
                 <th mat-header-cell *matHeaderCellDef>Created At</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"

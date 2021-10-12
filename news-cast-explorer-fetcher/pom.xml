@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>news-cast-explorer-fetcher</artifactId>
-
+    <name>Newscast Explorer Message Fetcher</name>
     <dependencies>
         <dependency>
             <groupId>org.jesperancinha.newscast</groupId>

@@ -4,7 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Message} from '../../model/message';
 
 @Component({
-    selector: 'message-component',
+    selector: 'app-message-component',
     templateUrl: './message.component.html',
     styleUrls: ['./message.component.css'],
     animations: [
@@ -16,8 +16,8 @@ import {Message} from '../../model/message';
     ],
 })
 export class MessageComponent implements OnInit {
-    displayedMessagesColumns: string[] = ['createdAt', 'text'];
-    filterMessages: string = '';
+    displayedMessagesColumns: string[] = ['id', 'createdAt', 'text'];
+    filterMessages = '';
     @Input() messagesSelected: MatTableDataSource<Message>;
 
     ngOnInit() {

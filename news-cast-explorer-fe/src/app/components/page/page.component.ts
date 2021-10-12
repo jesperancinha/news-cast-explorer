@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, NgModule, NO_ERRORS_SCHEMA, OnInit, Output} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import {Page} from '../../model/page';
@@ -7,8 +7,9 @@ import {Author} from '../../model/author';
 import {PageService} from '../../service/page.service';
 import {interval, Subscription} from 'rxjs';
 
+
 @Component({
-  selector: 'page-component',
+  selector: 'app-page-component',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.css'],
   animations: [

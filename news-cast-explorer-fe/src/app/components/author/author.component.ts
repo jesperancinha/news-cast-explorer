@@ -5,7 +5,7 @@ import {Message} from "../../model/message";
 import {Author} from "../../model/author";
 
 @Component({
-    selector: 'author-component',
+    selector: 'app-author-component',
     templateUrl: './author.component.html',
     styleUrls: ['./author.component.css'],
     animations: [
@@ -17,7 +17,7 @@ import {Author} from "../../model/author";
     ],
 })
 export class AuthorComponent implements OnInit {
-    displayedAuthorsColumns: string[] = ['createdAt', 'name', 'screenName', 'nMessages'];
+    displayedAuthorsColumns: string[] = ['id', 'createdAt', 'name', 'screenName', 'nMessages'];
     filterAuthor = '';
     filterMessages = '';
     @Input() messagesSelected: MatTableDataSource<Message>;

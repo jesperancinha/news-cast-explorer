@@ -82,7 +82,7 @@ public class NewsCastMessageProcessor {
     private void savePageDb(PageDto pageDto) {
         var page = pageRepository.save(PageConverter.toData(pageDto));
         for (var authorDto : pageDto.authors()) {
-            Author author = authorRepository.findFirstByNewsCastAuthorIdAndPageId(authorDto.id(), page.getId());
+            Author author = authorRepository.findFirstByNewsCastAuthorIdAndPageId(authorDto.newsCastId(), page.getId());
             var authorToSave = author;
             if (author == null) {
                 authorToSave = AuthorConverter.toData(authorDto, page);
@@ -93,10 +93,12 @@ public class NewsCastMessageProcessor {
             final var authorRef = new AtomicReference<>(author);
             authorDto.messages()
                     .forEach(messageDto -> {
-                        var message = MessageConverter.toData(messageDto, authorRef.get());
-                        var save = messageRepository.saveAndFlush(message);
-                        authorRef.get().getMessages().add(save);
-                        authorRef.set(authorRepository.save(authorRef.get()));
+                        var message = messageRepository.findFirstByNewscastMessageIdAndAuthorId(messageDto.newsCastId(), authorRef.get().getId());
+                        if (message == null) {
+                            var save = messageRepository.save(MessageConverter.toData(messageDto, authorRef.get()));
+                            authorRef.get().getMessages().add(save);
+                            authorRef.set(authorRepository.save(authorRef.get()));
+                        }
                     });
         }
     }
@@ -112,7 +114,7 @@ public class NewsCastMessageProcessor {
         var listEntryValue = authorDtoListEntry.getValue();
         listEntryValue.sort(Comparator.comparing(MessageDto::createdAt));
         return AuthorDto.builder()
-                .id(authorDto.id())
+                .newsCastId(authorDto.newsCastId())
                 .createdAt(authorDto.createdAt())
                 .name(authorDto.name())
                 .screenName(authorDto.screenName())

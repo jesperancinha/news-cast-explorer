@@ -84,7 +84,7 @@ class NewsCastMessageProcessor1Test {
         authorDto.messages.shouldHaveSize(1)
         val messageDto = authorDto.messages[0]
         messageDto.shouldNotBeNull()
-        messageDto.id shouldBe "999999999000000000"
+        messageDto.newsCastId shouldBe "999999999000000000"
         messageDto.text shouldBe "Message1"
         messageDto.createdAt shouldBe 1578935617000L
         Mockito.verify(newsCastClient, Mockito.atMostOnce())?.startFetchProcess()

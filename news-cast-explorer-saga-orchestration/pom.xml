@@ -11,7 +11,8 @@
     </parent>
 
     <artifactId>news-cast-explorer-saga-orchestration</artifactId>
-    <name>Newscast Saga Orchestration</name>
+
+    <name>Newscast Explorer Saga Orchestration</name>
 
     <dependencies>
         <dependency>

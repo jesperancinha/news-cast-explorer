@@ -7,11 +7,11 @@ import org.junit.jupiter.api.Test
 class MessageTest {
     @Test
     fun testEquals_whenEquals_Ok() {
-        val messageDto1 = MessageDto.builder().id("dsfsfndsivnka324")
+        val messageDto1 = MessageDto.builder().newsCastId("dsfsfndsivnka324")
             .createdAt(111L)
             .text("wowowow")
             .build()
-        val messageDto2 = MessageDto.builder().id("dsfsfndsivnka324")
+        val messageDto2 = MessageDto.builder().newsCastId("dsfsfndsivnka324")
             .createdAt(1234324L)
             .text("nononono")
             .build()
@@ -20,11 +20,11 @@ class MessageTest {
 
     @Test
     fun testHashCode_whenOther_NotSame() {
-        val messageDto1 = MessageDto.builder().id("dsfsfndsivnka324")
+        val messageDto1 = MessageDto.builder().newsCastId("dsfsfndsivnka324")
             .createdAt(111L)
             .text("wowowow")
             .build()
-        val messageDto2 = MessageDto.builder().id("dsfsfndsivnka324")
+        val messageDto2 = MessageDto.builder().newsCastId("dsfsfndsivnka324")
             .createdAt(1234324L)
             .text("nononono")
             .build()

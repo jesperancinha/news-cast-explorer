@@ -5,10 +5,10 @@
   </h1>
 </div>
 
-<page-component (authorsToEmit)="pageClicked($event)"></page-component>
+<app-page-component (authorsToEmit)="pageClicked($event)"></app-page-component>
 
-<author-component [messagesSelected]="messagesSelected" [authorsSelected]="authorsSelected" (messagesToEmit)="authorClicked($event)"></author-component>
+<app-author-component [messagesSelected]="messagesSelected" [authorsSelected]="authorsSelected" (messagesToEmit)="authorClicked($event)"></app-author-component>
 
-<message-component [messagesSelected]="messagesSelected"></message-component>
+<app-message-component [messagesSelected]="messagesSelected"></app-message-component>
 
 <router-outlet></router-outlet>

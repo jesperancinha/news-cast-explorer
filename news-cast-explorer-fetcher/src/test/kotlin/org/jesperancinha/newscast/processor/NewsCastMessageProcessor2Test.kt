@@ -47,29 +47,30 @@ internal class NewsCastMessageProcessor2Test(
     @MockkBean
     lateinit var pageRepository: PageRepository
 
+    private val testPage: Page = Page.builder()
+        .id(1L)
+        .duration(2000L)
+        .createdAt(1550265180555L)
+        .build()
+    private val testAuthor: Author = Author.builder()
+        .id(2L)
+        .newsCastAuthorId("998877665544332211")
+        .createdAt(1550265180556L)
+        .nMessages(1)
+        .screenName("Author1ScreenName")
+        .page(testPage)
+        .name("Author1")
+        .build()
+    val testMessage: Message = Message.builder()
+        .id(3L)
+        .author(testAuthor)
+        .newscastMessageId("1122333445566778899")
+        .text("Message1")
+        .createdAt(1550265180557L)
+        .build()
+
     @BeforeEach
     fun setUp() {
-        val testPage = Page.builder()
-            .id(1L)
-            .duration(2000L)
-            .createdAt(1550265180555L)
-            .build()
-        val testAuthor = Author.builder()
-            .id(2L)
-            .newsCastAuthorId("998877665544332211")
-            .createdAt(1550265180556L)
-            .nMessages(1)
-            .screenName("Author1ScreenName")
-            .page(testPage)
-            .name("Author1")
-            .build()
-        val testMessage = Message.builder()
-            .id(3L)
-//            .author(testAuthor)
-            .newscastMessageId("1122333445566778899")
-            .text("Message1")
-            .createdAt(1550265180557L)
-            .build()
         every { pageRepository.save(any<Page>()) } returns testPage
         every { authorRepository.save(any<Author>()) } returns testAuthor
         every { messageRepository.save(any<Message>()) } returns testMessage
@@ -80,15 +81,16 @@ internal class NewsCastMessageProcessor2Test(
     fun testProcessAllMessages_whenGoodMessage_OkParse() {
         val resultExample1 = getMessageResource("/example1.json")
         val allMessages = setOf(resultExample1)
+        every { authorRepository.findFirstByNewsCastAuthorIdAndPageId(any(), any()) } returns null
+        every { messageRepository.findFirstByNewscastMessageIdAndAuthorId(any(), any()) } returns null
         val pageDto = newsCastMessageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
         pageDto.shouldNotBeNull()
         pageDto.duration shouldBe 2000L
         pageDto.authors.shouldHaveSize(1)
         val authorDto = pageDto.authors[0]
         authorDto.shouldNotBeNull()
-        authorDto.id shouldBe "206"
-        Assert.assertEquals("Fail Not Equal!", authorDto.id, "206")
-        assertEquals("206", authorDto.id, "Fail Not Equal!")
+        authorDto.newsCastId shouldBe "206"
+        authorDto.id.shouldBeNull()
         authorDto.name shouldBe "lola_montes"
         authorDto.screenName shouldBe "bacalhau_oil"
         authorDto.createdAt shouldBe 1632872907000L
@@ -96,7 +98,7 @@ internal class NewsCastMessageProcessor2Test(
         authorDto.messages.shouldHaveSize(1)
         val messageDto = authorDto.messages[0]
         messageDto.shouldNotBeNull()
-        messageDto.id shouldBe "195"
+        messageDto.newsCastId shouldBe "195"
         messageDto.text shouldBe "tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley"
         messageDto.createdAt shouldBe 1632872907000L
         val capturedPages = mutableListOf<Page>()
@@ -105,6 +107,7 @@ internal class NewsCastMessageProcessor2Test(
                 capture(capturedPages))
         }
         capturedPages.shouldNotBeNull()
+        capturedPages.shouldHaveSize(2)
         val page = capturedPages[0]
         page.shouldNotBeNull()
         page.id.shouldBeNull()
@@ -115,6 +118,7 @@ internal class NewsCastMessageProcessor2Test(
         page2.authors.size shouldBe 1
         val captureAuthors = mutableListOf<Author>()
         verify(exactly = 2) { authorRepository.save(capture(captureAuthors)) }
+        captureAuthors.shouldHaveSize(2)
         captureAuthors.shouldNotBeNull()
         val author = captureAuthors[0]
         author.shouldNotBeNull()

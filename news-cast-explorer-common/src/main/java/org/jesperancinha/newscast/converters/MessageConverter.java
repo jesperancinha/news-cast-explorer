@@ -7,7 +7,8 @@ import org.jesperancinha.newscast.model.explorer.Message;
 public class MessageConverter {
     public static MessageDto toDto(Message message) {
         return MessageDto.builder()
-                .id(message.getNewscastMessageId())
+                .id(message.getId())
+                .newsCastId(message.getNewscastMessageId())
                 .createdAt(message.getCreatedAt())
                 .text(message.getText())
                 .build();
@@ -17,7 +18,7 @@ public class MessageConverter {
         return Message.builder()
                 .createdAt(messageDto.createdAt())
                 .author(author)
-                .newscastMessageId(messageDto.id())
+                .newscastMessageId(messageDto.newsCastId())
                 .text(messageDto.text())
                 .build();
     }

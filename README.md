@@ -85,8 +85,6 @@ I hope you enjoyed this repository. If you did please buy me a coffee which enab
 -   [Choreography pattern with Springboot](https://www.google.com/amp/s/www.vinsguru.com/choreography-saga-pattern-with-spring-boot/amp/)
 -   [Spock Framework Reference Documentation](http://spockframework.org/spock/docs/1.1-rc-3/all_in_one.html#_helper_methods)
 -   [Interaction Based Testing with Spock](http://spockframework.org/spock/docs/1.0/interaction_based_testing.html)
--   [Hosebird Client (hbc)](https://github.com/twitter/hbc)
--   [Wikipedia Twitter](https://en.wikipedia.org/wiki/Twitter)
 -   [Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
 -   [JUnit 5 Parameter Resolution Example](https://howtoprogram.xyz/2016/10/28/junit-5-parameter-resolution-example/)
 

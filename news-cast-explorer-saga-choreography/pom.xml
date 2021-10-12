@@ -11,6 +11,8 @@
     </parent>
     <artifactId>news-cast-explorer-saga-choreography</artifactId>
 
+    <name>Newscast Explorer Saga Choreography</name>
+
     <dependencies>
         <dependency>
             <groupId>io.eventuate.tram.core</groupId>

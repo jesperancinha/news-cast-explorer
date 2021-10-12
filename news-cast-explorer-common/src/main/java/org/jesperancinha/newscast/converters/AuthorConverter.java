@@ -13,7 +13,8 @@ public class AuthorConverter {
             return null;
         }
         return AuthorDto.builder()
-                .id(author.getNewsCastAuthorId())
+                .id(author.getId())
+                .newsCastId(author.getNewsCastAuthorId())
                 .createdAt(author.getCreatedAt())
                 .name(author.getName())
                 .screenName(author.getScreenName())
@@ -21,20 +22,11 @@ public class AuthorConverter {
                 .build();
     }
 
-    public static Author toData(AuthorDto authorDto) {
-        return Author.builder()
-                .createdAt(authorDto.createdAt())
-                .name(authorDto.name())
-                .newsCastAuthorId(authorDto.id())
-                .screenName(authorDto.screenName())
-                .build();
-    }
-
     public static Author toData(AuthorDto authorDto, Page page) {
         return Author.builder()
                 .createdAt(authorDto.createdAt())
                 .name(authorDto.name())
-                .newsCastAuthorId(authorDto.id())
+                .newsCastAuthorId(authorDto.newsCastId())
                 .screenName(authorDto.screenName())
                 .page(page)
                 .build();

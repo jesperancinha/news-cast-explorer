@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test
 class AuthorDtoTest {
     @Test
     fun testEquals_whenEquals_Ok() {
-        val authorDto1 = AuthorDto.builder().id("98whef9w8efh8f8e9wh")
+        val authorDto1 = AuthorDto.builder().newsCastId("98whef9w8efh8f8e9wh")
             .createdAt(111L)
             .name("James")
             .screenName("Tim Booth")
             .messages(ArrayList())
             .build()
-        val authorDto2 = AuthorDto.builder().id("98whef9w8efh8f8e9wh")
+        val authorDto2 = AuthorDto.builder().newsCastId("98whef9w8efh8f8e9wh")
             .createdAt(1234324L)
             .name("The Smiths")
             .screenName("Morrissey")
@@ -24,13 +24,13 @@ class AuthorDtoTest {
 
     @Test
     fun testHashCode_whenOther_NotSame() {
-        val authorDto1 = AuthorDto.builder().id("98whef9w8efh8f8e9wh")
+        val authorDto1 = AuthorDto.builder().newsCastId("98whef9w8efh8f8e9wh")
             .createdAt(111L)
             .name("James")
             .screenName("Tim Booth")
             .messages(ArrayList())
             .build()
-        val authorDto2 = AuthorDto.builder().id("98whef9w8efh8f8e9wh")
+        val authorDto2 = AuthorDto.builder().newsCastId("98whef9w8efh8f8e9wh")
             .createdAt(1234324L)
             .name("The Smiths")
             .screenName("Jim Morrissey")

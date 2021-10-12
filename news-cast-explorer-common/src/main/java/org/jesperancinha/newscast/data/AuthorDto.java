@@ -3,9 +3,11 @@ package org.jesperancinha.newscast.data;
 import lombok.Builder;
 
 import java.util.List;
+import java.util.Objects;
 
 public record AuthorDto(
-        String id,
+        Long id,
+        String newsCastId,
         Long createdAt,
         String name,
         String screenName,
@@ -13,5 +15,17 @@ public record AuthorDto(
 ) {
     @Builder
     public AuthorDto {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AuthorDto authorDto)) return false;
+        return newsCastId.equals(authorDto.newsCastId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(newsCastId);
     }
 }

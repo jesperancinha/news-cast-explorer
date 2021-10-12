@@ -8,7 +8,7 @@ import org.jesperancinha.newscast.model.source.User;
 public class NewsCastDtoConverter {
     public static MessageDto toMessageDto(Message message) {
         return MessageDto.builder()
-                .id(message.id())
+                .newsCastId(message.id())
                 .text(message.text())
                 .createdAt(message.createdAt().getTime())
                 .build();
@@ -16,7 +16,7 @@ public class NewsCastDtoConverter {
 
     public static AuthorDto toUserDto(User user) {
         return AuthorDto.builder()
-                .id(user.id())
+                .newsCastId(user.id())
                 .name(user.name())
                 .createdAt(user.createdAt().getTime())
                 .screenName(user.screenName())

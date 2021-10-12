@@ -11,6 +11,7 @@
     </parent>
     <artifactId>news-cast-mock</artifactId>
 
+    <name>Newscast Mock News Feed</name>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

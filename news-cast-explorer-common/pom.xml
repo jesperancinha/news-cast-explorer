@@ -12,7 +12,7 @@
     <artifactId>news-cast-explorer-common</artifactId>
     <packaging>jar</packaging>
 
-    <name>news-cast-explorer-common</name>
+    <name>Newscast Explorer Common Library</name>
 
     <dependencies>
         <dependency>
