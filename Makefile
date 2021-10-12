@@ -20,6 +20,10 @@ docker-clean:
 docker:
 	rm -rf out
 	docker-compose up -d --build --remove-orphans
+docker-local:
+	cd docker/local
+	rm -rf out
+	docker-compose up -d --build --remove-orphans
 docker-clean-start: docker-clean docker
 stop:
 	docker-compose down --remove-orphans

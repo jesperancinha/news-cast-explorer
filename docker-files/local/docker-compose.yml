@@ -4,7 +4,7 @@ services:
     hostname: news_cast_postgres
     container_name: news_cast_postgres
     build:
-      context: ./docker-files/docker-psql/.
+      context: ./../docker-psql/.
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
@@ -16,7 +16,7 @@ services:
     hostname: news_cast_kafka
     container_name: news_cast_kafka
     build:
-      context: ./docker-files/kafka/.
+      context: ./../kafka/.
     ports:
       - "9092:9092"
       - "9093:9093"
@@ -27,4 +27,3 @@ services:
           memory: 1000M
         reservations:
           memory: 1000M
-

@@ -1,8 +1,13 @@
 version: "3.7"
+
+networks:
+  newscast:
+    driver: bridge
+
 services:
-  nc_postgres:
-    hostname: nc_postgres
-    container_name: nc_postgres
+  news_cast_postgres:
+    hostname: news_cast_postgres
+    container_name: news_cast_postgres
     build:
       context: ./docker-files/docker-psql/.
     environment:
@@ -11,10 +16,12 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=ncexplorer,eventuate
     ports:
       - "5432:5432"
+    networks:
+      - newscast
 
-  nc_kafka:
-    hostname: nc_kafka
-    container_name: nc_kafka
+  news_cast_kafka:
+    hostname: news_cast_kafka
+    container_name: news_cast_kafka
     build:
       context: ./docker-files/kafka/.
     ports:
@@ -27,3 +34,38 @@ services:
           memory: 1000M
         reservations:
           memory: 1000M
+    networks:
+      - newscast
+
+  news_cast_mock:
+    hostname: news_cast_mock
+    container_name: news_cast_mock
+    build:
+      context: news-cast-mock/.
+    ports:
+      - 8081:8081
+    restart: on-failure
+    networks:
+      - newscast
+
+  news_cast_cdc:
+    hostname: news_cast_cdc
+    container_name: news_cast_cdc
+    build:
+      context: news-cast-explorer-cdc/.
+    ports:
+      - "8085:8085"
+    restart: on-failure
+    networks:
+      - newscast
+
+  news_cast_fetcher:
+    hostname: news_cast_fetcher
+    container_name: news_cast_fetcher
+    build:
+      context: news-cast-explorer-fetcher/.
+    ports:
+      - "8080:8080"
+    restart: on-failure
+    networks:
+      - newscast

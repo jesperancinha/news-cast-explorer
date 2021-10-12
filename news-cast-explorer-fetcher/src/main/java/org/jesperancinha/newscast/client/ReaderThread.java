@@ -6,10 +6,16 @@ import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.model.source.Message;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -22,7 +28,7 @@ import java.util.concurrent.ExecutorService;
 @Slf4j
 public class ReaderThread extends Thread {
 
-    private final String host;
+    private final String url;
 
     private final BlockingQueue<String> blockingQueue;
 
@@ -34,10 +40,21 @@ public class ReaderThread extends Thread {
 
     public ReaderThread(
             @Value("${org.jesperancinha.newscast.host}")
-                    String host, BlockingQueue<String> blockingQueue,
+                    String url, BlockingQueue<String> blockingQueue,
             ExecutorService executorService) {
-        this.host = host;
+        if (url.contains("news_cast_mock")) {
+            final String news_cast_mock;
+            try {
+                news_cast_mock = InetAddress.getByName("news_cast_mock").getHostAddress();
+                log.info(news_cast_mock);
+                url = url.replace("news_cast_mock", news_cast_mock);
+            } catch (UnknownHostException ignored) {
 
+            }
+        }
+        this.url = url;
+
+        log.info("Using url {}", url);
         this.blockingQueue = blockingQueue;
         this.executorService = executorService;
     }
@@ -48,8 +65,12 @@ public class ReaderThread extends Thread {
         try {
             for (; ; ) {
                 sleep(1000);
-                final ResponseEntity<Message[]> forEntity = restTemplate.getForEntity(host, Message[].class);
-                Arrays.stream(forEntity.getBody()).toList().forEach(m -> {
+                RestTemplate restTemplate = new RestTemplate();
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                HttpEntity<String> entity = new HttpEntity<>(headers);
+                final ResponseEntity<Message[]> result = restTemplate.exchange(url, HttpMethod.POST, entity, Message[].class);
+                Arrays.stream(result.getBody()).toList().forEach(m -> {
                     try {
                         blockingQueue.add(objectMapper.writeValueAsString(m));
                     } catch (JsonProcessingException e) {

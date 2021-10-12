@@ -1,7 +1,6 @@
 package org.jesperancinha.newscast
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.node.ObjectNode
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.jesperancinha.newscast.cdc.KafkaCommand
 import org.jesperancinha.newscast.cdc.KafkaProducerCreator
@@ -26,15 +25,19 @@ open class CdcProcessLauncer(
             val command = KafkaCommand(it.payload, headers)
             val commandPayload = objectMapper.writeValueAsString(command)
             val record = ProducerRecord<Long?, String?>(it.destination, commandPayload)
-            val metadata = producer.send(record).get()
+            producer.send(record).get()
             messageRepository.save(it.copy(published = 1))
             println("Sent: $commandPayload")
         }
     }
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            SpringApplication.run(CdcProcessLauncer::class.java, *args)
+        }
+    }
 }
 
-fun main(args: Array<String>) {
-    SpringApplication.run(CdcProcessLauncer::class.java, *args)
-}
 
 
