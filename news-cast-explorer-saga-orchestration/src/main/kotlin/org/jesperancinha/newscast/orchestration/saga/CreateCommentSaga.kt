@@ -26,7 +26,7 @@ class CreateCommentSaga : SimpleSaga<NewsCastComments> {
         .invokeLocal(this::startSaga)
         .step()
         .invokeParticipant(this::recordPageComment)
-        .onReply(PageComment::class.java, this::savedPageComent)
+        .onReply(PageComment::class.java, this::savedPageComment)
         .withCompensation(this::rejectPageComment)
         .onReply(PageComment::class.java, this::rejectedPageComment)
         .step()
@@ -45,64 +45,64 @@ class CreateCommentSaga : SimpleSaga<NewsCastComments> {
 
     private fun startSaga(newsCastComments: NewsCastComments) = logger.info("Saga has started: $newsCastComments")
 
-    private fun recordPageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun recordPageComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastPageCommand(
             idPage = newsCastComments.idPage,
             requestId = newsCastComments.pageRequestId,
             comment = newsCastComments.pageComment
         )).to("pageChannel").build()
 
-    private fun savedPageComent(newsCastComments: NewsCastComments, pageComment: PageComment?) {
+    private fun savedPageComment(newsCastComments: NewsCastComments, pageComment: PageComment) {
         logger.info("Page comment is registered: $pageComment")
     }
 
 
-    private fun rejectPageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun rejectPageComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastPageRejectCommand(
             requestId = newsCastComments.pageRequestId
         )).to("pageChannel").build()
 
-    private fun rejectedPageComment(newsCastComments: NewsCastComments, pageComment: PageComment?) {
+    private fun rejectedPageComment(newsCastComments: NewsCastComments, pageComment: PageComment) {
         logger.info("Page comment is rejected: $pageComment")
     }
 
-    private fun recordAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun recordAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastAuthorCommand(
             idAuthor = newsCastComments.idAuthor,
             requestId = newsCastComments.authorRequestId,
             comment = newsCastComments.authorComment
         )).to("authorChannel").build()
 
-    fun savedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment?) {
+    fun savedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment) {
         logger.info("Author comment is registered: $authorComment")
     }
 
-    private fun rejectAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun rejectAuthorComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastAuthorRejectCommand(
             requestId = newsCastComments.authorRequestId
         )).to("authorChannel").build()
 
-    private fun rejectedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment?) {
+    private fun rejectedAuthorComment(newsCastComments: NewsCastComments, authorComment: AuthorComment) {
         logger.info("Author comment is rejected: $authorComment")
     }
 
-    private fun recordMessageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun recordMessageComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastMessageCommand(
             idMessage = newsCastComments.idMessage,
             requestId = newsCastComments.messageRequestId,
             comment = newsCastComments.messageComment
         )).to("messageChannel").build()
 
-    private fun savedMessageComment(newsCastComments: NewsCastComments, messageComment: MessageComment?) {
+    private fun savedMessageComment(newsCastComments: NewsCastComments, messageComment: MessageComment) {
         logger.info("Message comment is registered: $messageComment")
     }
 
-    private fun rejectMessageComment(newsCastComments: NewsCastComments): CommandWithDestination? =
+    private fun rejectMessageComment(newsCastComments: NewsCastComments): CommandWithDestination =
         send(NewsCastMessageRejectCommand(
             requestId = newsCastComments.messageRequestId
         )).to("messageChannel").build()
 
-    private fun rejectedMessageComment(saga: NewsCastComments, messageComment: MessageComment?) {
+    private fun rejectedMessageComment(saga: NewsCastComments, messageComment: MessageComment) {
         logger.info("Message comment is rejected: $messageComment")
     }
 

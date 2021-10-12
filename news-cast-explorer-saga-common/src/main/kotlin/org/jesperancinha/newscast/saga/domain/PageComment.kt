@@ -13,5 +13,7 @@ data class PageComment(
     val pageId: Long? = null,
     val requestId: Long? = null,
     val comment: String? = null,
-    val notAvailable: Boolean = false
-)
+    val notAvailable: Boolean = false,
+) {
+    constructor() : this(null, null, null, null)
+}

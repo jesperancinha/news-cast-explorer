@@ -31,29 +31,31 @@ class NewsCastAuthorCommentHandler(
 
     private fun createAuthorComment(commandMessage: CommandMessage<NewsCastAuthorCommand>): Message {
         val command = commandMessage.command
-        val authorComment =
-            newsCastAuthorCommentService.save(AuthorComment(
-                authorId = command.idAuthor,
-                comment = command.comment,
-                requestId = command.requestId
-            ))
-        return if (authorService.findAuthorById(command.idAuthor).isPresent)
-            withSuccess(authorComment) else
+        val authorComment = newsCastAuthorCommentService.save(AuthorComment(
+            authorId = command.idAuthor,
+            comment = command.comment,
+            requestId = command.requestId
+        ))
+        return if (authorService.findAuthorById(command.idAuthor).isPresent) {
+            withSuccess(authorComment)
+        } else {
+            makeNotAvailable(command.requestId)
             withFailure()
+        }
     }
 
     private fun rejectAuthorComment(commandMessage: CommandMessage<NewsCastAuthorRejectCommand>): Message {
-        val command = commandMessage.command
-        val authorComment =
-            command.requestId?.let {
-                newsCastAuthorCommentService.getByRequestId(it)?.let { authorComments ->
-                    authorComments.forEach { authorComment ->
-                        newsCastAuthorCommentService.save(authorComment.copy(notAvailable = true))
-                    }
-                }
-            }
-
-        return withSuccess(authorComment)
+        val requestId = commandMessage.command.requestId
+        return makeNotAvailable(requestId)
     }
 
+    private fun makeNotAvailable(requestId: Long?): Message {
+        return withSuccess(requestId?.let {
+            newsCastAuthorCommentService.getByRequestId(it)?.let { authorComments ->
+                authorComments.forEach { authorComment ->
+                    newsCastAuthorCommentService.save(authorComment.copy(notAvailable = true))
+                }
+            }
+        })
+    }
 }

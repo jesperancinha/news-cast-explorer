@@ -67,6 +67,12 @@ services:
     ports:
       - "8080:8080"
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+        reservations:
+          memory: 200M
     networks:
       - newscast
 
@@ -78,5 +84,28 @@ services:
     ports:
       - 8083:8083
     restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 300M
+    networks:
+      - newscast
+
+  news_cast_orchestration:
+    hostname: news_cast_orchestration
+    container_name: news_cast_orchestration
+    build:
+      context: news-cast-explorer-saga-orchestration/.
+    ports:
+      - 8082:8082
+    restart: on-failure
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+        reservations:
+          memory: 300M
     networks:
       - newscast

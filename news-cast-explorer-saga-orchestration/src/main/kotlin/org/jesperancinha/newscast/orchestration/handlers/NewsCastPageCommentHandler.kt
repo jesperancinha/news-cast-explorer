@@ -1,12 +1,12 @@
 package org.jesperancinha.newscast.orchestration.handlers
 
-import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withFailure
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess
 import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
 import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
+import mu.KotlinLogging
 import org.jesperancinha.newscast.orchestration.commands.NewsCastPageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastPageRejectCommand
 import org.jesperancinha.newscast.saga.domain.PageComment
@@ -21,6 +21,8 @@ class NewsCastPageCommentHandler(
     private val newsCastPageCommentService: NewsCastPageCommentService,
     private val pageService: PageService,
 ) {
+    private val logger = KotlinLogging.logger {}
+
     fun commandHandlerDefinitions(): CommandHandlers {
         return SagaCommandHandlersBuilder
             .fromChannel("pageChannel")
@@ -31,27 +33,31 @@ class NewsCastPageCommentHandler(
 
     private fun createPageComment(commandPage: CommandMessage<NewsCastPageCommand>): Message {
         val command = commandPage.command
-        val pageComment =
-            newsCastPageCommentService.save(PageComment(
-                pageId = command.idPage,
-                comment = command.comment,
-                requestId = command.requestId
-            ))
-        return if (pageService.findPageById(command.idPage).isPresent)
-            withSuccess(pageComment) else
+        val pageComment = newsCastPageCommentService.save(PageComment(
+            pageId = command.idPage,
+            comment = command.comment,
+            requestId = command.requestId
+        ))
+        return if (pageService.findPageById(command.idPage).isPresent) {
+            withSuccess(pageComment)
+        } else {
+            makeNotAvailable(command.requestId)
             withFailure()
+        }
     }
 
     private fun rejectPageComment(commandPage: CommandMessage<NewsCastPageRejectCommand>): Message {
-        val command = commandPage.command
-        val messageComment = command.requestId?.let {
+        val requestId = commandPage.command.requestId
+        return makeNotAvailable(requestId)
+    }
+
+    private fun makeNotAvailable(requestId: Long?): Message {
+        return withSuccess(requestId?.let {
             newsCastPageCommentService.getByRequestId(it).let { pageComments ->
                 pageComments?.forEach { pageComment ->
                     newsCastPageCommentService.save(pageComment.copy(notAvailable = true))
                 }
             }
-        }
-        return withSuccess(messageComment)
+        })
     }
-
 }

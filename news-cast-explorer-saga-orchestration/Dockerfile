@@ -6,8 +6,8 @@ ENV LANG=C.UTF-8
 
 COPY entrypoint.sh /root
 
-COPY target/news-cast-explorer-saga-choreography-*.jar /root/news-cast-explorer-saga-choreography.jar
+COPY target/news-cast-explorer-saga-orchestration-*.jar /root/news-cast-explorer-saga-orchestration.jar
 
 ENTRYPOINT ["/root/entrypoint.sh"]
 
-EXPOSE 8083
+EXPOSE 8082

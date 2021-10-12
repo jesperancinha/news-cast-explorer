@@ -1,6 +1,6 @@
 package org.jesperancinha.newscast.orchestration.handlers
 
-import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder
+import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withFailure
 import io.eventuate.tram.commands.consumer.CommandHandlerReplyBuilder.withSuccess
 import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
@@ -8,8 +8,8 @@ import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageCommand
 import org.jesperancinha.newscast.orchestration.commands.NewsCastMessageRejectCommand
-import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.saga.domain.MessageComment
+import org.jesperancinha.newscast.saga.service.NewsCastMessageCommentService
 import org.jesperancinha.newscast.service.MessageService
 
 
@@ -18,7 +18,7 @@ import org.jesperancinha.newscast.service.MessageService
  */
 class NewsCastMessageCommentHandler(
     private val newsCastMessageCommentService: NewsCastMessageCommentService,
-    private val messageService: MessageService
+    private val messageService: MessageService,
 ) {
 
     fun commandHandlerDefinitions(): CommandHandlers {
@@ -31,29 +31,32 @@ class NewsCastMessageCommentHandler(
 
     private fun createMessageComment(commandMessage: CommandMessage<NewsCastMessageCommand>): Message {
         val command = commandMessage.command
-        val messageComment =
-            newsCastMessageCommentService.save(MessageComment(
-                messageId = command.idMessage,
-                comment = command.comment,
-                requestId = command.requestId
-            ))
-        return if (messageService.findMessageById(command.idMessage).isPresent)
-            withSuccess(messageComment) else
-            CommandHandlerReplyBuilder.withFailure()
+        val messageComment = newsCastMessageCommentService.save(MessageComment(
+            messageId = command.idMessage,
+            comment = command.comment,
+            requestId = command.requestId
+        ))
+        return if (messageService.findMessageById(command.idMessage).isPresent) {
+            withSuccess(messageComment)
+        } else {
+            makeNotAvailable(command.requestId)
+            withFailure()
+        }
     }
 
     private fun rejectMessageComment(commandMessage: CommandMessage<NewsCastMessageRejectCommand>): Message {
-        val command = commandMessage.command
-        val messageComment =
-            command.requestId?.let {
-                newsCastMessageCommentService.getByRequestId(it).let { messageComments ->
-                    messageComments?.forEach { messageComment ->
-                        newsCastMessageCommentService.save(messageComment.copy(notAvailable = false))
+        val requestId = commandMessage.command.requestId
+        return makeNotAvailable(requestId)
+    }
 
-                    }
+    private fun makeNotAvailable(requestId: Long?): Message {
+        return withSuccess(requestId?.let {
+            newsCastMessageCommentService.getByRequestId(it).let { messageComments ->
+                messageComments?.forEach { messageComment ->
+                    newsCastMessageCommentService.save(messageComment.copy(notAvailable = true))
                 }
             }
-        return withSuccess(messageComment)
+        })
     }
 
 }
