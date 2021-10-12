@@ -221,7 +221,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.jesperancinha.newscast.NewsCastFetcherLauncher</mainClass>
+                    <mainClass>org.jesperancinha.newscast.NewsCastExplorerChoreographyLauncher</mainClass>
                 </configuration>
                 <executions>
                     <execution>

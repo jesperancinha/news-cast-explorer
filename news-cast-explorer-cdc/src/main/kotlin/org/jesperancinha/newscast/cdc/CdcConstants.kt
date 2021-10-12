@@ -5,7 +5,6 @@ package org.jesperancinha.newscast.cdc
  */
 class CdcConstants {
     companion object {
-        const val KAFKA_BROKERS = "localhost:9092,localhost:9093"
         const val CLIENT_ID = "cdc_client_1"
     }
 }

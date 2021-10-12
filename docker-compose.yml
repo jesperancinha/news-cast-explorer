@@ -69,3 +69,14 @@ services:
     restart: on-failure
     networks:
       - newscast
+
+  news_cast_choreography:
+    hostname: news_cast_choreography
+    container_name: news_cast_choreography
+    build:
+      context: news-cast-explorer-saga-choreography/.
+    ports:
+      - 8083:8083
+    restart: on-failure
+    networks:
+      - newscast

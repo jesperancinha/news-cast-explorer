@@ -5,6 +5,7 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.jesperancinha.newscast.cdc.KafkaCommand
 import org.jesperancinha.newscast.cdc.KafkaProducerCreator
 import org.jesperancinha.newscast.cdc.repository.MessageRepository
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.scheduling.annotation.EnableScheduling
@@ -14,8 +15,11 @@ import org.springframework.scheduling.annotation.Scheduled
 @EnableScheduling
 open class CdcProcessLauncer(
     private val messageRepository: MessageRepository,
+    @Value("\${org.jesperancinha.newscast.host.kafka.brokers}")
+    private val brokers: String
 ) {
-    private val producer = KafkaProducerCreator.createProducer()
+    private val producer = KafkaProducerCreator.createProducer(brokers)
+
 
     @Scheduled(cron = "0/5 * * ? * *")
     fun fetchAndPublish() {

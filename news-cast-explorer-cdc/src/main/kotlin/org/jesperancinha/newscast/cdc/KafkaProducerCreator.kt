@@ -12,9 +12,9 @@ import java.util.*
  */
 class KafkaProducerCreator {
     companion object {
-        fun createProducer(): Producer<Long?, String?> {
+        fun createProducer(brokers: String): Producer<Long?, String?> {
             val props = Properties()
-            props[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = CdcConstants.KAFKA_BROKERS
+            props[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = brokers
             props[ProducerConfig.CLIENT_ID_CONFIG] = CdcConstants.CLIENT_ID
             props[ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG] = LongSerializer::class.java.name
             props[ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG] = StringSerializer::class.java.name

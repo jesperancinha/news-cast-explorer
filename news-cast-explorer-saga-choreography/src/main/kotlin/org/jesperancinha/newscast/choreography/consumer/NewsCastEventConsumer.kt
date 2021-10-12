@@ -47,29 +47,30 @@ class NewsCastEventConsumer(
             .forAggregateType("org.jesperancinha.newscast.saga.data.NewsCastComments")
             .onEvent(NewsCastEvent::class.java, ::handleCreateNewsCastCommentEvent)
             .onEvent(NewsCastPageCommentEvent::class.java, ::handleCreatePageCommentEvent)
-            .onEvent(NewsCastAuthorCommentEvent::class.java, ::handleCreateAuthorCommentEvent)
-            .onEvent(NewsCastMessageCommentEvent::class.java, ::handleCreateMessageCommentEvent)
-            .onEvent(NewsCastEventDone::class.java, ::handleDone)
             .onEvent(NewsCastPageRejectCommentEvent::class.java, ::handleRejectPageCommentEvent)
+            .onEvent(NewsCastAuthorCommentEvent::class.java, ::handleCreateAuthorCommentEvent)
             .onEvent(NewsCastAuthorRejectCommentEvent::class.java, ::handleRejectAuthorCommentEvent)
-            .onEvent(NewsCastMessageCommentEvent::class.java, ::handleRejectMessageCommentEvent)
+            .onEvent(NewsCastMessageCommentEvent::class.java, ::handleCreateMessageCommentEvent)
+            .onEvent(NewsCastMessageRejectCommentEvent::class.java, ::handleRejectMessageCommentEvent)
+            .onEvent(NewsCastEventDone::class.java, ::handleDone)
             .build()
     }
 
     private fun handleCreateNewsCastCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastEvent>) {
         val newsCastComments = domainEventEnvelope.event.newsCastComments
-        domainEventPublisher?.publish(NewsCastComments::class.java, UUID.randomUUID(),
+        domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(),
             listOf(NewsCastPageCommentEvent(newsCastComments)))
     }
 
     private fun handleCreatePageCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastPageCommentEvent>) {
         val newsCastComments = domainEventEnvelope.event.newsCastComments
+        val pageCommentToSave = PageComment(
+            pageId = newsCastComments.idPage,
+            comment = newsCastComments.pageComment,
+            requestId = newsCastComments.pageRequestId
+        )
         val pageComment =
-            newsCasePageCommentService.save(PageComment(
-                pageId = newsCastComments.idPage,
-                comment = newsCastComments.pageComment,
-                requestId = newsCastComments.pageRequestId
-            ))
+            newsCasePageCommentService.save(pageCommentToSave)
         pageService.findPageById(newsCastComments.idPage).ifPresentOrElse(Consumer {
             logger.info("Page comment registered $pageComment")
             domainEventPublisher.publish(NewsCastComments::class.java,
@@ -77,52 +78,57 @@ class NewsCastEventConsumer(
                 listOf(NewsCastAuthorCommentEvent(
                     newsCastComments)))
         }) {
-            domainEventPublisher.publish(NewsCastPageRejectCommentEvent::class.java,
-                UUID.randomUUID(), listOf())
+            logger.info("Page comment is rejected!! $pageCommentToSave")
+            domainEventPublisher.publish(NewsCastComments::class.java,
+                UUID.randomUUID(), listOf(NewsCastPageRejectCommentEvent(newsCastComments)))
         }
 
     }
 
     private fun handleCreateAuthorCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastAuthorCommentEvent>) {
         val newsCastComments = domainEventEnvelope.event.newsCastComments
+        val authorCommentToSave = AuthorComment(
+            authorId = newsCastComments.idAuthor,
+            comment = newsCastComments.authorComment,
+            requestId = newsCastComments.authorRequestId
+        )
         val authorComment =
-            newsCastAuthorCommentService.save(AuthorComment(
-                authorId = newsCastComments.idAuthor,
-                comment = newsCastComments.authorComment,
-                requestId = newsCastComments.authorRequestId
-            ))
-        logger.info("Author comment registered $authorComment")
+            newsCastAuthorCommentService.save(authorCommentToSave)
         authorService.findAuthorById(newsCastComments.idAuthor).ifPresentOrElse(
             {
+                logger.info("Author comment registered $authorComment")
                 domainEventPublisher.publish(NewsCastComments::class.java,
                     UUID.randomUUID(),
                     listOf(NewsCastMessageCommentEvent(
                         newsCastComments)))
             }
         ) {
-            domainEventPublisher.publish(NewsCastAuthorRejectCommentEvent::class.java,
-                UUID.randomUUID(), listOf())
+            logger.info("Author comment is rejected!! $authorCommentToSave")
+            domainEventPublisher.publish(NewsCastComments::class.java,
+                UUID.randomUUID(), listOf(NewsCastAuthorRejectCommentEvent(newsCastComments)))
         }
 
     }
 
     private fun handleCreateMessageCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastMessageCommentEvent>) {
         val newsCastComments = domainEventEnvelope.event.newsCastComments
+        val messageCommentToSave = MessageComment(
+            messageId = newsCastComments.idMessage,
+            comment = newsCastComments.messageComment,
+            requestId = newsCastComments.messageRequestId
+        )
         val messageComment =
-            newsCastMessageCommentService.save(MessageComment(
-                messageId = newsCastComments.idMessage,
-                comment = newsCastComments.messageComment,
-                requestId = newsCastComments.messageRequestId
-            ))
-        logger.info("Message comment registered $messageComment")
+            newsCastMessageCommentService.save(messageCommentToSave)
         messageService.findMessageById(newsCastComments.idMessage)
             .ifPresentOrElse({
+                logger.info("Message comment registered $messageComment")
                 domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastEventDone(
                     newsCastComments)))
 
             }) {
-                domainEventPublisher.publish(NewsCastMessageRejectCommentEvent::class.java,
-                    UUID.randomUUID(), listOf())
+                logger.info("Message comment is rejected!! $messageCommentToSave")
+                domainEventPublisher.publish(NewsCastComments::class.java,
+                    UUID.randomUUID(), listOf(NewsCastMessageRejectCommentEvent(newsCastComments)))
             }
     }
 
@@ -139,6 +145,8 @@ class NewsCastEventConsumer(
                 }
             }
         }
+        domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(),
+            listOf(NewsCastEventDone(newsCastComments)))
     }
 
     private fun handleRejectAuthorCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastAuthorRejectCommentEvent>) {
@@ -150,11 +158,11 @@ class NewsCastEventConsumer(
                 }
             }
         }
-        domainEventPublisher?.publish(NewsCastComments::class.java, UUID.randomUUID(),
-            listOf(NewsCastPageCommentEvent(newsCastComments)))
+        domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(),
+            listOf(NewsCastPageRejectCommentEvent(newsCastComments)))
     }
 
-    private fun handleRejectMessageCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastMessageCommentEvent>) {
+    private fun handleRejectMessageCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastMessageRejectCommentEvent>) {
         val newsCastComments = domainEventEnvelope.event.newsCastComments
         newsCastComments.messageRequestId?.let {
             newsCastMessageCommentService.getByRequestId(it)?.let { messageComments ->
@@ -163,9 +171,9 @@ class NewsCastEventConsumer(
                 }
             }
         }
-        domainEventPublisher?.publish(NewsCastComments::class.java,
+        domainEventPublisher.publish(NewsCastComments::class.java,
             UUID.randomUUID(),
-            listOf(NewsCastAuthorCommentEvent(
+            listOf(NewsCastAuthorRejectCommentEvent(
                 newsCastComments)))
     }
 }
