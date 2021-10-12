@@ -117,6 +117,7 @@ class FetcherThreadTest(
         every { queueMock.remainingCapacity() } returns 1
         every { queueMock.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
         every { executorService.execute(any()) } just runs
+        every { executorService.shutdownNow() } returns listOf()
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages

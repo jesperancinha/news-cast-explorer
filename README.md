@@ -49,7 +49,7 @@ A choreography Saga is based on event sourcing. We have multiple decoupled proce
 
 An orchestration Saga is also based on event sourcing, but instead of having the events scattered, it provides a series of rules on how processes should react to certain sub-process results.
 An orchestration Saga has provisions for rollback processes for example. As soon as an error occurred, all provisioned methods to perform a rollback will be triggered from the point of failure. This follows the direct opposite direction of the successful route.
-In this saga, we layout a chain of processes and for each process we can optionally define a rollback process or any other process we want to trigger should a fail occur.
+In this saga, we lay out a chain of processes and for each process we can optionally define a rollback process or any other process we want to trigger should a fail occur.
 
 Sagas work in a different way than chained processes in the sense that they are thought out to be design to predict failures and act upon them. Whether we choose Choreography or Orchestration, we always get an out-of-the-box plan to go forward and go back.
 
