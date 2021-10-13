@@ -22,11 +22,9 @@ import java.util.concurrent.BlockingQueue
 internal class NewsCastClientJUnit5Test(
     @Autowired
     val newsCastClient: NewsCastClient,
+    @Autowired
+    val newsCastMessageProcessor: NewsCastMessageProcessor
 ) {
-    @MockkBean(relaxed = true)
-    lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
-
-    @MockkBean(relaxed = true)
     lateinit var blockingQueue: BlockingQueue<String>
 
     @MockkBean(relaxed = true)
