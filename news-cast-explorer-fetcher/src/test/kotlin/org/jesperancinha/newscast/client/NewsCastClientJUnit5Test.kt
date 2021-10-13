@@ -21,10 +21,12 @@ import java.util.concurrent.BlockingQueue
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 internal class NewsCastClientJUnit5Test(
     @Autowired
-    val newsCastClient: NewsCastClient,
-    @Autowired
-    val newsCastMessageProcessor: NewsCastMessageProcessor
+    val newsCastClient: NewsCastClient
 ) {
+    @MockkBean(relaxed = true)
+    lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
+
+    @MockkBean(relaxed = true)
     lateinit var blockingQueue: BlockingQueue<String>
 
     @MockkBean(relaxed = true)
