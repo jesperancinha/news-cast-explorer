@@ -6,6 +6,7 @@ import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.junit.jupiter.api.Test
@@ -21,7 +22,10 @@ import java.util.concurrent.BlockingQueue
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 internal class NewsCastClientJUnit5Test(
     @Autowired
-    val newsCastClient: NewsCastClient
+    val newsCastClient: NewsCastClient,
+
+    @Autowired
+    val executorServiceWrapper: ExecutorServiceWrapper
 ) {
     @MockkBean(relaxed = true)
     lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
@@ -39,6 +43,7 @@ internal class NewsCastClientJUnit5Test(
      */
     @Test
     fun testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediately() {
+        executorServiceWrapper.restart()
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()
         verify {
