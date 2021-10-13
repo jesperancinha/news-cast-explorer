@@ -2,6 +2,7 @@ package org.jesperancinha.newscast.client;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -19,13 +20,13 @@ public class StopperThread extends Thread {
 
     private final long secondsDuration;
 
-    private final ExecutorService executorService;
+    private final ExecutorServiceWrapper executorServiceWrapper;
 
     public StopperThread(
             @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
-                    long secondsDuration, ExecutorService executorService) {
+                    long secondsDuration, ExecutorServiceWrapper executorServiceWrapper) {
         this.secondsDuration = secondsDuration;
-        this.executorService = executorService;
+        this.executorServiceWrapper = executorServiceWrapper;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class StopperThread extends Thread {
         } catch (InterruptedException e) {
             log.error("An exception has occurred!", e);
         } finally {
-            executorService.shutdownNow();
+            executorServiceWrapper.executorService().shutdownNow();
             log.info("Well, it's time to go and sleep... :)");
         }
     }

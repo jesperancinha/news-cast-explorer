@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.model.source.Message;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -32,7 +33,7 @@ public class ReaderThread extends Thread {
 
     private final BlockingQueue<String> blockingQueue;
 
-    private final ExecutorService executorService;
+    private final ExecutorServiceWrapper executorServiceWrapper;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -41,7 +42,7 @@ public class ReaderThread extends Thread {
     public ReaderThread(
             @Value("${org.jesperancinha.newscast.host}")
                     String url, BlockingQueue<String> blockingQueue,
-            ExecutorService executorService) {
+            ExecutorServiceWrapper executorServiceWrapper) {
         if (url.contains("news_cast_mock")) {
             final String news_cast_mock;
             try {
@@ -56,7 +57,7 @@ public class ReaderThread extends Thread {
 
         log.info("Using url {}", url);
         this.blockingQueue = blockingQueue;
-        this.executorService = executorService;
+        this.executorServiceWrapper = executorServiceWrapper;
     }
 
     @Override
@@ -83,7 +84,7 @@ public class ReaderThread extends Thread {
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
         } finally {
-            executorService.shutdownNow();
+            executorServiceWrapper.executorService().shutdownNow();
         }
 
     }

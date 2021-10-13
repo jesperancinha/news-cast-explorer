@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
 import org.jesperancinha.newscast.data.PageDto;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.HashSet;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -36,7 +36,7 @@ public class NewsCastClient {
     private final FetcherThread fetcherThread;
     private final StopperThread stopperThread;
 
-    private final ExecutorService executorService;
+    private final ExecutorServiceWrapper executorServiceWrapper;
 
     public NewsCastClient(
             @Value("${org.jesperancinha.newscast.searchTerm}")
@@ -44,7 +44,7 @@ public class NewsCastClient {
             @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
             final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
-            BlockingQueue<String> stringLinkedBlockingQueue, ReaderThread readerThread, FetcherThread fetcherThread, StopperThread stopperThread, ExecutorService executorService) {
+            BlockingQueue<String> stringLinkedBlockingQueue, ReaderThread readerThread, FetcherThread fetcherThread, StopperThread stopperThread, ExecutorServiceWrapper executorServiceWrapper) {
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.newsCastMessageProcessor = newsCastMessageProcessor;
@@ -52,7 +52,7 @@ public class NewsCastClient {
         this.readerThread = readerThread;
         this.fetcherThread = fetcherThread;
         this.stopperThread = stopperThread;
-        this.executorService = executorService;
+        this.executorServiceWrapper = executorServiceWrapper;
     }
 
     /**
@@ -65,12 +65,14 @@ public class NewsCastClient {
      */
     public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
         final long timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        final ExecutorService executorService = executorServiceWrapper.executorService();
         executorService.execute(fetcherThread);
         executorService.execute(readerThread);
         executorService.execute(stopperThread);
         executorService.shutdown();
         while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
         final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        executorServiceWrapper.restart();
         return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
     }
 

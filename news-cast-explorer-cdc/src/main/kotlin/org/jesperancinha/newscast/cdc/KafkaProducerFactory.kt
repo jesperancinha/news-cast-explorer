@@ -10,7 +10,7 @@ import java.util.*
 /**
  * Created by jofisaes on 07/10/2021
  */
-class KafkaProducerCreator {
+class KafkaProducerFactory {
     companion object {
         fun createProducer(brokers: String): Producer<Long?, String?> {
             val props = Properties()
@@ -21,5 +21,4 @@ class KafkaProducerCreator {
             return KafkaProducer(props)
         }
     }
-
 }

@@ -3,7 +3,7 @@ package org.jesperancinha.newscast
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.jesperancinha.newscast.cdc.KafkaCommand
-import org.jesperancinha.newscast.cdc.KafkaProducerCreator
+import org.jesperancinha.newscast.cdc.KafkaProducerFactory
 import org.jesperancinha.newscast.cdc.repository.MessageRepository
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
@@ -18,7 +18,7 @@ open class CdcProcessLauncer(
     @Value("\${org.jesperancinha.newscast.host.kafka.brokers}")
     private val brokers: String
 ) {
-    private val producer = KafkaProducerCreator.createProducer(brokers)
+    private val producer = KafkaProducerFactory.createProducer(brokers)
 
 
     @Scheduled(cron = "0/5 * * ? * *")

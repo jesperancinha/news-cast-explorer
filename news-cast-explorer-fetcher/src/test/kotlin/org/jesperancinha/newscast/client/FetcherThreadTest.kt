@@ -5,15 +5,18 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.mockk.Answer
 import io.mockk.every
 import io.mockk.just
 import io.mockk.runs
 import io.mockk.verify
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
+import java.lang.Thread.sleep
 import java.util.*
 import java.util.concurrent.BlockingQueue
 import java.util.concurrent.ExecutorService
@@ -27,12 +30,11 @@ import java.util.concurrent.TimeUnit
 class FetcherThreadTest(
     @Autowired
     val fetcherThread: FetcherThread,
+    @Autowired
+    val executorServiceWrapper: ExecutorServiceWrapper
 ) {
     @MockkBean
     lateinit var queueMock: BlockingQueue<String>
-
-    @MockkBean
-    lateinit var executorService: ExecutorService
 
     @MockkBean(relaxed = true)
     lateinit var readerThread: ReaderThread
@@ -45,8 +47,6 @@ class FetcherThreadTest(
     fun testRun_whenFetchOk_thenReturnMessage() {
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
-        every { executorService.execute(any()) } just runs
-        every { executorService.shutdownNow() } returns listOf()
         fetcherThread.start()
         fetcherThread.join()
         val messages = fetcherThread.allMessages
@@ -54,7 +54,6 @@ class FetcherThreadTest(
         messages.shouldHaveSize(1)
         messages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { executorService.shutdownNow() }
     }
 
     @Test
@@ -62,8 +61,6 @@ class FetcherThreadTest(
     fun testRunWithCapacity5_whenFetchOk_thenReturnMessage() {
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
-        every { executorService.shutdownNow() } returns listOf()
-        every { executorService.execute(any()) } just runs
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
@@ -71,7 +68,6 @@ class FetcherThreadTest(
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
         verify(exactly = 5) { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { executorService.shutdownNow() }
     }
 
     @Test
@@ -88,8 +84,6 @@ class FetcherThreadTest(
         stringStack.push(testMessage)
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
-        every { executorService.shutdownNow() } returns listOf()
-        every { executorService.execute(any()) } just runs
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
@@ -98,7 +92,6 @@ class FetcherThreadTest(
         allMessages.shouldContain("I am a message!")
         allMessages.shouldContainExactly("I am a message!")
         verify(atLeast = 5, atMost = 6) { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { executorService.shutdownNow() }
     }
 
     @Test
@@ -116,8 +109,6 @@ class FetcherThreadTest(
         stringStack.push(null)
         every { queueMock.remainingCapacity() } returns 1
         every { queueMock.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
-        every { executorService.execute(any()) } just runs
-        every { executorService.shutdownNow() } returns listOf()
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
@@ -125,7 +116,6 @@ class FetcherThreadTest(
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { executorService.shutdownNow() }
     }
 
     @Test
@@ -145,8 +135,6 @@ class FetcherThreadTest(
         stringStack.push(testLimitTrack)
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
-        every { executorService.execute(any()) } just runs
-        every { executorService.shutdownNow() } returns listOf()
         fetcherThread.start()
         fetcherThread.join()
         val allMessages = fetcherThread.allMessages
@@ -154,6 +142,5 @@ class FetcherThreadTest(
         allMessages.shouldHaveSize(2)
         allMessages.shouldContain("I am a message!")
         verify { queueMock.poll(1, TimeUnit.SECONDS) }
-        verify { executorService.shutdownNow() }
     }
 }

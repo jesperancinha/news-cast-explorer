@@ -2,6 +2,7 @@ package org.jesperancinha.newscast.client;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class FetcherThread extends Thread {
 
     private final Set<String> allMessages;
-    private final ExecutorService executorService;
+    private final ExecutorServiceWrapper executorServiceWrapper;
     private final ReaderThread readerThread;
     private final BlockingQueue<String> stringLinkedBlockingQueue;
     private final ReaderThread client;
@@ -31,7 +32,7 @@ public class FetcherThread extends Thread {
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
         } finally {
-            executorService.shutdownNow();
+            executorServiceWrapper.executorService().shutdownNow();
         }
     }
 
