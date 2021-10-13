@@ -1,19 +1,11 @@
 {
   "created_at": "Tue Sep 28 2021 08:00:23 GMT+0200 (Central European Summer Time)",
   "id": 2,
-  "id_str": "3",
   "text": "thyme naga jolokia salt cod fish thyme california reaper tofu chicken liver california reaper seitan",
-  "source": "sucrose",
   "user": {
     "id": 13,
-    "id_str": "14",
     "name": "wonder_brand",
-    "screen_name": "wonder_brand",
-    "followers_count": 6474,
-    "friends_count": 4317,
-    "listed_count": 5452,
-    "favourites_count": 5638,
-    "statuses_count": 4524,
+    "user_name": "wonder_brand",
     "created_at": "Tue Sep 28 2021 08:00:23 GMT+0200 (Central European Summer Time)"
   }
 }

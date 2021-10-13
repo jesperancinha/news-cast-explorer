@@ -59,7 +59,7 @@ internal class NewsCastMessageProcessor2Test(
         .newsCastAuthorId("998877665544332211")
         .createdAt(1550265180556L)
         .nMessages(1)
-        .screenName("Author1ScreenName")
+        .userName("Author1ScreenName")
         .page(testPage)
         .name("Author1")
         .build()
@@ -91,10 +91,10 @@ internal class NewsCastMessageProcessor2Test(
         pageDto.authors.shouldHaveSize(1)
         val authorDto = pageDto.authors[0]
         authorDto.shouldNotBeNull()
-        authorDto.newsCastId shouldBe "206"
+        authorDto.newsCastId shouldBe "4"
         authorDto.id.shouldBeNull()
-        authorDto.name shouldBe "lola_montes"
-        authorDto.screenName shouldBe "bacalhau_oil"
+        authorDto.name shouldBe "woman_super"
+        authorDto.userName shouldBe "bacalhau_oil"
         authorDto.createdAt shouldBe 1632872907000L
         authorDto.messages.shouldNotBeNull()
         authorDto.messages.shouldHaveSize(1)

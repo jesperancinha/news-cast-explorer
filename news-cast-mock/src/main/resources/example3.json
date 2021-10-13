@@ -1,18 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 7,
-  "id_str": "7",
-  "text": "coffee pepper coffee beef cod fish seitan pepper beef oregano california reaper",
+  "text": "mint thyme tofu chicken liver salt mint beef coffee tofu thyme",
   "user": {
     "id": 8,
-    "id_str": "8",
-    "name": "super_man",
-    "screen_name": "uber_joao",
-    "followers_count": 5837,
-    "friends_count": 542,
-    "listed_count": 7447,
-    "favourites_count": 6910,
-    "statuses_count": 6835,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "wonder_brand",
+    "user_name": "los_montaditos",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

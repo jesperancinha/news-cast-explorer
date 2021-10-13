@@ -117,7 +117,7 @@ public class NewsCastMessageProcessor {
                 .newsCastId(authorDto.newsCastId())
                 .createdAt(authorDto.createdAt())
                 .name(authorDto.name())
-                .screenName(authorDto.screenName())
+                .userName(authorDto.userName())
                 .messages(listEntryValue)
                 .build();
     }

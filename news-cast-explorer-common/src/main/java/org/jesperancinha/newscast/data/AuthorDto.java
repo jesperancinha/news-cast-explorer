@@ -10,7 +10,7 @@ public record AuthorDto(
         String newsCastId,
         Long createdAt,
         String name,
-        String screenName,
+        String userName,
         List<MessageDto> messages
 ) {
     @Builder

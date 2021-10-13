@@ -78,7 +78,7 @@ class NewsCastMessageProcessor1Test {
         authorDto.shouldNotBeNull()
         authorDto.id shouldBe "999999999000000000"
         authorDto.name shouldBe "Author1"
-        authorDto.screenName shouldBe "Author1ScreenName"
+        authorDto.userName shouldBe "Author1ScreenName"
         authorDto.createdAt shouldBe 1550265180000L
         authorDto.messages.shouldNotBeNull()
         authorDto.messages.shouldHaveSize(1)
@@ -161,7 +161,7 @@ class NewsCastMessageProcessor1Test {
                 .newsCastAuthorId("998877665544332211")
                 .createdAt(1550265180556L)
                 .nMessages(1)
-                .screenName("Author1ScreenName")
+                .userName("Author1ScreenName")
                 .page(testPage)
                 .name("Author1")
                 .build()

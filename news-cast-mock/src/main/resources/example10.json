@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 21,
-  "id_str": "21",
-  "text": "edamame pepper oregano oregano beef chicken naga jolokia california reaper pepper edamame",
-  "source": "salt",
+  "text": "tuna mint thyme cod fish sucrose thyme pepper thyme california reaper beef",
   "user": {
     "id": 22,
-    "id_str": "22",
-    "name": "uber_joao",
-    "screen_name": "wonder_brand",
-    "followers_count": 7972,
-    "friends_count": 2366,
-    "listed_count": 5686,
-    "favourites_count": 5990,
-    "statuses_count": 1755,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "bacalhau_oil",
+    "user_name": "bacalhau_oil",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

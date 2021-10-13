@@ -4,7 +4,7 @@ export interface Author {
   id: string;
   createdAt: number;
   name: string;
-  screenName: string;
+  userName: string;
   messages: Message[];
 }
 

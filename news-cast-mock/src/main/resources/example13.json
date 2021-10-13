@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 27,
-  "id_str": "27",
-  "text": "tofu sucrose chicken cod fish  sucrose sucrose coffee chicken liver oregano",
-  "source": "edamame",
+  "text": "tuna thyme oregano mint chicken cod fish sucrose salt naga jolokia edamame",
   "user": {
     "id": 28,
-    "id_str": "28",
-    "name": "super_man",
-    "screen_name": "uber_joao",
-    "followers_count": 2412,
-    "friends_count": 283,
-    "listed_count": 5143,
-    "favourites_count": 2263,
-    "statuses_count": 2044,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "wonder_brand",
+    "user_name": "fantastic_javi",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

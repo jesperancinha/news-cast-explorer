@@ -25,6 +25,7 @@ docker-local:
 	cd docker/local
 	rm -rf out
 	docker-compose up -d --build --remove-orphans
+docker-clean-build-start: docker-clean b docker
 docker-clean-start: docker-clean docker
 stop:
 	docker-compose down --remove-orphans

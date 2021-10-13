@@ -17,7 +17,7 @@ import {Author} from "../../model/author";
     ],
 })
 export class AuthorComponent implements OnInit {
-    displayedAuthorsColumns: string[] = ['id', 'createdAt', 'name', 'screenName', 'nMessages'];
+    displayedAuthorsColumns: string[] = ['id', 'createdAt', 'name', 'userName', 'nMessages'];
     filterAuthor = '';
     filterMessages = '';
     @Input() messagesSelected: MatTableDataSource<Message>;

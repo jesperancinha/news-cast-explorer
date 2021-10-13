@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 9,
-  "id_str": "9",
-  "text": "chicken liver cinnamon salt tofu  california reaper parsley tofu california reaper coffee",
-  "source": "parsley",
+  "text": "salt chicken salt chicken chicken liver pepper mint beef naga jolokia parsley",
   "user": {
     "id": 10,
-    "id_str": "10",
     "name": "woman_super",
-    "screen_name": "woman_super",
-    "followers_count": 228,
-    "friends_count": 1473,
-    "listed_count": 3980,
-    "favourites_count": 6439,
-    "statuses_count": 2055,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "user_name": "woman_super",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

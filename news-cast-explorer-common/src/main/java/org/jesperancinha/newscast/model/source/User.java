@@ -19,8 +19,8 @@ public record User(
                         pattern = "EEE MMM dd HH:mm:ss ZZZZZ yyyy")
         @JsonProperty("created_at") Date createdAt,
         String name,
-        @JsonProperty("screen_name")
-        String screenName
+        @JsonProperty("user_name")
+        String userName
 ) {
 
     @Override

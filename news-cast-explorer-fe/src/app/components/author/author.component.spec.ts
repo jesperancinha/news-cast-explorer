@@ -15,7 +15,7 @@ describe('Author Component', () => {
     authorComponent.messagesSelected = new MatTableDataSource<Message>([]);
     const author: Author = {
       name: 'WOW',
-      screenName: 'wow',
+      userName: 'wow',
       id: '234324',
       createdAt: 23432423423,
       messages: authorComponent.messagesSelected.data
@@ -26,7 +26,7 @@ describe('Author Component', () => {
     authorComponent.messagesSelected = new MatTableDataSource<Message>([]);
     const author: Author = {
       name: 'WOW',
-      screenName: 'wowy',
+      userName: 'wowy',
       id: '234324',
       createdAt: 23432423423,
       messages: []

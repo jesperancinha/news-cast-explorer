@@ -22,7 +22,7 @@ describe('Page Component', () => {
       name: '',
       createdAt: 9777,
       id: 'sklndfnskf23i',
-      screenName: 'aloha'
+      userName: 'aloha'
     }])).toBe(0);
   });
   it('#number of messages should be one if one author has only one message', () => {
@@ -35,7 +35,7 @@ describe('Page Component', () => {
       name: '',
       createdAt: 9777,
       id: 'sklndfnskf23i',
-      screenName: 'aloha'
+      userName: 'aloha'
     }])).toBe(1);
   });
   it('#number of messages should be 4 if one each author has two  messages', () => {
@@ -90,7 +90,7 @@ function getTestAuthors() {
       name: '',
       createdAt: 9777,
       id: 'sklndfnskf23i',
-      screenName: 'aloha',
+      userName: 'aloha',
       messages: [{
         text: 'message',
         createdAt: 234324,
@@ -105,7 +105,7 @@ function getTestAuthors() {
       name: '',
       createdAt: 9777,
       id: 'sklndfnskf23i',
-      screenName: 'aloha',
+      userName: 'aloha',
       messages: [{
         text: 'message',
         createdAt: 234324,

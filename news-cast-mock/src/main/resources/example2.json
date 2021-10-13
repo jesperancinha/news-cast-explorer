@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 5,
-  "id_str": "5",
-  "text": "cinnamon oregano cod fish thyme thyme chicken liver california reaper chicken cinnamon naga jolokia",
-  "source": "cod fish",
+  "text": "parsley salt pepper thyme salt coffee chicken liver salt pepper sugar",
   "user": {
     "id": 6,
-    "id_str": "6",
-    "name": "bacalhau_oil",
-    "screen_name": "bacalhau_oil",
-    "followers_count": 3846,
-    "friends_count": 439,
-    "listed_count": 7371,
-    "favourites_count": 7444,
-    "statuses_count": 1440,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "super_man",
+    "user_name": "super_man",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

@@ -19,7 +19,7 @@ public class NewsCastDtoConverter {
                 .newsCastId(user.id())
                 .name(user.name())
                 .createdAt(user.createdAt().getTime())
-                .screenName(user.screenName())
+                .userName(user.userName())
                 .build();
     }
 }

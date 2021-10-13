@@ -17,7 +17,7 @@ public class AuthorConverter {
                 .newsCastId(author.getNewsCastAuthorId())
                 .createdAt(author.getCreatedAt())
                 .name(author.getName())
-                .screenName(author.getScreenName())
+                .userName(author.getUserName())
                 .messages(author.getMessages().stream().map(MessageConverter::toDto).collect(Collectors.toList()))
                 .build();
     }
@@ -27,7 +27,7 @@ public class AuthorConverter {
                 .createdAt(authorDto.createdAt())
                 .name(authorDto.name())
                 .newsCastAuthorId(authorDto.newsCastId())
-                .screenName(authorDto.screenName())
+                .userName(authorDto.userName())
                 .page(page)
                 .build();
     }

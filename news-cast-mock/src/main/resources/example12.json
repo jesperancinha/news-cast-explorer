@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 25,
-  "id_str": "25",
-  "text": "chicken liver edamame mint parsley tuna mint parsley parsley pepper thyme",
-  "source": "chicken",
+  "text": "oregano tuna naga jolokia cinnamon oregano naga jolokia pepper sucrose parsley cinnamon",
   "user": {
     "id": 26,
-    "id_str": "26",
     "name": "wonder_brand",
-    "screen_name": "lola_montes",
-    "followers_count": 8629,
-    "friends_count": 8682,
-    "listed_count": 8691,
-    "favourites_count": 5606,
-    "statuses_count": 2072,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "user_name": "fantastic_javi",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

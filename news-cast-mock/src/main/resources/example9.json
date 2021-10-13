@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 19,
-  "id_str": "19",
-  "text": "seitan salt salt  chicken coffee coffee coffee cod fish seitan",
-  "source": "tofu",
+  "text": "cod fish california reaper parsley tofu pepper mint cinnamon thyme chicken naga jolokia",
   "user": {
     "id": 20,
-    "id_str": "20",
-    "name": "fantastic_javi",
-    "screen_name": "fantastic_javi",
-    "followers_count": 7947,
-    "friends_count": 4056,
-    "listed_count": 7660,
-    "favourites_count": 6828,
-    "statuses_count": 828,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "super_man",
+    "user_name": "uber_joao",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

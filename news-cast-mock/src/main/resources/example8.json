@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 17,
-  "id_str": "17",
-  "text": "tofu tofu chicken thyme pepper sugar naga jolokia tuna beef tuna",
-  "source": "edamame",
+  "text": "chicken chicken liver chicken liver edamame parsley tuna thyme sucrose tofu sucrose",
   "user": {
     "id": 18,
-    "id_str": "18",
-    "name": "fantastic_javi",
-    "screen_name": "los_montaditos",
-    "followers_count": 6232,
-    "friends_count": 5022,
-    "listed_count": 6693,
-    "favourites_count": 4693,
-    "statuses_count": 3928,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "lola_montes",
+    "user_name": "lola_montes",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

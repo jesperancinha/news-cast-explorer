@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 13,
-  "id_str": "13",
-  "text": "chicken liver seitan seitan naga jolokia chicken liver tuna chicken liver seitan seitan seitan",
-  "source": "chicken",
+  "text": "thyme seitan chicken liver edamame coffee sucrose coffee california reaper salt california reaper",
   "user": {
     "id": 14,
-    "id_str": "14",
     "name": "woman_super",
-    "screen_name": "sunflower_oil",
-    "followers_count": 4000,
-    "friends_count": 8708,
-    "listed_count": 1046,
-    "favourites_count": 3555,
-    "statuses_count": 2472,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "user_name": "super_man",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

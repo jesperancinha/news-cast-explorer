@@ -25,10 +25,10 @@
                     (click)="authorClicked(element)"> {{element.name}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="screenName">
-                <th mat-header-cell *matHeaderCellDef>Screen Name</th>
+            <ng-container matColumnDef="userName">
+                <th mat-header-cell *matHeaderCellDef>User Name</th>
                 <td [bgColor]=calculateBackgroundAuthors(element) mat-cell *matCellDef="let element"
-                    (click)="authorClicked(element)"> {{element.screenName}} </td>
+                    (click)="authorClicked(element)"> {{element.userName}} </td>
             </ng-container>
 
             <ng-container matColumnDef="nMessages">

@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 15,
-  "id_str": "15",
-  "text": "california reaper chicken pepper chicken liver salt oregano parsley salt parsley california reaper",
-  "source": "seitan",
+  "text": "parsley chicken liver thyme oregano thyme tofu coffee tofu tofu oregano",
   "user": {
-    "id": 4,
-    "id_str": "4",
-    "name": "uber_joao",
-    "screen_name": "bacalhau_oil",
-    "followers_count": 2038,
-    "friends_count": 5518,
-    "listed_count": 4642,
-    "favourites_count": 3054,
-    "statuses_count": 2284,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "id": 16,
+    "name": "wonder_brand",
+    "user_name": "bacalhau_oil",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

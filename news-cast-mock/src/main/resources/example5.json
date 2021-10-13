@@ -1,19 +1,11 @@
 {
-  "created_at": "Mon Oct 04 23:24:56 +0000 2021",
+  "created_at": "Wed Oct 13 12:23:36 +0000 2021",
   "id": 11,
-  "id_str": "11",
-  "text": "coffee thyme sugar salt cod fish chicken liver beef naga jolokia oregano edamame",
-  "source": "seitan",
+  "text": "thyme salt beef edamame parsley mint chicken liver beef coffee pepper",
   "user": {
     "id": 12,
-    "id_str": "12",
-    "name": "bacalhau_oil",
-    "screen_name": "super_man",
-    "followers_count": 2545,
-    "friends_count": 4957,
-    "listed_count": 8045,
-    "favourites_count": 2108,
-    "statuses_count": 769,
-    "created_at": "Mon Oct 04 23:24:56 +0000 2021"
+    "name": "uber_joao",
+    "user_name": "woman_super",
+    "created_at": "Wed Oct 13 12:23:36 +0000 2021"
   }
 }

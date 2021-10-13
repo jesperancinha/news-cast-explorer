@@ -39,7 +39,7 @@ public class Author {
 
     private String name;
 
-    private String screenName;
+    private String userName;
 
     @OneToMany(mappedBy = "author",
             cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
