@@ -22,7 +22,7 @@ class NewsCastCommentController(
 
     @PostMapping(consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun postComments(@RequestBody commentSagaData: NewsCastComments) {
-        newsCastTicketService.createOrder(commentSagaData)
+        newsCastTicketService.createNewsCastComments(commentSagaData)
     }
 
     @GetMapping

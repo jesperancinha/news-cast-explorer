@@ -8,7 +8,7 @@ import mu.KotlinLogging
 import org.jesperancinha.newscast.choreography.event.NewsCastAuthorCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastAuthorRejectCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastEvent
-import org.jesperancinha.newscast.choreography.event.NewsCastEventDone
+import org.jesperancinha.newscast.choreography.event.NewsCastDoneEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastMessageCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastMessageRejectCommentEvent
 import org.jesperancinha.newscast.choreography.event.NewsCastPageCommentEvent
@@ -52,7 +52,7 @@ class NewsCastEventConsumer(
             .onEvent(NewsCastAuthorRejectCommentEvent::class.java, ::handleRejectAuthorCommentEvent)
             .onEvent(NewsCastMessageCommentEvent::class.java, ::handleCreateMessageCommentEvent)
             .onEvent(NewsCastMessageRejectCommentEvent::class.java, ::handleRejectMessageCommentEvent)
-            .onEvent(NewsCastEventDone::class.java, ::handleDone)
+            .onEvent(NewsCastDoneEvent::class.java, ::handleDone)
             .build()
     }
 
@@ -122,7 +122,7 @@ class NewsCastEventConsumer(
         messageService.findMessageById(newsCastComments.idMessage)
             .ifPresentOrElse({
                 logger.info("Message comment registered $messageComment")
-                domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastEventDone(
+                domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(), listOf(NewsCastDoneEvent(
                     newsCastComments)))
 
             }) {
@@ -132,7 +132,7 @@ class NewsCastEventConsumer(
             }
     }
 
-    private fun handleDone(domainEventEnvelope: DomainEventEnvelope<NewsCastEventDone>) {
+    private fun handleDone(domainEventEnvelope: DomainEventEnvelope<NewsCastDoneEvent>) {
         logger.info("Saga is complete! ${domainEventEnvelope.event.newsCastComments}")
     }
 
@@ -146,7 +146,7 @@ class NewsCastEventConsumer(
             }
         }
         domainEventPublisher.publish(NewsCastComments::class.java, UUID.randomUUID(),
-            listOf(NewsCastEventDone(newsCastComments)))
+            listOf(NewsCastDoneEvent(newsCastComments)))
     }
 
     private fun handleRejectAuthorCommentEvent(domainEventEnvelope: DomainEventEnvelope<NewsCastAuthorRejectCommentEvent>) {
