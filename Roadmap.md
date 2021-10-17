@@ -4,20 +4,27 @@
 
 - Testcontainers
 
-## Roadmap to v3.0.0
+## Roadmap to v3.0.0 - 2021/10/13
 
+2021/10/13
 - Release
+
+---
 
 2021/10/12
 - Code cleanup
 - Improvements
 - Wrap-up and publish
 
+---
+
 2021/10/08
 - Saga pattern choreography
 - Kotlin service
 - Use available Docker images
 - ~~Python unit tests~~
+
+---
 
 2021/10/06
 - Mock service
@@ -26,10 +33,14 @@
 - Version updates
 - Buy me a coffee
 
+---
+
 2021/10/05
 - Drop Hosebird Client
 - Kotest, Mockk
 - Makefile
+
+---
 
 2021/10/04
 - Remove twitter out of the equation 🐥
@@ -39,6 +50,10 @@
 	- Make context of news cast
 	- Drop twitter model
 
+---
+
 2021/09/27
-`- JDK 17
+- JDK 17
+
+---
 `
