@@ -114,6 +114,16 @@ sdk install java 17-open
 sdk use java 17-open
 ```
 
+## Local hosts configuration
+
+Running the containers may require you to add this line to your `/etc/hosts` file:
+
+```text
+127.0.0.1       news_cast_kafka
+```
+
+This is mostly because of the way kafka operates in giving responses back
+
 ## Roadmap
 
 For roadmap information and current developments please check document [Roadmap.md](./Roadmap.md)
