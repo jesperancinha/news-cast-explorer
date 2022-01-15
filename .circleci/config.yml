@@ -5,8 +5,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: cimg/openjdk:17.0.1
+    machine:
+      image: ubuntu-2004:202010-01
 
     working_directory: ~/repo
 
@@ -16,6 +16,10 @@ jobs:
 
     steps:
       - checkout
+
+      - run:
+         name: System prepare
+         command: mvn -version
 
       - run:
          name: Build and Test
