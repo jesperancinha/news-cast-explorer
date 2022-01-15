@@ -49,7 +49,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>4.4.0</kotest.version>
         <kotest-extensions-spring.version>1.0.1</kotest-extensions-spring.version>
-        <springmockk.version>3.0.1</springmockk.version>
+        <springmockk.version>3.1.0</springmockk.version>
     </properties>
 
     <dependencyManagement>
