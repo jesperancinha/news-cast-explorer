@@ -5,8 +5,8 @@
 version: 2
 jobs:
   build:
-    machine:
-      image: ubuntu-2004:202010-01
+    docker:
+      - image: cimg/openjdk:17.0.1
 
     working_directory: ~/repo
 
@@ -16,10 +16,6 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-         name: System prepare
-         command: sudo apt update -y && sudo apt install openjdk-17-jdk -y && sudo apt install openjdk-17-jre -y && export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
       - run:
          name: Build and Test
