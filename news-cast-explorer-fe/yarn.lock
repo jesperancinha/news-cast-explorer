@@ -287,12 +287,12 @@
   dependencies:
     tslib "^2.2.0"
 
-"@angular/router@~12.2.9":
-  version "12.2.9"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-12.2.9.tgz#765d02fd5b8206ba50a296700cc69b0068f6f908"
-  integrity sha512-Qh7Ugh6N7PIK4+ydRPHiKy8Q3wlB/ieXVyqYgkNfGFZ+QtNHpWgWBUXJuGPnmKk0Yn02EwSPOuPWEHV92rayhw==
+"@angular/router@~13.1.0":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-13.1.2.tgz#69146055473b9f5b8f9ba9b4de3a0740778ea174"
+  integrity sha512-5S0De6SdlbERoX9FwOBiTWxINchW7nTPUIH/tdanOqq12cqp6/7NigOr3BZDSvUNIh/6Is+pSQTKGAbhxejN2w==
   dependencies:
-    tslib "^2.2.0"
+    tslib "^2.3.0"
 
 "@assemblyscript/loader@^0.10.1":
   version "0.10.1"
