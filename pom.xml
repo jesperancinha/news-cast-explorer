@@ -45,7 +45,7 @@
 
         <jackson.version>2.12.3</jackson.version>
 
-        <kotlin.version>1.6.0-M1</kotlin.version>
+        <kotlin.version>1.6.10</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>5.0.3</kotest.version>
         <kotest-extensions-spring.version>1.0.1</kotest-extensions-spring.version>
