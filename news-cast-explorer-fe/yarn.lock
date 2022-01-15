@@ -244,12 +244,12 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-12.2.9.tgz#6732c2dae7c25760cfe22f65c714096aa4f0a387"
   integrity sha512-q6WH8CxS4nXKnIR/imQbRYTdP0PW63tDogzlol6gnB/jEmGgmQJphYRVeDqr5owIxuzCB06JkWXPVsyHY3yHvA==
 
-"@angular/material@^12.2.9":
-  version "12.2.9"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-12.2.9.tgz#b4a1e138c7fd2341bd27aa6012b4738f61b5ad2d"
-  integrity sha512-+eM67RF038S56m3wsj37h0PyyRD18cQ8V2zmKG1UezH0nnosbmCAwzH9BfcNiIB+/V+k5QMJ/JVu5MjDQqX37w==
+"@angular/material@^13.0.0":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-13.1.2.tgz#497e9b34f4672ce207bb1198a823cda1f1d416ef"
+  integrity sha512-M7eDgTMCZ/naoiS6Z5nj3N/sNUFc+CGPHX4yb563RuknqN7huDCvdyxA6KnhYLZsVlNCPh5ZrEr6H8ZiYJWcpg==
   dependencies:
-    tslib "^2.2.0"
+    tslib "^2.3.0"
 
 "@angular/platform-browser-dynamic@~12.2.9":
   version "12.2.9"
@@ -8149,7 +8149,7 @@ tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.0, tslib@^2.2.0, tslib@^2.3.1:
+tslib@^2.0.0, tslib@^2.2.0, tslib@^2.3.0, tslib@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
