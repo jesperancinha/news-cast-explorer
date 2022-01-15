@@ -19,7 +19,7 @@ jobs:
 
       - run:
          name: System prepare
-         command: sudo apt update -y && sudo apt install openjdk-17-jdk -y
+         command: sudo apt update -y && sudo apt install openjdk-17-jdk -y && apt install openjdk-17-jre -y
 
       - run:
          name: Build and Test
