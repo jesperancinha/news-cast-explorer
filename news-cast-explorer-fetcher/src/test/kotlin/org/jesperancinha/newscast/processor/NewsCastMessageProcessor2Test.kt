@@ -18,8 +18,8 @@ import org.jesperancinha.newscast.model.explorer.Page
 import org.jesperancinha.newscast.repository.AuthorRepository
 import org.jesperancinha.newscast.repository.MessageRepository
 import org.jesperancinha.newscast.repository.PageRepository
-import org.junit.Assert
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.jesperancinha.newscast.utils.AbstractNCTest
+
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -35,7 +35,7 @@ import java.nio.charset.Charset
 internal class NewsCastMessageProcessor2Test(
     @Autowired
     val newsCastMessageProcessor: NewsCastMessageProcessor,
-) {
+) : AbstractNCTest() {
 
     @MockkBean(relaxed = true)
     lateinit var newsCastClient: NewsCastClient
@@ -79,7 +79,6 @@ internal class NewsCastMessageProcessor2Test(
     }
 
     @Test
-    @Throws(IOException::class, InterruptedException::class)
     fun testProcessAllMessages_whenGoodMessage_OkParse() {
         val resultExample1 = getMessageResource("/example1.json")
         val allMessages = setOf(resultExample1)
@@ -106,7 +105,8 @@ internal class NewsCastMessageProcessor2Test(
         val capturedPages = mutableListOf<Page>()
         verify(exactly = 2) {
             pageRepository.save(
-                capture(capturedPages))
+                capture(capturedPages)
+            )
         }
         capturedPages.shouldNotBeNull()
         capturedPages.shouldHaveSize(2)
@@ -131,7 +131,8 @@ internal class NewsCastMessageProcessor2Test(
         val captureMessages = mutableListOf<Message>()
         verify {
             messageRepository.save(
-                capture(captureMessages))
+                capture(captureMessages)
+            )
         }
         captureMessages.shouldNotBeNull()
         captureMessages.size shouldBe 1
@@ -147,7 +148,8 @@ internal class NewsCastMessageProcessor2Test(
                 .processAllMessages(
                     allMessages,
                     1122333445566778899L,
-                    998877665544332211L)
+                    998877665544332211L
+                )
 
         }
         exception.message.shouldNotBeNull()

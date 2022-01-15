@@ -6,12 +6,6 @@
     <packaging>pom</packaging>
     <version>2.0.0</version>
 
-    <parent>
-        <artifactId>spring-boot-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>2.6.2</version>
-    </parent>
-
     <name>Newscast Explorer</name>
 
     <modules>
@@ -50,19 +44,31 @@
         <kotest.version>5.0.3</kotest.version>
         <kotest-extensions-spring.version>1.0.1</kotest-extensions-spring.version>
         <springmockk.version>3.1.0</springmockk.version>
+        <testcontainers.version>1.16.2</testcontainers.version>
+        <omni-coveragereporter-maven-plugin.version>0.0.11</omni-coveragereporter-maven-plugin.version>
+        <spring-boot-parent.version>2.6.2</spring-boot-parent.version>
+        <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
+        <mockk.version>1.12.2</mockk.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-parent</artifactId>
+                <version>${spring-boot-parent.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.jesperancinha.newscast</groupId>
                 <artifactId>news-cast-explorer-saga-common</artifactId>
-                <version>2.0.0</version>
+                <version>${news-cast-explorer.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.jesperancinha.newscast</groupId>
                 <artifactId>news-cast-explorer-common</artifactId>
-                <version>2.0.0</version>
+                <version>${news-cast-explorer.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.mockk</groupId>
@@ -125,6 +131,24 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-test</artifactId>
                 <version>${kotlin.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${testcontainers.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers</artifactId>
+                <version>${testcontainers.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -197,16 +221,9 @@
                     </executions>
                 </plugin>
                 <plugin>
-                    <groupId>org.eluder.coveralls</groupId>
-                    <artifactId>coveralls-maven-plugin</artifactId>
-                    <version>${coveralls-maven-plugin.version}</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>javax.xml.bind</groupId>
-                            <artifactId>jaxb-api</artifactId>
-                            <version>${jaxb-api.version}</version>
-                        </dependency>
-                    </dependencies>
+                    <groupId>org.jesperancinha.plugins</groupId>
+                    <artifactId>omni-coveragereporter-maven-plugin</artifactId>
+                    <version>${omni-coveragereporter-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -3,9 +3,12 @@ package org.jesperancinha.newscast.model.explorer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,12 +20,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Builder
-@EqualsAndHashCode
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -53,5 +56,18 @@ public class Author {
             updatable = false,
             referencedColumnName = "id")
     private Page page;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Author author = (Author) o;
+        return id != null && Objects.equals(id, author.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
 

@@ -9,16 +9,19 @@ import io.mockk.verify
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
+import org.jesperancinha.newscast.utils.AbstractNCTest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import java.util.concurrent.BlockingQueue
 
-@SpringBootTest(properties = [
-    "org.jesperancinha.newscast.host=http://localhost:8080",
-    "org.jesperancinha.newscast.timeToWaitSeconds=5"
-])
+@SpringBootTest(
+    properties = [
+        "org.jesperancinha.newscast.host=http://localhost:8080",
+        "org.jesperancinha.newscast.timeToWaitSeconds=5"
+    ]
+)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 internal class NewsCastClientJUnit5Test(
     @Autowired
@@ -26,7 +29,7 @@ internal class NewsCastClientJUnit5Test(
 
     @Autowired
     val executorServiceWrapper: ExecutorServiceWrapper
-) {
+) : AbstractNCTest() {
     @MockkBean(relaxed = true)
     lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
 
@@ -47,9 +50,11 @@ internal class NewsCastClientJUnit5Test(
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()
         verify {
-            newsCastMessageProcessor.processAllMessages(any(),
+            newsCastMessageProcessor.processAllMessages(
+                any(),
                 capture(longArgumentCaptor),
-                capture(longArgumentCaptor))
+                capture(longArgumentCaptor)
+            )
         }
         verify(exactly = 1) { blockingQueue.remainingCapacity() }
         verify(exactly = 1) { runningService.startProcess() }

@@ -19,24 +19,18 @@ import org.jesperancinha.newscast.model.explorer.Page
 import org.jesperancinha.newscast.repository.AuthorRepository
 import org.jesperancinha.newscast.repository.MessageRepository
 import org.jesperancinha.newscast.repository.PageRepository
-import org.junit.After
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Test
-import org.mockito.ArgumentCaptor
-import org.mockito.ArgumentMatchers
-import org.mockito.Captor
-import org.mockito.Mockito
+import org.jesperancinha.newscast.utils.AbstractNCTest
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import java.io.IOException
 import java.nio.charset.Charset
 
-@SpringBootTest
-class NewsCastMessageProcessor1Test {
+@SpringBootTest(properties = ["org.jesperancinha.newscast.host=127.0.0.1"])
+class NewsCastMessageProcessor1Test(
     @Autowired
-    private val messageProcessor: NewsCastMessageProcessor? = null
-
+    private val messageProcessor: NewsCastMessageProcessor
+) : AbstractNCTest() {
     @MockkBean(relaxed = true)
     lateinit var newsCastClient: NewsCastClient
 
@@ -49,51 +43,50 @@ class NewsCastMessageProcessor1Test {
     @MockkBean(relaxed = true)
     lateinit var pageRepository: PageRepository
 
-    @Captor
-    private val messageArgumentCaptor: ArgumentCaptor<Message>? = null
+    private val messageArgumentCaptor = mutableListOf<Message>()
 
-    @Captor
-    private val authorArgumentCaptor: ArgumentCaptor<Author>? = null
+    private val authorArgumentCaptor = mutableListOf<Author>()
 
-    @Captor
-    private val pageArgumentCaptor: ArgumentCaptor<Page>? = null
+    private val pageArgumentCaptor = mutableListOf<Page>()
 
-    @Before
+    @BeforeEach
     fun setUp() {
-        every { pageRepository.save(ArgumentMatchers.any(Page::class.java)) } returns testPage
-        every { authorRepository.save(ArgumentMatchers.any(Author::class.java)) } returns testAuthor
-        every { messageRepository.save(ArgumentMatchers.any(Message::class.java)) } returns testMessage
+        every { pageRepository.save(any()) } returns testPage
+        every { authorRepository.save(any()) } returns testAuthor
+        every { authorRepository.findFirstByNewsCastAuthorIdAndPageId(any(), any()) } returns null
+        every { messageRepository.save(any()) } returns testMessage
+        every { messageRepository.findFirstByNewscastMessageIdAndAuthorId(any(), any()) } returns null
     }
 
     @Test
-    @Throws(IOException::class, InterruptedException::class)
     fun testProcessAllMessages_whenGoodMessage_OkParse() {
         val resultExample1 = getMessageResource("/example1.json")
         val allMessages = setOf(resultExample1)
-        val pageDto = messageProcessor!!.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
+        val pageDto = messageProcessor.processAllMessages(allMessages, 1579079712000L, 1579079714000L)
         pageDto.shouldNotBeNull()
         pageDto.duration shouldBe 2000L
         pageDto.authors.shouldHaveSize(1)
         val authorDto = pageDto.authors[0]
         authorDto.shouldNotBeNull()
-        authorDto.id shouldBe "999999999000000000"
-        authorDto.name shouldBe "Author1"
-        authorDto.userName shouldBe "Author1ScreenName"
-        authorDto.createdAt shouldBe 1550265180000L
+        authorDto.id.shouldBeNull()
+        authorDto.name shouldBe "woman_super"
+        authorDto.userName shouldBe "bacalhau_oil"
+        authorDto.createdAt shouldBe 1632872907000
         authorDto.messages.shouldNotBeNull()
         authorDto.messages.shouldHaveSize(1)
         val messageDto = authorDto.messages[0]
         messageDto.shouldNotBeNull()
-        messageDto.newsCastId shouldBe "999999999000000000"
-        messageDto.text shouldBe "Message1"
-        messageDto.createdAt shouldBe 1578935617000L
-        Mockito.verify(newsCastClient, Mockito.atMostOnce())?.startFetchProcess()
+        messageDto.newsCastId shouldBe "195"
+        messageDto.text shouldBe "tuna california reaper mint beef sugar cod fish salt naga jolokia tuna parsley"
+        messageDto.createdAt shouldBe 1632872907000L
         verify(exactly = 2) {
             pageRepository.save(
-                pageArgumentCaptor!!.capture())
+                capture(pageArgumentCaptor)
+            )
         }
-        val pages = pageArgumentCaptor?.allValues
+        val pages = pageArgumentCaptor
         pages.shouldNotBeNull()
+        pages.shouldHaveSize(2)
         val page = pages[0]
         page.shouldNotBeNull()
         page.id.shouldBeNull()
@@ -102,20 +95,18 @@ class NewsCastMessageProcessor1Test {
         page2.shouldNotBeNull()
         page2.id shouldBe 1L
         page2.authors.shouldHaveSize(1)
-        verify(exactly = 2) { authorRepository.save(authorArgumentCaptor!!.capture()) }
-        val authors = authorArgumentCaptor?.allValues
+        verify(exactly = 2) { authorRepository.save(capture(authorArgumentCaptor)) }
+        val authors = authorArgumentCaptor
         authors.shouldNotBeNull()
+        authors.shouldHaveSize(2)
         val author = authors[0]
         author.shouldNotBeNull()
         author.id.shouldBeNull()
         val author2 = authors[1]
         author2.shouldNotBeNull()
         author2.id shouldBe 2L
-        verify {
-            messageRepository.save(
-                messageArgumentCaptor!!.capture())
-        }
-        val message = messageArgumentCaptor?.value
+        verify(exactly = 1) { messageRepository.save(capture(messageArgumentCaptor)) }
+        val message = messageArgumentCaptor[0]
         message.shouldNotBeNull()
         message.id.shouldBeNull()
     }
@@ -131,46 +122,35 @@ class NewsCastMessageProcessor1Test {
 
         val exception = shouldThrow<JsonProcessingException> {
             messageProcessor
-                ?.processAllMessages(
+                .processAllMessages(
                     allMessages,
                     1122333445566778899L,
-                    998877665544332211L)
+                    998877665544332211L
+                )
         }
-        exception.message.shouldContain("Expected BEGIN_OBJECT but was STRING at line 1 column 1 path")
-    }
-
-    @After
-    fun tearDown() {
-        Mockito.mockitoSession().initMocks(newsCastClient)
+        exception.message.shouldContain("this is not a JSON")
     }
 
     companion object {
-        private var testPage: Page? = null
-        private var testAuthor: Author? = null
-        private var testMessage: Message? = null
-
-        @BeforeClass
-        fun beforeAll() {
-            testPage = Page.builder()
-                .id(1L)
-                .duration(2000L)
-                .createdAt(1550265180555L)
-                .build()
-            testAuthor = Author.builder()
-                .id(2L)
-                .newsCastAuthorId("998877665544332211")
-                .createdAt(1550265180556L)
-                .nMessages(1)
-                .userName("Author1ScreenName")
-                .page(testPage)
-                .name("Author1")
-                .build()
-            testMessage = Message.builder()
-                .id(3L)
-                .newscastMessageId("1122333445566778899")
-                .text("Message1")
-                .createdAt(1550265180557L)
-                .build()
-        }
+        private var testPage: Page = Page.builder()
+            .id(1L)
+            .duration(2000L)
+            .createdAt(1550265180555L)
+            .build()
+        private var testAuthor: Author = Author.builder()
+            .id(2L)
+            .newsCastAuthorId("998877665544332211")
+            .createdAt(1550265180556L)
+            .nMessages(1)
+            .userName("Author1ScreenName")
+            .page(testPage)
+            .name("Author1")
+            .build()
+        private var testMessage: Message = Message.builder()
+            .id(3L)
+            .newscastMessageId("1122333445566778899")
+            .text("Message1")
+            .createdAt(1550265180557L)
+            .build()
     }
 }

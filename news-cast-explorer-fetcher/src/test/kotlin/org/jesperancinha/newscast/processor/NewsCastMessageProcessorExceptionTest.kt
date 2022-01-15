@@ -3,18 +3,15 @@ package org.jesperancinha.newscast.processor
 import com.fasterxml.jackson.core.JsonProcessingException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.nulls.shouldNotBeNull
-import org.jesperancinha.newscast.repository.AuthorRepository
-import org.jesperancinha.newscast.repository.MessageRepository
-import org.jesperancinha.newscast.repository.PageRepository
+import io.mockk.mockk
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
 
 class NewsCastMessageProcessorExceptionTest {
     private val newsCastMessageProcessor: NewsCastMessageProcessor = NewsCastMessageProcessor
         .builder()
-        .messageRepository(Mockito.mock(MessageRepository::class.java))
-        .authorRepository(Mockito.mock(AuthorRepository::class.java))
-        .pageRepository(Mockito.mock(PageRepository::class.java))
+        .messageRepository(mockk())
+        .authorRepository(mockk())
+        .pageRepository(mockk())
         .build()
 
     @Test

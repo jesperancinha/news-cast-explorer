@@ -12,6 +12,7 @@ import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
 import org.jesperancinha.newscast.data.PageDto;
 import org.jesperancinha.newscast.model.explorer.Author;
+import org.jesperancinha.newscast.model.explorer.Page;
 import org.jesperancinha.newscast.model.source.Message;
 import org.jesperancinha.newscast.repository.AuthorRepository;
 import org.jesperancinha.newscast.repository.MessageRepository;
@@ -80,7 +81,8 @@ public class NewsCastMessageProcessor {
     }
 
     private void savePageDb(PageDto pageDto) {
-        var page = pageRepository.save(PageConverter.toData(pageDto));
+        final Page entity = PageConverter.toData(pageDto);
+        var page = pageRepository.save(entity);
         for (var authorDto : pageDto.authors()) {
             Author author = authorRepository.findFirstByNewsCastAuthorIdAndPageId(authorDto.newsCastId(), page.getId());
             var authorToSave = author;

@@ -5,34 +5,32 @@ import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
-import io.mockk.Answer
 import io.mockk.every
-import io.mockk.just
-import io.mockk.runs
 import io.mockk.verify
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.service.OneRunServiceImpl
+import org.jesperancinha.newscast.utils.AbstractNCTest
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
-import java.lang.Thread.sleep
 import java.util.*
 import java.util.concurrent.BlockingQueue
-import java.util.concurrent.ExecutorService
 import java.util.concurrent.TimeUnit
 
-@SpringBootTest(properties = [
-    "org.jesperancinha.newscast.host=http://localhost:8080",
-    "org.jesperancinha.newscast.timeToWaitSeconds=5",
-    "org.jesperancinha.newscast.capacity=5"
-])
+@SpringBootTest(
+    properties = [
+        "org.jesperancinha.newscast.host=http://localhost:8080",
+        "org.jesperancinha.newscast.timeToWaitSeconds=5",
+        "org.jesperancinha.newscast.capacity=5"
+    ]
+)
 class FetcherThreadTest(
     @Autowired
     val fetcherThread: FetcherThread,
     @Autowired
     val executorServiceWrapper: ExecutorServiceWrapper
-) {
+) : AbstractNCTest() {
     @MockkBean
     lateinit var queueMock: BlockingQueue<String>
 
