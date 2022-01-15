@@ -24,11 +24,13 @@ jobs:
             tar xvf openjdk-17.0.1_linux-x64_bin.tar.gz &&
             sudo mv jdk-17*/ /opt/jdk17 &&
             export JAVA_HOME=/opt/jdk17 &&
-            export PATH=\$PATH:\$JAVA_HOME/bin
+            export PATH=\$PATH:\$JAVA_HOME/bin &&
+            mvn -version
 
       - run:
          name: Build and Test
-         command:  mvn clean install jacoco:prepare-agent package jacoco:report
+         command: mvn -version &&
+             mvn clean install jacoco:prepare-agent package jacoco:report
 
       - run:
          name: Coverage Reports
