@@ -17,11 +17,13 @@ jobs:
     steps:
       - checkout
 
-      - name: Build and Test
-        run:  mvn clean install jacoco:prepare-agent package jacoco:report
+      - run:
+         name: Build and Test
+         command:  mvn clean install jacoco:prepare-agent package jacoco:report
 
-      - name: Coverage Reports
-        run: mvn omni-coveragereporter:report
+      - run:
+         name: Coverage Reports
+         command: mvn omni-coveragereporter:report
 
       - save_cache:
           paths:
