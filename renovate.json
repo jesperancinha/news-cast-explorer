@@ -1,3 +1,6 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "repositories": ["jesperancinha/news-cast-explorer"],
+  "platform": "bitbucket",
+  "extends": ["docker:disable"]
 }
