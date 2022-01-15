@@ -6,11 +6,7 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn -B clean install # -B batch mode makes Maven less verbose
-          - mvn package coveralls:report -Dconsolerizer.show=false -DrepoToken=${COVERALLS_REPO_TOKEN}
-          - bash <(curl -s https://codecov.io/bash)
-          - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
-
+          - mvn clean install jacoco:prepare-agent package jacoco:report
   custom:
       renovate:
         - step:
