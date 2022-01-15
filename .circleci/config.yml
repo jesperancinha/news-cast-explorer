@@ -19,7 +19,7 @@ jobs:
 
       - run:
          name: System prepare
-         command: sudo apt update -y && sudo apt install openjdk-17-jdk -y && sudo apt install openjdk-17-jre -y && echo $JAVA_HOME
+         command: sudo apt update -y && sudo apt install openjdk-17-jdk -y && sudo apt install openjdk-17-jre -y && export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
       - run:
          name: Build and Test
