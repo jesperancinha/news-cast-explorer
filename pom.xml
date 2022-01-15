@@ -47,7 +47,7 @@
 
         <kotlin.version>1.6.0-M1</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotest.version>4.4.0</kotest.version>
+        <kotest.version>4.6.4</kotest.version>
         <kotest-extensions-spring.version>1.0.1</kotest-extensions-spring.version>
         <springmockk.version>3.0.1</springmockk.version>
     </properties>
