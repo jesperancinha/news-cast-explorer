@@ -6,7 +6,7 @@ pipelines:
         caches:
           - maven
         script:
-          - mvn clean install jacoco:prepare-agent package jacoco:report
+          - mvn clean install
   custom:
       renovate:
         - step:
