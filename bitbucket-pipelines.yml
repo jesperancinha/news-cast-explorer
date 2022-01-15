@@ -11,10 +11,11 @@ pipelines:
           - bash <(curl -s https://codecov.io/bash)
           - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Java $(find **/jacoco*.xml -printf '-r %p ')
 
-  renovate:
-    - step:
-        caches:
-          - maven
-        script:
-          - export RENOVATE_CONFIG=$(< renovate.json)
-          - renovate
+  custom:
+      renovate:
+        - step:
+            caches:
+              - maven
+            script:
+              - export RENOVATE_CONFIG=$(< renovate.json)
+              - renovate
