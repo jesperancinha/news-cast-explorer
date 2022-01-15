@@ -29,12 +29,19 @@ jobs:
 
       - run:
          name: Build and Test
-         command: mvn -version &&
+         command:
+             export JAVA_HOME=/opt/jdk17 &&
+             export PATH=$PATH:$JAVA_HOME/bin &&
+             mvn -version &&
              mvn clean install jacoco:prepare-agent package jacoco:report
 
       - run:
          name: Coverage Reports
-         command: mvn omni-coveragereporter:report
+         command:
+              export JAVA_HOME=/opt/jdk17 &&
+              export PATH=$PATH:$JAVA_HOME/bin &&
+              mvn -version &&
+              mvn omni-coveragereporter:report
 
       - save_cache:
           paths:
