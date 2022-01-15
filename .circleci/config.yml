@@ -17,9 +17,9 @@ jobs:
     steps:
       - checkout
 
-     - run:
-        name: System prepare
-        command: apt update -y && apt install openjdk-17-jdk -y
+      - run:
+         name: System prepare
+         command: apt update -y && apt install openjdk-17-jdk -y
 
       - run:
          name: Build and Test
