@@ -3,5 +3,6 @@
   "repositories": ["jesperancinha/news-cast-explorer"],
   "platform": "bitbucket",
   "extends": ["docker:disable"],
-  "username": "jesperancinha"
+  "username": "jesperancinha",
+  "updateLockFiles": false
 }
