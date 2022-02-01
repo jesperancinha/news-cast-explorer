@@ -48,6 +48,7 @@ jobs:
       - run: sudo apt install npm
       - run: sudo npm i -g yarn
       - run: sudo npm install -g n
+      - run: sudo apt-get remove nodejs
       - run: sudo n lts && cd news-cast-explorer-fe && yarn && yarn add jest && npm run coverage
       - run:
          name: System prepare
