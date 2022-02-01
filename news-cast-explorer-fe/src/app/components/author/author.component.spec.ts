@@ -1,8 +1,8 @@
-import {MatTableDataSource} from '@angular/material/table';
 import {Message} from '../../model/message';
 import {AuthorComponent} from './author.component';
 import {Author} from '../../model/author';
 import {} from 'jasmine';
+import {MatTableDataSource} from "@angular/material/table";
 
 describe('Author Component', () => {
   let authorComponent: AuthorComponent;

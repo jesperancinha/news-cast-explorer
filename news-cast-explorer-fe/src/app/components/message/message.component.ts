@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
 import {Message} from '../../model/message';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
     selector: 'app-message-component',
