@@ -1,4 +1,14 @@
-# JavaExerciseFe
+# news-cast-explorer-fe
+
+## Installation
+
+```shell
+npm i @babel/preset-typescript --save-dev
+npm i @testing-library/jest-dom --save-dev
+npm i @babel/preset-env --save-dev
+npm i babel-jest --save-dev
+npm i jest-preset-angular --save-dev
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
