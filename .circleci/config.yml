@@ -48,7 +48,7 @@ jobs:
       - run: sudo apt install npm
       - run: sudo npm i -g yarn
       - run: sudo npm install -g n
-      - run: sudo n stable && cd news-cast-explorer-fe && yarn && yarn add jest && npm run coverage
+      - run: sudo n stable && hash -r && cd news-cast-explorer-fe && yarn && yarn add jest && npm run coverage
       - run:
          name: System prepare
          command: mvn -version &&
