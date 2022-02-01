@@ -46,6 +46,7 @@ jobs:
       - checkout
       - run: sudo apt update
       - run: sudo apt install npm
+      - run: npm update -g npm
       - run: sudo npm i -g yarn
       - run: sudo npm install -g n
       - run: sudo apt-get remove nodejs
