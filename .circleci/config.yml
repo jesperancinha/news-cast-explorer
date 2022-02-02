@@ -22,7 +22,9 @@ jobs:
             export JAVA_HOME=/opt/jdk17 &&
             export PATH=$PATH:$JAVA_HOME/bin
 
-      - run: export JAVA_HOME=/opt/jdk17 &&
+      - run:
+          name: Maven Clean Install
+          command: export JAVA_HOME=/opt/jdk17 &&
              export PATH=$PATH:$JAVA_HOME/bin &&
              mvn clean install
 
