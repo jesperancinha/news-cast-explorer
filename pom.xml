@@ -220,6 +220,14 @@
                     <groupId>org.jesperancinha.plugins</groupId>
                     <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                     <version>${omni-coveragereporter-maven-plugin.version}</version>
+                    <configuration>
+                        <extraSourceFolders>
+                            <param>${project.basedir}/news-cast-explorer-fe</param>
+                        </extraSourceFolders>
+                        <extraReportFolders>
+                            <param>${project.basedir}/news-cast-explorer-fe/coverage</param>
+                        </extraReportFolders>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
