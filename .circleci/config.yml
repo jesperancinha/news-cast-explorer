@@ -62,7 +62,7 @@ jobs:
       - run: npm update -g npm
       - run: sudo npm i -g yarn
       - run: sudo npm install -g n
-      - run: sudo n rm 12.18.4
+      - run: sudo n rm v12.18.4
       - run: sudo apt-get remove nodejs
       - run: sudo n lts && node --version && cd news-cast-explorer-fe && yarn && yarn add jest && npm run coverage
       - run:
