@@ -25,7 +25,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
-        <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
         <lombok.version>1.18.22</lombok.version>
@@ -42,12 +42,12 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>5.1.0</kotest.version>
         <kotest-extensions-spring.version>1.1.0</kotest-extensions-spring.version>
-        <springmockk.version>3.1.0</springmockk.version>
+        <springmockk.version>3.1.1</springmockk.version>
         <testcontainers.version>1.16.3</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.1.4</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>2.6.3</spring-boot-parent.version>
+        <spring-boot-parent.version>2.6.4</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.12.2</mockk.version>
+        <mockk.version>1.12.3</mockk.version>
     </properties>
 
     <dependencyManagement>
