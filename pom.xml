@@ -47,7 +47,7 @@
         <omni-coveragereporter-maven-plugin.version>0.1.4</omni-coveragereporter-maven-plugin.version>
         <spring-boot-parent.version>2.6.3</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.12.2</mockk.version>
+        <mockk.version>1.12.3</mockk.version>
     </properties>
 
     <dependencyManagement>
