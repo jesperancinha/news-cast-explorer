@@ -37,3 +37,9 @@ prune-all: stop
 	docker system prune --all --volumes
 case:
 	cd news-cast-demo && mkdir -p dst && yarn install && node app.js
+install-update:
+	npm i -g snyk
+	npm install -g npm-check-updates
+	cd news-cast-demo && ncu -u && yarn
+audit:
+	cd news-cast-demo && npm audit fix && yarn
