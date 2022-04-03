@@ -19,13 +19,11 @@ import org.jesperancinha.newscast.repository.AuthorRepository
 import org.jesperancinha.newscast.repository.MessageRepository
 import org.jesperancinha.newscast.repository.PageRepository
 import org.jesperancinha.newscast.utils.AbstractNCTest
-
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
-import java.io.IOException
 import java.nio.charset.Charset
 
 @SpringBootTest(

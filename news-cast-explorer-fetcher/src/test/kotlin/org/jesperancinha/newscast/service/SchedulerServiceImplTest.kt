@@ -14,8 +14,7 @@ import org.springframework.test.context.ActiveProfiles
     properties = ["org.jesperancinha.newscast.host=http://localhost:8080"]
 )
 @ActiveProfiles("scheduler")
-class SchedulerServiceImplTest(
-    @Autowired
+class SchedulerServiceImplTest @Autowired constructor(
     val runningService: RunningService,
 ) : AbstractNCTest() {
     @MockkBean(relaxed = true)

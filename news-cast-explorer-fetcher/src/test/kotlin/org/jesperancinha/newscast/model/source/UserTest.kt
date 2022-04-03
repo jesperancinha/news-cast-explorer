@@ -19,7 +19,8 @@ internal class UserTest {
       "name": "Climate Alliance Switzerland",
       "user_name": "climalliancech",
       "created_at": "Sun Apr 22 17:19:42 +0000 2018"
-    }""", User::class.java)
+    }""", User::class.java
+        )
         val user2 = objectMapper.readValue(
             """{
       "id": 988105075267637248,
@@ -27,7 +28,8 @@ internal class UserTest {
       "name": "Climate BALALLA Switzerland",
       "user_name": "UUUU",
       "created_at": "Sun Jan 22 17:19:42 +0000 2018"
-    }""", User::class.java)
+    }""", User::class.java
+        )
         user1 shouldBe user2
     }
 
@@ -41,7 +43,8 @@ internal class UserTest {
       "name": "Climate Alliance Switzerland",
       "user_name": "climalliancech",
       "created_at": "Sun Apr 22 17:19:42 +0000 2018"
-    }""", User::class.java)
+    }""", User::class.java
+        )
         val user2 = objectMapper.readValue(
             """{
       "id": 988105075267637248,
@@ -49,7 +52,8 @@ internal class UserTest {
       "name": "Climate BALALLA Switzerland",
       "user_name": "UUUU",
       "created_at": "Sun Jan 22 17:19:42 +0000 2018"
-    }""", User::class.java)
+    }""", User::class.java
+        )
         user1 shouldNotBeSameInstanceAs user2
         user1.hashCode() shouldBe user2.hashCode()
     }

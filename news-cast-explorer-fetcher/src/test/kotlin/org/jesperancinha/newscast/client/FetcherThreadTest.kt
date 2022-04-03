@@ -25,10 +25,8 @@ import java.util.concurrent.TimeUnit
         "org.jesperancinha.newscast.capacity=5"
     ]
 )
-class FetcherThreadTest(
-    @Autowired
+class FetcherThreadTest @Autowired constructor(
     val fetcherThread: FetcherThread,
-    @Autowired
     val executorServiceWrapper: ExecutorServiceWrapper
 ) : AbstractNCTest() {
     @MockkBean

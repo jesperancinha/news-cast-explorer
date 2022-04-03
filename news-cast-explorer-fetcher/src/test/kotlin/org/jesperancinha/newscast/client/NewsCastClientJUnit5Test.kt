@@ -23,11 +23,8 @@ import java.util.concurrent.BlockingQueue
     ]
 )
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
-internal class NewsCastClientJUnit5Test(
-    @Autowired
+internal class NewsCastClientJUnit5Test @Autowired constructor(
     val newsCastClient: NewsCastClient,
-
-    @Autowired
     val executorServiceWrapper: ExecutorServiceWrapper
 ) : AbstractNCTest() {
     @MockkBean(relaxed = true)

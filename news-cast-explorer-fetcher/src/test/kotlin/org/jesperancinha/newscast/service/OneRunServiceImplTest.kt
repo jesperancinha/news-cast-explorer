@@ -12,8 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest
 @SpringBootTest(
     properties = ["org.jesperancinha.newscast.host=http://localhost:8080"]
 )
-class OneRunServiceImplTest(
-    @Autowired
+class OneRunServiceImplTest @Autowired constructor(
     val runningService: RunningService,
 ) : AbstractNCTest() {
     @MockkBean(relaxed = true)

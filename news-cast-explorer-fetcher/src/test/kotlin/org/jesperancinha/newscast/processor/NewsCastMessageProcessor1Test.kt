@@ -27,8 +27,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import java.nio.charset.Charset
 
 @SpringBootTest(properties = ["org.jesperancinha.newscast.host=127.0.0.1"])
-class NewsCastMessageProcessor1Test(
-    @Autowired
+class NewsCastMessageProcessor1Test @Autowired constructor(
     private val messageProcessor: NewsCastMessageProcessor
 ) : AbstractNCTest() {
     @MockkBean(relaxed = true)

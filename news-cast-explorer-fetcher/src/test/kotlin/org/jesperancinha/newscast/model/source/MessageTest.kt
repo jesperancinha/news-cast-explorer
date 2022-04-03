@@ -18,7 +18,8 @@ class MessageTest {
   "text": "Message3",
   "user": {
     "id": 3024323693,
-    "name": "Author2"  }}""", Message::class.java)
+    "name": "Author2"  }}""", Message::class.java
+        )
         val message2 = objectMapper.readValue(
             """{
   "created_at": "Mon Jan 13 17:15:04 +0000 2020",
@@ -29,7 +30,8 @@ class MessageTest {
     "id": 3024323693,
     "name": "Author3",
     "notifications": null
-  }}""", Message::class.java)
+  }}""", Message::class.java
+        )
         message1 shouldBe message2
     }
 
@@ -44,7 +46,8 @@ class MessageTest {
   "text": "Message3",
   "user": {
     "id": 3024323693,
-    "name": "Author2"  }}""", Message::class.java)
+    "name": "Author2"  }}""", Message::class.java
+        )
         val message2 = objectMapper.readValue(
             """{
   "created_at": "Mon Jan 13 17:15:04 +0000 2020",
@@ -55,7 +58,8 @@ class MessageTest {
     "id": 3024323693,
     "name": "Author3",
     "notifications": null
-  }}""", Message::class.java)
+  }}""", Message::class.java
+        )
         message1 shouldNotBeSameInstanceAs message2
         message1.hashCode() shouldBe message2.hashCode()
     }
