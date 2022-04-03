@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 git fetch -p
+git fetch --all
 for branch in $(git branch | grep -v master)
 do
     git checkout "$branch"
