@@ -1,7 +1,7 @@
 #!/bin/bash
 git fetch -p
 all_branches=$(git branch | grep -v master)
-
+all_branches=${all_branches%$'\n'*}
 for branch in all_branches
 do
     git checkout $branch
