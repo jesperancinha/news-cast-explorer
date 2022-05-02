@@ -41,7 +41,7 @@
         <kotlin.version>1.6.20</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>5.2.2</kotest.version>
-        <kotest-extensions-spring.version>1.1.0</kotest-extensions-spring.version>
+        <kotest-extensions-spring.version>1.1.1</kotest-extensions-spring.version>
         <springmockk.version>3.1.1</springmockk.version>
         <testcontainers.version>1.17.1</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
