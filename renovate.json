@@ -4,5 +4,30 @@
   "platform": "bitbucket",
   "extends": ["docker:disable"],
   "username": "jesperancinha",
-  "updateLockFiles": false
+  "updateLockFiles": false,
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "commons-io:commons-io"
+      ],
+      "allowedVersions": "!/20030203.000550$/",
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "Angular Group",
+      "matchPackagePrefixes": [
+        "@angular/"
+      ],
+      "automerge": true
+    }
+  ]
 }
