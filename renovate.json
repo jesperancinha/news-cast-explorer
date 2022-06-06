@@ -53,6 +53,13 @@
         "io.micrometer"
       ],
       "automerge": true
+    },
+    {
+      "groupName": "Test Containers Group",
+      "matchPackagePrefixes": [
+        "org.testcontainers"
+      ],
+      "automerge": true
     }
   ]
 }
