@@ -1,8 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "repositories": ["jesperancinha/news-cast-explorer"],
+  "repositories": [
+    "jesperancinha/news-cast-explorer"
+  ],
   "platform": "bitbucket",
-  "extends": ["docker:disable"],
+  "extends": [
+    "docker:disable"
+  ],
   "username": "jesperancinha",
   "updateLockFiles": false,
   "packageRules": [
@@ -26,6 +30,34 @@
       "groupName": "Angular Group",
       "matchPackagePrefixes": [
         "@angular/"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "Spring Boot Group",
+      "matchPackagePrefixes": [
+        "org.springframework.boot"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "Spring Group",
+      "matchPackagePrefixes": [
+        "org.springframework"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "Micrometer Group",
+      "matchPackagePrefixes": [
+        "io.micrometer"
+      ],
+      "automerge": true
+    },
+    {
+      "groupName": "Test Containers Group",
+      "matchPackagePrefixes": [
+        "org.testcontainers"
       ],
       "automerge": true
     }
