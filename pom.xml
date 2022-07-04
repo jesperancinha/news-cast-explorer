@@ -43,7 +43,7 @@
         <kotest.version>5.3.0</kotest.version>
         <kotest-extensions-spring.version>1.1.1</kotest-extensions-spring.version>
         <springmockk.version>3.1.1</springmockk.version>
-        <testcontainers.version>1.17.2</testcontainers.version>
+        <testcontainers.version>1.17.3</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
         <spring-boot-parent.version>2.7.1</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
