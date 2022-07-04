@@ -60,6 +60,13 @@
         "org.testcontainers"
       ],
       "automerge": true
+    },
+    {
+      "groupName": "Eventuate Group",
+      "matchPackagePrefixes": [
+        "io.eventuate"
+      ],
+      "automerge": true
     }
   ]
 }
