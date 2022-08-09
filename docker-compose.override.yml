@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+  news_cast_postgres:
+    ports:
+      - "5432:5432"
+    networks:
+      - newscast
+
+  news_cast_kafka:
+    ports:
+      - "9092:9092"
+      - "9093:9093"
+      - "2181:2181"
+    networks:
+      - newscast
+
+  news_cast_mock:
+    ports:
+      - "8081:8081"
+    networks:
+      - newscast
+
+  news_cast_cdc:
+    ports:
+      - "8085:8085"
+    networks:
+      - newscast
+
+  news_cast_fetcher:
+    ports:
+      - "8080:8080"
+    networks:
+      - newscast
+
+  news_cast_choreography:
+    ports:
+      - "8083:8083"
+    networks:
+      - newscast
+
+  news_cast_orchestration:
+    ports:
+      - "8082:8082"
+    networks:
+      - newscast
+
+  news_cast_fe:
+    ports:
+      - "9000:9000"
+    networks:
+      - newscast

@@ -14,8 +14,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin
       - POSTGRES_MULTIPLE_DATABASES=ncexplorer,eventuate
-    ports:
-      - "5432:5432"
     networks:
       - newscast
 
@@ -24,10 +22,6 @@ services:
     container_name: news_cast_kafka
     build:
       context: ./docker-files/kafka/.
-    ports:
-      - "9092:9092"
-      - "9093:9093"
-      - "2181:2181"
     deploy:
       resources:
         limits:
@@ -42,8 +36,6 @@ services:
     container_name: news_cast_mock
     build:
       context: news-cast-mock/.
-    ports:
-      - 8081:8081
     restart: on-failure
     networks:
       - newscast
@@ -53,8 +45,6 @@ services:
     container_name: news_cast_cdc
     build:
       context: news-cast-explorer-cdc/.
-    ports:
-      - "8085:8085"
     restart: on-failure
     deploy:
       resources:
@@ -70,8 +60,6 @@ services:
     container_name: news_cast_fetcher
     build:
       context: news-cast-explorer-fetcher/.
-    ports:
-      - "8080:8080"
     restart: on-failure
     deploy:
       resources:
@@ -87,8 +75,6 @@ services:
     container_name: news_cast_choreography
     build:
       context: news-cast-explorer-saga-choreography/.
-    ports:
-      - 8083:8083
     restart: on-failure
     deploy:
       resources:
@@ -105,7 +91,7 @@ services:
     build:
       context: news-cast-explorer-saga-orchestration/.
     ports:
-      - 8082:8082
+      - "8082:8082"
     restart: on-failure
     deploy:
       resources:
@@ -121,8 +107,6 @@ services:
     container_name: news_cast_fe
     build:
       context: docker-files/nginx/.
-    ports:
-      - 9000:9000
     restart: on-failure
     deploy:
       resources:
