@@ -1,4 +1,4 @@
-image: maven:3.8.5-openjdk-17
+image: cimg/openjdk:18.0.1
 
 pipelines:
   pull-requests:
@@ -10,11 +10,17 @@ pipelines:
             - mvn clean install
 
   custom:
-      renovate:
-        - step:
-            image: renovate/renovate
-            caches:
-              - maven
-            script:
-              - export RENOVATE_CONFIG=$(< renovate.json)
-              - renovate
+    renovate:
+      - step:
+          image: renovate/renovate
+          caches:
+            - maven
+          script:
+            - export RENOVATE_CONFIG=$(< renovate.json)
+            - renovate
+    master:
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn clean install

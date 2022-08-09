@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  gui-builder:
+    container_name: news-cast-fe-build
+    build:
+      context: .
+    volumes:
+      - ./news-cast-explorer-fe:/opt/news-cast-explorer-fe
+      - ./e2e:/opt/e2e
+      - ./news-cast-explorer-fe/node_modules:/opt/news-cast-explorer-fe/node_modules
+      - ./e2e/node_modules:/opt/e2e/node_modules
+    user: "1000:1000"
+    networks:
+      - newscast

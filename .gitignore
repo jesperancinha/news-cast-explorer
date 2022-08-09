@@ -24,3 +24,18 @@ node_modules
 # Generated files
 docker-entrypoint.sh
 docker-entrypoint-copy.sh
+
+# Cypress
+videos
+screenshots
+
+# VSCode
+bin
+.VSCode
+.vscode
+
+# Angular
+.angular
+
+# Logs
+logs

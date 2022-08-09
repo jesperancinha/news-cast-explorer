@@ -8,6 +8,7 @@ services:
   news_cast_postgres:
     hostname: news_cast_postgres
     container_name: news_cast_postgres
+    command: -c 'max_connections=400' -c 'shared_buffers=100MB'
     build:
       context: ./docker-files/docker-psql/.
     environment:
@@ -16,6 +17,12 @@ services:
       - POSTGRES_MULTIPLE_DATABASES=ncexplorer,eventuate
     networks:
       - newscast
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+        reservations:
+          memory: 200M
 
   news_cast_kafka:
     hostname: news_cast_kafka
@@ -39,6 +46,12 @@ services:
     restart: on-failure
     networks:
       - newscast
+    deploy:
+      resources:
+        limits:
+          memory: 400M
+        reservations:
+          memory: 400M
 
   news_cast_cdc:
     hostname: news_cast_cdc
