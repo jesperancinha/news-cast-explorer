@@ -20,6 +20,12 @@ build-npm-docker:
 build-maven-docker:
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-builder
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-builder
+qa-maven-docker:
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-qa
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-qa
+report-maven-docker:
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-report
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-report
 build-maven:
 	mvn clean install -DskipTests
 build-test:

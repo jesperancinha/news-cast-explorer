@@ -22,3 +22,23 @@ services:
       - ${HOME}/.m2:/root/.m2
     networks:
       - newscast
+
+  backend-qa:
+    container_name: news-cast-be-qa
+    build:
+      context: docker-files/qa-maven/.
+    volumes:
+      - .:/opt/news-cast-explorer
+      - ${HOME}/.m2:/root/.m2
+    networks:
+      - newscast
+
+  backend-report:
+    container_name: news-cast-be-report
+    build:
+      context: docker-files/report-maven/.
+    volumes:
+      - .:/opt/news-cast-explorer
+      - ${HOME}/.m2:/root/.m2
+    networks:
+      - newscast
