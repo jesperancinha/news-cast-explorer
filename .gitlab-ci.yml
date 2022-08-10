@@ -93,7 +93,6 @@ qa:
         - moving-objects-gui/dist/
         - moving-objects-gui/node_modules/
   script:
-    - make generate-credentials
     - make test
   needs:
     - build maven
@@ -208,7 +207,6 @@ coverage:
         - moving-objects-gui/dist/
         - moving-objects-gui/node_modules/
   script:
-    - make generate-credentials
     - make report-coverage
   only:
     - main
