@@ -38,6 +38,7 @@ cache:
     - moving-objects-gui/node_modules/
 
 before_script:
+  - cat /etc/*-release
   - apt-get update -y
   - apt-get upgrade -y
   - apt-get install build-essential -y
