@@ -93,7 +93,7 @@ qa:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
-    - docker ps
+    - docker-compose ps
     - make test
   needs:
     - build maven
