@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.jesperancinha.newscast.converters.AuthorConverter;
 import org.jesperancinha.newscast.converters.MessageConverter;
 import org.jesperancinha.newscast.converters.NewsCastDtoConverter;
@@ -51,8 +52,8 @@ public class NewsCastMessageProcessor {
     }
 
     public PageDto processAllMessages(Set<String> allMessages, Long timestampBefore, Long timestampAfter) throws JsonProcessingException {
-        final var list = new ArrayList<JsonProcessingException>();
-        final var authorDtos = allMessages.parallelStream()
+        val list = new ArrayList<JsonProcessingException>();
+        val authorDtos = allMessages.parallelStream()
                 .map(message -> {
                     try {
                         return objectMapper.readValue(message, Message.class);
@@ -81,18 +82,12 @@ public class NewsCastMessageProcessor {
     }
 
     private void savePageDb(PageDto pageDto) {
-        final Page entity = PageConverter.toData(pageDto);
-        var page = pageRepository.save(entity);
+        val entity = PageConverter.toData(pageDto);
+        val page = pageRepository.save(entity);
         for (var authorDto : pageDto.authors()) {
             Author author = authorRepository.findFirstByNewsCastAuthorIdAndPageId(authorDto.newsCastId(), page.getId());
-            var authorToSave = author;
-            if (author == null) {
-                authorToSave = AuthorConverter.toData(authorDto, page);
-                author = authorRepository.save(authorToSave);
-                page.getAuthors().add(author);
-                authorToSave.setPage(pageRepository.save(page));
-            }
-            final var authorRef = new AtomicReference<>(author);
+            author = createAuthor(page, authorDto, author);
+            val authorRef = new AtomicReference<>(author);
             authorDto.messages()
                     .forEach(messageDto -> {
                         var message = messageRepository.findFirstByNewscastMessageIdAndAuthorId(messageDto.newsCastId(), authorRef.get().getId());
@@ -105,6 +100,17 @@ public class NewsCastMessageProcessor {
         }
     }
 
+    private Author createAuthor(Page page, AuthorDto authorDto, Author author) {
+        var authorToSave = author;
+        if (author == null) {
+            authorToSave = AuthorConverter.toData(authorDto, page);
+            author = authorRepository.save(authorToSave);
+            page.getAuthors().add(author);
+            authorToSave.setPage(pageRepository.save(page));
+        }
+        return author;
+    }
+
     private static Collector<Message, ?, Map<AuthorDto, List<MessageDto>>> twitterMessageCollector() {
         return Collectors.groupingBy(
                 message -> toUserDto(message.user()),
@@ -112,8 +118,8 @@ public class NewsCastMessageProcessor {
     }
 
     private static AuthorDto fillAuthor(Map.Entry<AuthorDto, List<MessageDto>> authorDtoListEntry) {
-        var authorDto = authorDtoListEntry.getKey();
-        var listEntryValue = authorDtoListEntry.getValue();
+        val authorDto = authorDtoListEntry.getKey();
+        val listEntryValue = authorDtoListEntry.getValue();
         listEntryValue.sort(Comparator.comparing(MessageDto::createdAt));
         return AuthorDto.builder()
                 .newsCastId(authorDto.newsCastId())

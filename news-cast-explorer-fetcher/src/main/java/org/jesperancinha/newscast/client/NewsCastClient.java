@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
@@ -64,8 +65,8 @@ public class NewsCastClient {
      * @throws InterruptedException This client {@link NewsCastClient} will throw this exception if interrupted
      */
     public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
-        final long timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        final ExecutorService executorService = executorServiceWrapper.executorService();
+        val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        val executorService = executorServiceWrapper.executorService();
         executorService.execute(fetcherThread);
         executorService.execute(readerThread);
         executorService.execute(stopperThread);

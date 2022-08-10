@@ -41,7 +41,7 @@ public class ReaderThread extends Thread {
 
     public ReaderThread(
             @Value("${org.jesperancinha.newscast.host}")
-                    String url, BlockingQueue<String> blockingQueue,
+            String url, BlockingQueue<String> blockingQueue,
             ExecutorServiceWrapper executorServiceWrapper) {
         if (url.contains("news_cast_mock")) {
             final String news_cast_mock;
@@ -69,8 +69,9 @@ public class ReaderThread extends Thread {
                 RestTemplate restTemplate = new RestTemplate();
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-                HttpEntity<String> entity = new HttpEntity<>(headers);
-                final ResponseEntity<Message[]> result = restTemplate.exchange(url, HttpMethod.POST, entity, Message[].class);
+                final ResponseEntity<Message[]> result = restTemplate.exchange(
+                        url, HttpMethod.POST,
+                        new HttpEntity<String>(headers), Message[].class);
                 Arrays.stream(result.getBody()).toList().forEach(m -> {
                     try {
                         blockingQueue.add(objectMapper.writeValueAsString(m));

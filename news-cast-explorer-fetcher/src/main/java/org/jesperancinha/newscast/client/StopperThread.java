@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Thread.sleep;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 /**
  * Responsible for stopping the {@link ExecutorService} after a given amount of time in seconds.
  */
@@ -17,14 +20,13 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class StopperThread extends Thread {
 
-
     private final long secondsDuration;
 
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public StopperThread(
             @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
-                    long secondsDuration, ExecutorServiceWrapper executorServiceWrapper) {
+            long secondsDuration, ExecutorServiceWrapper executorServiceWrapper) {
         this.secondsDuration = secondsDuration;
         this.executorServiceWrapper = executorServiceWrapper;
     }
@@ -42,6 +44,6 @@ public class StopperThread extends Thread {
     }
 
     private void sleep() throws InterruptedException {
-        Thread.sleep(TimeUnit.SECONDS.toMillis(secondsDuration));
+        sleep(SECONDS.toMillis(secondsDuration));
     }
 }
