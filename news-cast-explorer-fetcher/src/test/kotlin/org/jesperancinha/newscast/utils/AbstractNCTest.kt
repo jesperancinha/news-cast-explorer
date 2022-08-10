@@ -1,5 +1,8 @@
 package org.jesperancinha.newscast.utils
 
+import io.kotest.mpp.log
+import io.mockk.impl.log.Logger
+import org.junit.platform.commons.logging.LoggerFactory
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.PostgreSQLContainer
@@ -11,6 +14,8 @@ class TestPostgresSQLContainer(imageName: String) : PostgreSQLContainer<TestPost
 @Testcontainers
 open class AbstractNCTest {
     companion object {
+        private val logger = LoggerFactory.getLogger(AbstractNCTest::class.java)
+
         @Container
         @JvmField
         val postgreSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres:15beta2")
@@ -26,7 +31,10 @@ open class AbstractNCTest {
         @DynamicPropertySource
         @JvmStatic
         fun setProperties(registry: DynamicPropertyRegistry) {
-            registry.add("spring.datasource.url") { "jdbc:postgresql://localhost:${postgreSQLContainer.firstMappedPort}/eventuate" }
+            logger.info { "Connection details to PostgreSQL:" }
+            logger.info { "Bound port numbers: ${postgreSQLContainer.boundPortNumbers}" }
+            logger.info { "Exposed port numbers: ${postgreSQLContainer.exposedPorts}" }
+            registry.add("spring.datasource.url") { "jdbc:postgresql://localhost:${postgreSQLContainer.exposedPorts[0]}/eventuate" }
             registry.add("spring.datasource.username") { "postgres" }
             registry.add("spring.datasource.password") { "admin" }
         }
