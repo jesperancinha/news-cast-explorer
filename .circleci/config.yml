@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Build and Test Maven
-          command: make backend-build
+          command: make qa-maven-docker
 
   build-yarn:
     docker:
@@ -44,7 +44,7 @@ jobs:
       - checkout
       - run:
           name: Build and Test Node
-          command: make build-node-docker
+          command: make build-npm-docker
 
       - run:
           name: Build and Test Maven
