@@ -1,5 +1,9 @@
 package org.jesperancinha.newscast.utils
 
+import com.github.dockerjava.api.model.ExposedPort
+import com.github.dockerjava.api.model.HostConfig
+import com.github.dockerjava.api.model.PortBinding
+import com.github.dockerjava.api.model.Ports
 import io.kotest.mpp.log
 import io.mockk.impl.log.Logger
 import org.junit.platform.commons.logging.LoggerFactory
@@ -16,13 +20,25 @@ open class AbstractNCTest {
     companion object {
         private val logger = LoggerFactory.getLogger(AbstractNCTest::class.java)
 
+        private const val POSTGRESQL_PORT = 5432
+
         @Container
         @JvmField
         val postgreSQLContainer: TestPostgresSQLContainer = TestPostgresSQLContainer("postgres:15beta2")
             .withUsername("postgres")
             .withPassword("admin")
             .withDatabaseName("eventuate")
-
+            .withExposedPorts(POSTGRESQL_PORT)
+            .withCreateContainerCmdModifier { cmd ->
+                cmd.withHostConfig(
+                    HostConfig().withPortBindings(
+                        PortBinding(
+                            Ports.Binding.bindPort(POSTGRESQL_PORT),
+                            ExposedPort(POSTGRESQL_PORT)
+                        )
+                    )
+                )
+            }
 
         init {
             postgreSQLContainer.start()
