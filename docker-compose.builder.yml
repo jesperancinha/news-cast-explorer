@@ -3,12 +3,22 @@ services:
   gui-builder:
     container_name: news-cast-fe-build
     build:
-      context: .
+      context: ./docker-files/build-node/.
     volumes:
       - ./news-cast-explorer-fe:/opt/news-cast-explorer-fe
       - ./e2e:/opt/e2e
       - ./news-cast-explorer-fe/node_modules:/opt/news-cast-explorer-fe/node_modules
       - ./e2e/node_modules:/opt/e2e/node_modules
     user: "1000:1000"
+    networks:
+      - newscast
+
+  backend-builder:
+    container_name: news-cast-be-build
+    build:
+      context: ./docker-files/build-jar/.
+    volumes:
+      - .:/opt/news-cast-explorer
+      - ${HOME}/.m2:/root/.m2
     networks:
       - newscast

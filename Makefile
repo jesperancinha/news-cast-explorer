@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 b: build
 build: build-npm build-maven
 build-npm:
@@ -15,6 +17,9 @@ build-npm-docker:
 	chmod 777 e2e/yarn.lock
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build gui-builder
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up gui-builder
+build-maven-docker:
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-builder
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-builder
 build-maven:
 	mvn clean install -DskipTests
 build-test:
@@ -31,12 +36,12 @@ no-test:
 docker-clean:
 	docker-compose rm -svf
 docker:
-	rm -rf out
+	[ -d out ] && rm -r out || echo "First run!"
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
 	docker-compose up -d --build --remove-orphans
 docker-local:
 	cd docker/local
-	rm -rf out
+	[ -d out ] && rm -r out || echo "First run!"
 	docker-compose up -d --build --remove-orphans
 docker-clean-build-start: docker-clean b docker
 docker-clean-start: docker-clean docker
