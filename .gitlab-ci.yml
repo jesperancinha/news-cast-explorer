@@ -34,8 +34,8 @@ cache:
     - news-cast-explorer-saga-common/target
     - news-cast-explorer-saga-orchestration/target
     - news-cast-mock/target
-    - moving-objects-gui/dist/
-    - moving-objects-gui/node_modules/
+    - news-cast-explorer-fe/dist/
+    - news-cast-explorer-fe/node_modules/
 
 before_script:
   - cat /etc/*-release
@@ -56,8 +56,8 @@ build maven:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   script:
     - make no-test
 
@@ -73,8 +73,8 @@ build node:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   script:
     - make build-npm-docker
 
@@ -90,8 +90,8 @@ qa:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   script:
     - make test
   needs:
@@ -117,8 +117,8 @@ nce-electron-e2e:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   allow_failure: true
   timeout: 120m
   retry: 2
@@ -141,8 +141,8 @@ nce-chrome-e2e:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   timeout: 120m
   retry: 2
 
@@ -164,8 +164,8 @@ nce-firefox-e2e:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   timeout: 120m
   allow_failure: true
 
@@ -187,8 +187,8 @@ nce-edge-e2e:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   timeout: 120m
   retry: 2
 
@@ -204,8 +204,8 @@ coverage:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   script:
     - make report-coverage
   only:
@@ -230,8 +230,8 @@ reporting:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - moving-objects-gui/dist/
-        - moving-objects-gui/node_modules/
+        - news-cast-explorer-fe/dist/
+        - news-cast-explorer-fe/node_modules/
   script:
     - make report
   only:
