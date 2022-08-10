@@ -22,7 +22,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
 
-image: maven:3.8.6-openjdk-18
+image: maven:3.8-openjdk-17-slim
 
 cache:
   paths:
@@ -37,8 +37,15 @@ cache:
     - moving-objects-gui/dist/
     - moving-objects-gui/node_modules/
 
+before_script:
+  - cat /etc/*-release
+  - apt-get update -y
+  - apt-get upgrade -y
+  - apt-get install build-essential -y
+  - bash latest-compose.sh
+
 build maven:
-  image: maven:3.8.6-openjdk-18
+  image: maven:3.8-openjdk-17-slim
   stage: build
   cache:
       paths:
@@ -55,7 +62,7 @@ build maven:
     - make no-test
 
 build node:
-  image: maven:3.8.6-openjdk-18
+  image: maven:3.8-openjdk-17-slim
   stage: build
   cache:
       paths:
@@ -72,7 +79,7 @@ build node:
     - make build-npm-docker
 
 qa:
-  image: maven:3.8.6-openjdk-18
+  image: maven:3.8-openjdk-17-slim
   stage: qa
   cache:
       paths:
@@ -187,7 +194,7 @@ mos-edge-e2e:
   retry: 2
 
 coverage:
-  image: maven:3.8.6-openjdk-18
+  image: maven:3.8-openjdk-17-slim
   stage: coverage
   cache:
       paths:
@@ -214,7 +221,7 @@ coverage:
     - mos-electron-e2e
 
 reporting:
-  image: maven:3.8.6-openjdk-18
+  image: maven:3.8-openjdk-17-slim
   stage: reporting
   cache:
       paths:

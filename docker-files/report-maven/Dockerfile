@@ -1,4 +1,4 @@
-FROM maven:3.8.6-openjdk-18
+FROM maven:3.8-openjdk-17-slim
 
 ENV runningFolder /usr/local/bin/
 
