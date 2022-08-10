@@ -7,7 +7,7 @@ services:
     volumes:
       - ./e2e:/e2e
     networks:
-      - mos_net
+      - newscast
 
   e2e-chrome:
     image: "cypress/included:10.4.0"
@@ -16,7 +16,7 @@ services:
     volumes:
       - ./e2e:/e2e
     networks:
-      - mos_net
+      - newscast
 
   e2e-firefox:
     image: "cypress/included:10.4.0"
@@ -25,7 +25,7 @@ services:
     volumes:
       - ./e2e:/e2e
     networks:
-      - mos_net
+      - newscast
 
   e2e-firefox-full:
     image: "cypress/included:10.4.0"
@@ -34,7 +34,7 @@ services:
     volumes:
       - ./e2e:/e2e
     networks:
-      - mos_net
+      - newscast
 
   e2e-edge:
     image: "cypress/included:10.4.0"
@@ -43,4 +43,4 @@ services:
     volumes:
       - ./e2e:/e2e
     networks:
-      - mos_net
+      - newscast
