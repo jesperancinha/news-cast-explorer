@@ -22,7 +22,7 @@ variables:
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
 
-image: 3.8.6-openjdk-18
+image: maven:3.8.6-openjdk-18
 
 cache:
   paths:
@@ -44,7 +44,7 @@ before_script:
   - bash latest-compose.sh
 
 build maven:
-  image: 3.8.6-openjdk-18
+  image: maven:3.8.6-openjdk-18
   stage: build
   cache:
       paths:
@@ -61,7 +61,7 @@ build maven:
     - make no-test
 
 build node:
-  image: 3.8.6-openjdk-18
+  image: maven:3.8.6-openjdk-18
   stage: build
   cache:
       paths:
@@ -78,7 +78,7 @@ build node:
     - make build-npm-docker
 
 qa:
-  image: 3.8.6-openjdk-18
+  image: maven:3.8.6-openjdk-18
   stage: qa
   cache:
       paths:
@@ -193,7 +193,7 @@ mos-edge-e2e:
   retry: 2
 
 coverage:
-  image: 3.8.6-openjdk-18
+  image: maven:3.8.6-openjdk-18
   stage: coverage
   cache:
       paths:
@@ -220,7 +220,7 @@ coverage:
     - mos-electron-e2e
 
 reporting:
-  image: 3.8.6-openjdk-18
+  image: maven:3.8.6-openjdk-18
   stage: reporting
   cache:
       paths:
