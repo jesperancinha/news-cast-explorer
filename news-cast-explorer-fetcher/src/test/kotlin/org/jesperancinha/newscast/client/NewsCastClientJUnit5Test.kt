@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
+import org.springframework.test.context.ActiveProfiles
 import java.util.concurrent.BlockingQueue
 
 @SpringBootTest(
@@ -23,6 +24,7 @@ import java.util.concurrent.BlockingQueue
     ]
 )
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
+@ActiveProfiles("non-scheduler")
 internal class NewsCastClientJUnit5Test @Autowired constructor(
     val newsCastClient: NewsCastClient,
     val executorServiceWrapper: ExecutorServiceWrapper
