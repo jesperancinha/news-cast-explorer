@@ -16,7 +16,7 @@ services:
   backend-builder:
     container_name: news-cast-be-build
     build:
-      context: ./docker-files/build-jar/.
+      context: docker-files/build-maven/.
     volumes:
       - .:/opt/news-cast-explorer
       - ${HOME}/.m2:/root/.m2
