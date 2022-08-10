@@ -39,9 +39,7 @@ cache:
 
 before_script:
   - cat /etc/*-release
-  - apt-get update -y
-  - apt-get upgrade -y
-  - apt-get install build-essential -y
+  - yum groupinstall 'Development Tools'
   - bash latest-compose.sh
 
 build maven:
