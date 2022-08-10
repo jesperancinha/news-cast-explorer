@@ -99,7 +99,7 @@ qa:
     - build node
   retry: 2
 
-mos-electron-e2e:
+nce-electron-e2e:
   image: node:18
   stage: e2e
   script:
@@ -123,7 +123,7 @@ mos-electron-e2e:
   timeout: 120m
   retry: 2
 
-mos-chrome-e2e:
+nce-chrome-e2e:
   image: node:18
   stage: e2e
   script:
@@ -146,7 +146,7 @@ mos-chrome-e2e:
   timeout: 120m
   retry: 2
 
-mos-firefox-e2e:
+nce-firefox-e2e:
   image: node:18
   stage: e2e
   script:
@@ -169,7 +169,7 @@ mos-firefox-e2e:
   timeout: 120m
   allow_failure: true
 
-mos-edge-e2e:
+nce-edge-e2e:
   image: node:18
   stage: e2e
   script:
@@ -213,10 +213,10 @@ coverage:
   needs:
     - build maven
     - build node
-    - mos-edge-e2e
-    - mos-chrome-e2e
-    - mos-firefox-e2e
-    - mos-electron-e2e
+    - nce-edge-e2e
+    - nce-chrome-e2e
+    - nce-firefox-e2e
+    - nce-electron-e2e
 
 reporting:
   image: maven:3.8-openjdk-17-slim
@@ -250,8 +250,8 @@ update-dependencies:
   only:
     - main
   needs:
-    - mos-electron-e2e
-    - mos-chrome-e2e
-    - mos-firefox-e2e
-    - mos-edge-e2e
+    - nce-electron-e2e
+    - nce-chrome-e2e
+    - nce-firefox-e2e
+    - nce-edge-e2e
 

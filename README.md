@@ -5,10 +5,9 @@
 [![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=Checkout%20this%20@bitbucket%20repo%20by%20@joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB:%20https://bitbucket.org/jesperancinha/news-cast-explorer/src/master/)
 [![Generic badge](https://img.shields.io/static/v1.svg?label=BitBucket&message=Newscast%20Explorer&color=informational)](https://bitbucket.org/jesperancinha/news-cast-explorer)
 
-[![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/jesperancinha/news-cast-explorer/master)](https://bitbucket.org/jesperancinha/news-cast-explorer/addon/pipelines/home#!/)
-[![CircleCI](https://circleci.com/bb/jesperancinha/news-cast-explorer.svg?style=svg)](https://circleci.com/bb/jesperancinha/news-cast-explorer)
+[![Gitlab pipeline status (branch)](https://img.shields.io/gitlab/pipeline/jesperancinha/news-cast-explorer/main)](https://gitlab.com/jesperancinha/news-cast-explorer/-/pipelines)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/news-cast-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/149626db028a4691b0e2b3101903e9af)](https://www.codacy.com/gl/jesperancinha/news-cast-explorer/dashboard?utm_source=gitlab.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
 [![codebeat badge](https://codebeat.co/badges/768c571b-f241-4530-aeed-2d0e91e03eea)](https://codebeat.co/projects/bitbucket-org-jesperancinha-news-cast-explorer-master)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/f49ddf491c1c4eff8addac23e08b9a91)](https://www.codacy.com/bb/jesperancinha/news-cast-explorer/dashboard?utm_source=jesperancinha@bitbucket.org&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
