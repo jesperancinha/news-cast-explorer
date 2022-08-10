@@ -1,0 +1,258 @@
+services:
+  - docker:dind
+
+stages:
+  - build
+  - qa
+  - e2e
+  - coverage
+  - reporting
+  - verify
+  - test
+  - docker-compose
+  - update
+
+variables:
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+  CODECOV_TOKEN: $CODECOV_TOKEN
+  COVERALLS_REPO_TOKEN: $COVERALLS_REPO_TOKEN
+  CODACY_PROJECT_TOKEN: $CODACY_PROJECT_TOKEN
+  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+
+image: gradle:7.5.0-jdk17
+
+cache:
+  paths:
+    - .m2/repository/
+    - news-cast-explorer-cdc/target
+    - news-cast-explorer-common/target
+    - news-cast-explorer-fetcher/target
+    - news-cast-explorer-saga-choreography/target
+    - news-cast-explorer-saga-common/target
+    - news-cast-explorer-saga-orchestration/target
+    - news-cast-mock/target
+    - moving-objects-gui/dist/
+    - moving-objects-gui/node_modules/
+
+before_script:
+  - apt-get update -y
+  - apt-get upgrade -y
+  - apt-get install build-essential -y
+  - bash latest-compose.sh
+
+build maven:
+  image: gradle:7.5.0-jdk17
+  stage: build
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  script:
+    - make no-test
+
+build node:
+  image: gradle:7.5.0-jdk17
+  stage: build
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  script:
+    - make build-npm-docker
+
+qa:
+  image: gradle:7.5.0-jdk17
+  stage: qa
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  script:
+    - make generate-credentials
+    - make test
+  needs:
+    - build maven
+    - build node
+  retry: 2
+
+mos-electron-e2e:
+  image: node:18
+  stage: e2e
+  script:
+    - make dcup-action
+    - make cypress-electron
+    - make end-logs
+  needs:
+    - qa
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  allow_failure: true
+  timeout: 120m
+  retry: 2
+
+mos-chrome-e2e:
+  image: node:18
+  stage: e2e
+  script:
+    - make dcup-action
+    - make cypress-chrome
+    - make end-logs
+  needs:
+    - qa
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  timeout: 120m
+  retry: 2
+
+mos-firefox-e2e:
+  image: node:18
+  stage: e2e
+  script:
+    - make dcup-action
+    - make cypress-firefox
+    - make end-logs
+  needs:
+    - qa
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  timeout: 120m
+  allow_failure: true
+
+mos-edge-e2e:
+  image: node:18
+  stage: e2e
+  script:
+    - make dcup-action
+    - make cypress-edge
+    - make end-logs
+  needs:
+    - qa
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  timeout: 120m
+  retry: 2
+
+coverage:
+  image: gradle:7.5.0-jdk17
+  stage: coverage
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  script:
+    - make generate-credentials
+    - make report-coverage
+  only:
+    - main
+  needs:
+    - build maven
+    - build node
+    - mos-edge-e2e
+    - mos-chrome-e2e
+    - mos-firefox-e2e
+    - mos-electron-e2e
+
+reporting:
+  image: gradle:7.5.0-jdk17
+  stage: reporting
+  cache:
+      paths:
+        - news-cast-explorer-cdc/target
+        - news-cast-explorer-common/target
+        - news-cast-explorer-fetcher/target
+        - news-cast-explorer-saga-choreography/target
+        - news-cast-explorer-saga-common/target
+        - news-cast-explorer-saga-orchestration/target
+        - news-cast-mock/target
+        - moving-objects-gui/dist/
+        - moving-objects-gui/node_modules/
+  script:
+    - make report
+  only:
+    - main
+  needs:
+    - coverage
+
+update-dependencies:
+  image: renovate/renovate
+  stage: update
+  before_script:
+    - ''
+  script:
+    - export RENOVATE_CONFIG=$(< renovate.json)
+    - renovate
+  only:
+    - main
+  needs:
+    - mos-electron-e2e
+    - mos-chrome-e2e
+    - mos-firefox-e2e
+    - mos-edge-e2e
+
