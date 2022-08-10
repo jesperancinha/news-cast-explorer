@@ -37,11 +37,6 @@ cache:
     - moving-objects-gui/dist/
     - moving-objects-gui/node_modules/
 
-before_script:
-  - cat /etc/*-release
-  - yum groupinstall 'Development Tools'
-  - bash latest-compose.sh
-
 build maven:
   image: maven:3.8.6-openjdk-18
   stage: build
