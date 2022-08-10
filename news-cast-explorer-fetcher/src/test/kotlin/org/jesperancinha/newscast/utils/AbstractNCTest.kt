@@ -9,7 +9,7 @@ import org.testcontainers.junit.jupiter.Testcontainers
 class TestPostgresSQLContainer(imageName: String) : PostgreSQLContainer<TestPostgresSQLContainer>(imageName)
 
 @Testcontainers
-abstract class AbstractNCTest {
+open class AbstractNCTest {
     companion object {
         @Container
         @JvmField
