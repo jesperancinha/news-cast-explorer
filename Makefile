@@ -50,9 +50,9 @@ no-test:
 	mvn clean install -DskipTests
 docker-clean:
 	docker-compose rm -svf
-docker:
-	[ -d out ] && rm -r out || echo "First run!"
+dist:
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
+docker: dist
 	docker-compose up -d --build --remove-orphans
 docker-local:
 	cd docker/local
@@ -93,7 +93,7 @@ cypress-firefox-full:
 	cd e2e && make cypress-firefox-full
 cypress-edge:
 	cd e2e && make cypress-edge
-docker-action:
+docker-action: dist
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up -d news_cast_postgres news_cast_kafka news_cast_mock news_cast_cdc news_cast_fetcher news_cast_choreography news_cast_orchestration news_cast_fe
 nce-wait:
 	bash nce_wait.sh
