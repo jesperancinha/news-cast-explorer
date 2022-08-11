@@ -30,7 +30,8 @@ public class ExecutorServiceWrapper {
         return this.executorService;
     }
 
-    public void restart(){
+    public ExecutorService restart(){
         init();
+        return this.executorService;
     }
 }

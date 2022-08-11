@@ -45,7 +45,6 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
      */
     @Test
     fun testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediately() {
-        executorServiceWrapper.restart()
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()
         verify {

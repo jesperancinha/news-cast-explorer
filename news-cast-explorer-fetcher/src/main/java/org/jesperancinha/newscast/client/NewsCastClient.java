@@ -69,7 +69,7 @@ public class NewsCastClient {
      */
     public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        val executorService = executorServiceWrapper.executorService();
+        val executorService = executorServiceWrapper.restart();
         executorService.execute(fetcherThread);
         executorService.execute(readerThread);
         executorService.execute(stopperThread);
@@ -80,7 +80,6 @@ public class NewsCastClient {
             log.warn("Service was shutdown correctly, however it happened with an exception.", exception);
         }
         val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        executorServiceWrapper.restart();
         return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
     }
 
