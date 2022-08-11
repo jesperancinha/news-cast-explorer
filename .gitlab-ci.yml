@@ -68,6 +68,7 @@ build node:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   script:
     - make build-npm-cypress-docker
     - make build-npm-docker
@@ -100,6 +101,7 @@ qa node:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   script:
     - docker-compose ps
     - make test-node
@@ -131,6 +133,7 @@ nce-electron-e2e:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   allow_failure: true
   timeout: 120m
   retry: 2
@@ -159,6 +162,7 @@ nce-chrome-e2e:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   timeout: 120m
   retry: 2
 
@@ -186,6 +190,7 @@ nce-firefox-e2e:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   timeout: 120m
   allow_failure: true
 
@@ -213,6 +218,7 @@ nce-edge-e2e:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   timeout: 120m
   retry: 2
 
@@ -233,6 +239,7 @@ coverage:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   script:
     - make report-coverage
   only:
@@ -262,6 +269,7 @@ reporting:
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
+        - e2e/node_modules/
   script:
     - make report
   only:
