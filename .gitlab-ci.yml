@@ -89,7 +89,7 @@ qa maven:
   retry: 2
 
 qa node:
-  image: maven:3.8-openjdk-17-slim
+  image: node:18
   stage: qa
   cache:
       paths:
