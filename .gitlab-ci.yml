@@ -48,6 +48,7 @@ build maven:
   image: maven:3.8-openjdk-17-slim
   stage: build
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -63,6 +64,7 @@ build node:
   image: node:18
   stage: build
   cache:
+    - key: NODE
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
@@ -73,6 +75,7 @@ qa maven:
   image: maven:3.8-openjdk-17-slim
   stage: qa
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -92,6 +95,7 @@ qa node:
   image: node:18
   stage: qa
   cache:
+    - key: NODE
       paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
@@ -113,6 +117,7 @@ nce-electron-e2e:
     - qa maven
     - qa node
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -121,6 +126,8 @@ nce-electron-e2e:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   allow_failure: true
@@ -138,6 +145,7 @@ nce-chrome-e2e:
     - qa maven
     - qa node
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -146,6 +154,8 @@ nce-chrome-e2e:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   timeout: 120m
@@ -162,6 +172,7 @@ nce-firefox-e2e:
     - qa maven
     - qa node
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -170,6 +181,8 @@ nce-firefox-e2e:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   timeout: 120m
@@ -186,6 +199,7 @@ nce-edge-e2e:
     - qa maven
     - qa node
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -194,6 +208,8 @@ nce-edge-e2e:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   timeout: 120m
@@ -203,6 +219,7 @@ coverage:
   image: maven:3.8-openjdk-17-slim
   stage: coverage
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -211,6 +228,8 @@ coverage:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
@@ -229,6 +248,7 @@ reporting:
   image: maven:3.8-openjdk-17-slim
   stage: reporting
   cache:
+    - key: MAVEN
       paths:
         - news-cast-explorer-cdc/target/
         - news-cast-explorer-common/target/
@@ -237,6 +257,8 @@ reporting:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+    - key: NODE
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
