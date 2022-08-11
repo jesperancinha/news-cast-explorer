@@ -54,10 +54,6 @@ dist:
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
 docker: dist
 	docker-compose up -d --build --remove-orphans
-docker-local:
-	cd docker/local
-	[ -d out ] && rm -r out || echo "First run!"
-	docker-compose up -d --build --remove-orphans
 docker-clean-build-start: docker-clean b docker
 docker-clean-start: docker-clean docker
 stop:
