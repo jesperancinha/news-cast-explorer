@@ -250,9 +250,9 @@ update-dependencies:
     - renovate
   only:
     - main
-  needs:
-    - nce-electron-e2e
-    - nce-chrome-e2e
-    - nce-firefox-e2e
-    - nce-edge-e2e
+  needs: []
+    # - nce-electron-e2e
+    # - nce-chrome-e2e
+    # - nce-firefox-e2e
+    # - nce-edge-e2e
 
