@@ -16,16 +16,16 @@ build-npm-docker:
 	chmod 777 e2e
 	chmod 777 e2e/yarn.lock
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build gui-builder
-	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up gui-builder
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from gui-builder gui-builder
 build-maven-docker:
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-builder
-	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-builder
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from backend-builder backend-builder
 qa-maven-docker:
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-qa
-	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-qa
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from backend-qa backend-qa
 report-maven-docker:
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-report
-	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up backend-report
+	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from backend-report backend-report
 build-maven:
 	mvn clean install -DskipTests
 build-test:
