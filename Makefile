@@ -17,6 +17,7 @@ build-npm-docker:
 	chmod 777 e2e/yarn.lock
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build gui-builder
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from gui-builder gui-builder
+	cd news-cast-explorer-fe && [ -d node_modules ] && echo "dist has been created!!" || echo "dist has not been created!!"
 build-maven-docker:
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml build backend-builder
 	docker-compose -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from backend-builder backend-builder
