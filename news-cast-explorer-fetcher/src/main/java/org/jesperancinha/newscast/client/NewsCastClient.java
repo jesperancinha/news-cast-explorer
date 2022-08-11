@@ -65,9 +65,8 @@ public class NewsCastClient {
      * Messages {@link MessageDto} are returned by ascending order of creation
      *
      * @return A {@link PageDto} object with all the data for one run
-     * @throws InterruptedException This client {@link NewsCastClient} will throw this exception if interrupted
      */
-    public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
+    public synchronized PageDto startFetchProcess() throws JsonProcessingException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         val executorService = executorServiceWrapper.restart();
         executorService.execute(fetcherThread);
