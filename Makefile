@@ -30,8 +30,8 @@ build-maven:
 	mvn clean install -DskipTests
 build-test:
 	mvn clean install
-test:
-	mvn test
+test: test-node test-maven
+test-node:
 	cd news-cast-explorer-fe && yarn install && npm run test
 test-maven:
 	mvn test

@@ -56,29 +56,20 @@ build maven:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
-        - news-cast-explorer-fe/dist/
-        - news-cast-explorer-fe/node_modules/
   script:
     - make no-test
 
 build node:
-  image: maven:3.8-openjdk-17-slim
+  image: node:18
   stage: build
   cache:
       paths:
-        - news-cast-explorer-cdc/target
-        - news-cast-explorer-common/target
-        - news-cast-explorer-fetcher/target
-        - news-cast-explorer-saga-choreography/target
-        - news-cast-explorer-saga-common/target
-        - news-cast-explorer-saga-orchestration/target
-        - news-cast-mock/target
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
     - make build-npm-docker
 
-qa:
+qa maven:
   image: maven:3.8-openjdk-17-slim
   stage: qa
   cache:
@@ -90,13 +81,24 @@ qa:
         - news-cast-explorer-saga-common/target
         - news-cast-explorer-saga-orchestration/target
         - news-cast-mock/target
+  script:
+    - docker-compose ps
+    - make test-maven
+  needs:
+    - build maven
+  retry: 2
+
+qa node:
+  image: maven:3.8-openjdk-17-slim
+  stage: qa
+  cache:
+      paths:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
     - docker-compose ps
-    - make test
+    - make test-node
   needs:
-    - build maven
     - build node
   retry: 2
 
@@ -108,7 +110,8 @@ nce-electron-e2e:
     - make cypress-electron
     - make end-logs
   needs:
-    - qa
+    - qa maven
+    - qa node
   cache:
       paths:
         - news-cast-explorer-cdc/target
@@ -132,7 +135,8 @@ nce-chrome-e2e:
     - make cypress-chrome
     - make end-logs
   needs:
-    - qa
+    - qa maven
+    - qa node
   cache:
       paths:
         - news-cast-explorer-cdc/target
@@ -155,7 +159,8 @@ nce-firefox-e2e:
     - make cypress-firefox
     - make end-logs
   needs:
-    - qa
+    - qa maven
+    - qa node
   cache:
       paths:
         - news-cast-explorer-cdc/target
@@ -178,7 +183,8 @@ nce-edge-e2e:
     - make cypress-edge
     - make end-logs
   needs:
-    - qa
+    - qa maven
+    - qa node
   cache:
       paths:
         - news-cast-explorer-cdc/target
@@ -212,8 +218,8 @@ coverage:
   only:
     - main
   needs:
-    - build maven
-    - build node
+    - qa maven
+    - qa node
     - nce-edge-e2e
     - nce-chrome-e2e
     - nce-firefox-e2e
