@@ -6,9 +6,10 @@ import io.mockk.verify
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.junit.jupiter.api.Test
 import java.util.concurrent.ExecutorService
+import java.util.concurrent.FutureTask
 import java.util.concurrent.LinkedBlockingQueue
 
-class StopperThreadTest {
+class StopperCallableTest {
     @Test
     fun testRun_whenRun_CallsServiceShutdown() {
         val executorServiceMock: ExecutorService = mockk()
@@ -16,10 +17,11 @@ class StopperThreadTest {
             ExecutorServiceWrapper(LinkedBlockingQueue(100), 0, "http://localhost:8081/api/newscast/messages")
         executorServiceWrapper.setExecutorService(executorServiceMock)
         every { executorServiceMock.shutdownNow() } returns listOf()
-        val stopperThread =
-            StopperThread.builder().executorServiceWrapper(executorServiceWrapper).secondsDuration(1).build()
-        stopperThread.start()
-        stopperThread.join()
+        val stopperCallable =
+            StopperCallable.builder().executorServiceWrapper(executorServiceWrapper).secondsDuration(1).build()
+        val thread = FutureTask(stopperCallable)
+        thread.run()
+        thread.get()
         verify { executorServiceMock.shutdownNow() }
     }
 }

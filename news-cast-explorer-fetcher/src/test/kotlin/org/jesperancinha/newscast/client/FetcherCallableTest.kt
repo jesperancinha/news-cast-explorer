@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
 import java.util.*
 import java.util.concurrent.BlockingQueue
+import java.util.concurrent.FutureTask
 import java.util.concurrent.TimeUnit
 
 @SpringBootTest(
@@ -25,28 +26,29 @@ import java.util.concurrent.TimeUnit
         "org.jesperancinha.newscast.capacity=5"
     ]
 )
-class FetcherThreadTest @Autowired constructor(
+class FetcherCallableTest @Autowired constructor(
     final val executorServiceWrapper: ExecutorServiceWrapper
 ) : AbstractNCTest() {
     @MockkBean
     lateinit var queueMock: BlockingQueue<String>
 
     @MockkBean(relaxed = true)
-    lateinit var readerThread: ReaderThread
+    lateinit var readerCallable: ReaderCallable
 
     @MockkBean(relaxed = true)
     lateinit var runningService: OneRunServiceImpl
 
-    val fetcherThread: FetcherThread = executorServiceWrapper.createFetcherThread()
+    val fetcherCallable: FetcherCallable = executorServiceWrapper.createFetcherThread()
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     fun testRun_whenFetchOk_thenReturnMessage() {
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
-        fetcherThread.start()
-        fetcherThread.join()
-        val messages = fetcherThread.allMessages
+        val thread = FutureTask(fetcherCallable)
+        thread.run()
+        thread.get()
+        val messages = fetcherCallable.allMessages
         messages.shouldNotBeNull()
         messages.shouldHaveSize(1)
         messages.shouldContain("I am a message!")
@@ -58,9 +60,10 @@ class FetcherThreadTest @Autowired constructor(
     fun testRunWithCapacity5_whenFetchOk_thenReturnMessage() {
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
-        fetcherThread.start()
-        fetcherThread.join()
-        val allMessages = fetcherThread.allMessages
+        val thread = FutureTask(fetcherCallable)
+        thread.run()
+        thread.get()
+        val allMessages = fetcherCallable.allMessages
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
@@ -81,9 +84,10 @@ class FetcherThreadTest @Autowired constructor(
         stringStack.push(testMessage)
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
-        fetcherThread.start()
-        fetcherThread.join()
-        val allMessages = fetcherThread.allMessages
+        val thread = FutureTask(fetcherCallable)
+        thread.run()
+        thread.get()
+        val allMessages = fetcherCallable.allMessages
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
@@ -106,9 +110,10 @@ class FetcherThreadTest @Autowired constructor(
         stringStack.push(null)
         every { queueMock.remainingCapacity() } returns 1
         every { queueMock.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
-        fetcherThread.start()
-        fetcherThread.join()
-        val allMessages = fetcherThread.allMessages
+        val thread = FutureTask(fetcherCallable)
+        thread.run()
+        thread.get()
+        val allMessages = fetcherCallable.allMessages
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
@@ -132,9 +137,10 @@ class FetcherThreadTest @Autowired constructor(
         stringStack.push(testLimitTrack)
         every { queueMock.remainingCapacity() } returns 5
         every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
-        fetcherThread.start()
-        fetcherThread.join()
-        val allMessages = fetcherThread.allMessages
+        val thread = FutureTask(fetcherCallable)
+        thread.run()
+        thread.get()
+        val allMessages = fetcherCallable.allMessages
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(2)
         allMessages.shouldContain("I am a message!")

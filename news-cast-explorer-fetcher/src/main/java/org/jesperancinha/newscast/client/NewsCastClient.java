@@ -56,7 +56,7 @@ public class NewsCastClient {
      *
      * @return A {@link PageDto} object with all the data for one run
      */
-    public synchronized PageDto startFetchProcess() throws JsonProcessingException {
+    public synchronized PageDto startFetchProcess() throws JsonProcessingException, InterruptedException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         val executorService = executorServiceWrapper.restart();
         try {

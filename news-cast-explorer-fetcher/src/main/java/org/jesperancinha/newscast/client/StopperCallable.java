@@ -3,11 +3,11 @@ package org.jesperancinha.newscast.client;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
+import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
@@ -15,31 +15,29 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 @Slf4j
 @Builder
-public class StopperThread extends Thread {
+public class StopperCallable implements Callable<Boolean> {
 
     private final long secondsDuration;
 
     private final ExecutorServiceWrapper executorServiceWrapper;
 
-    public StopperThread(
+    public StopperCallable(
             long secondsDuration, ExecutorServiceWrapper executorServiceWrapper) {
         this.secondsDuration = secondsDuration;
         this.executorServiceWrapper = executorServiceWrapper;
     }
 
     @Override
-    public void run() {
+    public Boolean call() {
         try {
-            sleep();
+            sleep(SECONDS.toMillis(secondsDuration));
         } catch (InterruptedException e) {
             log.error("An exception has occurred!", e);
+            return false;
         } finally {
             executorServiceWrapper.executorService().shutdownNow();
             log.info("Well, it's time to go and sleep... :)");
         }
-    }
-
-    private void sleep() throws InterruptedException {
-        sleep(SECONDS.toMillis(secondsDuration));
+        return true;
     }
 }
