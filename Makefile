@@ -6,7 +6,9 @@ build-npm:
 	cd news-cast-explorer-fe && yarn install && npm run build
 build-npm-docker:
 	cd news-cast-explorer-fe && [ -d node_modules ] || mkdir node_modules
+	cd news-cast-explorer-fe && [ -d dist ] || mkdir dist
 	cd news-cast-explorer-fe && chmod 777 node_modules
+	cd news-cast-explorer-fe && chmod 777 dist
 	touch news-cast-explorer-fe/yarn.lock
 	chmod 777 news-cast-explorer-fe
 	chmod 777 news-cast-explorer-fe/yarn.lock
