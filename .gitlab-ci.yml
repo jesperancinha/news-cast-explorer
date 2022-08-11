@@ -69,6 +69,7 @@ build node:
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
   script:
+    - make build-npm-cypress-docker
     - make build-npm-docker
 
 qa maven:
