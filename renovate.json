@@ -3,10 +3,7 @@
   "repositories": [
     "jesperancinha/news-cast-explorer"
   ],
-  "platform": "bitbucket",
-  "extends": [
-    "docker:disable"
-  ],
+  "platform": "gitlab",
   "username": "jesperancinha",
   "updateLockFiles": false,
   "packageRules": [
