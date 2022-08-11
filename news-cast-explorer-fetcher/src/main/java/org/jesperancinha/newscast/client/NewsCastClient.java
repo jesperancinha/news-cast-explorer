@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -45,7 +44,11 @@ public class NewsCastClient {
             @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
             final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
-            BlockingQueue<String> stringLinkedBlockingQueue, ReaderThread readerThread, FetcherThread fetcherThread, StopperThread stopperThread, ExecutorServiceWrapper executorServiceWrapper) {
+            BlockingQueue<String> stringLinkedBlockingQueue,
+            ReaderThread readerThread,
+            FetcherThread fetcherThread,
+            StopperThread stopperThread,
+            ExecutorServiceWrapper executorServiceWrapper) {
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.newsCastMessageProcessor = newsCastMessageProcessor;
@@ -70,9 +73,13 @@ public class NewsCastClient {
         executorService.execute(fetcherThread);
         executorService.execute(readerThread);
         executorService.execute(stopperThread);
-        executorService.shutdown();
-        while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
-        final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        try {
+            executorService.shutdown();
+            while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
+        } catch (Exception exception) {
+            log.warn("Service was shutdown correctly, however it happened with an exception.", exception);
+        }
+        val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         executorServiceWrapper.restart();
         return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
     }
