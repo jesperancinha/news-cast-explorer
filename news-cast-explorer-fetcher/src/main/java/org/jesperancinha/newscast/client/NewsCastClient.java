@@ -32,10 +32,6 @@ public class NewsCastClient {
 
     private final BlockingQueue<String> stringLinkedBlockingQueue;
 
-    private final ReaderThread readerThread;
-    private final FetcherThread fetcherThread;
-    private final StopperThread stopperThread;
-
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public NewsCastClient(
@@ -45,17 +41,11 @@ public class NewsCastClient {
             final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
             BlockingQueue<String> stringLinkedBlockingQueue,
-            ReaderThread readerThread,
-            FetcherThread fetcherThread,
-            StopperThread stopperThread,
             ExecutorServiceWrapper executorServiceWrapper) {
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.newsCastMessageProcessor = newsCastMessageProcessor;
         this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
-        this.readerThread = readerThread;
-        this.fetcherThread = fetcherThread;
-        this.stopperThread = stopperThread;
         this.executorServiceWrapper = executorServiceWrapper;
     }
 
@@ -69,9 +59,6 @@ public class NewsCastClient {
     public synchronized PageDto startFetchProcess() throws JsonProcessingException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         val executorService = executorServiceWrapper.restart();
-        executorService.execute(fetcherThread);
-        executorService.execute(readerThread);
-        executorService.execute(stopperThread);
         try {
             executorService.shutdown();
             while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
@@ -81,7 +68,7 @@ public class NewsCastClient {
             executorService.shutdownNow();
         }
         val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
+        return newsCastMessageProcessor.processAllMessages(executorServiceWrapper.getFetcherThread().getAllMessages(), timestampBefore, timestampAfter);
     }
 
 }

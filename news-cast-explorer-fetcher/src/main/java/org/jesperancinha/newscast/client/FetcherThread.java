@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -12,17 +13,16 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Builder
-@Component
 public class FetcherThread extends Thread {
 
-    private final Set<String> allMessages;
+    private Set<String> allMessages;
     private final ExecutorServiceWrapper executorServiceWrapper;
     private final ReaderThread readerThread;
     private final BlockingQueue<String> stringLinkedBlockingQueue;
-    private final ReaderThread client;
 
     @Override
     public void run() {
+        allMessages = new HashSet<>();
         try {
             int msgRead = 0;
             while (msgRead < stringLinkedBlockingQueue.remainingCapacity()) {

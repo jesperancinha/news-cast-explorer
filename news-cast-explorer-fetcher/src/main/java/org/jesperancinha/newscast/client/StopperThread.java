@@ -15,7 +15,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 @Slf4j
 @Builder
-@Component
 public class StopperThread extends Thread {
 
     private final long secondsDuration;
@@ -23,7 +22,6 @@ public class StopperThread extends Thread {
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public StopperThread(
-            @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
             long secondsDuration, ExecutorServiceWrapper executorServiceWrapper) {
         this.secondsDuration = secondsDuration;
         this.executorServiceWrapper = executorServiceWrapper;

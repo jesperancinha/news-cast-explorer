@@ -24,7 +24,6 @@ import java.util.concurrent.ExecutorService;
 /**
  * Created by jofisaes on 05/10/2021
  */
-@Component
 @Builder
 @Slf4j
 public class ReaderThread extends Thread {
@@ -40,7 +39,6 @@ public class ReaderThread extends Thread {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ReaderThread(
-            @Value("${org.jesperancinha.newscast.host}")
             String url, BlockingQueue<String> blockingQueue,
             ExecutorServiceWrapper executorServiceWrapper) {
         if (url.contains("news_cast_mock")) {

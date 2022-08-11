@@ -17,8 +17,4 @@ public class NewscastConfiguration {
     public BlockingQueue<String> blockingQueue() {
         return new LinkedBlockingQueue<>(capacity);
     }
-    @Bean
-    public ExecutorServiceWrapper executorService() {
-        return new ExecutorServiceWrapper();
-    }
 }

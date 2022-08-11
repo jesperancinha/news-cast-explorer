@@ -26,8 +26,7 @@ import java.util.concurrent.TimeUnit
     ]
 )
 class FetcherThreadTest @Autowired constructor(
-    val fetcherThread: FetcherThread,
-    val executorServiceWrapper: ExecutorServiceWrapper
+    final val executorServiceWrapper: ExecutorServiceWrapper
 ) : AbstractNCTest() {
     @MockkBean
     lateinit var queueMock: BlockingQueue<String>
@@ -37,6 +36,8 @@ class FetcherThreadTest @Autowired constructor(
 
     @MockkBean(relaxed = true)
     lateinit var runningService: OneRunServiceImpl
+
+    val fetcherThread: FetcherThread = executorServiceWrapper.createFetcherThread()
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
