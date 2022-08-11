@@ -12,7 +12,7 @@ services:
     networks:
       - newscast
   cypress-builder:
-    container_name: news-cast-fe-build
+    container_name: news-cast-cypress-build
     build:
       context: ./docker-files/build-node/.
     volumes:
