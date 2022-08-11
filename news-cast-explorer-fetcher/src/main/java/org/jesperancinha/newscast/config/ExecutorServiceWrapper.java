@@ -17,7 +17,7 @@ public class ExecutorServiceWrapper {
 
     private void init() {
         if(Objects.nonNull(this.executorService)){
-            this.executorService.shutdown();
+            this.executorService.shutdownNow();
         }
         this.executorService = Executors.newFixedThreadPool(3);
     }
