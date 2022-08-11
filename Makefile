@@ -32,7 +32,10 @@ build-test:
 	mvn clean install
 test: test-node test-maven
 test-node:
-	cd news-cast-explorer-fe && yarn install && npm run test
+	cd news-cast-explorer-fe ;\
+	yarn install ;\
+	npm run test ;\
+	cd ..
 test-maven:
 	mvn test
 local: no-test
