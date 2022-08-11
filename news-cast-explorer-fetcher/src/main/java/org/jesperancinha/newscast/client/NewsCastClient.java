@@ -39,10 +39,8 @@ public class NewsCastClient {
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public NewsCastClient(
-            @Value("${org.jesperancinha.newscast.searchTerm}")
-            final String searchTerm,
-            @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
-            final int timeToWaitSeconds,
+            @Value("${org.jesperancinha.newscast.searchTerm}") final String searchTerm,
+            @Value("${org.jesperancinha.newscast.timeToWaitSeconds}") final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
             BlockingQueue<String> stringLinkedBlockingQueue,
             ReaderThread readerThread,
@@ -73,12 +71,8 @@ public class NewsCastClient {
         executorService.execute(fetcherThread);
         executorService.execute(readerThread);
         executorService.execute(stopperThread);
-        try {
-            executorService.shutdown();
-            while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
-        } catch (Exception exception) {
-            log.warn("Service was shutdown correctly, however it happened with an exception.", exception);
-        }
+        executorService.shutdown();
+        while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
         val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
     }
