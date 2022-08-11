@@ -14,7 +14,7 @@ services:
   cypress-builder:
     container_name: news-cast-cypress-build
     build:
-      context: ./docker-files/build-node/.
+      context: ./docker-files/build-cypress/.
     volumes:
       - ./e2e/node_modules:/opt/e2e/node_modules
       - ./e2e:/opt/e2e
