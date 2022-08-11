@@ -26,14 +26,15 @@ class SchedulerServiceImplTest @Autowired constructor(
     }
 
     @Test
-    fun testStartProcess_whenRunnerStarted_thenSchedulerServiceStart() {
+    fun `should start service when runner starts`() {
         runningService.startProcess()
         verify { newsCastClient.startFetchProcess() }
     }
 
     @Test
-    fun testStartProcess_whenSchedulerStarted_thenSchedulerServiceStarte() {
-        (runningService as SchedulerServiceImpl?)!!.schedule()
+    fun `should start service when scheduler starts`() {
+        runningService.shouldBeInstanceOf<SchedulerServiceImpl>()
+        (runningService as SchedulerServiceImpl).schedule()
         verify { newsCastClient.startFetchProcess() }
     }
 }
