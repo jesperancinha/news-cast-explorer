@@ -8,6 +8,6 @@ module.exports = {
   ],
   preset: 'jest-preset-angular',
   "testMatch": [
-    "**/?(*.)+(spec|test).[jt]s?(x)"
-  ]
+    "**/?(*.)+(spec).[jt]s?(x)"
+  ],
 }

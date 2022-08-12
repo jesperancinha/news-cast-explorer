@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -33,10 +32,6 @@ public class NewsCastClient {
 
     private final BlockingQueue<String> stringLinkedBlockingQueue;
 
-    private final ReaderThread readerThread;
-    private final FetcherThread fetcherThread;
-    private final StopperThread stopperThread;
-
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public NewsCastClient(
@@ -45,14 +40,12 @@ public class NewsCastClient {
             @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
             final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
-            BlockingQueue<String> stringLinkedBlockingQueue, ReaderThread readerThread, FetcherThread fetcherThread, StopperThread stopperThread, ExecutorServiceWrapper executorServiceWrapper) {
+            BlockingQueue<String> stringLinkedBlockingQueue,
+            ExecutorServiceWrapper executorServiceWrapper) {
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.newsCastMessageProcessor = newsCastMessageProcessor;
         this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
-        this.readerThread = readerThread;
-        this.fetcherThread = fetcherThread;
-        this.stopperThread = stopperThread;
         this.executorServiceWrapper = executorServiceWrapper;
     }
 
@@ -62,19 +55,20 @@ public class NewsCastClient {
      * Messages {@link MessageDto} are returned by ascending order of creation
      *
      * @return A {@link PageDto} object with all the data for one run
-     * @throws InterruptedException This client {@link NewsCastClient} will throw this exception if interrupted
      */
-    public PageDto startFetchProcess() throws InterruptedException, JsonProcessingException {
+    public synchronized PageDto startFetchProcess() throws JsonProcessingException, InterruptedException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        val executorService = executorServiceWrapper.executorService();
-        executorService.execute(fetcherThread);
-        executorService.execute(readerThread);
-        executorService.execute(stopperThread);
-        executorService.shutdown();
-        while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
-        final long timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        executorServiceWrapper.restart();
-        return newsCastMessageProcessor.processAllMessages(fetcherThread.getAllMessages(), timestampBefore, timestampAfter);
+        val executorService = executorServiceWrapper.restart();
+        try {
+            executorService.shutdown();
+            while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
+        } catch (Exception exception) {
+            log.warn("Service tried to shutdown correctly, however an exception has occurred", exception);
+            log.warn("Shutting down executor service...");
+            executorService.shutdownNow();
+        }
+        val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        return newsCastMessageProcessor.processAllMessages(executorServiceWrapper.getFetcherThread().getAllMessages(), timestampBefore, timestampAfter);
     }
 
 }

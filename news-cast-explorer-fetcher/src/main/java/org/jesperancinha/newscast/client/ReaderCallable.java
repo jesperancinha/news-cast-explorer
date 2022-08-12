@@ -6,28 +6,27 @@ import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.model.source.Message;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Callable;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by jofisaes on 05/10/2021
  */
-@Component
 @Builder
 @Slf4j
-public class ReaderThread extends Thread {
+public class ReaderCallable implements Callable<Boolean> {
 
     private final String url;
 
@@ -39,8 +38,7 @@ public class ReaderThread extends Thread {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public ReaderThread(
-            @Value("${org.jesperancinha.newscast.host}")
+    public ReaderCallable(
             String url, BlockingQueue<String> blockingQueue,
             ExecutorServiceWrapper executorServiceWrapper) {
         if (url.contains("news_cast_mock")) {
@@ -61,8 +59,7 @@ public class ReaderThread extends Thread {
     }
 
     @Override
-    public void run() {
-
+    public Boolean call() {
         try {
             for (; ; ) {
                 sleep(1000);
@@ -82,11 +79,12 @@ public class ReaderThread extends Thread {
             }
         } catch (InterruptedException e) {
             log.info("Reader task finished running!");
+            return true;
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
+            return false;
         } finally {
             executorServiceWrapper.executorService().shutdownNow();
         }
-
     }
 }

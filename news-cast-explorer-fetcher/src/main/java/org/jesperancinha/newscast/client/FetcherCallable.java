@@ -3,26 +3,25 @@ package org.jesperancinha.newscast.client;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
-import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Builder
-@Component
-public class FetcherThread extends Thread {
+public class FetcherCallable implements Callable<Boolean> {
 
-    private final Set<String> allMessages;
+    private Set<String> allMessages;
     private final ExecutorServiceWrapper executorServiceWrapper;
-    private final ReaderThread readerThread;
+    private final ReaderCallable readerCallable;
     private final BlockingQueue<String> stringLinkedBlockingQueue;
-    private final ReaderThread client;
 
     @Override
-    public void run() {
+    public Boolean call() {
+        allMessages = new HashSet<>();
         try {
             int msgRead = 0;
             while (msgRead < stringLinkedBlockingQueue.remainingCapacity()) {
@@ -31,9 +30,11 @@ public class FetcherThread extends Thread {
             }
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
+            return false;
         } finally {
             executorServiceWrapper.executorService().shutdownNow();
         }
+        return true;
     }
 
     private int processMessage(int msgRead, String msg) {

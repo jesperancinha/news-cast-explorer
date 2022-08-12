@@ -41,13 +41,13 @@
         <kotlin.version>1.7.10</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>5.3.2</kotest.version>
-        <kotest-extensions-spring.version>1.1.1</kotest-extensions-spring.version>
+        <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
         <springmockk.version>3.1.1</springmockk.version>
         <testcontainers.version>1.17.3</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>2.7.1</spring-boot-parent.version>
+        <spring-boot-parent.version>2.7.2</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.12.4</mockk.version>
+        <mockk.version>1.12.5</mockk.version>
         <kotlinx-coroutines-debug.version>1.6.3</kotlinx-coroutines-debug.version>
     </properties>
 
