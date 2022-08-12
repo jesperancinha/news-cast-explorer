@@ -1,4 +1,4 @@
-FROM postgres:15beta2
+FROM postgres:15beta3
 
 COPY postgresql.conf /etc/postgresql/postgresql.conf
 
