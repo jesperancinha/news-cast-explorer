@@ -17,34 +17,27 @@
         <dependency>
             <groupId>io.eventuate.tram.core</groupId>
             <artifactId>eventuate-tram-spring-commands-starter</artifactId>
-            <version>0.30.0.RELEASE</version>
         </dependency>
         <!--DuplicateMessageDetector-->
         <dependency>
             <groupId>io.eventuate.tram.core</groupId>
             <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
-            <version>0.30.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>io.eventuate.tram.core</groupId>
             <artifactId>eventuate-tram-spring-producer-jdbc</artifactId>
-            <version>0.30.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>io.eventuate.tram.core</groupId>
             <artifactId>eventuate-tram-spring-consumer-kafka</artifactId>
-            <version>0.30.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>io.eventuate.tram.sagas</groupId>
             <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl-starter</artifactId>
-            <version>0.19.0.RELEASE</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.eventuate.tram.sagas/eventuate-tram-sagas-spring-participant-starter -->
         <dependency>
             <groupId>io.eventuate.tram.sagas</groupId>
             <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
-            <version>0.19.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.jesperancinha.newscast</groupId>
@@ -65,7 +58,6 @@
         <dependency>
             <groupId>io.github.microutils</groupId>
             <artifactId>kotlin-logging-jvm</artifactId>
-            <version>2.1.23</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -85,13 +77,18 @@
             <artifactId>jackson-annotations</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

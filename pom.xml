@@ -25,6 +25,9 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
+        <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
+
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 
@@ -49,6 +52,14 @@
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
         <mockk.version>1.12.5</mockk.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
+        <springdoc-openapi-ui.version>1.6.9</springdoc-openapi-ui.version>
+
+        <eventuate-tram-spring.version>0.30.0.RELEASE</eventuate-tram-spring.version>
+        <eventuate-tram-sagas-spring.version>0.19.0.RELEASE</eventuate-tram-sagas-spring.version>
+        <eventuate-tram-sagas-spring-orchestration.version>0.19.0.RELEASE
+        </eventuate-tram-sagas-spring-orchestration.version>
+
+        <kotlin-logging-jvm.version>2.1.23</kotlin-logging-jvm.version>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +80,11 @@
                 <groupId>org.jesperancinha.newscast</groupId>
                 <artifactId>news-cast-explorer-common</artifactId>
                 <version>${news-cast-explorer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.mockk</groupId>
@@ -164,6 +180,43 @@
                         <artifactId>kotlinx-coroutines-bom</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>io.eventuate.tram.core</groupId>
+                <artifactId>eventuate-tram-spring-commands-starter</artifactId>
+                <version>${eventuate-tram-spring.version}</version>
+            </dependency>
+            <!--DuplicateMessageDetector-->
+            <dependency>
+                <groupId>io.eventuate.tram.core</groupId>
+                <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
+                <version>${eventuate-tram-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.eventuate.tram.core</groupId>
+                <artifactId>eventuate-tram-spring-producer-jdbc</artifactId>
+                <version>${eventuate-tram-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.eventuate.tram.core</groupId>
+                <artifactId>eventuate-tram-spring-consumer-kafka</artifactId>
+                <version>${eventuate-tram-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.eventuate.tram.sagas</groupId>
+                <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl-starter</artifactId>
+                <version>${eventuate-tram-sagas-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.eventuate.tram.sagas</groupId>
+                <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
+                <version>${eventuate-tram-sagas-spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.microutils</groupId>
+                <artifactId>kotlin-logging-jvm</artifactId>
+                <version>${kotlin-logging-jvm.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -101,7 +101,7 @@ dcup: dcd docker-clean docker nce-wait
 dcup-full-action: dcd docker-clean no-test build-npm docker nce-wait
 dcup-action: dcp docker-action nce-wait
 dcup-light: dcd
-	docker-compose up -d news_cast_postgres
+	docker-compose up -d news_cast_postgres news_cast_kafka
 update:
 	npm install -g npm-check-updates
 	cd news-cast-explorer-fe && npx browserslist && ncu -u && yarn

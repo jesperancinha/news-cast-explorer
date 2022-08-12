@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.nio.charset.StandardCharsets
 
@@ -16,8 +15,7 @@ import java.nio.charset.StandardCharsets
  */
 @RestController
 @RequestMapping("/api/newscast")
-class
-NewscastMockController {
+class NewscastMockController {
 
     @GetMapping("/messages")
     fun filterJsonGet(): List<ObjectNode> {
