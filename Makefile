@@ -118,3 +118,5 @@ end-logs:
 	docker-compose logs --tail 1000 news_cast_orchestration
 	docker-compose logs --tail 1000 news_cast_choreography
 	docker-compose logs --tail 1000 news_cast_fe
+report-coverage:
+	mvn omni-coveragereporter:report
