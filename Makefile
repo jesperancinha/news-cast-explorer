@@ -110,6 +110,11 @@ build-kafka:
 	docker-compose rm news_cast_kafka
 	docker-compose build --no-cache news_cast_kafka
 	docker-compose up -d
+build-nginx: build-npm
+	docker-compose stop news_cast_fe
+	docker-compose rm news_cast_fe
+	docker-compose build --no-cache news_cast_fe
+	docker-compose up -d
 end-logs:
 	docker-compose logs --tail 1000 news_cast_postgres
 	docker-compose logs --tail 1000 news_cast_mock

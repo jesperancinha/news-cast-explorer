@@ -3,7 +3,7 @@ services:
   e2e-electron:
     image: "cypress/included:10.4.0"
     working_dir: /e2e
-    command: "--browser electron"
+    command: "--browser electron --env host=news_cast_fe,port=9000"
     volumes:
       - ./e2e:/e2e
     networks:
@@ -12,7 +12,7 @@ services:
   e2e-chrome:
     image: "cypress/included:10.4.0"
     working_dir: /e2e
-    command: "--browser chrome"
+    command: "--browser chrome --env host=news_cast_fe,port=9000"
     volumes:
       - ./e2e:/e2e
     networks:
@@ -21,7 +21,7 @@ services:
   e2e-firefox:
     image: "cypress/included:10.4.0"
     working_dir: /e2e
-    command: "--browser firefox"
+    command: "--browser firefox --env host=news_cast_fe,port=9000"
     volumes:
       - ./e2e:/e2e
     networks:
@@ -39,7 +39,7 @@ services:
   e2e-edge:
     image: "cypress/included:10.4.0"
     working_dir: /e2e
-    command: "--browser edge"
+    command: "--browser edge --env host=news_cast_fe,port=9000"
     volumes:
       - ./e2e:/e2e
     networks:

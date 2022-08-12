@@ -103,8 +103,6 @@ services:
     container_name: news_cast_orchestration
     build:
       context: news-cast-explorer-saga-orchestration/.
-    ports:
-      - "8082:8082"
     restart: on-failure
     deploy:
       resources:
