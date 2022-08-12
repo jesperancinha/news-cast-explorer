@@ -236,6 +236,7 @@
                     <artifactId>omni-coveragereporter-maven-plugin</artifactId>
                     <version>${omni-coveragereporter-maven-plugin.version}</version>
                     <configuration>
+                        <useCoverallsCount>false</useCoverallsCount>
                         <extraSourceFolders>
                             <param>${project.basedir}/news-cast-explorer-fe</param>
                         </extraSourceFolders>
