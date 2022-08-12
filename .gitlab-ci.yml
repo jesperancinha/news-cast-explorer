@@ -222,7 +222,7 @@ nce-edge-e2e:
   timeout: 120m
   retry: 2
 
-coverage:
+coverage maven:
   image: maven:3.8-openjdk-17-slim
   stage: coverage
   cache:
@@ -235,13 +235,30 @@ coverage:
         - news-cast-explorer-saga-common/target/
         - news-cast-explorer-saga-orchestration/target/
         - news-cast-mock/target/
+  script:
+    - make coverage-maven
+  only:
+    - main
+  needs:
+    - qa maven
+    - qa node
+    - nce-edge-e2e
+    - nce-chrome-e2e
+    - nce-firefox-e2e
+    - nce-electron-e2e
+
+coverage node:
+  image: node:18
+  stage: coverage
+  cache:
     - key: NODE
       paths:
+        - news-cast-explorer-fe/coverage/
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
         - e2e/node_modules/
   script:
-    - make report-coverage
+    - make coverage-node
   only:
     - main
   needs:
@@ -267,6 +284,7 @@ reporting:
         - news-cast-mock/target/
     - key: NODE
       paths:
+        - news-cast-explorer-fe/coverage/
         - news-cast-explorer-fe/dist/
         - news-cast-explorer-fe/node_modules/
         - e2e/node_modules/
@@ -275,7 +293,8 @@ reporting:
   only:
     - main
   needs:
-    - coverage
+    - coverage maven
+    - coverage node
 
 update-dependencies:
   image: renovate/renovate

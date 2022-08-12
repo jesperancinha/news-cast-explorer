@@ -118,5 +118,9 @@ end-logs:
 	docker-compose logs --tail 1000 news_cast_orchestration
 	docker-compose logs --tail 1000 news_cast_choreography
 	docker-compose logs --tail 1000 news_cast_fe
-report-coverage:
+coverage-maven:
+	mvn jacoco:prepare-agent package jacoco:report
+coverage-node:
+	cd news-cast-explorer-fe && npm run coverage
+report:
 	mvn omni-coveragereporter:report
