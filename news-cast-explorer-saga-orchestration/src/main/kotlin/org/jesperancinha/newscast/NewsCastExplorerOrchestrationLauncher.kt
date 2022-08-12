@@ -1,5 +1,8 @@
 package org.jesperancinha.newscast
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.info.Info
+import io.swagger.v3.oas.annotations.servers.Server
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
@@ -7,7 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * Created by jofisaes on 06/10/2021
  */
 @SpringBootApplication
-open class NewsCastExplorerOrchestrationLauncher {
+@OpenAPIDefinition(
+    info = Info(title = "OpenAPI definition"),
+    servers = [Server(url = "\${nc.orchestration.server.url}", description = "Server URL")]
+)
+class NewsCastExplorerOrchestrationLauncher {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
