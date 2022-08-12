@@ -8,6 +8,4 @@ import com.fasterxml.jackson.databind.JsonNode
 data class KafkaCommand(
     val payload: String? = null,
     val headers: JsonNode? = null,
-) {
-    constructor() : this(null, null)
-}
+)

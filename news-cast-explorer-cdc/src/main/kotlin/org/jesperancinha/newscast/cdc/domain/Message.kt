@@ -1,5 +1,6 @@
 package org.jesperancinha.newscast.cdc.domain
 
+import org.hibernate.Hibernate
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -18,6 +19,18 @@ data class Message(
     val creation_time: Long? = null,
     val published: Int? = null
 ) {
-    constructor() : this(null, null, null, null, null, null)
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || Hibernate.getClass(this) != Hibernate.getClass(other)) return false
+        other as Message
 
+        return id != null && id == other.id
+    }
+
+    override fun hashCode(): Int = javaClass.hashCode()
+
+    @Override
+    override fun toString(): String {
+        return this::class.simpleName + "(id = $id , destination = $destination , headers = $headers , payload = $payload , creation_time = $creation_time , published = $published )"
+    }
 }
