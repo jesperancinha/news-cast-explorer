@@ -15,9 +15,6 @@ stages:
 variables:
   MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
-  CODECOV_TOKEN: $CODECOV_TOKEN
-  COVERALLS_REPO_TOKEN: $COVERALLS_REPO_TOKEN
-  CODACY_PROJECT_TOKEN: $CODACY_PROJECT_TOKEN
   DOCKER_HOST: "tcp://docker:2375"
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
@@ -27,15 +24,6 @@ image: maven:3.8-openjdk-17-slim
 cache:
   paths:
     - .m2/repository/
-    - news-cast-explorer-cdc/target/
-    - news-cast-explorer-common/target/
-    - news-cast-explorer-fetcher/target/
-    - news-cast-explorer-saga-choreography/target/
-    - news-cast-explorer-saga-common/target/
-    - news-cast-explorer-saga-orchestration/target/
-    - news-cast-mock/target/
-    - news-cast-explorer-fe/dist/
-    - news-cast-explorer-fe/node_modules/
 
 before_script:
   - cat /etc/*-release
