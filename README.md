@@ -119,6 +119,26 @@ This repo is the official support article to my article on medium:
 3. [news-cast-explorer-saga-orchestration](http://localhost:9000/api/saga/orchestration/swagger-ui/index.html)
 4. [news-cast-mock](http://localhost:9000/api/mock/swagger-ui/index.html)
 
+## How to run
+
+```shell
+make dcup-full-action
+```
+
+## Run Cypress
+
+#### Against Nginx
+
+```shell
+make cypress-open-docker
+```
+
+#### Directly against the service ports
+
+```shell
+make cypress-open
+```
+
 ## Installation Notes
 
 ### Java version
