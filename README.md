@@ -70,19 +70,15 @@ This repo is the official support article to my article on medium:
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
 
 [![alt img](./docs/images/articles.twitter.sagas.intro.2.jpg)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
-## Libraries
+
+## Project Layout
 
 -   [news-cast-explorer-common](./news-cast-explorer-common) - Java libraries to support Page, Authors and Messages
 -   [news-cast-explorer-saga-common](./news-cast-explorer-saga-common) - Kotlin library to support the comments for the previously mentioned entitites
-
-## Running services
-
 -   [news-cast-mock](./news-cast-mock) - News feeder simulation. This is where the data starts - Spring - Kotlin module - Port 8081
 > [http://localhost:8081/api/newscast/messages](http://localhost:8081/api/newscast/messages)
-
 -   [news-cast-explorer-fetcher](./news-cast-explorer-fetcher) - Makes different runs, scheduled or non schedule. Each run can fetch up to 100 messages in a maximum period of 30 seconds by default - Spring Java 17 module - Port 8080
 > [http://localhost:8080/api/newscast/fetcher/pages](http://localhost:8080/api/newscast/fetcher/pages)
-
 -   [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
 -   [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
 
