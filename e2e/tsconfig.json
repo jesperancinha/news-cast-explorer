@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "baseUrl": "http://news_cast_fe:9000"
   },
   "include": ["**/*.ts"]
 }
