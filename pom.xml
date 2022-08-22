@@ -52,7 +52,7 @@
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
         <mockk.version>1.12.5</mockk.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
-        <springdoc-openapi-ui.version>1.6.10</springdoc-openapi-ui.version>
+        <springdoc-openapi-ui.version>1.6.11</springdoc-openapi-ui.version>
 
         <eventuate-tram-spring.version>0.30.0.RELEASE</eventuate-tram-spring.version>
         <eventuate-tram-sagas-spring.version>0.19.0.RELEASE</eventuate-tram-sagas-spring.version>
