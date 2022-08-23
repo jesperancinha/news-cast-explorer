@@ -6,7 +6,7 @@ services:
       context: ./docker-files/build-node/.
     volumes:
       - ./news-cast-explorer-fe:/opt/news-cast-explorer-fe
-    user: "1000:1000"
+    user: "root:1000"
     networks:
       - newscast
 
@@ -16,7 +16,7 @@ services:
       context: ./docker-files/build-cypress/.
     volumes:
       - ./e2e:/opt/e2e
-    user: "1000:1000"
+    user: "root:1000"
     networks:
       - newscast
 
