@@ -47,6 +47,8 @@ build maven:
         - news-cast-mock/target/
   script:
     - make no-test
+  except:
+    - schedules
 
 build node:
   image: node:18
@@ -60,6 +62,8 @@ build node:
   script:
     - make build-npm-cypress-docker
     - make build-npm-docker
+  except:
+    - schedules
 
 qa maven:
   image: maven:3.8-openjdk-17-slim
@@ -80,6 +84,8 @@ qa maven:
   needs:
     - build maven
   retry: 2
+  except:
+    - schedules
 
 qa node:
   image: node:18
@@ -96,6 +102,8 @@ qa node:
   needs:
     - build node
   retry: 2
+  except:
+    - schedules
 
 nce-electron-e2e:
   image: node:18
@@ -125,6 +133,8 @@ nce-electron-e2e:
   allow_failure: true
   timeout: 120m
   retry: 2
+  except:
+    - schedules
 
 nce-chrome-e2e:
   image: node:18
@@ -153,6 +163,8 @@ nce-chrome-e2e:
         - e2e/node_modules/
   timeout: 120m
   retry: 2
+  except:
+    - schedules
 
 nce-firefox-e2e:
   image: node:18
@@ -181,6 +193,8 @@ nce-firefox-e2e:
         - e2e/node_modules/
   timeout: 120m
   allow_failure: true
+  except:
+    - schedules
 
 nce-edge-e2e:
   image: node:18
@@ -209,6 +223,8 @@ nce-edge-e2e:
         - e2e/node_modules/
   timeout: 120m
   retry: 2
+  except:
+    - schedules
 
 coverage maven:
   image: maven:3.8-openjdk-17-slim
@@ -234,6 +250,8 @@ coverage maven:
     - nce-chrome-e2e
     - nce-firefox-e2e
     - nce-electron-e2e
+  except:
+    - schedules
 
 coverage node:
   image: node:18
@@ -256,6 +274,8 @@ coverage node:
     - nce-chrome-e2e
     - nce-firefox-e2e
     - nce-electron-e2e
+  except:
+    - schedules
 
 reporting:
   image: maven:3.8-openjdk-17-slim
@@ -283,6 +303,8 @@ reporting:
   needs:
     - coverage maven
     - coverage node
+  except:
+    - schedules
 
 update-dependencies:
   image: renovate/renovate
@@ -293,9 +315,4 @@ update-dependencies:
     - export RENOVATE_CONFIG=$(< renovate.json)
     - renovate
   only:
-    - main
-  needs:
-     - nce-electron-e2e
-     - nce-chrome-e2e
-     - nce-firefox-e2e
-     - nce-edge-e2e
+    - schedules
