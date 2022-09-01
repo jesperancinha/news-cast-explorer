@@ -83,7 +83,7 @@ qa maven:
     - make test-maven
   needs:
     - build maven
-  retry: 2
+#  retry: 2
   except:
     - schedules
 
@@ -101,7 +101,7 @@ qa node:
     - make test-node
   needs:
     - build node
-  retry: 2
+#  retry: 2
   except:
     - schedules
 
@@ -132,7 +132,7 @@ nce-electron-e2e:
         - e2e/node_modules/
   allow_failure: true
   timeout: 120m
-  retry: 2
+  retry: 1
   except:
     - schedules
 
@@ -162,7 +162,7 @@ nce-chrome-e2e:
         - news-cast-explorer-fe/node_modules/
         - e2e/node_modules/
   timeout: 120m
-  retry: 2
+  retry: 1
   except:
     - schedules
 
@@ -222,7 +222,7 @@ nce-edge-e2e:
         - news-cast-explorer-fe/node_modules/
         - e2e/node_modules/
   timeout: 120m
-  retry: 2
+  retry: 1
   except:
     - schedules
 
