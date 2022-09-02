@@ -38,7 +38,7 @@ jobs:
       - checkout
 
       - run:
-          command: yarn install --force
+          command: yarn --force
           working_directory: news-cast-explorer-fe
 
       - run:

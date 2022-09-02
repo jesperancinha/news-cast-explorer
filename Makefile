@@ -3,7 +3,9 @@ SHELL=/bin/bash
 b: build
 build: build-npm build-maven
 build-npm:
-	cd news-cast-explorer-fe && yarn install && npm run build
+	cd news-cast-explorer-fe && yarn && npm run build
+build-npm-cypress:
+	cd e2e && yarn
 build-npm-docker:
 	cd news-cast-explorer-fe && [ -d node_modules ] || mkdir node_modules
 	cd news-cast-explorer-fe && [ -d dist ] || mkdir dist
@@ -38,10 +40,7 @@ build-test:
 	mvn clean install
 test: test-node test-maven
 test-node:
-	cd news-cast-explorer-fe ;\
-	yarn install ;\
-	npm run test ;\
-	cd ..
+	cd news-cast-explorer-fe && npm run test
 test-maven:
 	mvn test
 local: no-test
@@ -65,7 +64,7 @@ prune-all: stop
 	docker builder prune
 	docker system prune --all --volumes
 case:
-	cd news-cast-demo && mkdir -p dst && yarn install && node app.js
+	cd news-cast-demo && mkdir -p dst && yarn && node app.js
 update-snyk: update
 	npm i -g snyk
 update:

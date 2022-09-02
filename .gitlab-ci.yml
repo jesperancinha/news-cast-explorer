@@ -60,8 +60,8 @@ build node:
         - news-cast-explorer-fe/node_modules/
         - e2e/node_modules/
   script:
-    - make build-npm-cypress-docker
-    - make build-npm-docker
+    - make build-npm-cypress
+    - make build-npm
   except:
     - schedules
 
