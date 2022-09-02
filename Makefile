@@ -40,7 +40,7 @@ build-test:
 	mvn clean install
 test: test-node test-maven
 test-node:
-	cd news-cast-explorer-fe && npm run test
+	cd news-cast-explorer-fe && npm run jest
 test-maven:
 	mvn test
 local: no-test
@@ -128,3 +128,4 @@ coverage-node:
 	cd news-cast-explorer-fe && npm run coverage
 report:
 	mvn omni-coveragereporter:report
+local-pipeline: build-maven build-npm test-maven test-node report coverage-maven coverage-node
