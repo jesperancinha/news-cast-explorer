@@ -24,13 +24,13 @@ function checkServiceByNameAndMessage() {
 }
 
 checkServiceByNameAndMessage news_cast_postgres 'database system is ready to accept connections'
+checkServiceByNameAndMessage news_cast_fe 'test is successful'
 checkServiceByNameAndMessage news_cast_mock 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_mock 'Start completed'
 checkServiceByNameAndMessage news_cast_orchestration 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_orchestration 'Start completed'
 checkServiceByNameAndMessage news_cast_fetcher 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_fetcher 'Start completed'
-checkServiceByNameAndMessage news_cast_fe 'test is successful'
 checkServiceByNameAndMessage news_cast_cdc 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_cdc 'Start completed'
 checkServiceByNameAndMessage news_cast_choreography 'Tomcat started on'

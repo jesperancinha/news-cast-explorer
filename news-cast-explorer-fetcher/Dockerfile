@@ -1,8 +1,10 @@
-FROM openjdk:20-slim-buster
+FROM openjdk:17-alpine
 
 WORKDIR /root
 
 ENV LANG=C.UTF-8
+
+RUN apk --no-cache add curl
 
 COPY entrypoint.sh /root
 

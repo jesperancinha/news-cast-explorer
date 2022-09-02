@@ -1,5 +1,3 @@
-version: "3.7"
-
 networks:
   newscast:
     driver: bridge
@@ -23,6 +21,12 @@ services:
           memory: 200M
         reservations:
           memory: 200M
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 30s
+      timeout: 30s
+      retries: 10
+      start_period: 0s
 
   news_cast_kafka:
     hostname: news_cast_kafka
@@ -37,6 +41,9 @@ services:
           memory: 1000M
     networks:
       - newscast
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
 
   news_cast_mock:
     hostname: news_cast_mock
@@ -52,6 +59,9 @@ services:
           memory: 400M
         reservations:
           memory: 400M
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
 
   news_cast_cdc:
     hostname: news_cast_cdc
@@ -67,13 +77,15 @@ services:
           memory: 300M
     networks:
       - newscast
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
 
   news_cast_fetcher:
     hostname: news_cast_fetcher
     container_name: news_cast_fetcher
     build:
       context: news-cast-explorer-fetcher/.
-    restart: on-failure
     deploy:
       resources:
         limits:
@@ -82,6 +94,14 @@ services:
           memory: 200M
     networks:
       - newscast
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--silent", "http:/127.0.0.1:8080/api/newscast/fetcher/actuator"]
+      interval: 5s
+      timeout: 240s
+      retries: 60
 
   news_cast_choreography:
     hostname: news_cast_choreography
@@ -97,6 +117,9 @@ services:
           memory: 300M
     networks:
       - newscast
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
 
   news_cast_orchestration:
     hostname: news_cast_orchestration
@@ -112,6 +135,9 @@ services:
           memory: 300M
     networks:
       - newscast
+    depends_on:
+      news_cast_postgres:
+        condition: service_healthy
 
   news_cast_fe:
     hostname: news_cast_fe
@@ -127,4 +153,6 @@ services:
           memory: 300M
     networks:
       - newscast
-
+    depends_on:
+      news_cast_fetcher:
+        condition: service_healthy
