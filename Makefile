@@ -128,4 +128,4 @@ coverage-node:
 	cd news-cast-explorer-fe && npm run coverage
 report:
 	mvn omni-coveragereporter:report
-local-pipeline: build-maven build-npm test-maven test-node report coverage-maven coverage-node
+local-pipeline: build-maven build-npm test-maven test-node coverage-maven coverage-node report
