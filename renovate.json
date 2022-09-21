@@ -6,6 +6,7 @@
   "platform": "gitlab",
   "username": "jesperancinha",
   "updateLockFiles": false,
+  "extends": ["github>whitesource/merge-confidence:beta"],
   "packageRules": [
     {
       "matchPackageNames": [
