@@ -86,6 +86,13 @@
         "org.apache.maven"
       ],
       "automerge": true
+    },
+    {
+      "groupName": "Kotlin",
+      "matchPackagePrefixes": [
+        "org.jetbrains.kotlin"
+      ],
+      "automerge": true
     }
   ]
 }
