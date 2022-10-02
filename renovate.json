@@ -16,6 +16,13 @@
       "automerge": true
     },
     {
+      "matchPackageNames": [
+        "ch.qos.logback:logback-classic"
+      ],
+      "allowedVersions": "!/1.4.1$/",
+      "automerge": true
+    },
+    {
       "matchUpdateTypes": [
         "minor",
         "patch",
