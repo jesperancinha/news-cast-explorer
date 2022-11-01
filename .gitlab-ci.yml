@@ -51,7 +51,7 @@ build maven:
     - schedules
 
 build node:
-  image: node:18
+  image: node:19
   stage: build
   cache:
     - key: NODE
@@ -88,7 +88,7 @@ qa maven:
     - schedules
 
 qa node:
-  image: node:18
+  image: node:19
   stage: qa
   cache:
     - key: NODE
@@ -106,7 +106,7 @@ qa node:
     - schedules
 
 nce-electron-e2e:
-  image: node:18
+  image: node:19
   stage: e2e
   script:
     - make dcup-action
@@ -137,7 +137,7 @@ nce-electron-e2e:
     - schedules
 
 nce-chrome-e2e:
-  image: node:18
+  image: node:19
   stage: e2e
   script:
     - make dcup-action
@@ -167,7 +167,7 @@ nce-chrome-e2e:
     - schedules
 
 nce-firefox-e2e:
-  image: node:18
+  image: node:19
   stage: e2e
   script:
     - make dcup-action
@@ -197,7 +197,7 @@ nce-firefox-e2e:
     - schedules
 
 nce-edge-e2e:
-  image: node:18
+  image: node:19
   stage: e2e
   script:
     - make dcup-action
@@ -254,7 +254,7 @@ coverage maven:
     - schedules
 
 coverage node:
-  image: node:18
+  image: node:19
   stage: coverage
   cache:
     - key: NODE
