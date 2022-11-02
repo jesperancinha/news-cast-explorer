@@ -1,4 +1,4 @@
-FROM postgres:15rc2
+FROM postgres:15
 
 COPY postgresql.conf /etc/postgresql/postgresql.conf
 
