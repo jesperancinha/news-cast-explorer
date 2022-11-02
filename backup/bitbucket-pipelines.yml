@@ -1,4 +1,4 @@
-image: cimg/openjdk:18.0.2
+image: cimg/openjdk:19.0.1
 
 pipelines:
   pull-requests:
