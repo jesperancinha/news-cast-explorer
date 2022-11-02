@@ -105,19 +105,19 @@ This repo is the official support article to my article on medium:
 
 ## Swagger UI
 
-- Local run
+-   Local run
 
-1. [news-cast-explorer-fetcher](http://localhost:8080/api/newscast/fetcher/swagger-ui/index.html)
-2. [news-cast-explorer-saga-choreography](http://localhost:8083/api/saga/swagger-ui/index.html)
-3. [news-cast-explorer-saga-orchestration](http://localhost:8082/api/saga/swagger-ui/index.html)
-4. [news-cast-mock](http://localhost:8081/swagger-ui/index.html)
+1.  [news-cast-explorer-fetcher](http://localhost:8080/api/newscast/fetcher/swagger-ui/index.html)
+2.  [news-cast-explorer-saga-choreography](http://localhost:8083/api/saga/swagger-ui/index.html)
+3.  [news-cast-explorer-saga-orchestration](http://localhost:8082/api/saga/swagger-ui/index.html)
+4.  [news-cast-mock](http://localhost:8081/swagger-ui/index.html)
 
-- Local Docker run
+-   Local Docker run
 
-1. [news-cast-explorer-fetcher](http://localhost:9000/api/newscast/fetcher/swagger-ui/index.html)
-2. [news-cast-explorer-saga-choreography](http://localhost:9000/api/saga/choreography/swagger-ui/index.html)
-3. [news-cast-explorer-saga-orchestration](http://localhost:9000/api/saga/orchestration/swagger-ui/index.html)
-4. [news-cast-mock](http://localhost:9000/api/mock/swagger-ui/index.html)
+1.  [news-cast-explorer-fetcher](http://localhost:9000/api/newscast/fetcher/swagger-ui/index.html)
+2.  [news-cast-explorer-saga-choreography](http://localhost:9000/api/saga/choreography/swagger-ui/index.html)
+3.  [news-cast-explorer-saga-orchestration](http://localhost:9000/api/saga/orchestration/swagger-ui/index.html)
+4.  [news-cast-mock](http://localhost:9000/api/mock/swagger-ui/index.html)
 
 ## How to run
 
