@@ -59,7 +59,7 @@
         <eventuate-tram-sagas-spring-orchestration.version>0.19.0.RELEASE
         </eventuate-tram-sagas-spring-orchestration.version>
 
-        <kotlin-logging-jvm.version>3.0.3</kotlin-logging-jvm.version>
+        <kotlin-logging-jvm.version>3.0.4</kotlin-logging-jvm.version>
     </properties>
 
     <dependencyManagement>
