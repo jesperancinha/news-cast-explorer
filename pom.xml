@@ -41,25 +41,25 @@
 
         <jackson.version>2.12.3</jackson.version>
 
-        <kotlin.version>1.7.20</kotlin.version>
+        <kotlin.version>1.7.22</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotest.version>5.5.3</kotest.version>
+        <kotest.version>5.5.4</kotest.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
         <springmockk.version>3.1.2</springmockk.version>
-        <testcontainers.version>1.17.5</testcontainers.version>
+        <testcontainers.version>1.17.6</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.3.0</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>2.7.5</spring-boot-parent.version>
+        <spring-boot-parent.version>2.7.6</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.13.2</mockk.version>
+        <mockk.version>1.13.3</mockk.version>
         <kotlinx-coroutines-debug.version>1.6.4</kotlinx-coroutines-debug.version>
-        <springdoc-openapi-ui.version>1.6.12</springdoc-openapi-ui.version>
+        <springdoc-openapi-ui.version>1.6.13</springdoc-openapi-ui.version>
 
         <eventuate-tram-spring.version>0.31.0.RELEASE</eventuate-tram-spring.version>
         <eventuate-tram-sagas-spring.version>0.20.0.RELEASE</eventuate-tram-sagas-spring.version>
         <eventuate-tram-sagas-spring-orchestration.version>0.19.0.RELEASE
         </eventuate-tram-sagas-spring-orchestration.version>
 
-        <kotlin-logging-jvm.version>3.0.3</kotlin-logging-jvm.version>
+        <kotlin-logging-jvm.version>3.0.4</kotlin-logging-jvm.version>
     </properties>
 
     <dependencyManagement>
@@ -135,7 +135,7 @@
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>2.13.4.2</version>
+                <version>2.14.1</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
