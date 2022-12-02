@@ -4,6 +4,7 @@ import com.ninjasquad.springmockk.MockkBean
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThan
+import io.kotest.matchers.longs.shouldBeLessThanOrEqual
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
@@ -60,6 +61,6 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
         val endTimeStamp = longArgumentCaptor[1]
         val timeStampDiff = endTimeStamp - startTimestamp
         timeStampDiff.shouldBeGreaterThanOrEqual(0)
-        timeStampDiff.shouldBeLessThan(2)
+        timeStampDiff.shouldBeLessThanOrEqual(5)
     }
 }
