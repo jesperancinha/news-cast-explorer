@@ -5227,20 +5227,15 @@ istanbul-reports@^3.0.2, istanbul-reports@^3.1.3:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
-jasmine-core@^4.1.0, jasmine-core@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.3.0.tgz#aee841fbe7373c2586ed8d8d48f5cc4a88be8390"
-  integrity sha512-qybtBUesniQdW6n+QIHMng2vDOHscIC/dEXjW+JzO9+LoAZMb03RCUC5xFOv/btSKPm1xL42fn+RjlU4oB42Lg==
+jasmine-core@^4.1.0, jasmine-core@^4.5.0, jasmine-core@~4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.5.0.tgz#1a6bd0bde3f60996164311c88a0995d67ceda7c3"
+  integrity sha512-9PMzyvhtocxb3aXJVOPqBDswdgyAeSB81QnLop4npOpbqnheaTEwPc9ZloQeVswugPManznQBjD8kWDTjlnHuw==
 
 jasmine-core@~2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-2.8.0.tgz#bcc979ae1f9fd05701e45e52e65d3a5d63f1a24e"
   integrity sha512-SNkOkS+/jMZvLhuSx1fjhcNWUC/KG6oVyFUGkSBEr9n1axSNduWU8GlI7suaHXr4yxjet6KjrUZxUTE5WzzWwQ==
-
-jasmine-core@~4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.5.0.tgz#1a6bd0bde3f60996164311c88a0995d67ceda7c3"
-  integrity sha512-9PMzyvhtocxb3aXJVOPqBDswdgyAeSB81QnLop4npOpbqnheaTEwPc9ZloQeVswugPManznQBjD8kWDTjlnHuw==
 
 jasmine-spec-reporter@~7.0.0:
   version "7.0.0"
@@ -5258,13 +5253,13 @@ jasmine@2.8.0:
     glob "^7.0.6"
     jasmine-core "~2.8.0"
 
-jasmine@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-4.3.0.tgz#f99e9bc2a94e8281d2490482d53a3406760bd7f4"
-  integrity sha512-ieBmwkd8L1DXnvSnxx7tecXgA0JDgMXPAwBcqM4lLPedJeI9hTHuWifPynTC+dLe4Y+GkSPSlbqqrmYIgGzYUw==
+jasmine@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/jasmine/-/jasmine-4.5.0.tgz#8d3c0d0a33a61e4d05c9f9747ee5dfaf6f7b5d3d"
+  integrity sha512-9olGRvNZyADIwYL9XBNBst5BTU/YaePzuddK+YRslc7rI9MdTIE4r3xaBKbv2GEmzYYUfMOdTR8/i6JfLZaxSQ==
   dependencies:
     glob "^7.1.6"
-    jasmine-core "^4.3.0"
+    jasmine-core "^4.5.0"
 
 jasminewd2@^2.1.0:
   version "2.2.0"
