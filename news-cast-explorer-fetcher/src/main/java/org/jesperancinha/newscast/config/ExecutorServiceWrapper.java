@@ -46,13 +46,12 @@ public class ExecutorServiceWrapper {
         return this.executorService;
     }
 
-    public ExecutorService restart() throws InterruptedException {
+    public ExecutorService restart() {
         init();
         this.fetcherCallable = createFetcherThread();
-        executorService.invokeAll(
-                List.of(fetcherCallable,
-                        createReaderThread(),
-                        createStopperThread()));
+        executorService.submit(fetcherCallable);
+        executorService.submit(createReaderThread());
+        executorService.submit(createStopperThread());
         return this.executorService;
     }
 
