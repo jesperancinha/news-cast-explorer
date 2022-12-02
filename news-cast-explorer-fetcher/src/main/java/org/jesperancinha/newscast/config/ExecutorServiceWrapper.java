@@ -19,9 +19,9 @@ import java.util.concurrent.Executors;
 public class ExecutorServiceWrapper {
 
     private ExecutorService executorService;
-    private BlockingQueue<String> blockingQueue;
-    private long secondsDuration;
-    private String url;
+    private final BlockingQueue<String> blockingQueue;
+    private final long secondsDuration;
+    private final String url;
     private FetcherCallable fetcherCallable;
 
     public ExecutorServiceWrapper(BlockingQueue<String> blockingQueue,
@@ -39,7 +39,7 @@ public class ExecutorServiceWrapper {
         if (Objects.nonNull(this.executorService)) {
             this.executorService.shutdownNow();
         }
-        this.executorService = Executors.newFixedThreadPool(3);
+        this.executorService = Executors.newFixedThreadPool(4);
     }
 
     public ExecutorService executorService() {
