@@ -32,7 +32,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
 
         <lombok.version>1.18.24</lombok.version>
-        <logback-classic.version>1.2.11</logback-classic.version>
+        <logback-classic.version>1.4.5</logback-classic.version>
 
         <commons-io.version>2.11.0</commons-io.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
