@@ -39,7 +39,7 @@ public class ExecutorServiceWrapper {
         if (Objects.nonNull(this.executorService)) {
             this.executorService.shutdownNow();
         }
-        this.executorService = Executors.newFixedThreadPool(4);
+        this.executorService = Executors.newCachedThreadPool();
     }
 
     public ExecutorService executorService() {
