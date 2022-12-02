@@ -6,7 +6,6 @@ import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
-import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.jesperancinha.newscast.utils.AbstractNCTest
@@ -26,8 +25,7 @@ import java.util.concurrent.BlockingQueue
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 @ActiveProfiles("non-scheduler")
 internal class NewsCastClientJUnit5Test @Autowired constructor(
-    val newsCastClient: NewsCastClient,
-    val executorServiceWrapper: ExecutorServiceWrapper
+    val newsCastClient: NewsCastClient
 ) : AbstractNCTest() {
     @MockkBean(relaxed = true)
     lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
