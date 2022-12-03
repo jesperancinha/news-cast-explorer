@@ -8,8 +8,7 @@
 [![news-cast-app](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app.yml/badge.svg)](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app.yml)
 [![e2e-news-cast-app](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app-e2e.yml/badge.svg)](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app-e2e.yml)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/149626db028a4691b0e2b3101903e9af)](https://www.codacy.com/gl/jesperancinha/news-cast-explorer/dashboard?utm_source=gitlab.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
-[![codebeat badge](https://codebeat.co/badges/768c571b-f241-4530-aeed-2d0e91e03eea)](https://codebeat.co/projects/bitbucket-org-jesperancinha-news-cast-explorer-master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/36b6433e36f04595924a3bdd4a43f9dd)](https://www.codacy.com/gh/jesperancinha/news-cast-explorer/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/149626db028a4691b0e2b3101903e9af)](https://www.codacy.com/gl/jesperancinha/news-cast-explorer/dashboard?utm_source=gitlab.com&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gl/jesperancinha/news-cast-explorer/branch/main/graph/badge.svg)](https://codecov.io/gl/jesperancinha/news-cast-explorer)
