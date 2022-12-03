@@ -26,7 +26,8 @@ jobs:
       with:
         node-version: '16'
 
-    - run: npm i -g jest && make test-node
+    - name: Build Node JS and Test
+    - run: make build-npm && npm i -g jest && make test-node
 
     - name: Coverage Reports
       run: mvn omni-coveragereporter:report
