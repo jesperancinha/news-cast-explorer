@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: '16'
 
-    - run: make test-node
+    - run: npm i -g jest && make test-node
 
   e2e-electron:
     runs-on: ubuntu-latest
