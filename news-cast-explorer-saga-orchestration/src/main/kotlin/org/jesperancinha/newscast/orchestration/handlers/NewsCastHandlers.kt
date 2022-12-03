@@ -5,7 +5,6 @@ import io.eventuate.tram.commands.consumer.CommandHandlers
 import io.eventuate.tram.commands.consumer.CommandMessage
 import io.eventuate.tram.messaging.common.Message
 import io.eventuate.tram.sagas.participant.SagaCommandHandlersBuilder
-import mu.KotlinLogging
 import org.jesperancinha.newscast.orchestration.commands.*
 import org.jesperancinha.newscast.saga.domain.AuthorComment
 import org.jesperancinha.newscast.saga.domain.MessageComment
@@ -73,12 +72,10 @@ class NewsCastMessageCommentHandler(
     private val messageService: MessageService,
 ) {
 
-    fun commandHandlerDefinitions(): CommandHandlers {
-        return SagaCommandHandlersBuilder.fromChannel("messageChannel")
-            .onMessage(NewsCastMessageCommand::class.java, this::createMessageComment)
-            .onMessage(NewsCastMessageRejectCommand::class.java, this::rejectMessageComment)
-            .build()
-    }
+    fun commandHandlerDefinitions(): CommandHandlers = SagaCommandHandlersBuilder.fromChannel("messageChannel")
+        .onMessage(NewsCastMessageCommand::class.java, this::createMessageComment)
+        .onMessage(NewsCastMessageRejectCommand::class.java, this::rejectMessageComment)
+        .build()
 
     private fun createMessageComment(commandMessage: CommandMessage<NewsCastMessageCommand>): Message {
         val command = commandMessage.command
@@ -97,10 +94,8 @@ class NewsCastMessageCommentHandler(
         }
     }
 
-    private fun rejectMessageComment(commandMessage: CommandMessage<NewsCastMessageRejectCommand>): Message {
-        val requestId = commandMessage.command.requestId
-        return makeNotAvailable(requestId)
-    }
+    private fun rejectMessageComment(commandMessage: CommandMessage<NewsCastMessageRejectCommand>): Message =
+        makeNotAvailable(commandMessage.command.requestId)
 
     private fun makeNotAvailable(requestId: Long?): Message {
         return CommandHandlerReplyBuilder.withSuccess(requestId?.let {
@@ -121,14 +116,11 @@ class NewsCastPageCommentHandler(
     private val newsCastPageCommentService: NewsCastPageCommentService,
     private val pageService: PageService,
 ) {
-    private val logger = KotlinLogging.logger {}
 
-    fun commandHandlerDefinitions(): CommandHandlers {
-        return SagaCommandHandlersBuilder.fromChannel("pageChannel")
-            .onMessage(NewsCastPageCommand::class.java, this::createPageComment)
-            .onMessage(NewsCastPageRejectCommand::class.java, this::rejectPageComment)
-            .build()
-    }
+    fun commandHandlerDefinitions(): CommandHandlers = SagaCommandHandlersBuilder.fromChannel("pageChannel")
+        .onMessage(NewsCastPageCommand::class.java, this::createPageComment)
+        .onMessage(NewsCastPageRejectCommand::class.java, this::rejectPageComment)
+        .build()
 
     private fun createPageComment(commandPage: CommandMessage<NewsCastPageCommand>): Message {
         val command = commandPage.command
