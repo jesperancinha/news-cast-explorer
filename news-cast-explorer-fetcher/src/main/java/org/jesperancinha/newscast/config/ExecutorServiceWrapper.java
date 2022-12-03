@@ -19,9 +19,9 @@ import java.util.concurrent.Executors;
 public class ExecutorServiceWrapper {
 
     private ExecutorService executorService;
-    private BlockingQueue<String> blockingQueue;
-    private long secondsDuration;
-    private String url;
+    private final BlockingQueue<String> blockingQueue;
+    private final long secondsDuration;
+    private final String url;
     private FetcherCallable fetcherCallable;
 
     public ExecutorServiceWrapper(BlockingQueue<String> blockingQueue,
@@ -32,14 +32,14 @@ public class ExecutorServiceWrapper {
         this.blockingQueue = blockingQueue;
         this.secondsDuration = secondsDuration;
         this.url = url;
-        init();
+        executorService = init();
     }
 
-    private void init() {
-        if (Objects.nonNull(this.executorService)) {
-            this.executorService.shutdownNow();
+    private ExecutorService init() {
+        if (Objects.nonNull(executorService)) {
+            executorService.shutdownNow();
         }
-        this.executorService = Executors.newFixedThreadPool(3);
+        return Executors.newFixedThreadPool(3);
     }
 
     public ExecutorService executorService() {
@@ -47,13 +47,13 @@ public class ExecutorServiceWrapper {
     }
 
     public ExecutorService restart() throws InterruptedException {
-        init();
+        executorService = init();
         this.fetcherCallable = createFetcherThread();
         executorService.invokeAll(
                 List.of(fetcherCallable,
                         createReaderThread(),
                         createStopperThread()));
-        return this.executorService;
+        return executorService;
     }
 
     public FetcherCallable createFetcherThread() {
