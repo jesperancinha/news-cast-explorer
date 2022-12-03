@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: '16'
 
-    - run: cd news-cast-explorer-fe && yarn && yarn run test-headless
+    - run: make test-node
 
     - name: Coverage Reports
       run: mvn omni-coveragereporter:report

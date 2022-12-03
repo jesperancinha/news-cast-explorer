@@ -29,7 +29,7 @@ jobs:
       with:
         node-version: '16'
 
-    - run: cd stamps-and-coins-web && yarn && npm run test-headless
+    - run: make test-node
 
   e2e-electron:
     runs-on: ubuntu-latest
