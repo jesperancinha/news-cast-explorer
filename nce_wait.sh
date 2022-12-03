@@ -35,6 +35,3 @@ checkServiceByNameAndMessage news_cast_cdc 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_cdc 'Start completed'
 checkServiceByNameAndMessage news_cast_choreography 'Tomcat started on'
 checkServiceByNameAndMessage news_cast_choreography 'Start completed'
-
-#
-#Creating news_cast_kafka         ... done

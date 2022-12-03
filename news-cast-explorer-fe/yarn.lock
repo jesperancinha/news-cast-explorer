@@ -3205,6 +3205,25 @@ cacache@^16.1.0:
     tar "^6.1.11"
     unique-filename "^1.1.1"
 
+cacache@^17.0.0:
+  version "17.0.2"
+  resolved "https://registry.yarnpkg.com/cacache/-/cacache-17.0.2.tgz#ff2bd029bf45099b3fe711f56fbf138b846c8d6d"
+  integrity sha512-rYUs2x4OjSgCQND7nTrh21AHIBFgd7s/ctAYvU3a8u+nK+R5YaX/SFPDYz4Azz7SGL6+6L9ZZWI4Kawpb7grzQ==
+  dependencies:
+    "@npmcli/fs" "^3.1.0"
+    fs-minipass "^2.1.0"
+    glob "^8.0.1"
+    lru-cache "^7.7.1"
+    minipass "^3.1.6"
+    minipass-collect "^1.0.2"
+    minipass-flush "^1.0.5"
+    minipass-pipeline "^1.2.4"
+    p-map "^4.0.0"
+    promise-inflight "^1.0.1"
+    ssri "^10.0.0"
+    tar "^6.1.11"
+    unique-filename "^3.0.0"
+
 call-bind@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/call-bind/-/call-bind-1.0.2.tgz#b1d4e89e688119c3c9a903ad30abb2f6a919be3c"
@@ -8086,7 +8105,7 @@ semver-dsl@^1.0.1:
   dependencies:
     semver "^5.3.0"
 
-semver@7.3.7, semver@7.x, semver@^7.0.0, semver@^7.1.1, semver@^7.3.5, semver@^7.3.7:
+semver@7.3.7:
   version "7.3.7"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.7.tgz#12c5b649afdbf9049707796e22a4028814ce523f"
   integrity sha512-QlYTucUYOews+WeEujDoEGziz4K6c47V/Bd+LjSSYcA94p+DmINdf7ncaUinThfvZyu13lN9OY1XDxt8C0Tw0g==
