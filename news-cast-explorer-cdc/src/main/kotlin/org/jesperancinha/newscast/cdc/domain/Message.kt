@@ -1,9 +1,9 @@
 package org.jesperancinha.newscast.cdc.domain
 
 import org.hibernate.Hibernate
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.Table
 
 /**
  * Created by jofisaes on 08/10/2021
