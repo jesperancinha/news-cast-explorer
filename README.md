@@ -10,8 +10,8 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/36b6433e36f04595924a3bdd4a43f9dd)](https://www.codacy.com/gh/jesperancinha/news-cast-explorer/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/news-cast-explorer&amp;utm_campaign=Badge_Grade)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/149626db028a4691b0e2b3101903e9af)](https://www.codacy.com/gl/jesperancinha/news-cast-explorer/dashboard?utm_source=gitlab.com&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
-[![codecov](https://codecov.io/gl/jesperancinha/news-cast-explorer/branch/main/graph/badge.svg)](https://codecov.io/gl/jesperancinha/news-cast-explorer)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/36b6433e36f04595924a3bdd4a43f9dd)](https://www.codacy.com/gh/jesperancinha/news-cast-explorer/dashboard?utm_source=github.com&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
+[![codecov](https://codecov.io/gh/jesperancinha/news-cast-explorer/branch/main/graph/badge.svg?token=vh9xgm8i8l)](https://codecov.io/gh/jesperancinha/news-cast-explorer)
 [![Coverage Status](https://coveralls.io/repos/github/jesperancinha/news-cast-explorer/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/news-cast-explorer?branch=main)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/news-cast-explorer.svg)](#)
