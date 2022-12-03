@@ -216,20 +216,6 @@
     </dependencyManagement>
 
     <dependencies>
-
-<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
-<dependency>
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>8.0.0.Final</version>
-</dependency>
-
-<dependency>
-    <groupId>io.eventuate.tram.core</groupId>
-    <artifactId>eventuate-tram-messaging</artifactId>
-    <version>0.31.0.RELEASE</version>
-</dependency>
-
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>

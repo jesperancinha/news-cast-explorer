@@ -14,6 +14,11 @@
 [![codecov](https://codecov.io/gl/jesperancinha/news-cast-explorer/branch/main/graph/badge.svg)](https://codecov.io/gl/jesperancinha/news-cast-explorer)
 [![Coverage Status](https://coveralls.io/repos/gitlab/jesperancinha/news-cast-explorer/badge.svg?branch=main)](https://coveralls.io/gitlab/jesperancinha/news-cast-explorer?branch=69f90b6f5df46a2e4c0024199948fb3bccda1a2b)
 
+
+[![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/news-cast-explorer.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/news-cast-explorer.svg)](#)
+[![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/news-cast-explorer.svg)](#)
+
 ---
 
 ## Technologies used

@@ -1,8 +1,14 @@
 package org.jesperancinha.newscast.choreography.config
 
+import io.eventuate.tram.commands.common.CommandNameMapping
+import io.eventuate.tram.commands.common.DefaultCommandNameMapping
+import io.eventuate.tram.consumer.common.DuplicateMessageDetector
+import io.eventuate.tram.consumer.common.NoopDuplicateMessageDetector
 import io.eventuate.tram.events.publisher.DomainEventPublisher
 import io.eventuate.tram.events.subscriber.DomainEventDispatcher
 import io.eventuate.tram.events.subscriber.DomainEventDispatcherFactory
+import io.eventuate.tram.messaging.common.ChannelMapping
+import io.eventuate.tram.messaging.common.DefaultChannelMapping
 import io.eventuate.tram.spring.events.publisher.TramEventsPublisherConfiguration
 import io.eventuate.tram.spring.events.subscriber.TramEventSubscriberConfiguration
 import io.eventuate.tram.spring.jdbckafka.TramJdbcKafkaConfiguration
@@ -20,7 +26,8 @@ import org.springframework.context.annotation.Import
 
 @Configuration
 @Import(
-    TramJdbcKafkaConfiguration::class, TramEventsPublisherConfiguration::class, TramEventSubscriberConfiguration::class)
+    TramJdbcKafkaConfiguration::class, TramEventsPublisherConfiguration::class, TramEventSubscriberConfiguration::class
+)
 open class NewsCastChoreographyConfiguration {
     @Bean
     open fun orderEventConsumer(
@@ -32,13 +39,15 @@ open class NewsCastChoreographyConfiguration {
         authorService: AuthorService,
         messageService: MessageService,
     ): NewsCastEventConsumer {
-        return NewsCastEventConsumer(domainEventPublisher,
+        return NewsCastEventConsumer(
+            domainEventPublisher,
             newsCasePageCommentService,
             newsCastAuthorCommentService,
             newsCastMessageCommentService,
             pageService,
             authorService,
-            messageService)
+            messageService
+        )
     }
 
     @Bean
@@ -47,11 +56,21 @@ open class NewsCastChoreographyConfiguration {
         domainEventDispatcherFactory: DomainEventDispatcherFactory,
     ): DomainEventDispatcher {
         return domainEventDispatcherFactory.make(
-            "newsCastAuthorCommentDispatcher", orderEventConsumer.domainEventHandlers())
+            "newsCastAuthorCommentDispatcher", orderEventConsumer.domainEventHandlers()
+        )
     }
 
     @Bean
     open fun orderService(domainEventPublisher: DomainEventPublisher?): NewsCastTicketService {
         return NewsCastTicketService(domainEventPublisher)
     }
+
+    @Bean
+    open fun channelMapping(): ChannelMapping? = DefaultChannelMapping.builder().build()
+
+    @Bean
+    open fun commandNameMapping(): CommandNameMapping = DefaultCommandNameMapping()
+
+    @Bean
+    open fun duplicateMessageDetector(): DuplicateMessageDetector = NoopDuplicateMessageDetector()
 }
