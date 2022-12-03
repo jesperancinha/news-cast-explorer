@@ -12,8 +12,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/149626db028a4691b0e2b3101903e9af)](https://www.codacy.com/gl/jesperancinha/news-cast-explorer/dashboard?utm_source=gitlab.com&utm_medium=referral&utm_content=jesperancinha/news-cast-explorer&utm_campaign=Badge_Coverage)
 [![codecov](https://codecov.io/gl/jesperancinha/news-cast-explorer/branch/main/graph/badge.svg)](https://codecov.io/gl/jesperancinha/news-cast-explorer)
-[![Coverage Status](https://coveralls.io/repos/gitlab/jesperancinha/news-cast-explorer/badge.svg?branch=main)](https://coveralls.io/gitlab/jesperancinha/news-cast-explorer?branch=69f90b6f5df46a2e4c0024199948fb3bccda1a2b)
-
+[![Coverage Status](https://coveralls.io/repos/github/jesperancinha/news-cast-explorer/badge.svg?branch=main)](https://coveralls.io/github/jesperancinha/news-cast-explorer?branch=main)
 
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/news-cast-explorer.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/news-cast-explorer.svg)](#)
