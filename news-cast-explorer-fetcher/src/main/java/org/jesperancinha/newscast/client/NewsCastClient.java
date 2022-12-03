@@ -18,8 +18,6 @@ import java.time.ZoneOffset;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-
 @Slf4j
 @Getter
 @Component
@@ -62,8 +60,8 @@ public class NewsCastClient {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         val executorService = executorServiceWrapper.restart();
         try {
-            sleep(TimeUnit.SECONDS.toMillis(timeToWaitSeconds));
-            executorService.shutdownNow();
+            executorService.shutdown();
+            while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) ;
         } catch (Exception exception) {
             log.warn("Service tried to shutdown correctly, however an exception has occurred", exception);
             log.warn("Shutting down executor service...");
