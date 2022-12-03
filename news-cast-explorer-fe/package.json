@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.1",
-    "@angular/cli": "~14.2.1",
+    "@angular/cli": "~15.0.2",
     "@angular/compiler-cli": "~14.2.0",
     "@angular/language-service": "~14.2.0",
     "@babel/core": "^7.18.13",
@@ -46,7 +46,7 @@
     "@types/node": "^18.11.10",
     "babel-jest": "^29.0.1",
     "codelyzer": "^6.0.2",
-    "jasmine": "^4.3.0",
+    "jasmine": "^4.5.0",
     "jasmine-core": "~4.5.0",
     "jasmine-spec-reporter": "~7.0.0",
     "jest": "^29.0.1",
