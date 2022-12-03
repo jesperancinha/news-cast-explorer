@@ -61,16 +61,6 @@
         <kotlin-logging-jvm.version>3.0.4</kotlin-logging-jvm.version>
     </properties>
 
-
-    <dependencies>
-
-<!-- https://mvnrepository.com/artifact/io.eventuate.tram.core/eventuate-tram-messaging -->
-<dependency>
-    <groupId>io.eventuate.tram.core</groupId>
-    <artifactId>eventuate-tram-messaging</artifactId>
-    <version>0.31.0.RELEASE</version>
-</dependency>
-</dependencies>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -226,6 +216,13 @@
     </dependencyManagement>
 
     <dependencies>
+
+<dependency>
+    <groupId>io.eventuate.tram.core</groupId>
+    <artifactId>eventuate-tram-messaging</artifactId>
+    <version>0.31.0.RELEASE</version>
+</dependency>
+
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
