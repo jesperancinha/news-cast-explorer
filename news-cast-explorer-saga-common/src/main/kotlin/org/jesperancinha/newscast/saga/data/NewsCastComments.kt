@@ -13,6 +13,4 @@ data class NewsCastComments(
     var authorRequestId: Long? = null,
     var pageRequestId:Long? = null,
     var messageRequestId:Long? = null
-) {
-    constructor() : this(null, null, null, null, null, null)
-}
+)
