@@ -9,6 +9,7 @@ import io.eventuate.tram.consumer.common.NoopDuplicateMessageDetector
 import io.eventuate.tram.messaging.common.ChannelMapping
 import io.eventuate.tram.messaging.common.DefaultChannelMapping
 import io.eventuate.tram.sagas.orchestration.SagaInstanceFactory
+import io.eventuate.tram.sagas.participant.SagaCommandDispatcher
 import io.eventuate.tram.sagas.participant.SagaCommandDispatcherFactory
 import io.eventuate.tram.sagas.spring.orchestration.SagaOrchestratorConfiguration
 import io.eventuate.tram.sagas.spring.participant.SagaParticipantConfiguration
@@ -41,73 +42,61 @@ import org.springframework.context.annotation.Import
     TramMessageProducerJdbcConfiguration::class,
     EventuateTramKafkaMessageConsumerConfiguration::class
 )
-open class NewsCastOrchestrationConfiguration {
+class NewsCastOrchestrationConfiguration {
     @Bean("newsCastPageCommentHandler")
-    open fun newsCastPageCommentHandler(
+    fun newsCastPageCommentHandler(
         newsCastPageCommentService: NewsCastPageCommentService,
         pageService: PageService,
-    ): NewsCastPageCommentHandler {
-        return NewsCastPageCommentHandler(newsCastPageCommentService, pageService)
-    }
+    ): NewsCastPageCommentHandler = NewsCastPageCommentHandler(newsCastPageCommentService, pageService)
 
     @Bean("newsCastAuthorCommentHandler")
-    open fun newsCastAuthorCommentHandler(
+    fun newsCastAuthorCommentHandler(
         newsCastAuthorCommentService: NewsCastAuthorCommentService,
         authorService: AuthorService,
-    ): NewsCastAuthorCommentHandler {
-        return NewsCastAuthorCommentHandler(
-            newsCastAuthorCommentService,
-            authorService
-        )
-    }
+    ): NewsCastAuthorCommentHandler = NewsCastAuthorCommentHandler(
+        newsCastAuthorCommentService,
+        authorService
+    )
 
     @Bean("newsCastMessageCommentHandler")
-    open fun newsCastMessageCommentHandler(
+    fun newsCastMessageCommentHandler(
         newsCastMessageCommentService: NewsCastMessageCommentService,
         messageService: MessageService,
-    ): NewsCastMessageCommentHandler {
-        return NewsCastMessageCommentHandler(newsCastMessageCommentService, messageService)
-    }
+    ): NewsCastMessageCommentHandler = NewsCastMessageCommentHandler(newsCastMessageCommentService, messageService)
 
     @Bean
-    open fun commandDispatcher(
+    fun commandDispatcher(
         newsCastPageCommentHandler: NewsCastPageCommentHandler,
         newsCastAuthorCommentHandler: NewsCastAuthorCommentHandler,
         newsCastMessageCommentHandler: NewsCastMessageCommentHandler,
         sagaCommandDispatcherFactory: SagaCommandDispatcherFactory,
-    ): CommandDispatcher {
-        return sagaCommandDispatcherFactory
-            .make(
-                "newsCastCommentDispatcher",
-                CommandHandlers(
-                    newsCastPageCommentHandler.commandHandlerDefinitions().handlers +
-                            newsCastAuthorCommentHandler.commandHandlerDefinitions().handlers +
-                            newsCastMessageCommentHandler.commandHandlerDefinitions().handlers
-                )
+    ): SagaCommandDispatcher = sagaCommandDispatcherFactory
+        .make(
+            "newsCastCommentDispatcher",
+            CommandHandlers(
+                newsCastPageCommentHandler.commandHandlerDefinitions().handlers +
+                        newsCastAuthorCommentHandler.commandHandlerDefinitions().handlers +
+                        newsCastMessageCommentHandler.commandHandlerDefinitions().handlers
             )
-    }
+        )
 
     @Bean
-    open fun createCommentSaga(
+    fun createCommentSaga(
         authorCommentRepository: AuthorCommentRepository,
-    ): CreateCommentSaga {
-        return CreateCommentSaga()
-    }
+    ): CreateCommentSaga = CreateCommentSaga()
 
     @Bean("newsCastTicketService")
-    open fun newsCastTicketService(
+    fun newsCastTicketService(
         sagaInstanceFactory: SagaInstanceFactory,
         createCommentSaga: CreateCommentSaga,
-    ): NewsCastTicketService {
-        return NewsCastTicketService(sagaInstanceFactory, createCommentSaga)
-    }
+    ): NewsCastTicketService = NewsCastTicketService(sagaInstanceFactory, createCommentSaga)
 
     @Bean
-    open fun channelMapping(): ChannelMapping? = DefaultChannelMapping.builder().build()
+    fun channelMapping(): ChannelMapping? = DefaultChannelMapping.builder().build()
 
     @Bean
-    open fun commandNameMapping(): CommandNameMapping = DefaultCommandNameMapping()
+    fun commandNameMapping(): CommandNameMapping = DefaultCommandNameMapping()
 
     @Bean
-    open fun duplicateMessageDetector(): DuplicateMessageDetector = NoopDuplicateMessageDetector()
+    fun duplicateMessageDetector(): DuplicateMessageDetector = NoopDuplicateMessageDetector()
 }

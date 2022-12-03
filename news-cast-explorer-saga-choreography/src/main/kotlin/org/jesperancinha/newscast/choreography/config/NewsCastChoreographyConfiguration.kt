@@ -4,6 +4,8 @@ import io.eventuate.tram.commands.common.CommandNameMapping
 import io.eventuate.tram.commands.common.DefaultCommandNameMapping
 import io.eventuate.tram.consumer.common.DuplicateMessageDetector
 import io.eventuate.tram.consumer.common.NoopDuplicateMessageDetector
+import io.eventuate.tram.events.common.DefaultDomainEventNameMapping
+import io.eventuate.tram.events.common.DomainEventNameMapping
 import io.eventuate.tram.events.publisher.DomainEventPublisher
 import io.eventuate.tram.events.subscriber.DomainEventDispatcher
 import io.eventuate.tram.events.subscriber.DomainEventDispatcherFactory
@@ -28,9 +30,9 @@ import org.springframework.context.annotation.Import
 @Import(
     TramJdbcKafkaConfiguration::class, TramEventsPublisherConfiguration::class, TramEventSubscriberConfiguration::class
 )
-open class NewsCastChoreographyConfiguration {
+class NewsCastChoreographyConfiguration {
     @Bean
-    open fun orderEventConsumer(
+    fun orderEventConsumer(
         domainEventPublisher: DomainEventPublisher,
         newsCasePageCommentService: NewsCastPageCommentService,
         newsCastAuthorCommentService: NewsCastAuthorCommentService,
@@ -38,39 +40,36 @@ open class NewsCastChoreographyConfiguration {
         pageService: PageService,
         authorService: AuthorService,
         messageService: MessageService,
-    ): NewsCastEventConsumer {
-        return NewsCastEventConsumer(
-            domainEventPublisher,
-            newsCasePageCommentService,
-            newsCastAuthorCommentService,
-            newsCastMessageCommentService,
-            pageService,
-            authorService,
-            messageService
-        )
-    }
+    ): NewsCastEventConsumer = NewsCastEventConsumer(
+        domainEventPublisher,
+        newsCasePageCommentService,
+        newsCastAuthorCommentService,
+        newsCastMessageCommentService,
+        pageService,
+        authorService,
+        messageService
+    )
 
     @Bean
-    open fun domainEventDispatcher(
+    fun domainEventDispatcher(
         orderEventConsumer: NewsCastEventConsumer,
         domainEventDispatcherFactory: DomainEventDispatcherFactory,
-    ): DomainEventDispatcher {
-        return domainEventDispatcherFactory.make(
-            "newsCastAuthorCommentDispatcher", orderEventConsumer.domainEventHandlers()
-        )
-    }
+    ): DomainEventDispatcher = domainEventDispatcherFactory.make(
+        "newsCastAuthorCommentDispatcher", orderEventConsumer.domainEventHandlers()
+    )
 
     @Bean
-    open fun orderService(domainEventPublisher: DomainEventPublisher?): NewsCastTicketService {
-        return NewsCastTicketService(domainEventPublisher)
-    }
+    fun orderService(domainEventPublisher: DomainEventPublisher?) = NewsCastTicketService(domainEventPublisher)
 
     @Bean
-    open fun channelMapping(): ChannelMapping? = DefaultChannelMapping.builder().build()
+    fun channelMapping(): ChannelMapping? = DefaultChannelMapping.builder().build()
 
     @Bean
-    open fun commandNameMapping(): CommandNameMapping = DefaultCommandNameMapping()
+    fun commandNameMapping(): CommandNameMapping = DefaultCommandNameMapping()
 
     @Bean
-    open fun duplicateMessageDetector(): DuplicateMessageDetector = NoopDuplicateMessageDetector()
+    fun duplicateMessageDetector(): DuplicateMessageDetector = NoopDuplicateMessageDetector()
+
+    @Bean
+    fun domainEventNameMapping(): DomainEventNameMapping = DefaultDomainEventNameMapping()
 }
