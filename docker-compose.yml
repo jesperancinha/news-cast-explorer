@@ -1,6 +1,5 @@
 networks:
   newscast:
-    driver: bridge
 
 services:
   news_cast_postgres:
