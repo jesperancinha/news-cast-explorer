@@ -1,6 +1,9 @@
 import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
+/**
+ * Ignore unused error. This is TS
+ */
+export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
