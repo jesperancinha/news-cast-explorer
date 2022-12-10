@@ -77,6 +77,10 @@ This repo is the official support article to my article on medium:
 
 [![alt img](./docs/images/articles.twitter.sagas.intro.2.jpg)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
 
+#### Stable releases
+
+- [1.0.0](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0) - [e986fadced9dd48a0ce2711764097f18927ff0ba](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0)
+
 ## Project Layout
 
 -   [news-cast-explorer-common](./news-cast-explorer-common) - Java libraries to support Page, Authors and Messages
