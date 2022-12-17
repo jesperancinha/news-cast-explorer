@@ -27,7 +27,7 @@
     "es6-shim": "0.35.6",
     "hammerjs": "^2.0.8",
     "ngx-perfect-scrollbar": "^10.1.1",
-    "rxjs": "^7.6.0",
+    "rxjs": "^7.8.0",
     "tslib": "^2.4.1",
     "zone.js": "~0.12.0"
   },
