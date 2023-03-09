@@ -44,7 +44,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotest.version>5.5.5</kotest.version>
         <kotest-extensions-spring.version>1.1.2</kotest-extensions-spring.version>
-        <springmockk.version>4.0.1</springmockk.version>
+        <springmockk.version>4.0.2</springmockk.version>
         <testcontainers.version>1.17.6</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.4.2</omni-coveragereporter-maven-plugin.version>
         <spring-boot-parent.version>3.0.4</spring-boot-parent.version>
