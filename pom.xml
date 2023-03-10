@@ -211,7 +211,7 @@
             <dependency>
                 <groupId>io.eventuate.tram.sagas</groupId>
                 <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
-                <version>${eventuate-tram-sagas-spring.version}</version>
+                <version>${eventuate-tram-sakotlingas-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.microutils</groupId>
@@ -223,6 +223,11 @@
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-kotlin</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
