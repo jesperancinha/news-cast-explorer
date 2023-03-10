@@ -211,7 +211,7 @@
             <dependency>
                 <groupId>io.eventuate.tram.sagas</groupId>
                 <artifactId>eventuate-tram-sagas-spring-participant-starter</artifactId>
-                <version>${eventuate-tram-sakotlingas-spring.version}</version>
+                <version>${eventuate-tram-sagas-spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.microutils</groupId>
