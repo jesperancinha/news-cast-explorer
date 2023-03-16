@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.1",
-    "@angular/cli": "~15.2.2",
+    "@angular/cli": "~15.2.3",
     "@angular/compiler-cli": "~14.2.0",
     "@angular/language-service": "~15.2.2",
     "@babel/core": "^7.21.3",
@@ -42,7 +42,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jasmine": "~4.3.1",
     "@types/jasminewd2": "~2.0.10",
-    "@types/jest": "^29.4.1",
+    "@types/jest": "^29.4.4",
     "@types/node": "^18.15.3",
     "babel-jest": "^29.5.0",
     "codelyzer": "^6.0.2",
