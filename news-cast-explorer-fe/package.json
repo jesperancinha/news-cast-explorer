@@ -35,7 +35,7 @@
     "@angular-devkit/build-angular": "^14.2.1",
     "@angular/cli": "~15.2.4",
     "@angular/compiler-cli": "~14.2.0",
-    "@angular/language-service": "~15.2.3",
+    "@angular/language-service": "~15.2.4",
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
