@@ -40,6 +40,10 @@ In this saga, we lay out a chain of processes and for each process we can option
 
 Sagas work in a different way than chained processes in the sense that they are thought out to be design to predict failures and act upon them. Whether we choose Choreography or Orchestration, we always get an out-of-the-box plan to go forward and go back.
 
+<details>
+<summary><b>Data flow steps</b></summary>
+
+---
 In this project we have two steps:
 
 #### Fetching data
@@ -51,16 +55,23 @@ We will send comments via POST requests. If the id's of the page, author and mes
 If the any of the id's fail, the process will perform a reactive chain of processes which will mark these comments as not available in the database. It will perform this in this order in reverse.
 So this means that if the id of a page does not match, there will be a comment of that page in the database as a dangling reference. It will be marked as not available. The comment for the author and the message will be ignored because the sagas will not allow the chain to continue.
 If the author id does not match, both page and author comments will be marked as not available. There will be no record of message.
+---
+</details>
+<details>
+<summary><b>Stable releases</b></summary>
 
+---
 This repo is the official support article to my article on medium:
 
 [![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
 
 [![alt img](./docs/images/articles.twitter.sagas.intro.2.jpg)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
 
-#### Stable releases
 
 -   [1.0.0](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0) - [e986fadced9dd48a0ce2711764097f18927ff0ba](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0)
+---
+</details>
+
 
 ## Project Layout
 
@@ -73,6 +84,10 @@ This repo is the official support article to my article on medium:
 -   [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
 -   [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
 
+<details>
+<summary><b>Request examples with cUrl</b></summary>
+
+---
 >Example request:
 >
 >```shell
@@ -87,13 +102,21 @@ This repo is the official support article to my article on medium:
 >curl -X POST http://localhost:8082/api/saga/orchestration -H 'Content-Type: application/json' --data '{ "idPage": 1, "pageComment": "I love this", "idAuthor": 2, "authorComment": "This is my favourite author", "idMessage": 3, "messageComment": "I agree", "authorRequestId":123,"pageRequestId":456,"messageRequestId":789 }'
 >```
 
-## GUI
+---
+</details>
+
+<details>
+<summary><b>GUI Endpoints</b></summary>
 
 -   [news-cast-explorer-fe](./news-cast-explorer-fe) - A front end tool providing and interface to visualize the results of the news feed fetcher
 > [http://localhost:9000/](http://localhost:9000/)
 
-## Swagger UI
+</details>
 
+<details>
+<summary><b>Swagger UI Endpoints</b></summary>
+
+---
 -   Local run
 
 1.  [news-cast-explorer-fetcher](http://localhost:8080/api/newscast/fetcher/swagger-ui/index.html)
@@ -108,14 +131,24 @@ This repo is the official support article to my article on medium:
 3.  [news-cast-explorer-saga-orchestration](http://localhost:9000/api/saga/orchestration/swagger-ui/index.html)
 4.  [news-cast-mock](http://localhost:9000/api/mock/swagger-ui/index.html)
 
-## How to run
+---
+</details>
 
+<details>
+<summary><b>How to run</b></summary>
+
+---
 ```shell
 make dcup-full-action
 ```
 
-## Run Cypress
+---
+</details>
 
+<details>
+<summary>How to run Cypress</summary>
+
+---
 #### Against Nginx
 
 ```shell
@@ -127,18 +160,24 @@ make cypress-open-docker
 ```shell
 make cypress-open
 ```
+---
+</details>
 
-## Installation Notes
+<details>
+<summary><b>Java version</b></summary>
 
-### Java version
-
+---
 ```bash
 sdk install java 17-open
 sdk use java 17-open
 ```
+---
+</details>
 
-## Local hosts configuration
+<details>
+<summary><b>Local hosts configuration</b></summary>
 
+---
 Running the containers may require you to add this line to your `/etc/hosts` file:
 
 ```text
@@ -146,10 +185,16 @@ Running the containers may require you to add this line to your `/etc/hosts` fil
 ```
 
 This is mostly because of the way kafka operates in giving responses back
+---
+</details>
 
-## Roadmap
+<details>
+<summary><b>Roadmap</b></summary>
 
+---
 For roadmap information and current developments please check document [Roadmap.md](./Roadmap.md)
+---
+</details>
 
 ## References
 
