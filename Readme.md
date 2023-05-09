@@ -192,6 +192,8 @@ This is mostly because of the way kafka operates in giving responses back
 ---
 </details>
 
+## Roadmap
+
 <details>
 <summary><b>Roadmap</b></summary>
 
