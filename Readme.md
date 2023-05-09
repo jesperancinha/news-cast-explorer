@@ -55,6 +55,7 @@ We will send comments via POST requests. If the id's of the page, author and mes
 If the any of the id's fail, the process will perform a reactive chain of processes which will mark these comments as not available in the database. It will perform this in this order in reverse.
 So this means that if the id of a page does not match, there will be a comment of that page in the database as a dangling reference. It will be marked as not available. The comment for the author and the message will be ignored because the sagas will not allow the chain to continue.
 If the author id does not match, both page and author comments will be marked as not available. There will be no record of message.
+
 ---
 </details>
 <details>
