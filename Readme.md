@@ -85,6 +85,8 @@ This repo is the official support article to my article on medium:
 -   [news-cast-explorer-cdc](./news-cast-explorer-cdc) - A CDC mock service to support message exchange in the Kafka streams - Port 8085
 -   [news-cast-explorer-saga-choreography](./news-cast-explorer-saga-choreography) - A choreography implementation of the Saga Architecture - Spring - Kotlin module - Port 8083
 
+## How to run
+
 <details>
 <summary><b>Request examples with cUrl</b></summary>
 
