@@ -147,7 +147,7 @@ make dcup-full-action
 </details>
 
 <details>
-<summary>How to run Cypress</summary>
+<summary><b>How to run Cypress</b></summary>
 
 ---
 #### Against Nginx
