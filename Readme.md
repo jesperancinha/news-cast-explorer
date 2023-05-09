@@ -186,6 +186,7 @@ Running the containers may require you to add this line to your `/etc/hosts` fil
 ```
 
 This is mostly because of the way kafka operates in giving responses back
+
 ---
 </details>
 
@@ -194,6 +195,7 @@ This is mostly because of the way kafka operates in giving responses back
 
 ---
 For roadmap information and current developments please check document [Roadmap.md](./Roadmap.md)
+
 ---
 </details>
 
