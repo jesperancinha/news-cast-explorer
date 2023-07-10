@@ -42,7 +42,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@types/jasmine": "~4.3.5",
     "@types/jasminewd2": "~2.0.10",
-    "@types/jest": "^29.5.2",
+    "@types/jest": "^29.5.3",
     "@types/node": "^20.4.1",
     "babel-jest": "^29.6.1",
     "codelyzer": "^6.0.2",
