@@ -68,11 +68,12 @@ prune-all: stop
 	docker system prune --all --volumes
 case:
 	cd news-cast-demo && mkdir -p dst && yarn && node app.js
-update-snyk: update
+update-snyk:
 	npm i -g snyk
-update:
+update-npm:
 	npm install -g npm-check-updates
 	cd news-cast-demo && ncu -u && yarn
+	cd news-cast-explorer-fe && npx browserslist && ncu -u && yarn
 audit:
 	cd news-cast-demo && npm audit fix && yarn
 cypress-install:
@@ -104,9 +105,6 @@ dcup-full-action: dcd docker-clean no-test build-npm docker nce-wait
 dcup-action: dcp docker-action nce-wait
 dcup-light: dcd
 	docker-compose -p ${GITHUB_RUN_ID} up -d news_cast_postgres news_cast_kafka
-update:
-	npm install -g npm-check-updates
-	cd news-cast-explorer-fe && npx browserslist && ncu -u && yarn
 build-kafka:
 	docker-compose -p ${GITHUB_RUN_ID} stop news_cast_kafka
 	docker-compose -p ${GITHUB_RUN_ID} rm news_cast_kafka
@@ -132,3 +130,6 @@ coverage-node:
 report:
 	mvn omni-coveragereporter:report
 local-pipeline: build-maven build-npm test-maven test-node coverage-maven coverage-node report
+update-browsers:
+	npx update-browserslist-db@latest
+update-all: update-snyk update-browsers
