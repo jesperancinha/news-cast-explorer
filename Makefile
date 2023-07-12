@@ -132,3 +132,6 @@ coverage-node:
 report:
 	mvn omni-coveragereporter:report
 local-pipeline: build-maven build-npm test-maven test-node coverage-maven coverage-node report
+update-browsers:
+	npx update-browserslist-db@latest
+update-all: update-snyk update-browsers
