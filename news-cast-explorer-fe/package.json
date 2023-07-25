@@ -47,7 +47,7 @@
     "babel-jest": "^29.6.1",
     "codelyzer": "^6.0.2",
     "jasmine": "^5.1.0",
-    "jasmine-core": "~5.0.1",
+    "jasmine-core": "~5.1.0",
     "jasmine-spec-reporter": "~7.0.0",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
