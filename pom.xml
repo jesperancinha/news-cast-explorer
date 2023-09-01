@@ -52,7 +52,7 @@
         <mockk.version>1.13.7</mockk.version>
         <kotlinx-coroutines-debug.version>1.7.3</kotlinx-coroutines-debug.version>
 
-        <eventuate-tram-spring.version>0.32.0.RELEASE</eventuate-tram-spring.version>
+        <eventuate-tram-spring.version>0.34.0.RELEASE</eventuate-tram-spring.version>
         <eventuate-tram-sagas-spring.version>0.23.0.RELEASE</eventuate-tram-sagas-spring.version>
         <eventuate-tram-sagas-spring-orchestration.version>0.19.0.RELEASE
         </eventuate-tram-sagas-spring-orchestration.version>
