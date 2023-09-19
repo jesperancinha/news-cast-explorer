@@ -8,6 +8,9 @@ build-node:
 build-test-node: build-node test-node
 build-node-cypress:
 	cd e2e && yarn
+run-node:
+	cd news-cast-explorer-fe; \
+	npm start
 build-node-docker:
 	cd news-cast-explorer-fe && [ -d node_modules ] || mkdir node_modules
 	cd news-cast-explorer-fe && [ -d dist ] || mkdir dist
