@@ -2,12 +2,16 @@ SHELL=/bin/bash
 GITHUB_RUN_ID ?=123
 
 b: build
-build: build-npm build-maven
-build-npm:
+build: build-node build-maven
+build-node:
 	cd news-cast-explorer-fe && yarn && npm run build
-build-npm-cypress:
+build-test-node: build-node test-node
+build-node-cypress:
 	cd e2e && yarn
-build-npm-docker:
+run-node:
+	cd news-cast-explorer-fe; \
+	npm start
+build-node-docker:
 	cd news-cast-explorer-fe && [ -d node_modules ] || mkdir node_modules
 	cd news-cast-explorer-fe && [ -d dist ] || mkdir dist
 	cd news-cast-explorer-fe && chmod 777 node_modules
@@ -18,7 +22,7 @@ build-npm-docker:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.builder.yml build gui-builder
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.builder.yml up --exit-code-from gui-builder gui-builder
 	cd news-cast-explorer-fe && [ -d node_modules ] && echo "dist has been created!!" || echo "dist has not been created!!"
-build-npm-cypress-docker:
+build-node-cypress-docker:
 	cd e2e && [ -d node_modules ] || mkdir node_modules
 	cd e2e && chmod 777 node_modules
 	touch e2e/yarn.lock
@@ -70,7 +74,7 @@ case:
 	cd news-cast-demo && mkdir -p dst && yarn && node app.js
 update-snyk:
 	npm i -g snyk
-update-npm:
+update-node:
 	npm install -g npm-check-updates
 	cd news-cast-demo && ncu -u && yarn
 	cd news-cast-explorer-fe && npx browserslist && ncu -u && yarn
@@ -101,7 +105,7 @@ dcd:
 dcp:
 	docker-compose -p ${GITHUB_RUN_ID} stop
 dcup: dcd docker-clean docker nce-wait
-dcup-full-action: dcd docker-clean no-test build-npm docker nce-wait
+dcup-full-action: dcd docker-clean no-test build-node docker nce-wait
 dcup-action: dcp docker-action nce-wait
 dcup-light: dcd
 	docker-compose -p ${GITHUB_RUN_ID} up -d news_cast_postgres news_cast_kafka
@@ -110,7 +114,7 @@ build-kafka:
 	docker-compose -p ${GITHUB_RUN_ID} rm news_cast_kafka
 	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news_cast_kafka
 	docker-compose -p ${GITHUB_RUN_ID} up -d
-build-nginx: build-npm
+build-nginx: build-node
 	docker-compose -p ${GITHUB_RUN_ID} stop news_cast_fe
 	docker-compose -p ${GITHUB_RUN_ID} rm news_cast_fe
 	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news_cast_fe
@@ -129,7 +133,7 @@ coverage-node:
 	cd news-cast-explorer-fe && npm run coverage
 report:
 	mvn omni-coveragereporter:report
-local-pipeline: build-maven build-npm test-maven test-node coverage-maven coverage-node report
+local-pipeline: build-maven build-node test-maven test-node coverage-maven coverage-node report
 update-browsers:
 	npx update-browserslist-db@latest
 update-all: update-snyk update-browsers
