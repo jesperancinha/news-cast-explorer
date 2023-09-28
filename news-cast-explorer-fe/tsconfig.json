@@ -3,7 +3,7 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "ES2022",
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist"
