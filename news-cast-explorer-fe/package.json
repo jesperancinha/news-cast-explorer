@@ -29,7 +29,7 @@
     "ngx-perfect-scrollbar": "^10.1.1",
     "rxjs": "^7.8.1",
     "tslib": "^2.6.2",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.14.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.1",
