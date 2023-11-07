@@ -41,7 +41,7 @@
     "@babel/preset-typescript": "^7.23.2",
     "@testing-library/jest-dom": "^6.1.4",
     "@types/jasmine": "~5.1.1",
-    "@types/jasminewd2": "~2.0.12",
+    "@types/jasminewd2": "~2.0.13",
     "@types/jest": "^29.5.7",
     "@types/node": "^20.8.10",
     "babel-jest": "^29.7.0",
