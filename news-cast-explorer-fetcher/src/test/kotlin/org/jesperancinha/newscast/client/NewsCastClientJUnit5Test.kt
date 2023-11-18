@@ -45,7 +45,6 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    @Disabled
     fun testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediately() {
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()

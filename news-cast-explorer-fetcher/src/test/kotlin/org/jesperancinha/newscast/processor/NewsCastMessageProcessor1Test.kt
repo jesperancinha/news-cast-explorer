@@ -127,7 +127,7 @@ class NewsCastMessageProcessor1Test @Autowired constructor(
                     998877665544332211L
                 )
         }
-        exception.message.shouldContain("this is not a JSON")
+        exception.message.shouldContain("Unrecognized token")
     }
 
     companion object {
