@@ -47,7 +47,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>3.2.0</spring-boot-parent.version>
+        <spring-boot-parent.version>3.2.1</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
         <mockk.version>1.13.8</mockk.version>
         <kotlinx-coroutines-debug.version>1.7.3</kotlinx-coroutines-debug.version>
