@@ -171,9 +171,7 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                            </sourceDirs>
+                            <sourceDirs>${project.basedir}/src/main/kotlin</sourceDirs>
                         </configuration>
                     </execution>
                 </executions>
