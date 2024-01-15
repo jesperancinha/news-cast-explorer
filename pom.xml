@@ -29,7 +29,7 @@
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
 
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 
         <lombok.version>1.18.30</lombok.version>
 
@@ -49,7 +49,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
         <spring-boot-parent.version>3.2.1</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.13.8</mockk.version>
+        <mockk.version>1.13.9</mockk.version>
         <kotlinx-coroutines-debug.version>1.7.3</kotlinx-coroutines-debug.version>
 
         <eventuate-tram-spring.version>0.34.0.RELEASE</eventuate-tram-spring.version>
