@@ -24,7 +24,7 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '20'
 
     - name: Build Node JS and Test
       run: make build-node && npm i -g jest && make test-node
