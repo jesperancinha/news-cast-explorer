@@ -76,8 +76,8 @@ update-snyk:
 	npm i -g snyk
 update-node:
 	npm install -g npm-check-updates
-	cd news-cast-demo && ncu -u && yarn
-	cd news-cast-explorer-fe && npx browserslist && ncu -u && yarn
+	cd news-cast-demo && ncu -u && npx update-browserslist-db@latest && yarn
+	cd news-cast-explorer-fe && npx browserslist && npx update-browserslist-db@latest && ncu -u && yarn
 audit:
 	cd news-cast-demo && npm audit fix && yarn
 cypress-install:
