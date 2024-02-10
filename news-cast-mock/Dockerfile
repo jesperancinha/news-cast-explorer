@@ -1,4 +1,4 @@
-FROM openjdk:20-slim-buster
+FROM eclipse-temurin:21.0.2_13-jre-alpine
 
 WORKDIR /root
 
