@@ -67,6 +67,7 @@ public class NewsCastClient {
             log.warn("Shutting down executor service...");
             executorService.shutdownNow();
         }
+        executorService.close();
         val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return newsCastMessageProcessor.processAllMessages(executorServiceWrapper.getFetcherThread().getAllMessages(), timestampBefore, timestampAfter);
     }

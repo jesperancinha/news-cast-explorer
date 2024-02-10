@@ -10,4 +10,8 @@ module.exports = {
   "testMatch": [
     "**/?(*.)+(spec).[jt]s?(x)"
   ],
+  globals: {
+    Uint8Array: Uint8Array,
+    ArrayBuffer: ArrayBuffer
+  }
 }

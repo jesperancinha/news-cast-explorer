@@ -3,14 +3,12 @@ package org.jesperancinha.newscast.client
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
-import io.kotest.matchers.longs.shouldBeLessThan
 import io.kotest.matchers.longs.shouldBeLessThanOrEqual
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.verify
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.jesperancinha.newscast.utils.AbstractNCTest
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -45,7 +43,7 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    fun testStartFetchProcess_whenProgrammed5Second_endsGracefullyImmediately() {
+    fun `should end gracefully after 5 seconds immediately`() {
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()
         verify {
