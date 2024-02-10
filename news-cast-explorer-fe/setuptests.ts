@@ -5,5 +5,4 @@
 import "@testing-library/jest-dom";
 import "@babel/preset-env";
 import "@babel/core";
-import 'jest-preset-angular';
 import "@angular/compiler"
