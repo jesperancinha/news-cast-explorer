@@ -64,9 +64,7 @@ If the author id does not match, both page and author comments will be marked as
 ---
 This repo is the official support article to my article on medium:
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910) [News Cast — Using Sagas in Choreography and Orchestration Patterns](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
-
-[![alt img](./docs/images/articles.twitter.sagas.intro.2.jpg)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
+[![](https://img.shields.io/badge/News%20Cast%20—%20Using%20Sagas%20in%20Choreography%20and%20Orchestration%20Patterns-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
 
 
 -   [1.0.0](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0) - [e986fadced9dd48a0ce2711764097f18927ff0ba](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0)
