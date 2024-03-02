@@ -14,6 +14,7 @@ class StopperCallableTest {
     @Test
     fun testRun_whenRun_CallsServiceShutdown() {
         val executorServiceMock: ExecutorService = mockk()
+        every { executorServiceMock.close() } returns Unit
         val executorServiceWrapper =
             ExecutorServiceWrapper(
                 BlockingQueueService(100),
