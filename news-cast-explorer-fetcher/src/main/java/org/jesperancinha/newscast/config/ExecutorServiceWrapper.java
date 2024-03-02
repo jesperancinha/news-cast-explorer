@@ -1,5 +1,6 @@
 package org.jesperancinha.newscast.config;
 
+import lombok.Setter;
 import org.jesperancinha.newscast.client.FetcherCallable;
 import org.jesperancinha.newscast.client.ReaderCallable;
 import org.jesperancinha.newscast.client.StopperCallable;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ExecutorServiceWrapper {
 
+    @Setter
     private ExecutorService executorService;
     private final BlockingQueue<String> blockingQueue;
     private final long secondsDuration;
@@ -27,8 +29,7 @@ public class ExecutorServiceWrapper {
     private final int timeToWaitSeconds;
 
     public ExecutorServiceWrapper(BlockingQueue<String> blockingQueue,
-                                  @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
-                                  final int timeToWaitSeconds,
+                                  @Value("${org.jesperancinha.newscast.timeToWaitSeconds}") final int timeToWaitSeconds,
                                   @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
                                   long secondsDuration,
                                   @Value("${org.jesperancinha.newscast.host}")
@@ -42,8 +43,10 @@ public class ExecutorServiceWrapper {
 
     private ExecutorService init() throws InterruptedException {
         if (Objects.nonNull(executorService)) {
+            executorService.shutdown();
             executorService.shutdownNow();
-           assert executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
+            assert executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
+            executorService.close();
         }
         return Executors.newFixedThreadPool(3);
     }
@@ -88,7 +91,4 @@ public class ExecutorServiceWrapper {
         return fetcherCallable;
     }
 
-    public void setExecutorService(ExecutorService executorService) {
-        this.executorService = executorService;
-    }
 }
