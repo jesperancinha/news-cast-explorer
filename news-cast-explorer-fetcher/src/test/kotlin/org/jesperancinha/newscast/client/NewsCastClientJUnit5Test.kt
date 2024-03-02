@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.annotation.DirtiesContext
+import org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS
+import org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD
+import org.springframework.test.annotation.DirtiesContext.MethodMode.BEFORE_METHOD
 import org.springframework.test.context.ActiveProfiles
 import java.util.concurrent.BlockingQueue
 
@@ -22,7 +25,7 @@ import java.util.concurrent.BlockingQueue
         "org.jesperancinha.newscast.timeToWaitSeconds=5"
     ]
 )
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
+@DirtiesContext(classMode = BEFORE_CLASS, methodMode = BEFORE_METHOD)
 @ActiveProfiles("non-scheduler")
 internal class NewsCastClientJUnit5Test @Autowired constructor(
     val newsCastClient: NewsCastClient
