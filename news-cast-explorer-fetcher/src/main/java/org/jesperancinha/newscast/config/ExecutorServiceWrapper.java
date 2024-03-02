@@ -58,10 +58,9 @@ public class ExecutorServiceWrapper {
     public ExecutorService restart() throws InterruptedException {
         executorService = init();
         this.fetcherCallable = createFetcherThread();
-        executorService.invokeAll(
-                List.of(fetcherCallable,
-                        createReaderThread(),
-                        createStopperThread()));
+        executorService.submit(fetcherCallable);
+        executorService.submit(createReaderThread());
+        executorService.submit(createStopperThread());
         return executorService;
     }
 
