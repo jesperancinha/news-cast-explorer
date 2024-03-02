@@ -5,7 +5,10 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThanOrEqual
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.mockk.every
+import io.mockk.mockk
 import io.mockk.verify
+import org.jesperancinha.newscast.config.BlockingQueueService
 import org.jesperancinha.newscast.processor.NewsCastMessageProcessor
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.jesperancinha.newscast.utils.AbstractNCTest
@@ -18,6 +21,7 @@ import org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_
 import org.springframework.test.annotation.DirtiesContext.MethodMode.BEFORE_METHOD
 import org.springframework.test.context.ActiveProfiles
 import java.util.concurrent.BlockingQueue
+import java.util.concurrent.LinkedBlockingQueue
 
 @SpringBootTest(
     properties = [
@@ -34,7 +38,7 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
     lateinit var newsCastMessageProcessor: NewsCastMessageProcessor
 
     @MockkBean(relaxed = true)
-    lateinit var blockingQueue: BlockingQueue<String>
+    lateinit var blockingQueueService: BlockingQueueService
 
     @MockkBean(relaxed = true)
     lateinit var runningService: OneRunServiceImpl
@@ -47,6 +51,9 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
      */
     @Test
     fun `should end gracefully after 5 seconds immediately`() {
+        val linkedBlockingQueue =  mockk<BlockingQueue<String>>()
+        every { blockingQueueService.blockingQueue } returns linkedBlockingQueue
+        newsCastClient.startFetchProcess()
         newsCastClient.startFetchProcess()
         val longArgumentCaptor = mutableListOf<Long>()
         verify {
@@ -56,9 +63,9 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
                 capture(longArgumentCaptor)
             )
         }
-        verify(exactly = 1) { blockingQueue.remainingCapacity() }
+        verify(exactly = 2) { linkedBlockingQueue.remainingCapacity() }
         verify(exactly = 1) { runningService.startProcess() }
-        longArgumentCaptor.shouldHaveSize(2)
+        longArgumentCaptor.shouldHaveSize(4)
         longArgumentCaptor.shouldNotBeNull()
         val startTimestamp = longArgumentCaptor[0]
         val endTimeStamp = longArgumentCaptor[1]
