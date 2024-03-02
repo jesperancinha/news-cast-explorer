@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jofisaes on 13/10/2021
@@ -23,21 +24,26 @@ public class ExecutorServiceWrapper {
     private final long secondsDuration;
     private final String url;
     private FetcherCallable fetcherCallable;
+    private final int timeToWaitSeconds;
 
     public ExecutorServiceWrapper(BlockingQueue<String> blockingQueue,
                                   @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
+                                  final int timeToWaitSeconds,
+                                  @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
                                   long secondsDuration,
                                   @Value("${org.jesperancinha.newscast.host}")
-                                  String url) {
+                                  String url) throws InterruptedException {
         this.blockingQueue = blockingQueue;
         this.secondsDuration = secondsDuration;
         this.url = url;
+        this.timeToWaitSeconds = timeToWaitSeconds;
         executorService = init();
     }
 
-    private ExecutorService init() {
+    private ExecutorService init() throws InterruptedException {
         if (Objects.nonNull(executorService)) {
             executorService.shutdownNow();
+           assert executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS);
         }
         return Executors.newFixedThreadPool(3);
     }
