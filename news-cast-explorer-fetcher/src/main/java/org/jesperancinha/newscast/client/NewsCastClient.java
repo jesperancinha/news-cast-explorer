@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.jesperancinha.newscast.config.BlockingQueueService;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.data.AuthorDto;
 import org.jesperancinha.newscast.data.MessageDto;
@@ -30,22 +31,20 @@ public class NewsCastClient {
 
     private final NewsCastMessageProcessor newsCastMessageProcessor;
 
-    private final BlockingQueue<String> stringLinkedBlockingQueue;
+    private final BlockingQueueService blockingQueueService;
 
     private final ExecutorServiceWrapper executorServiceWrapper;
 
     public NewsCastClient(
-            @Value("${org.jesperancinha.newscast.searchTerm}")
-            final String searchTerm,
-            @Value("${org.jesperancinha.newscast.timeToWaitSeconds}")
-            final int timeToWaitSeconds,
+            @Value("${org.jesperancinha.newscast.searchTerm}") final String searchTerm,
+            @Value("${org.jesperancinha.newscast.timeToWaitSeconds}") final int timeToWaitSeconds,
             NewsCastMessageProcessor newsCastMessageProcessor,
-            BlockingQueue<String> stringLinkedBlockingQueue,
+            BlockingQueueService blockingQueueService,
             ExecutorServiceWrapper executorServiceWrapper) {
         this.searchTerm = searchTerm;
         this.timeToWaitSeconds = timeToWaitSeconds;
         this.newsCastMessageProcessor = newsCastMessageProcessor;
-        this.stringLinkedBlockingQueue = stringLinkedBlockingQueue;
+        this.blockingQueueService = blockingQueueService;
         this.executorServiceWrapper = executorServiceWrapper;
     }
 
@@ -58,16 +57,18 @@ public class NewsCastClient {
      */
     public synchronized PageDto startFetchProcess() throws JsonProcessingException, InterruptedException {
         val timestampBefore = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        try(val executorService = executorServiceWrapper.restart()) {
-            try {
-                executorService.shutdown();
-                while (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS));
-            } catch (Exception exception) {
-                log.warn("Service tried to shutdown correctly, however an exception has occurred", exception);
-                log.warn("Shutting down executor service...");
+        val executorService = executorServiceWrapper.restart();
+        try {
+            executorService.shutdown();
+            while (!executorService.isShutdown() && !executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) {
                 executorService.shutdownNow();
             }
+        } catch (Exception exception) {
+            log.warn("Service tried to shutdown correctly, however an exception has occurred", exception);
+            log.warn("Shutting down executor service...");
+            executorService.shutdownNow();
         }
+
         val timestampAfter = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
         return newsCastMessageProcessor.processAllMessages(executorServiceWrapper.getFetcherThread().getAllMessages(), timestampBefore, timestampAfter);
     }

@@ -3,6 +3,7 @@ package org.jesperancinha.newscast.client
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import org.jesperancinha.newscast.config.BlockingQueueService
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.junit.jupiter.api.Test
 import java.util.concurrent.ExecutorService
@@ -13,8 +14,12 @@ class StopperCallableTest {
     @Test
     fun testRun_whenRun_CallsServiceShutdown() {
         val executorServiceMock: ExecutorService = mockk()
+        every { executorServiceMock.close() } returns Unit
         val executorServiceWrapper =
-            ExecutorServiceWrapper(LinkedBlockingQueue(100), 0, "http://localhost:8081/api/newscast/messages")
+            ExecutorServiceWrapper(
+                BlockingQueueService(100),
+                0, 5, "http://localhost:8081/api/newscast/messages"
+            )
         executorServiceWrapper.setExecutorService(executorServiceMock)
         every { executorServiceMock.shutdownNow() } returns listOf()
         val stopperCallable =

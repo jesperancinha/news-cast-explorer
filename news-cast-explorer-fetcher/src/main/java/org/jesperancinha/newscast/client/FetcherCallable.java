@@ -2,6 +2,8 @@ package org.jesperancinha.newscast.client;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
+import org.jesperancinha.newscast.config.BlockingQueueService;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 
 import java.util.HashSet;
@@ -17,22 +19,22 @@ public class FetcherCallable implements Callable<Boolean> {
     private Set<String> allMessages;
     private final ExecutorServiceWrapper executorServiceWrapper;
     private final ReaderCallable readerCallable;
-    private final BlockingQueue<String> stringLinkedBlockingQueue;
+    private final BlockingQueueService blockingQueueService;
 
     @Override
     public Boolean call() {
         allMessages = new HashSet<>();
+        BlockingQueue<String> blockingQueue = blockingQueueService.getBlockingQueue();
         try {
             int msgRead = 0;
-            while (msgRead < stringLinkedBlockingQueue.remainingCapacity()) {
-                final String msg = stringLinkedBlockingQueue.poll(1, TimeUnit.SECONDS);
+            while (true) {
+                if (!(msgRead < blockingQueue.remainingCapacity())) break;
+                final String msg = blockingQueue.poll(1, TimeUnit.SECONDS);
                 msgRead = processMessage(msgRead, msg);
             }
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
             return false;
-        } finally {
-            executorServiceWrapper.executorService().shutdownNow();
         }
         return true;
     }
