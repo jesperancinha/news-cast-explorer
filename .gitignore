@@ -17,6 +17,8 @@ dist
 
 # Front end
 node_modules
+package-lock.json
+yarn.lock
 
 # Logs
 *.log

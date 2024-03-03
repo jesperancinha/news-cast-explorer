@@ -144,9 +144,7 @@ local-pipeline: build-maven build-node test-maven test-node coverage-maven cover
 update-browsers:
 	npx update-browserslist-db@latest
 update-all: update-snyk update-browsers
-update:
-	find . -name "package-lock.json" | xargs rm; \
-	find . -name "yarn.lock" | xargs rm; \
+update: remove-lock-files
 	git pull
 	npm install caniuse-lite
 	npm install -g npm-check-updates
@@ -155,3 +153,6 @@ update:
  		npx browserslist --update-db; \
  		ncu -u; \
  		yarn
+remove-lock-files:
+	find . -name "package-lock.json" | xargs rm; \
+	find . -name "yarn.lock" | xargs rm;
