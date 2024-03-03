@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   gui-builder:
     container_name: news-cast-fe-build

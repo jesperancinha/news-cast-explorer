@@ -101,7 +101,7 @@ cypress-firefox-full:
 cypress-edge:
 	cd e2e && make cypress-edge
 docker-action: dist
-	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.builder.yml up -d news_cast_postgres news_cast_kafka news_cast_mock news_cast_cdc news_cast_fetcher news_cast_choreography news_cast_orchestration news_cast_fe
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.builder.yml up -d news-cast-postgres news-cast-kafka news-cast-mock news-cast-cdc news-cast-fetcher news-cast-choreography news-cast-orchestration news-cast-fe
 nce-wait:
 	bash nce_wait.sh
 dcd:
@@ -115,25 +115,25 @@ dcup-full-action: dcd docker-clean no-test build-node docker nce-wait
 dcup-full-local: dcd docker-clean-local no-test build-node docker nce-wait
 dcup-action: dcp docker-action nce-wait
 dcup-light: dcd
-	docker-compose -p ${GITHUB_RUN_ID} up -d news_cast_postgres news_cast_kafka
+	docker-compose -p ${GITHUB_RUN_ID} up -d news-cast-postgres news-cast-kafka
 build-kafka:
-	docker-compose -p ${GITHUB_RUN_ID} stop news_cast_kafka
-	docker-compose -p ${GITHUB_RUN_ID} rm news_cast_kafka
-	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news_cast_kafka
+	docker-compose -p ${GITHUB_RUN_ID} stop news-cast-kafka
+	docker-compose -p ${GITHUB_RUN_ID} rm news-cast-kafka
+	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news-cast-kafka
 	docker-compose -p ${GITHUB_RUN_ID} up -d
 build-nginx: build-node
-	docker-compose -p ${GITHUB_RUN_ID} stop news_cast_fe
-	docker-compose -p ${GITHUB_RUN_ID} rm news_cast_fe
-	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news_cast_fe
+	docker-compose -p ${GITHUB_RUN_ID} stop news-cast-fe
+	docker-compose -p ${GITHUB_RUN_ID} rm news-cast-fe
+	docker-compose -p ${GITHUB_RUN_ID} build --no-cache news-cast-fe
 	docker-compose -p ${GITHUB_RUN_ID} up -d
 end-logs:
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_postgres
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_mock
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_fetcher
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_cdc
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_orchestration
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_choreography
-	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news_cast_fe
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-postgres
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-mock
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-fetcher
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-cdc
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-orchestration
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-choreography
+	docker-compose -p ${GITHUB_RUN_ID} logs --tail 1000 news-cast-fe
 coverage-maven:
 	mvn jacoco:prepare-agent package jacoco:report
 coverage-node:
