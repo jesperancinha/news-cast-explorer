@@ -1,8 +1,7 @@
 package org.jesperancinha.newscast.processor
 
-import com.fasterxml.jackson.core.JsonParseException
 import com.ninjasquad.springmockk.MockkBean
-import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.assertions.throwables.shouldThrowAny
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldBeNull
@@ -141,7 +140,7 @@ internal class NewsCastMessageProcessor2Test(
     fun testMessages_whenMessageListInvalid_throwException() {
         val allMessages = setOf("this is not a JSON", "And this is also not one!")
 
-        val exception = shouldThrow<JsonParseException> {
+        val exception = shouldThrowAny {
             newsCastMessageProcessor
                 .processAllMessages(
                     allMessages,

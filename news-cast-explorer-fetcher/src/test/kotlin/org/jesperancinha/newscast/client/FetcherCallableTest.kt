@@ -6,10 +6,13 @@ import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.mockk.every
+import io.mockk.mockk
 import io.mockk.verify
+import org.jesperancinha.newscast.config.BlockingQueueService
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper
 import org.jesperancinha.newscast.service.OneRunServiceImpl
 import org.jesperancinha.newscast.utils.AbstractNCTest
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -27,10 +30,10 @@ import java.util.concurrent.TimeUnit
     ]
 )
 class FetcherCallableTest @Autowired constructor(
-    final val executorServiceWrapper: ExecutorServiceWrapper
+     executorServiceWrapper: ExecutorServiceWrapper
 ) : AbstractNCTest() {
     @MockkBean
-    lateinit var queueMock: BlockingQueue<String>
+    lateinit var blockingQueueService: BlockingQueueService
 
     @MockkBean(relaxed = true)
     lateinit var readerCallable: ReaderCallable
@@ -39,12 +42,17 @@ class FetcherCallableTest @Autowired constructor(
     lateinit var runningService: OneRunServiceImpl
 
     val fetcherCallable: FetcherCallable = executorServiceWrapper.createFetcherThread()
+    val blockingQueue =  mockk<BlockingQueue<String>>()
 
+    @BeforeEach
+    fun setup(){
+        every { blockingQueueService.blockingQueue } returns blockingQueue
+    }
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     fun testRun_whenFetchOk_thenReturnMessage() {
-        every { queueMock.remainingCapacity() } returns 5
-        every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
+        every { blockingQueue.remainingCapacity() } returns 5
+        every { blockingQueue.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
         val thread = FutureTask(fetcherCallable)
         thread.run()
         thread.get()
@@ -52,14 +60,14 @@ class FetcherCallableTest @Autowired constructor(
         messages.shouldNotBeNull()
         messages.shouldHaveSize(1)
         messages.shouldContain("I am a message!")
-        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify { blockingQueue.poll(1, TimeUnit.SECONDS) }
     }
 
     @Test
     @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     fun testRunWithCapacity5_whenFetchOk_thenReturnMessage() {
-        every { queueMock.remainingCapacity() } returns 5
-        every { queueMock.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
+        every { blockingQueue.remainingCapacity() } returns 5
+        every { blockingQueue.poll(1, TimeUnit.SECONDS) } returns "I am a message!"
         val thread = FutureTask(fetcherCallable)
         thread.run()
         thread.get()
@@ -67,7 +75,7 @@ class FetcherCallableTest @Autowired constructor(
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
-        verify(exactly = 5) { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(exactly = 5) { blockingQueue.poll(1, TimeUnit.SECONDS) }
     }
 
     @Test
@@ -82,8 +90,8 @@ class FetcherCallableTest @Autowired constructor(
         stringStack.push(testMessage)
         stringStack.push(testMessage)
         stringStack.push(testMessage)
-        every { queueMock.remainingCapacity() } returns 5
-        every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
+        every { blockingQueue.remainingCapacity() } returns 5
+        every { blockingQueue.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
         val thread = FutureTask(fetcherCallable)
         thread.run()
         thread.get()
@@ -92,7 +100,7 @@ class FetcherCallableTest @Autowired constructor(
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
         allMessages.shouldContainExactly("I am a message!")
-        verify(atLeast = 5, atMost = 6) { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify(atLeast = 5, atMost = 6) { blockingQueue.poll(1, TimeUnit.SECONDS) }
     }
 
     @Test
@@ -108,8 +116,8 @@ class FetcherCallableTest @Autowired constructor(
         stringStack.push(null)
         stringStack.push(null)
         stringStack.push(null)
-        every { queueMock.remainingCapacity() } returns 1
-        every { queueMock.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
+        every { blockingQueue.remainingCapacity() } returns 1
+        every { blockingQueue.poll(1, TimeUnit.SECONDS) }.returnsMany(stringStack)
         val thread = FutureTask(fetcherCallable)
         thread.run()
         thread.get()
@@ -117,7 +125,7 @@ class FetcherCallableTest @Autowired constructor(
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(1)
         allMessages.shouldContain("I am a message!")
-        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify { blockingQueue.poll(1, TimeUnit.SECONDS) }
     }
 
     @Test
@@ -135,8 +143,8 @@ class FetcherCallableTest @Autowired constructor(
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
         stringStack.push(testLimitTrack)
-        every { queueMock.remainingCapacity() } returns 5
-        every { queueMock.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
+        every { blockingQueue.remainingCapacity() } returns 5
+        every { blockingQueue.poll(1, TimeUnit.SECONDS) } returnsMany (stringStack)
         val thread = FutureTask(fetcherCallable)
         thread.run()
         thread.get()
@@ -144,6 +152,6 @@ class FetcherCallableTest @Autowired constructor(
         allMessages.shouldNotBeNull()
         allMessages.shouldHaveSize(2)
         allMessages.shouldContain("I am a message!")
-        verify { queueMock.poll(1, TimeUnit.SECONDS) }
+        verify { blockingQueue.poll(1, TimeUnit.SECONDS) }
     }
 }

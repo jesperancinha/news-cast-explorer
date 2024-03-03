@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
+import org.jesperancinha.newscast.config.BlockingQueueService;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.model.source.Message;
 import org.springframework.http.HttpEntity;
@@ -16,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 
@@ -30,7 +33,7 @@ public class ReaderCallable implements Callable<Boolean> {
 
     private final String url;
 
-    private final BlockingQueue<String> blockingQueue;
+    private final BlockingQueueService blockingQueueService;
 
     private final ExecutorServiceWrapper executorServiceWrapper;
 
@@ -39,7 +42,8 @@ public class ReaderCallable implements Callable<Boolean> {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public ReaderCallable(
-            String url, BlockingQueue<String> blockingQueue,
+            String url,
+            BlockingQueueService blockingQueueService,
             ExecutorServiceWrapper executorServiceWrapper) {
         if (url.contains("news_cast_mock")) {
             final String news_cast_mock;
@@ -54,12 +58,13 @@ public class ReaderCallable implements Callable<Boolean> {
         this.url = url;
 
         log.info("Using url {}", url);
-        this.blockingQueue = blockingQueue;
+        this.blockingQueueService = blockingQueueService;
         this.executorServiceWrapper = executorServiceWrapper;
     }
 
     @Override
     public Boolean call() {
+        BlockingQueue<String> blockingQueue = blockingQueueService.getBlockingQueue();
         try {
             for (; ; ) {
                 sleep(1000);
@@ -69,7 +74,7 @@ public class ReaderCallable implements Callable<Boolean> {
                 final ResponseEntity<Message[]> result = restTemplate.exchange(
                         url, HttpMethod.POST,
                         new HttpEntity<String>(headers), Message[].class);
-                Arrays.stream(result.getBody()).toList().forEach(m -> {
+                Arrays.stream(Objects.requireNonNull(result.getBody())).toList().forEach(m -> {
                     try {
                         blockingQueue.add(objectMapper.writeValueAsString(m));
                     } catch (JsonProcessingException e) {
@@ -83,8 +88,6 @@ public class ReaderCallable implements Callable<Boolean> {
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
             return false;
-        } finally {
-            executorServiceWrapper.executorService().shutdownNow();
         }
     }
 }
