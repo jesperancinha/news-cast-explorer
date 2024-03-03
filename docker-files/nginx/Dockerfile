@@ -16,4 +16,6 @@ COPY entrypoint.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
 
+#ENV ALLOWED_HOSTS = ['news_cast_fetcher']
+
 EXPOSE 9000

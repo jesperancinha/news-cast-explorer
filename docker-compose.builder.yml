@@ -7,8 +7,6 @@ services:
     volumes:
       - ./news-cast-explorer-fe:/opt/news-cast-explorer-fe
     user: "root:1000"
-    networks:
-      - newscast
 
   cypress-builder:
     container_name: news-cast-cypress-build
@@ -17,8 +15,6 @@ services:
     volumes:
       - ./e2e:/opt/e2e
     user: "root:1000"
-    networks:
-      - newscast
 
   backend-builder:
     container_name: news-cast-be-build
@@ -27,8 +23,6 @@ services:
     volumes:
       - .:/opt/news-cast-explorer
       - ${HOME}/.m2:/root/.m2
-    networks:
-      - newscast
 
   backend-qa:
     container_name: news-cast-be-qa
@@ -37,8 +31,6 @@ services:
     volumes:
       - .:/opt/news-cast-explorer
       - ${HOME}/.m2:/root/.m2
-    networks:
-      - newscast
 
   backend-report:
     container_name: news-cast-be-report
@@ -47,5 +39,3 @@ services:
     volumes:
       - .:/opt/news-cast-explorer
       - ${HOME}/.m2:/root/.m2
-    networks:
-      - newscast
