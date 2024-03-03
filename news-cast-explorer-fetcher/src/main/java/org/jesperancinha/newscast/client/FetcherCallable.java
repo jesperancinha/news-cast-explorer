@@ -35,6 +35,8 @@ public class FetcherCallable implements Callable<Boolean> {
         } catch (Exception e) {
             log.error("An exception has occurred!", e);
             return false;
+        } finally {
+            log.warn("Fetcher Callable stopped running!");
         }
         return true;
     }

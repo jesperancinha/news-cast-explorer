@@ -60,8 +60,8 @@ public class NewsCastClient {
         val executorService = executorServiceWrapper.restart();
         try {
             executorService.shutdown();
-            while (!executorService.isShutdown() && !executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) {
-                executorService.shutdownNow();
+            if (!executorService.awaitTermination(timeToWaitSeconds, TimeUnit.SECONDS)) {
+                throw new RuntimeException("Failed to stop executor service gracefully!");
             }
         } catch (Exception exception) {
             log.warn("Service tried to shutdown correctly, however an exception has occurred", exception);
