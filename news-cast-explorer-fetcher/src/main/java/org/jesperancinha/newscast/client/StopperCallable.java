@@ -2,6 +2,7 @@ package org.jesperancinha.newscast.client;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 
 import java.util.concurrent.Callable;
@@ -35,7 +36,9 @@ public class StopperCallable implements Callable<Boolean> {
             log.error("An exception has occurred!", e);
             return false;
         } finally {
-            executorServiceWrapper.executorService().shutdownNow();
+            try (val executorService = executorServiceWrapper.executorService()) {
+                executorService.shutdownNow();
+            }
             log.info("Well, it's time to go and sleep... :)");
         }
         return true;

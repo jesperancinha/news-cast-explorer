@@ -2,7 +2,7 @@ describe('Opens application page', () => {
     const host = Cypress.env('host') ? Cypress.env('host') : 'localhost';
     const port = Cypress.env('port') ? Cypress.env('port') : '4200';
 
-    it('shows swagger', () => {
+    it('shows application page', () => {
         cy.visit(`http://${host}:${port}`);
 
         cy.wait(30000);
