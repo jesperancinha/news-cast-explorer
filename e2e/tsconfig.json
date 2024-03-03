@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "http://news_cast_fe:9000"
+    "baseUrl": "http://news-cast-fe:9000"
   },
   "include": ["**/*.ts"]
 }
