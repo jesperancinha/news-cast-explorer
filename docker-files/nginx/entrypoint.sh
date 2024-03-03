@@ -1,9 +1,13 @@
 #!/bin/bash
 
+#function replaceIp() {
+#    service=$1
+#    ip=$(getent hosts "$service" | awk '{ print $1 }')
+#    sed -i 's/'"$service"'/'"$ip"'/g' /etc/nginx/conf.d/default.conf
+#}
 function replaceIp() {
     service=$1
-    ip=$(getent hosts "$service" | awk '{ print $1 }')
-    sed -i 's/'"$service"'/'"$ip"'/g' /etc/nginx/conf.d/default.conf
+    getent hosts "$service" >> /etc/hosts
 }
 
 replaceIp news_cast_fetcher

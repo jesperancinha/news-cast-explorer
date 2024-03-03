@@ -54,12 +54,16 @@ no-test:
 	mvn clean install -DskipTests
 docker-clean:
 	docker-compose -p ${GITHUB_RUN_ID} rm -svf
+docker-clean-local:
+	docker-compose rm -svf
 docker-stop-all:
 	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
 dist:
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
 docker: dist
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans
+docker-local: dist
+	docker-compose up -d --build --remove-orphans
 docker-clean-build-start: docker-clean b docker
 docker-clean-start: docker-clean docker
 stop:
@@ -102,10 +106,13 @@ nce-wait:
 	bash nce_wait.sh
 dcd:
 	docker-compose -p ${GITHUB_RUN_ID} down --remove-orphans
+dcd-local:
+	docker-compose down --remove-orphans
 dcp:
 	docker-compose -p ${GITHUB_RUN_ID} stop
 dcup: dcd docker-clean docker nce-wait
 dcup-full-action: dcd docker-clean no-test build-node docker nce-wait
+dcup-full-local: dcd docker-clean-local no-test build-node docker nce-wait
 dcup-action: dcp docker-action nce-wait
 dcup-light: dcd
 	docker-compose -p ${GITHUB_RUN_ID} up -d news_cast_postgres news_cast_kafka
