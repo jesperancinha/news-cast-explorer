@@ -1,7 +1,7 @@
 services:
-  news_cast_postgres:
-    hostname: news_cast_postgres
-    container_name: news_cast_postgres
+  news-cast-postgres:
+    hostname: news-cast-postgres
+    container_name: news-cast-postgres
     command: -c 'max_connections=400' -c 'shared_buffers=100MB'
     build:
       context: ./docker-files/docker-psql/.
@@ -23,9 +23,9 @@ services:
       retries: 10
       start_period: 0s
 
-  news_cast_kafka:
-    hostname: news_cast_kafka
-    container_name: news_cast_kafka
+  news-cast-kafka:
+    hostname: news-cast-kafka
+    container_name: news-cast-kafka
     build:
       context: ./docker-files/kafka/.
     deploy:
@@ -36,12 +36,12 @@ services:
           memory: 1000M
 
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
 
-  news_cast_mock:
-    hostname: news_cast_mock
-    container_name: news_cast_mock
+  news-cast-mock:
+    hostname: news-cast-mock
+    container_name: news-cast-mock
     build:
       context: news-cast-mock/.
     restart: on-failure
@@ -53,12 +53,12 @@ services:
         reservations:
           memory: 400M
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
 
-  news_cast_cdc:
-    hostname: news_cast_cdc
-    container_name: news_cast_cdc
+  news-cast-cdc:
+    hostname: news-cast-cdc
+    container_name: news-cast-cdc
     build:
       context: news-cast-explorer-cdc/.
     restart: on-failure
@@ -70,12 +70,12 @@ services:
           memory: 300M
 
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
 
-  news_cast_fetcher:
-    hostname: news_cast_fetcher
-    container_name: news_cast_fetcher
+  news-cast-fetcher:
+    hostname: news-cast-fetcher
+    container_name: news-cast-fetcher
     build:
       context: news-cast-explorer-fetcher/.
     deploy:
@@ -86,7 +86,7 @@ services:
           memory: 200M
 
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "--silent", "http:/127.0.0.1:8080/api/newscast/fetcher/actuator"]
@@ -94,9 +94,9 @@ services:
       timeout: 240s
       retries: 60
 
-  news_cast_choreography:
-    hostname: news_cast_choreography
-    container_name: news_cast_choreography
+  news-cast-choreography:
+    hostname: news-cast-choreography
+    container_name: news-cast-choreography
     build:
       context: news-cast-explorer-saga-choreography/.
     restart: on-failure
@@ -108,12 +108,12 @@ services:
           memory: 300M
 
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
 
-  news_cast_orchestration:
-    hostname: news_cast_orchestration
-    container_name: news_cast_orchestration
+  news-cast-orchestration:
+    hostname: news-cast-orchestration
+    container_name: news-cast-orchestration
     build:
       context: news-cast-explorer-saga-orchestration/.
     restart: on-failure
@@ -125,12 +125,12 @@ services:
           memory: 300M
 
     depends_on:
-      news_cast_postgres:
+      news-cast-postgres:
         condition: service_healthy
 
-  news_cast_fe:
-    hostname: news_cast_fe
-    container_name: news_cast_fe
+  news-cast-fe:
+    hostname: news-cast-fe
+    container_name: news-cast-fe
     build:
       context: docker-files/nginx/.
     restart: on-failure
@@ -144,5 +144,5 @@ services:
           memory: 300M
 
     depends_on:
-      news_cast_fetcher:
+      news-cast-fetcher:
         condition: service_healthy

@@ -10,10 +10,10 @@
 #    getent hosts "$service" >> /etc/hosts
 #}
 #
-#replaceIp news_cast_fetcher
-#replaceIp news_cast_orchestration
-#replaceIp news_cast_choreography
-#replaceIp news_cast_mock
+#replaceIp news-cast-fetcher
+#replaceIp news-cast-orchestration
+#replaceIp news-cast-choreography
+#replaceIp news-cast-mock
 
 nginx -t
 
