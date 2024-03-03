@@ -1,36 +1,34 @@
-version: "3.7"
-
 services:
-  news_cast_postgres:
+  news-cast-postgres:
     ports:
       - "5432:5432"
 
-  news_cast_kafka:
+  news-cast-kafka:
     ports:
       - "9092:9092"
       - "9093:9093"
       - "2181:2181"
 
-  news_cast_mock:
+  news-cast-mock:
     ports:
       - "8081:8081"
 
-  news_cast_cdc:
+  news-cast-cdc:
     ports:
       - "8085:8085"
 
-  news_cast_fetcher:
+  news-cast-fetcher:
     ports:
       - "8080:8080"
 
-  news_cast_choreography:
+  news-cast-choreography:
     ports:
       - "8083:8083"
 
-  news_cast_orchestration:
+  news-cast-orchestration:
     ports:
       - "8082:8082"
 
-  news_cast_fe:
+  news-cast-fe:
     ports:
       - "9000:9000"
