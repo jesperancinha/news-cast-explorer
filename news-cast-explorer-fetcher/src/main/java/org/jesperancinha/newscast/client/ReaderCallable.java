@@ -45,12 +45,12 @@ public class ReaderCallable implements Callable<Boolean> {
             String url,
             BlockingQueueService blockingQueueService,
             ExecutorServiceWrapper executorServiceWrapper) {
-        if (url.contains("news_cast_mock")) {
-            final String news_cast_mock;
+        if (url.contains("news-cast-mock")) {
+            final String newsCastMock;
             try {
-                news_cast_mock = InetAddress.getByName("news_cast_mock").getHostAddress();
-                log.info(news_cast_mock);
-                url = url.replace("news_cast_mock", news_cast_mock);
+                newsCastMock = InetAddress.getByName("news-cast-mock").getHostAddress();
+                log.info(newsCastMock);
+                url = url.replace("news-cast-mock", newsCastMock);
             } catch (UnknownHostException ignored) {
 
             }
