@@ -134,6 +134,8 @@ services:
     build:
       context: docker-files/nginx/.
     restart: on-failure
+    expose:
+      - 9000
     deploy:
       resources:
         limits:

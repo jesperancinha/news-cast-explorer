@@ -1,7 +1,7 @@
 describe('Swagger Tests Saga Choreography', () => {
     const host = Cypress.env('host') ? Cypress.env('host') : 'localhost';
     const port = Cypress.env('port') ? Cypress.env('port') : '8083';
-    const baseUrl = Cypress.env('port') ? '/api/saga/choreography/swagger-ui' : '/api/saga/swagger-ui';
+    const baseUrl = Cypress.env('port') ? '/api/saga/choreography/swagger-ui/index.html' : '/api/saga/swagger-ui/index.html';
     const docPath = Cypress.env('port') ? '/api/saga/choreography/v3/api-docs' : '/api/saga/v3/api-docs';
 
     it('shows swagger', () => {
