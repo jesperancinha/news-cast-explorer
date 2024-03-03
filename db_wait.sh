@@ -23,4 +23,4 @@ function checkServiceByNameAndMessage() {
     echo "Succeeded $name Service after $counter tries!"
 }
 
-checkServiceByNameAndMessage news_cast_postgres 'database system is ready to accept connections'
+checkServiceByNameAndMessage news-cast-postgres 'database system is ready to accept connections'
