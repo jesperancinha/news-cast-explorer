@@ -38,11 +38,11 @@
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
 
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.16.2</jackson.version>
 
         <kotlin.version>1.9.23</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotest.version>5.8.0</kotest.version>
+        <kotest.version>5.8.1</kotest.version>
         <kotest-extensions-spring.version>1.1.3</kotest-extensions-spring.version>
         <springmockk.version>4.0.2</springmockk.version>
         <testcontainers.version>1.19.7</testcontainers.version>
@@ -59,7 +59,7 @@
 
         <kotlin-logging-jvm.version>3.0.5</kotlin-logging-jvm.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <springdoc-openapi-starter.version>2.3.0</springdoc-openapi-starter.version>
+        <springdoc-openapi-starter.version>2.4.0</springdoc-openapi-starter.version>
     </properties>
 
     <dependencyManagement>
