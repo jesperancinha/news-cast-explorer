@@ -28,12 +28,12 @@
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
 
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 
-        <lombok.version>1.18.30</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
 
-        <commons-io.version>2.15.1</commons-io.version>
+        <commons-io.version>2.16.0</commons-io.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
@@ -47,7 +47,7 @@
         <springmockk.version>4.0.2</springmockk.version>
         <testcontainers.version>1.19.7</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>3.2.3</spring-boot-parent.version>
+        <spring-boot-parent.version>3.2.4</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
         <mockk.version>1.13.10</mockk.version>
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
