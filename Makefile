@@ -154,5 +154,5 @@ update: remove-lock-files
  		ncu -u; \
  		yarn
 remove-lock-files:
-	find . -name "package-lock.json" | xargs rm; \
-	find . -name "yarn.lock" | xargs rm;
+	find . -name "package-lock.json" | xargs -I {} rm {}; \
+	find . -name "yarn.lock" | xargs -I {} rm {};
