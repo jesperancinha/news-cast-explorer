@@ -28,26 +28,26 @@
         <maven-compiler-plugin.source>${java.version}</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>${java.version}</maven-compiler-plugin.target>
 
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
 
-        <lombok.version>1.18.30</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
 
-        <commons-io.version>2.15.1</commons-io.version>
-        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
+        <commons-io.version>2.16.0</commons-io.version>
+        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
 
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.17.0</jackson.version>
 
-        <kotlin.version>1.9.22</kotlin.version>
+        <kotlin.version>1.9.23</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotest.version>5.8.0</kotest.version>
+        <kotest.version>5.8.1</kotest.version>
         <kotest-extensions-spring.version>1.1.3</kotest-extensions-spring.version>
         <springmockk.version>4.0.2</springmockk.version>
-        <testcontainers.version>1.19.6</testcontainers.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
         <omni-coveragereporter-maven-plugin.version>0.4.3</omni-coveragereporter-maven-plugin.version>
-        <spring-boot-parent.version>3.2.3</spring-boot-parent.version>
+        <spring-boot-parent.version>3.2.4</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
         <mockk.version>1.13.10</mockk.version>
         <kotlinx-coroutines-debug.version>1.8.0</kotlinx-coroutines-debug.version>
@@ -59,7 +59,7 @@
 
         <kotlin-logging-jvm.version>3.0.5</kotlin-logging-jvm.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <springdoc-openapi-starter.version>2.3.0</springdoc-openapi-starter.version>
+        <springdoc-openapi-starter.version>2.5.0</springdoc-openapi-starter.version>
     </properties>
 
     <dependencyManagement>

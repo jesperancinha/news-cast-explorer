@@ -57,7 +57,7 @@ docker-clean:
 docker-clean-local:
 	docker-compose rm -svf
 docker-stop-all:
-	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' | xargs -I {} docker stop {}
 dist:
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
 docker: dist
@@ -154,5 +154,5 @@ update: remove-lock-files
  		ncu -u; \
  		yarn
 remove-lock-files:
-	find . -name "package-lock.json" | xargs rm; \
-	find . -name "yarn.lock" | xargs rm;
+	find . -name "package-lock.json" | xargs -I {} rm {}; \
+	find . -name "yarn.lock" | xargs -I {} rm {};
