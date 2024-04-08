@@ -63,6 +63,7 @@ describe('Page Component', () => {
   });
   it('should be green when the selected authors are from this page', () => {
     pageComponent.authorsSelected = new MatTableDataSource<Author>([]);
+    pageComponent.selectedId = 1;
     const page: Page = {
       id: 1,
       duration: 30,
