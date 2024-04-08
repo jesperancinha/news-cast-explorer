@@ -21,15 +21,16 @@ export class AuthorComponent implements OnInit {
   filterAuthor = '';
   filterMessages = '';
   @Input() messagesSelected: MatTableDataSource<Message>;
-  @Input() authorsSelected: Author[];
-  @Output() authorSelected = new EventEmitter<MatTableDataSource<Message>>();
+  @Input() authorsSelected: MatTableDataSource<Author>;
+  selectedId: string;
 
   ngOnInit() {
   }
 
   authorClicked(element: Author) {
-    this.authorSelected.emit(new MatTableDataSource(element.messages));
     this.filterMessages = '';
+    this.messagesSelected = new MatTableDataSource<Message>(element.messages);
+    this.selectedId = element.id
   }
 
   toDate(createdAt: number) {
@@ -42,13 +43,13 @@ export class AuthorComponent implements OnInit {
   }
 
   calculateBackgroundAuthors(element: Author) {
-    if (this.messagesSelected && element.messages === this.messagesSelected.data) {
+    if (element.id === this.selectedId) {
       return 'green'
     }
     return 'white';
   }
 
   validateCurrentAuthorSelection() {
-    return this.authorsSelected && this.authorsSelected.length > 0;
+    return this.authorsSelected && this.authorsSelected.data.length > 0;
   }
 }

@@ -5,12 +5,4 @@
   </h1>
 </div>
 
-<app-page-component (pageSelected)="onPageSelected($event)"></app-page-component>
-
-<app-author-component [messagesSelected]="messagesSelected"
-                      [authorsSelected]="authorsSelected"
-                      (authorSelected)="onAuthorSelected($event)"></app-author-component>
-
-<app-message-component [messagesSelected]="messagesSelected"></app-message-component>
-
 <router-outlet></router-outlet>
