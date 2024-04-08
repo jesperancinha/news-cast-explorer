@@ -30,7 +30,6 @@ export class PageService {
     return (error: any): Observable<T> => {
       console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-
       return of(result as T);
     };
   }

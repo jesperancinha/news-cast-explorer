@@ -45,7 +45,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -64,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "news-cast-explorer-fe:build"
+            "buildTarget": "news-cast-explorer-fe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "news-cast-explorer-fe:build:production"
+              "buildTarget": "news-cast-explorer-fe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "news-cast-explorer-fe:build"
+            "buildTarget": "news-cast-explorer-fe:build"
           }
         },
         "test": {
@@ -124,7 +123,6 @@
       }
     }
   },
-  "defaultProject": "news-cast-explorer-fe",
   "cli": {
     "analytics": "3e459a80-eff3-4a2b-89ca-27f2969c893b"
   }

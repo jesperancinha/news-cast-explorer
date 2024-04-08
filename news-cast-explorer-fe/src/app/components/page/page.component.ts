@@ -28,8 +28,7 @@ export class PageComponent implements OnInit {
   authorsSelected: MatTableDataSource<Author>;
   filterPage = '';
   filterAuthor = '';
-  @Output() authorsToEmit = new EventEmitter<MatTableDataSource<Author>>();
-
+  selectedId: number;
 
   constructor(private pageService: PageService) {
   }
@@ -61,10 +60,10 @@ export class PageComponent implements OnInit {
   }
 
   pageClicked(element: Page) {
-    this.authorsSelected = new MatTableDataSource(element.authors);
+    this.authorsSelected = new MatTableDataSource<Author>(element.authors);
+    this.selectedId = element.id
     this.messagesSelected = null;
     this.filterAuthor = '';
-    this.authorsToEmit.emit(this.authorsSelected);
   }
 
 
@@ -77,7 +76,7 @@ export class PageComponent implements OnInit {
   }
 
   calculateBackgroundPage(element: Page) {
-    if (this.authorsSelected && element.authors === this.authorsSelected.data) {
+    if (this.authorsSelected && element.id === this.selectedId) {
       return 'green'
     }
     return 'white';

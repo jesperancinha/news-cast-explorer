@@ -1,42 +1,50 @@
-<div>
-  <perfectScrollbar style="max-width: 100%; max-height: 300px;">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter page" [value]="filterPage">
-    </mat-form-field>
+<div class="main">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter page" [value]="filterPage">
+  </mat-form-field>
+  <div class="scroll">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td style="background: {{calculateBackgroundPage(element)}}" mat-cell
+            *matCellDef="let element"> {{ element.id }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="createdAt">
         <th mat-header-cell *matHeaderCellDef>Created At</th>
-        <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-            (click)="pageClicked(element)"> {{toDate(element.createdAt * 1000)}} </td>
+        <td style="background: {{calculateBackgroundPage(element)}}" mat-cell *matCellDef="let element"
+            (click)="pageClicked(element)"> {{ toDate(element.createdAt * 1000) }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="duration">
         <th mat-header-cell *matHeaderCellDef>Page fetch time(s)</th>
-        <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-            (click)="pageClicked(element)">{{element.duration}}</td>
+        <td style="background: {{calculateBackgroundPage(element)}}" mat-cell *matCellDef="let element"
+            (click)="pageClicked(element)">{{ element.duration }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="messasgesperscond">
         <th mat-header-cell *matHeaderCellDef>Messages per second</th>
-        <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-            (click)="pageClicked(element)">{{calculateAverage(element)}}</td>
+        <td style="background: {{calculateBackgroundPage(element)}}" mat-cell *matCellDef="let element"
+            (click)="pageClicked(element)">{{ calculateAverage(element) }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="numberofmessages">
         <th mat-header-cell *matHeaderCellDef>Total fetched messages</th>
-        <td [bgColor]="calculateBackgroundPage(element)" mat-cell *matCellDef="let element"
-            (click)="pageClicked(element)">{{calculateNumberOfMessages(element.authors)}}</td>
+        <td style="background: {{calculateBackgroundPage(element)}}" mat-cell *matCellDef="let element"
+            (click)="pageClicked(element)">{{ calculateNumberOfMessages(element.authors) }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
-  </perfectScrollbar>
+  </div>
+  <app-author-component [messagesSelected]="messagesSelected"
+                        [authorsSelected]=authorsSelected></app-author-component>
 </div>

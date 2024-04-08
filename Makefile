@@ -57,7 +57,7 @@ docker-clean:
 docker-clean-local:
 	docker-compose rm -svf
 docker-stop-all:
-	docker ps -a --format '{{.ID}}' | xargs -I {}  docker stop {}
+	docker ps -a --format '{{.ID}}' | xargs -I {} docker stop {}
 dist:
 	cp -r news-cast-explorer-fe/dist docker-files/nginx
 docker: dist

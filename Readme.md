@@ -62,12 +62,9 @@ If the author id does not match, both page and author comments will be marked as
 <summary><b>Stable releases</b></summary>
 
 ---
-This repo is the official support article to my article on medium:
-
-[![](https://img.shields.io/badge/News%20Cast%20—%20Using%20Sagas%20in%20Choreography%20and%20Orchestration%20Patterns-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@jofisaes/newscast-using-sagas-in-choreography-and-orchestration-patterns-a-java-17-and-kotlin-example-e3d0ec17b910)
-
 
 -   [1.0.0](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0) - [e986fadced9dd48a0ce2711764097f18927ff0ba](https://github.com/jesperancinha/news-cast-explorer/tree/1.0.0)
+
 ---
 </details>
 

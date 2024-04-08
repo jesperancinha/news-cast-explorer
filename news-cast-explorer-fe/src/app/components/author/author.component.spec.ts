@@ -13,6 +13,7 @@ describe('Author Component', () => {
 
   it('should be green when the selected messages are from this author', () => {
     authorComponent.messagesSelected = new MatTableDataSource<Message>([]);
+    authorComponent.selectedId  = '234324';
     const author: Author = {
       name: 'WOW',
       userName: 'wow',
