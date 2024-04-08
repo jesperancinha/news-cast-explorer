@@ -28,7 +28,7 @@ export class MessageComponent implements OnInit {
     }
 
 
-    applyFilterToMessages(filterValue: any) {
+    applyFilterToMessages(filterValue: string) {
         this.messagesSelected.filter = filterValue.trim().toLowerCase();
     }
 

@@ -25,11 +25,10 @@ export class PageComponent implements OnInit {
   dataSource: MatTableDataSource<Page>;
   displayedColumns: string[] = ['id', 'createdAt', 'duration', 'messasgesperscond', 'numberofmessages'];
   messagesSelected: MatTableDataSource<Message>;
-  authorsSelected: MatTableDataSource<Author>;
+  authorsSelected: Author[];
   filterPage = '';
   filterAuthor = '';
-  @Output() authorsToEmit = new EventEmitter<MatTableDataSource<Author>>();
-
+  @Output() pageSelected: EventEmitter<Author[]> = new EventEmitter<Author[]>();
 
   constructor(private pageService: PageService) {
   }
@@ -61,10 +60,11 @@ export class PageComponent implements OnInit {
   }
 
   pageClicked(element: Page) {
-    this.authorsSelected = new MatTableDataSource(element.authors);
+    this.authorsSelected = element.authors;
+    this.pageSelected.emit(this.authorsSelected);
+    console.log(this.authorsSelected);
     this.messagesSelected = null;
     this.filterAuthor = '';
-    this.authorsToEmit.emit(this.authorsSelected);
   }
 
 
@@ -77,7 +77,7 @@ export class PageComponent implements OnInit {
   }
 
   calculateBackgroundPage(element: Page) {
-    if (this.authorsSelected && element.authors === this.authorsSelected.data) {
+    if (this.authorsSelected && element.authors === this.authorsSelected) {
       return 'green'
     }
     return 'white';

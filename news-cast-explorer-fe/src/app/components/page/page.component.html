@@ -1,5 +1,4 @@
 <div>
-  <perfect-scrollbar style="max-width: 100%; max-height: 300px;">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter page" [value]="filterPage">
     </mat-form-field>
@@ -38,5 +37,4 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
-  </perfect-scrollbar>
 </div>

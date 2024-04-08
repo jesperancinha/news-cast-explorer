@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   title = 'news-cast-explorer-fe';
   dataSource: MatTableDataSource<Page>;
   messagesSelected: MatTableDataSource<Message>;
-  authorsSelected: MatTableDataSource<Author>;
+  authorsSelected: Author[];
   filterAuthor = '';
   filterMessages = '';
 
@@ -40,13 +40,14 @@ export class AppComponent implements OnInit {
       });
   }
 
-  pageClicked(authors: MatTableDataSource<Author>) {
-    this.authorsSelected = authors;
+  onPageSelected(authors: Author[]) {
+    console.log(authors)
+    this.authorsSelected =  authors;
     this.messagesSelected = null;
     this.filterAuthor = '';
   }
 
-  authorClicked(messages: MatTableDataSource<Message>) {
+  onAuthorSelected(messages: MatTableDataSource<Message>) {
     this.messagesSelected = messages;
     this.filterMessages = '';
   }

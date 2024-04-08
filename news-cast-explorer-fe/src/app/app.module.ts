@@ -1,7 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
@@ -15,7 +13,7 @@ import {AuthorComponent} from './components/author/author.component';
 import {MessageComponent} from './components/message/message.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -27,7 +25,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
@@ -37,9 +34,16 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     PerfectScrollbarModule,
     MatInputModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent,
+    PageComponent,
+    AuthorComponent,
+    MessageComponent,
+   ],
+  exports: [RouterModule]
 })
-export class AppModule { }
+export class AppModule {
+}
