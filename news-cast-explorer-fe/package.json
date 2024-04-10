@@ -30,7 +30,7 @@
     "tslib": "^2.6.2",
     "util": "^0.12.5",
     "zone.js": "~0.14.4",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.3",
