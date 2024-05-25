@@ -9,6 +9,11 @@ updates:
     directory: "/news-cast-explorer-fe"
     schedule:
       interval: "daily"
+    groups:
+      angular:
+        patterns:
+          - "@angular*"
+          - "angular*"
 
   - package-ecosystem: "npm"
     directory: "/e2e"
