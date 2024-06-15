@@ -4,6 +4,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      maven:
+        patterns:
+          - "*maven*"
 
   - package-ecosystem: "npm"
     directory: "/news-cast-explorer-fe"
