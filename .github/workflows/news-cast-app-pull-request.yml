@@ -2,10 +2,12 @@ name: news-cast-app-pull-request
 
 on:
   pull_request:
-    branches: [ main ]
+    branches:
+     - '**'
   push:
     branches:
-      - '!master'
+      - '**'
+      - '!main'
 
 jobs:
   build:
