@@ -22,7 +22,7 @@
     "@angular/core": "18.1.0",
     "@angular/flex-layout": "^15.0.0-beta.42",
     "@angular/forms": "18.1.0",
-    "@angular/material": "^18.0.6",
+    "@angular/material": "^18.1.0",
     "@angular/platform-browser": "18.1.0",
     "@angular/platform-browser-dynamic": "18.1.0",
     "@angular/router": "18.1.0",
@@ -33,12 +33,12 @@
     "typescript": "5.5.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.0.7",
+    "@angular-devkit/build-angular": "^18.1.0",
     "@angular/cli": "~18.1.0",
     "@angular/compiler-cli": "~18.1.0",
     "@angular/language-service": "~18.1.0",
-    "@babel/core": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
+    "@babel/core": "^7.24.8",
+    "@babel/preset-env": "^7.24.8",
     "@babel/preset-typescript": "^7.24.7",
     "@testing-library/jest-dom": "^6.4.6",
     "@types/jasmine": "~5.1.4",
@@ -59,7 +59,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "protractor": "^7.0.0",
-    "ts-jest": "^29.1.5",
+    "ts-jest": "^29.2.2",
     "ts-node": "~10.9.2",
     "tslint": "~6.1.3"
   }
