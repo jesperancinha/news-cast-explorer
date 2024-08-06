@@ -104,7 +104,7 @@ docker-action: dist
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.builder.yml up -d news-cast-postgres news-cast-kafka news-cast-mock news-cast-cdc news-cast-fetcher news-cast-choreography news-cast-orchestration news-cast-fe
 nce-wait:
 	bash nce_wait.sh
-dcd:
+dcd: dc-migration
 	docker-compose -p ${GITHUB_RUN_ID} down --remove-orphans
 dcd-local:
 	docker-compose down --remove-orphans
@@ -168,3 +168,5 @@ deps-plugins-update:
 deps-update: update
 accept-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
+dc-migration:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash
