@@ -22,7 +22,7 @@
     "@angular/core": "18.2.0",
     "@angular/flex-layout": "^15.0.0-beta.42",
     "@angular/forms": "18.2.0",
-    "@angular/material": "^18.1.4",
+    "@angular/material": "^18.2.0",
     "@angular/platform-browser": "18.2.0",
     "@angular/platform-browser-dynamic": "18.2.0",
     "@angular/router": "18.2.0",
@@ -33,7 +33,7 @@
     "typescript": "5.5.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^18.1.4",
+    "@angular-devkit/build-angular": "^18.2.0",
     "@angular/cli": "~18.2.0",
     "@angular/compiler-cli": "~18.2.0",
     "@angular/language-service": "~18.2.0",
@@ -44,7 +44,7 @@
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
     "@types/jest": "^29.5.12",
-    "@types/node": "^22.2.0",
+    "@types/node": "^22.4.0",
     "babel-jest": "^29.7.0",
     "codelyzer": "^6.0.2",
     "jasmine": "^5.2.0",
