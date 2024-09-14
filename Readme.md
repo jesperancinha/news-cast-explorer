@@ -2,7 +2,7 @@
 
 ---
 
-[![Twitter URL](https://img.shields.io/twitter/url?logoColor=blue&style=social&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial)](https://twitter.com/intent/tweet?text=Checkout%20this%20@github%20repo%20by%20@joaofse%20%F0%9F%91%A8%F0%9F%8F%BD%E2%80%8D%F0%9F%92%BB:%20https://github.com/jesperancinha/news-cast-explorer/src/master/)
+
 [![Generic badge](https://img.shields.io/static/v1.svg?label=GitHub&message=Newscast%20Explorer&color=informational)](https://github.com/jesperancinha/news-cast-explorer)
 
 [![news-cast-app](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app.yml/badge.svg)](https://github.com/jesperancinha/news-cast-explorer/actions/workflows/news-cast-app.yml)
