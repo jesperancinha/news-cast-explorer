@@ -53,7 +53,7 @@
         <kotlinx-coroutines-debug.version>1.9.0</kotlinx-coroutines-debug.version>
 
         <eventuate-tram-spring.version>0.34.0.RELEASE</eventuate-tram-spring.version>
-        <eventuate-tram-sagas-spring.version>0.23.0.RELEASE</eventuate-tram-sagas-spring.version>
+        <eventuate-tram-sagas-spring.version>0.24.0.RELEASE</eventuate-tram-sagas-spring.version>
         <eventuate-tram-sagas-spring-orchestration.version>0.19.0.RELEASE
         </eventuate-tram-sagas-spring-orchestration.version>
 
