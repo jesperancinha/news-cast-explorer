@@ -8,6 +8,9 @@ updates:
       maven:
         patterns:
           - "*maven*"
+      eventuate:
+        patterns:
+          - "*eventuate*"
 
   - package-ecosystem: "npm"
     directory: "/news-cast-explorer-fe"
