@@ -64,6 +64,9 @@ docker: dist
 	docker-compose -p ${GITHUB_RUN_ID} up -d --build --remove-orphans
 docker-local: dist
 	docker-compose up -d --build --remove-orphans
+docker-logs:
+	cd e2e; \
+	make docker-logs
 docker-clean-build-start: docker-clean b docker
 docker-clean-start: docker-clean docker
 stop:
