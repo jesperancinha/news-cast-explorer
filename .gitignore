@@ -47,3 +47,4 @@ cypressUpdateOne.sh
 docker-composetmp.yml
 packagetmp.json
 pluginUpdatesOne.sh
+accept-all-repo-prs.sh
