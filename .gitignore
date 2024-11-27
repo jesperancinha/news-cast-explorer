@@ -32,7 +32,6 @@ videos
 screenshots
 
 # VSCode
-bin
 .VSCode
 .vscode
 
@@ -48,3 +47,4 @@ docker-composetmp.yml
 packagetmp.json
 pluginUpdatesOne.sh
 accept-all-repo-prs.sh
+update-all-repo-prs.sh
