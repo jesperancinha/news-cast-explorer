@@ -171,5 +171,7 @@ deps-plugins-update:
 deps-update: update
 accept-prs:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
+accept-repo-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/accept-all-repo-prs.sh | bash
 dc-migration:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/setupDockerCompose.sh | bash
