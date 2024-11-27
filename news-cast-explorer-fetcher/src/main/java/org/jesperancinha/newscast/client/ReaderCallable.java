@@ -8,6 +8,8 @@ import lombok.val;
 import org.jesperancinha.newscast.config.BlockingQueueService;
 import org.jesperancinha.newscast.config.ExecutorServiceWrapper;
 import org.jesperancinha.newscast.model.source.Message;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -22,7 +24,10 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 
+import static java.lang.Thread.enumerate;
 import static java.lang.Thread.sleep;
+import static java.util.Arrays.stream;
+import static java.util.Objects.requireNonNull;
 
 /**
  * Created by jofisaes on 05/10/2021
@@ -40,6 +45,8 @@ public class ReaderCallable implements Callable<Boolean> {
     private final RestTemplate restTemplate = new RestTemplate();
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    private final Logger logger = LoggerFactory.getLogger(ReaderCallable.class);
 
     public ReaderCallable(
             String url,
@@ -74,11 +81,17 @@ public class ReaderCallable implements Callable<Boolean> {
                 final ResponseEntity<Message[]> result = restTemplate.exchange(
                         url, HttpMethod.POST,
                         new HttpEntity<String>(headers), Message[].class);
-                Arrays.stream(Objects.requireNonNull(result.getBody())).toList().forEach(m -> {
+                stream(requireNonNull(result.getBody())).toList().forEach(m -> {
                     try {
-                        blockingQueue.add(objectMapper.writeValueAsString(m));
+                        if (blockingQueue.size() < 100) {
+                            blockingQueue.add(objectMapper.writeValueAsString(m));
+                        } else {
+                            logger.warn("The queue is full for object {}", m);
+                        }
                     } catch (JsonProcessingException e) {
-                        e.printStackTrace();
+                        logger.error("An error has occured processing json - {}", m, e);
+                    } catch (Throwable throwable) {
+                        logger.error("A CRITICAL error has occured processing json - {}", m, throwable);
                     }
                 });
             }
