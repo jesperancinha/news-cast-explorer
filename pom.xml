@@ -57,7 +57,7 @@
         </eventuate-tram-sagas-spring-orchestration.version>
 
         <kotlin-logging-jvm.version>3.0.5</kotlin-logging-jvm.version>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.2.Final</hibernate-validator.version>
         <springdoc-openapi-starter.version>2.7.0</springdoc-openapi-starter.version>
     </properties>
 
