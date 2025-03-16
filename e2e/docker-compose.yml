@@ -1,34 +1,34 @@
 services:
   e2e-electron:
-    image: "cypress/included:14.1.0"
+    image: "cypress/included:14.2.0"
     working_dir: /e2e
     command: "--browser electron --env host=news-cast-fe,port=9000"
     volumes:
       - ./e2e:/e2e
 
   e2e-chrome:
-    image: "cypress/included:14.1.0"
+    image: "cypress/included:14.2.0"
     working_dir: /e2e
     command: "--browser chrome --env host=news-cast-fe,port=9000"
     volumes:
       - ./e2e:/e2e
 
   e2e-firefox:
-    image: "cypress/included:14.1.0"
+    image: "cypress/included:14.2.0"
     working_dir: /e2e
     command: "--browser firefox --env host=news-cast-fe,port=9000"
     volumes:
       - ./e2e:/e2e
 
   e2e-firefox-full:
-    image: "cypress/included:14.1.0"
+    image: "cypress/included:14.2.0"
     working_dir: /e2e
     command: "--config-file full.cypress.config.ts --browser firefox"
     volumes:
       - ./e2e:/e2e
 
   e2e-edge:
-    image: "cypress/included:14.1.0"
+    image: "cypress/included:14.2.0"
     working_dir: /e2e
     command: "--browser edge --env host=news-cast-fe,port=9000"
     volumes:
