@@ -49,7 +49,7 @@
         <omni-coveragereporter-maven-plugin.version>0.4.4</omni-coveragereporter-maven-plugin.version>
         <spring-boot-parent.version>3.4.4</spring-boot-parent.version>
         <news-cast-explorer.version>2.0.0</news-cast-explorer.version>
-        <mockk.version>1.13.17</mockk.version>
+        <mockk.version>1.14.0</mockk.version>
         <kotlinx-coroutines-debug.version>1.10.2</kotlinx-coroutines-debug.version>
         <eventuate-tram-spring.version>0.36.0.RELEASE</eventuate-tram-spring.version>
         <eventuate-tram-sagas-spring.version>0.25.0.RELEASE</eventuate-tram-sagas-spring.version>
