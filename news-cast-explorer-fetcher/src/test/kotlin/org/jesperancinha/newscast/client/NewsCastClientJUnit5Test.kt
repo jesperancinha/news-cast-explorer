@@ -2,6 +2,7 @@ package org.jesperancinha.newscast.client
 
 import com.ninjasquad.springmockk.MockkBean
 import io.kotest.matchers.collections.shouldHaveSize
+import io.kotest.matchers.longs.shouldBeBetween
 import io.kotest.matchers.longs.shouldBeGreaterThanOrEqual
 import io.kotest.matchers.longs.shouldBeLessThanOrEqual
 import io.kotest.matchers.nulls.shouldNotBeNull
@@ -50,8 +51,8 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
      * @throws InterruptedException May occur while waiting for the executor to complete.
      */
     @Test
-    fun `should end gracefully after 5 seconds immediately`() {
-        val linkedBlockingQueue =  mockk<BlockingQueue<String>>()
+    fun `should end gracefully after 5 seconds immediately with 1 s tolerance`() {
+        val linkedBlockingQueue = mockk<BlockingQueue<String>>()
         every { blockingQueueService.blockingQueue } returns linkedBlockingQueue
         newsCastClient.startFetchProcess()
         newsCastClient.startFetchProcess()
@@ -71,6 +72,6 @@ internal class NewsCastClientJUnit5Test @Autowired constructor(
         val endTimeStamp = longArgumentCaptor[1]
         val timeStampDiff = endTimeStamp - startTimestamp
         timeStampDiff.shouldBeGreaterThanOrEqual(0)
-        timeStampDiff.shouldBeLessThanOrEqual(5)
+        timeStampDiff.shouldBeBetween(4, 6)
     }
 }
