@@ -1,16 +1,17 @@
-FROM confluentinc/cp-kafka
+FROM confluentinc/cp-kafka:latest
 
 WORKDIR /usr/local/bin
 
 ENV LANG=C.UTF-8
 
-COPY startKafka.sh /usr/local/bin/
+# Copy the modern KRaft start script
+COPY ./startKRaftKafka.sh /usr/local/bin/
 
+# Copy all server properties files (one per node)
 COPY *.properties /opt/kafka/config/
 
-COPY entrypoint.sh /usr/local/bin/
+# Expose the required ports for all three nodes (PLAINTEXT and CONTROLLER)
+EXPOSE 9092 9093
 
-#Kafka
-EXPOSE 9092 9093 2181
-
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# Use the robust KRaft entrypoint
+ENTRYPOINT ["/usr/local/bin/startKRaftKafka.sh"]
