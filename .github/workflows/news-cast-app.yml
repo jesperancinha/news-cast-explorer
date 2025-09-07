@@ -24,10 +24,10 @@ jobs:
     - name: Build and Test
       run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
-    - name: Use Node.js
+    - name: Set up Node.js 22
       uses: actions/setup-node@v5
       with:
-        node-version: '20'
+        node-version: '22'
 
     - name: Build Node JS and Test
       run: make build-node && npm i -g jest && make test-node
