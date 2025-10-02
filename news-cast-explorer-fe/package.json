@@ -16,7 +16,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "20.3.2",
-    "@angular/cdk": "20.2.5",
+    "@angular/cdk": "20.2.6",
     "@angular/common": "20.3.2",
     "@angular/compiler": "20.3.2",
     "@angular/core": "20.3.2",
@@ -30,7 +30,7 @@
     "tslib": "^2.8.1",
     "util": "^0.12.5",
     "zone.js": "~0.15.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.3.3",
