@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "yearly"
     groups:
       maven:
         patterns:
@@ -15,7 +15,7 @@ updates:
   - package-ecosystem: "npm"
     directory: "/news-cast-explorer-fe"
     schedule:
-      interval: "daily"
+      interval: "yearly"
     groups:
       angular:
         patterns:
@@ -25,4 +25,4 @@ updates:
   - package-ecosystem: "npm"
     directory: "/e2e"
     schedule:
-      interval: "daily"
+      interval: "yearly"
