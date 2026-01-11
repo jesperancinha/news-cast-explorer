@@ -1,0 +1,33 @@
+name: Updates cypress dependencies and containers
+
+on:
+  schedule:
+    - cron: '0 0 1 1 *'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Run dependency update script
+        run: make deps-cypress-update
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update cypress dependencies
+          branch: update-cypress-dependencies-and-containers
+          title: 'Update cypress dependencies and containers'
+          body: |
+            This pull request updates the following dependencies:
+            - Current Cypress dependencies and containers updates
+          labels: dependencies
