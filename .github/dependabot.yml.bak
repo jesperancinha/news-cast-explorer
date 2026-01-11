@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "yearly"
+    groups:
+      maven:
+        patterns:
+          - "*maven*"
+      eventuate:
+        patterns:
+          - "*eventuate*"
+
+  - package-ecosystem: "npm"
+    directory: "/news-cast-explorer-fe"
+    schedule:
+      interval: "yearly"
+    groups:
+      angular:
+        patterns:
+          - "@angular*"
+          - "angular*"
+
+  - package-ecosystem: "npm"
+    directory: "/e2e"
+    schedule:
+      interval: "yearly"
