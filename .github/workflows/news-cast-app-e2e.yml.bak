@@ -1,0 +1,116 @@
+name: e2e-news-cast-app
+
+on: push
+
+jobs:
+  e2e-electron:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Start Docker
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_seconds: 2400
+          command: |
+            make dcup-full-action
+
+      - name: Run Cypress
+        run: make cypress-electron
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
+
+  e2e-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Start Docker
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_seconds: 2400
+          command: |
+            make dcup-full-action
+
+      - name: Run Cypress
+        run: make cypress-chrome
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
+
+  e2e-firefox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Start Docker
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_seconds: 2400
+          command: |
+            make dcup-full-action
+
+      - name: Run Cypress
+        run: make cypress-firefox
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
+
+  e2e-edge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+          cache: maven
+
+      - name: Start Docker
+        uses: nick-fields/retry@v3
+        with:
+          max_attempts: 3
+          retry_on: error
+          timeout_seconds: 2400
+          command: |
+            make dcup-full-action
+
+      - name: Run Cypress
+        run: make cypress-edge
+
+      - name: Cypress Fail!
+        if: failure()
+        run: |
+          make docker-logs
