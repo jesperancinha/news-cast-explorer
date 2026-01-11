@@ -1,0 +1,33 @@
+name: Updates npm dependencies
+
+on:
+  schedule:
+    - cron: '0 0 1 1 *'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Run dependency update script
+        run: make deps-update
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update npm dependencies
+          branch: update-npm-dependencies
+          title: 'Update npm dependencies'
+          body: |
+            This pull request updates the following dependencies:
+            - Current NPM dependency updates
+          labels: dependencies
